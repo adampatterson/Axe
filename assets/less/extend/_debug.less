@@ -1,0 +1,19 @@
+@media (min-width: 1200px) {
+  body { border-top: 3px solid blue; }
+}
+
+@media (min-width: @screen-lg-min) {
+  body { border-top: 3px solid orange; }
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+  body { border-top: 3px solid red; }
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  body { border-top: 3px solid green; }
+}
+
+@media (max-width: @screen-xs-max) {
+  body { border-top: 3px solid purple; }
+}
