@@ -2,8 +2,5 @@
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
 node_modules
 assets/vendor/*
-
-
 /_design/
-
 /.idea

@@ -25,3 +25,9 @@
   <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'roots'); ?>
 </div>
 <![endif]-->
+
+<div class="wrapper">
+    <div class="container">
+
+        <div class="row">
+            <div class="md-12">
