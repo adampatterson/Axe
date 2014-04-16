@@ -10,10 +10,9 @@ module.exports = function(grunt) {
           src: [
             'assets/vendor/jquery/jquery.js',
             'assets/vendor/html5shiv/dist/html5shiv.js',
-            'assets/vendor/retina.js/src/retina.js',
             'assets/js/source/app.js'
           ],
-          dest: 'assets/js/build/app.min.js'
+          dest: 'assets/js/app.min.js'
         }
       },
 
@@ -23,7 +22,7 @@ module.exports = function(grunt) {
         },
         js: {
           files: {
-            'assets/js/build/app.min.js': "assets/js/source/app.js"
+            'assets/js/app.min.js': "assets/js/source/app.js"
           }
         }
       },
