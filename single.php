@@ -1,13 +1,19 @@
-<?php get_template_part('templates/header'); ?>
+<?php get_template_part('templates/partials/header'); ?>
 
 <section id="main" role="main">
+    <?
+    if (have_posts()) {
+        while (have_posts()) {
+            the_post();
 
-    <? while ( have_posts() ) : the_post(); ?>
+            if(!get_post_format()) {
+                get_template_part('templates/format', 'standard');
+            } else {
+                get_template_part('templates/format', get_post_format());
+            }
+        }
+    } ?>
 
-        <? get_template_part( 'templates/content', 'single' ); ?>
+</section>
 
-    <? endwhile; ?>
-
-</section> <!-- /#main -->
-
-<? get_template_part('templates/footer'); ?>
+<? get_template_part('templates/partials/footer'); ?>

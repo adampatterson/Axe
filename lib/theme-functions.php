@@ -180,3 +180,5 @@ function ax_remove_more_jump_link( $link ) {
 	}
 	return $link;
 }
+
+show_admin_bar( false );

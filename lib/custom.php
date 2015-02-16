@@ -3,19 +3,11 @@
 Misc Theme Functions
  *****************************************/
 
-/**
- * Define custom post type capabilities for use with Members
- */
-function ax_add_post_type_caps() {
-    ax_add_capabilities( 'portfolio' );
-}
-
 function t() { return get_template_directory_uri().'/'; }
-function a() { return t().'/assets'; }
-function j() { return a().'/js/'; }
-function i() { return a().'/img/'; }
-function c() { return a().'/css/'; }
-function e($echo=null) { echo $echo;}
+function a() { return t().'assets/'; }
+function j() { echo a().'js/'; }
+function i() { echo a().'img/'; }
+function c() { echo a().'css/'; }
 
 function underscore($string) { return strtolower(preg_replace('/(?<=\\w)([A-Z])/', '_\\1', $string)); }
 

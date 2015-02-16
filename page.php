@@ -1,4 +1,5 @@
-<? get_template_part('templates/header');
+<? get_template_part('templates/partials/header');
+
 if ( have_posts() ):
   if ( is_front_page() ):
     echo '<!-- template: page/home -->';
@@ -14,4 +15,4 @@ if ( have_posts() ):
   endif;
 endif;
 
-get_template_part('templates/footer');
+get_template_part('templates/partials/footer');

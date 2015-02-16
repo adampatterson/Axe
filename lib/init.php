@@ -66,8 +66,16 @@ if ( ! function_exists( 'ax_setup' ) ):
     // Enable Post Thumbnails
     add_theme_support( 'post-thumbnails' );
 
+    // Content Width
+    if (!isset($content_width)) $content_width = 805;
+
     // Add Image Sizes
-    // add_image_size( $name, $width = 0, $height = 0, $crop = false );
+    add_theme_support('post-thumbnails');
+    set_post_thumbnail_size(720, 400, true); // Default
+    //add_image_size('featured', 1110, 616, true); // Without Blur
+    add_image_size('featured', 625, 347, true);
+    add_image_size('grid', 300, 230, true);
+    add_image_size('square', 150, 150, true);
 
     // Enable Custom Headers
     // add_theme_support( 'custom-header' );
@@ -75,8 +83,13 @@ if ( ! function_exists( 'ax_setup' ) ):
     // Enable Custom Backgrounds
     // add_theme_support( 'custom-background' );
 
+    // Relocate the editor-style.css
+    add_editor_style('assets/css/editor-style.css');
+
     // Remove Dashboard Meta Boxes
     add_action( 'wp_dashboard_setup', 'ax_remove_dashboard_widgets' );
+
+    add_theme_support( 'title-tag' );
 
     // Change Admin Menu Order
     add_filter( 'custom_menu_order', 'ax_custom_menu_order' );
@@ -90,10 +103,6 @@ if ( ! function_exists( 'ax_setup' ) ):
 
     // Show Kitchen Sink in WYSIWYG Editor
     add_filter( 'tiny_mce_before_init', 'ax_unhide_kitchensink' );
-
-    // Define custom post type capabilities for use with Members
-    add_action( 'admin_init', 'ax_add_post_type_caps' );
-
 
     /****************************************
     Frontend

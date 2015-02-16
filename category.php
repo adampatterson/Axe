@@ -1,16 +1,24 @@
 <?
-get_template_part('templates/meta');
-get_template_part('templates/header');
+get_template_part('templates/partials/header');
 
 $cat = get_query_var('cat');
 $yourcat = get_category ($cat); ?>
 
-<h3 class="entry-title"><?= $yourcat->slug; ?></h3>
+<div class="wrapper terms">
+    <h3 class="entry-title"><?= $yourcat->slug; ?></h3>
+</div>
 
-<? if ( have_posts() ):
-    get_template_part( 'templates/content','listing' );
-else:
-    get_template_part( 'templates/content', 'none' );
-endif;
+    <section id="post-blog">
+        <? if ( have_posts() ):
+            get_template_part( 'templates/loop','post' ); ?>
 
-get_template_part('templates/footer');
+            <div class="center pagination">
+                <?= get_previous_posts_link( ); ?>
+                <?= get_next_posts_link( ); ?>
+            </div>
+        <? else:
+            get_template_part( 'templates/content', 'none' );
+        endif; ?>
+    </section>
+
+<? get_template_part('templates/partials/footer');

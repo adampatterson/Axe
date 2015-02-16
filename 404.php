@@ -1,4 +1,4 @@
-<?php get_template_part('templates/header'); ?>
+<?php get_template_part('templates/partials/header'); ?>
 
     <section id="post-404" <?php post_class(); ?>>
         <article>
@@ -6,4 +6,4 @@
         </article>
     </section>
 
-<?php get_template_part('templates/footer'); ?>
+<?php get_template_part('templates/partials/footer'); ?>
