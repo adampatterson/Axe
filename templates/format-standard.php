@@ -22,10 +22,10 @@
                     <header class="col-md-12">
                         <h1><?php the_title(); ?></h1>
                         <p>
-                            <span><?php _e('by', 'modernmag'); ?></span>
+                            <span>by</span>
                             <?php the_author_posts_link(); ?>
 
-                            <span><?php _e('on', 'modernmag'); ?></span>
+                            <span>on</span>
                             <?php the_time(get_option('date_format')); ?>
                         </p>
                     </header>
@@ -42,13 +42,13 @@
                             $terms = get_the_terms(get_the_ID(), 'category');
                             if (is_array($terms)) {
                                 ?>
-                                <li><?php the_terms(get_the_ID(), 'category', __('Categories', 'modernmag').': ', ', '); ?></li>
+                                <li><?php the_terms(get_the_ID(), 'category', 'Categories: ', ', '); ?></li>
                             <?php
                             }
                             $terms = get_the_terms(get_the_ID(), 'post_tag');
                             if (is_array($terms)) {
                                 ?>
-                                <li><?php the_terms(get_the_ID(), 'post_tag', __('Tags', 'modernmag').': ', ', '); ?></li>
+                                <li><?php the_terms(get_the_ID(), 'post_tag', 'Tags: ', ', '); ?></li>
                             <?php
                             }
                             ?>
@@ -57,7 +57,7 @@
 
                     <div class="author-box">
                         <?php echo get_avatar(get_the_author_meta('ID'), 96); ?>
-                        <h3><?php _e('About', 'modernmag'); ?> <?php the_author_posts_link(); ?></h3>
+                        <h3>About <?php the_author_posts_link(); ?></h3>
                         <p><?php echo get_the_author_meta('description'); ?></p>
                     </div>
 

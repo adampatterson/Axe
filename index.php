@@ -1,11 +1,12 @@
-<? get_template_part('templates/partials/header');
+<?php get_template_part('templates/partials/header');
 if ( have_posts() ):
+    # Sort this out, Blog is not loading
     if ( is_front_page() && is_home() ):
         echo '<!-- template: index/blog -->';
         get_template_part('templates/content', 'blog');
     elseif ( is_front_page() or is_home() ):
         echo '<!-- template: index/home -->';
-        get_template_part('templates/content', 'home');
+        get_template_part('templates/content', 'blog');
     elseif( is_search() ):
         echo '<!-- template: index/search -->';
         get_template_part('templates/content', 'search');
