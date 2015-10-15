@@ -1,6 +1,6 @@
 <div class="wrapper">
 
-    <section class="no-sidebar">
+    <section>
         <?php
         /*
         $style = '';
@@ -55,7 +55,7 @@
                         </ul>
                     </footer>
 
-                    <div class="author-box">
+                    <div class="col-md-12 m-top-30 m-bottom-30">
                         <?php echo get_avatar(get_the_author_meta('ID'), 96); ?>
                         <h3>About <?php the_author_posts_link(); ?></h3>
                         <p><?php echo get_the_author_meta('description'); ?></p>

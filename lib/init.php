@@ -19,7 +19,7 @@ if ( ! function_exists( 'ax_setup' ) ):
     // Register menus
     register_nav_menus( array(
       'primary' => 'Primary Menu',
-      'main-nav' => 'The Main Menu',
+      'main' => 'Main Menu',
       'footer-links' => 'Footer Links'
     ) );
 
@@ -70,11 +70,9 @@ if ( ! function_exists( 'ax_setup' ) ):
     if (!isset($content_width)) $content_width = 805;
 
     // Add Image Sizes
-    add_theme_support('post-thumbnails');
-    set_post_thumbnail_size(720, 400, true); // Default
-    //add_image_size('featured', 1110, 616, true); // Without Blur
-    add_image_size('featured', 625, 347, true);
-    add_image_size('grid', 300, 230, true);
+    add_image_size('featured', 1600, 800, true); // Without Blur
+    add_image_size('gallery',  625, 1000);
+    add_image_size('grid',  625, 625, true);
     add_image_size('square', 150, 150, true);
 
     // Enable Custom Headers
@@ -107,7 +105,7 @@ if ( ! function_exists( 'ax_setup' ) ):
     /****************************************
     Frontend
     *****************************************/
-	
+
 	// custom admin login logo
 	function custom_login_logo() {
 	    echo '<style type="text/css">
@@ -120,15 +118,20 @@ if ( ! function_exists( 'ax_setup' ) ):
     // Add Post Formats Theme Support
     // add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video') );
 
-    // Enqueue scripts
-    add_action( 'wp_enqueue_scripts', 'ax_scripts' );
-
     // Remove Query Strings From Static Resources
     add_filter( 'script_loader_src', 'ax_remove_script_version', 15, 1 );
     add_filter( 'style_loader_src', 'ax_remove_script_version', 15, 1 );
 
     // Remove Read More Jump
     add_filter( 'the_content_more_link', 'ax_remove_more_jump_link' );
+
+    add_filter('get_avatar','add_gravatar_class');
+    function add_gravatar_class($class) {
+      $class = str_replace("class='avatar", "class='avatar img-circle", $class);
+      return $class;
+    }
+
+
   }
   endif; // ax_setup
 

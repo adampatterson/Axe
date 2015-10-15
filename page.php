@@ -1,6 +1,6 @@
 <? get_template_part('templates/partials/header');
 
-if ( have_posts() ):
+while ( have_posts() ) : the_post();
   if ( is_front_page() ):
     echo '<!-- template: page/home -->';
     get_template_part('templates/content', 'home');
@@ -13,6 +13,6 @@ if ( have_posts() ):
       get_template_part('templates/content', 'page');
     endif;
   endif;
-endif;
+endwhile;
 
 get_template_part('templates/partials/footer');

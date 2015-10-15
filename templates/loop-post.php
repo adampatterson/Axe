@@ -1,15 +1,18 @@
 <? while ( have_posts() ) : the_post(); ?>
-<article <?php post_class(); ?>>
-    <?php if (has_post_thumbnail()) {
-        ?>
-        <a href="<?php the_permalink(); ?>" title="Read Full Post">
-            <?php the_post_thumbnail('grid'); ?>
+<article <?php post_class(); ?> itemscope="" itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+    <?php if (has_post_thumbnail()) { ?>
+        <div class="image">
+            <a href="<?php the_permalink(); ?>" title="<?php _e('Read Full Post', 'modernmag'); ?>">
+                <?php the_post_thumbnail('grid', array(
+                    'class' => "img-responsive",
+                )); ?>
         </a>
+        </div>
     <?php } ?>
 
-    <div class="content">
+    <div class="content" itemprop="text">
         <header>
-            <h1><a href="<?php the_permalink(); ?>" title="Read Full Post"><?php the_title(); ?></a></h1>
+            <h2><a href="<?php the_permalink(); ?>" title="<?php _e('Read Full Post', 'modernmag'); ?>"><?php the_title(); ?></a></h2>
             <p>
 				By <? the_author_posts_link(); ?>
 				on <? the_time(get_option('date_format')); ?>

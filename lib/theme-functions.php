@@ -138,27 +138,6 @@ function ax_unhide_kitchensink( $args ) {
 	return $args;
 }
 
-/****************************************
-Frontend
-*****************************************/
-
-/**
- * Enqueue scripts
- */
-function ax_scripts() {
-	// CSS first
-	wp_enqueue_style( 'ax_style', get_stylesheet_directory_uri().'/style.css', null, '1.0', 'all' );
-	// JavaScript
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-	if ( !is_admin() ) {
-		wp_enqueue_script( 'jquery' );
-	}
-
-  wp_enqueue_script( 'ax_app', get_template_directory_uri() . '/assets/js/build/app.min.js', array('jquery'), NULL, true );
-}
-
 /**
  * Remove Query Strings From Static Resources
  */

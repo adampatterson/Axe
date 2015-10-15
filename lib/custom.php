@@ -3,11 +3,13 @@
 Misc Theme Functions
  *****************************************/
 
-function t() { return get_template_directory_uri().'/'; }
-function a() { return t().'assets/'; }
-function j() { echo a().'js/'; }
-function i() { echo a().'img/'; }
-function c() { echo a().'css/'; }
+function __t() { return get_template_directory_uri().'/'; }
+function __a() { return __t().'assets/'; }
+function __j() { echo __a().'js/'; }
+function __i() { echo __a().'img/'; }
+function __c() { echo __a().'css/'; }
+function __v() { echo __a().'vendor/'; }
+function __video() { echo __a().'video/'; }
 
 function underscore($string) { return strtolower(preg_replace('/(?<=\\w)([A-Z])/', '_\\1', $string)); }
 

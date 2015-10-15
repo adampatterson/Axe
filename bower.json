@@ -1,23 +1,21 @@
 {
-  "name": "ax",
-  "main": "ax",
-  "description": "Core theme.",
-  "version": "0.1.1",
-  "ignore": [
-    ".jshintrc",
-    "**/*.txt"
-  ],
-  "dependencies": {
-    "bootstrap": "3.3.1",
-    "jquery": "2.1.3",
-    "html5shiv": "~3.7.0",
-    "modernizr": "latest",
-    "detectizr": "latest",
-    "imagesloaded": "latest",
-    "jquery-cookie": "~1.4.1",
-    "wookmark-jquery": "1.4.8",
-    "owl.carousel": "latest",
-    "font-awesome": "4.2.0",
-    "lesshat": "~3.0.2"
-  }
+    "name": "workshop",
+    "version": "0.1.0",
+    "ignore": [
+        ".jshintrc",
+        "**/*.txt"
+    ],
+    "dependencies": {
+        "jquery": "latest",
+        "html5shiv": "latest",
+        "detectizr": "latest",
+        "bootstrap": "latest",
+        "imagesloaded": "latest",
+        "mixitup": "latest",
+        "font-awesome": "latest",
+        "imagesloaded": "latest",
+        "BigVideo.js": "latest",
+        "isInViewport": "latest",
+        "ekko-lightbox": "latest"
+    }
 }
