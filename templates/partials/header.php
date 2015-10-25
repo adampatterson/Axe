@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<?= __c() ?>style.css"/>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class($post->post_name); ?>>
 
 <div id="wrapper">
 <? get_template_part('templates/partials/navigation'); ?>
