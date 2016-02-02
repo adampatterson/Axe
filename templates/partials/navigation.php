@@ -1,26 +1,30 @@
 <div class="navbar-wrapper">
     <div class="container">
-        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+
+        <nav class="navbar navbar-default" id="header">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="icon-bar top"></span>
-                        <span class="icon-bar middle"></span>
-                        <span class="icon-bar bottom"></span>
-                    </button>
-                    <a href="#" class="mobileSearchButton" id="searchButton" data-toggle="collapse" data-target="#searchDropdown" aria-expanded="false" aria-controls="searchDropdown"><i class="fa fa-search"></i></a>
-                    <a href="/" class="navbar-brand"><img src="<? __i() ?>logo.svg"></a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="/" id="navbar-newcars-button" class="dropdown-toggle" data-toggle="dropdown">
-                                Blog
-                            </a>
-                        </li>
-                    </ul>
+                <div class="row">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <?php
+                        // http://code.tutsplus.com/tutorials/how-to-integrate-bootstrap-navbar-into-wordpress-theme--wp-33410
+                        if (has_nav_menu('main-menu')) {
+                            wp_nav_menu( array(
+                                    'menu' => 'main-menu',
+                                    'theme_location' => 'main-menu',
+                                    'menu_id' => 'navigation',
+                                    'depth' => 2,
+                                    'container' => false,
+                                    'menu_class' => 'nav nav-justified',
+                                    //Process nav menu using our custom nav walker
+                                    'walker' => new wp_bootstrap_navwalker())
+                            );
+                        }
+                        #get_search_form();
+                        ?>
+                    </div>
                 </div>
             </div>
         </nav>
+
     </div>
 </div>

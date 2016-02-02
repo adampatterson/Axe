@@ -18,8 +18,7 @@ if ( ! function_exists( 'ax_setup' ) ):
 
     // Register menus
     register_nav_menus( array(
-      'primary' => 'Primary Menu',
-      'main' => 'Main Menu',
+      'main-menu' => 'Main Menu',
       'footer-links' => 'Footer Links'
     ) );
 
