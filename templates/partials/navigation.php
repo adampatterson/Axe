@@ -9,7 +9,7 @@
                         <span class="icon-bar bottom"></span>
                     </button>
                     <a href="#" class="mobileSearchButton" id="searchButton" data-toggle="collapse" data-target="#searchDropdown" aria-expanded="false" aria-controls="searchDropdown"><i class="fa fa-search"></i></a>
-                    <a href="/" class="navbar-brand"><img src="<? i() ?>logo.svg"></a>
+                    <a href="/" class="navbar-brand"><img src="<? __i() ?>logo.svg"></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
