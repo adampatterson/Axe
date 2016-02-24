@@ -5,10 +5,12 @@
             while (have_posts()):
                 the_post();
 
-                if(!get_post_format())
+                if(get_post_type() == 'post' && !get_post_format())
                     get_template_part('templates/format', 'standard');
-                else
+                elseif (get_post_type() == 'post')
                     get_template_part('templates/format', get_post_format());
+                else
+                    get_template_part('templates/single',get_post_type());
 
             endwhile;
         endif; ?>
