@@ -9,7 +9,7 @@ if (have_posts()):
         get_template_part('templates/content', 'blog');
     elseif (is_archive()):
         $terms = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
-        $category = $term->taxonomy;
+        $category = $terms->taxonomy;
         if (file_exists(get_template_directory() . '/templates/archive-' . $category . '.php')):
             echo '<!-- template: index/archive-' . $category . ' -->';
             get_template_part('templates/archive', $category);
