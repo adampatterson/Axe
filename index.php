@@ -11,15 +11,11 @@ if (have_posts()):
         $terms = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
         $category = $term->taxonomy;
         if (file_exists(get_template_directory() . '/templates/archive-' . $category . '.php')):
-            while (have_posts()) : the_post();
-                echo '<!-- template: index/archive-' . $category . ' -->';
-                get_template_part('templates/archive', $category);
-            endwhile;
+            echo '<!-- template: index/archive-' . $category . ' -->';
+            get_template_part('templates/archive', $category);
         else:
             echo '<!-- template: index/archive -->';
-            while (have_posts()) : the_post();
-                get_template_part('templates/archive', 'default');
-            endwhile;
+            get_template_part('templates/archive', 'default');
         endif;
     elseif (is_search()):
         echo '<!-- template: index/search -->';
