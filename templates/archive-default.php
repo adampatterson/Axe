@@ -1,16 +1,25 @@
-<div class="wrapper">
+<div class="content-wrapper">
     <div class="container">
 
         <div class="row">
             <div class="col-md-12">
-                <section id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                    <div class="wrapper clearfix">
-                        <? the_title( '<header class="entry-header"><h1 class="entry-title">', '</h1></header><!-- .entry-header -->' ); ?>
-                        <?php the_content(); ?>
+                <section id="blog">
+                    <? get_template_part( 'templates/loop','post' ); ?>
+
+                    <div class="center pagination">
+                        <?= get_previous_posts_link( ); ?>
+                        <?= get_next_posts_link( ); ?>
                     </div>
                 </section>
             </div>
         </div>
-
+        <div class="row">
+            <div class="col-md-12">
+                <div class="center pagination">
+                    <?= get_previous_posts_link( ); ?>
+                    <?= get_next_posts_link( ); ?>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
