@@ -18,6 +18,9 @@ Placing a file under `templates/format-video.php` will resolve all video formats
 ###Custom Post Type templates
 Placing a file under `templates/single-books.php` will resolve all custom post type single posts.
 
+###Custom Taxonomies
+Placing a file under `templates/archive-books.php` will resolve a custom taxonomie for Books `/books/schi-fi/` alos using a custom loop. The default archive would be `archive-default.php` using the default post loop.
+
 ### Custom Loops
 If you have a custom post type called Books, creating `content-books.php` and loading a custom loop like `loop-books.php` with all the nessesary "Loop" code would give you your custom book loop.
 
