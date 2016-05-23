@@ -1,0 +1,66 @@
+// Structural padding and margins
+$structure-loops: 150;
+$structure: 150px;
+$incremental: 5;
+
+@mixin calc-padding-type-structure($index, $class, $structure) {
+    .p-#{$class}-#{$index} {
+        padding-#{$class}: $structure !important;
+    }
+}
+
+@mixin calc-padding-structure($index, $class, $structure) {
+    .p-#{$index} {
+        padding: $structure !important;
+    }
+}
+
+@mixin calc-margin-type-structure($index, $class, $structure) {
+    .m-#{$class}-#{$index} {
+        margin-#{$class}: $structure !important;
+    }
+}
+
+@mixin calc-margin-structure($index, $class, $structure) {
+    .m-#{$index} {
+        margin: $structure !important;
+    }
+}
+
+@mixin loop-padding-structure($class, $structure) {
+    @while $structure-loops >= 0 {
+        @include calc-padding-type-structure($structure-loops, $class, $structure);
+        @include calc-padding-structure($structure-loops, $class, $structure);
+        $structure: $structure - $incremental;
+        $structure-loops: $structure-loops - $incremental;
+    }
+}
+
+@mixin loop-margin-structure($class, $structure) {
+    @while $structure-loops >= 0 {
+        @include calc-margin-type-structure($structure-loops, $class, $structure);
+        @include calc-margin-structure($structure-loops, $class, $structure);
+        $structure: $structure - $incremental;
+        $structure-loops: $structure-loops - $incremental;
+    }
+}
+
+@mixin make-structure($class) {
+    @include loop-padding-structure($class, $structure);
+    @include loop-margin-structure($class, $structure);
+}
+
+@include make-structure(top);
+@include make-structure(right);
+@include make-structure(bottom);
+@include make-structure(left);
+
+// @todo add responsive structures
+@media #{$media-xs-max}{
+    .p-bottom-15-xs {
+        padding-bottom: 15px !important;
+    }
+    .p-top-15-xs {
+        padding-top: 15px !important;
+    }
+}

@@ -4,3 +4,4 @@ node_modules
 assets/vendor/*
 /_design/
 /.idea
+.sass-cache

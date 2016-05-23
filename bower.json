@@ -1,21 +1,30 @@
 {
-    "name": "workshop",
-    "version": "0.1.0",
-    "ignore": [
-        ".jshintrc",
-        "**/*.txt"
-    ],
-    "dependencies": {
-        "jquery": "latest",
-        "html5shiv": "latest",
-        "detectizr": "latest",
-        "bootstrap": "latest",
-        "imagesloaded": "latest",
-        "mixitup": "latest",
-        "font-awesome": "latest",
-        "imagesloaded": "latest",
-        "BigVideo.js": "latest",
-        "isInViewport": "latest",
-        "ekko-lightbox": "latest"
-    }
+  "name": "projectname",
+  "main": "projectname",
+  "description": "",
+  "version": "0.1.0",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.6",
+    "jquery": "latest",
+    "prettyphoto": "git://github.com/scaron/prettyphoto.git#master",
+    "html5shiv": "latest",
+    "modernizr": "latest",
+    "detectizr": "latest",
+    "owl.carousel": "latest",
+    "parsleyjs": "^2.3.7",
+    "font-awesome": "fontawesome#~4.4.0",
+    "Yamm3": "yamm3#~1.1.0",
+    "Materialize": "materialize#~0.97.2",
+    "isInViewport": "latest",
+    "vide": "~0.4.1",
+    "pushy": "~0.9.2",
+    "jquery-sticky": "~1.0.3",
+    "ekko-lightbox": "latest",
+    "js-cookie": "^2.1.1",
+    "mixitup": "^2.1.11"
+  }
 }

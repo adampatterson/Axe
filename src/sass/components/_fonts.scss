@@ -1,0 +1,15 @@
+@import "font.roboto";
+@import "font.roboto.condenced";
+
+// Mono Social Font
+@font-face {
+    font-family: 'Mono Social Icons Font';
+    src: url('/assets/fonts/MonoSocialIconsFont-1.10.eot');
+    src: url('/assets/fonts/MonoSocialIconsFont-1.10.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/MonoSocialIconsFont-1.10.woff') format('woff'),
+    url('/assets/fonts/MonoSocialIconsFont-1.10.ttf') format('truetype'),
+    url('/assets/fonts/MonoSocialIconsFont-1.10.svg#MonoSocialIconsFont') format('svg');
+    src: url('/assets/fonts/MonoSocialIconsFont-1.10.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
