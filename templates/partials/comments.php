@@ -3,7 +3,7 @@
 </div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'shortname'; // required: replace example with your forum shortname
+    var disqus_shortname = 'shortname'; // @todo: required: replace example with your forum shortname
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
