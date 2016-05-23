@@ -1,0 +1,13 @@
+{
+  "name": "prettyphoto",
+  "homepage": "https://github.com/scaron/prettyphoto",
+  "_release": "4cc502ef6f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "4cc502ef6fb8c0f4ca83f90360fc261b2c4782f0"
+  },
+  "_source": "git://github.com/scaron/prettyphoto.git",
+  "_target": "master",
+  "_originalSource": "git://github.com/scaron/prettyphoto.git"
+}

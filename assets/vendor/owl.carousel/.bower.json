@@ -1,0 +1,22 @@
+{
+  "name": "owl.carousel",
+  "version": "2.1.4",
+  "main": [
+    "dist/owl.carousel.js",
+    "dist/assets/owl.carousel.css"
+  ],
+  "ignore": [],
+  "dependencies": {
+    "jquery": ">= 1.8.3"
+  },
+  "homepage": "https://github.com/OwlFonk/OwlCarousel2",
+  "_release": "2.1.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.1.4",
+    "commit": "b479b9b20bc82e1d12551e4f82b6a8efb4c83e6e"
+  },
+  "_source": "https://github.com/OwlFonk/OwlCarousel2.git",
+  "_target": "*",
+  "_originalSource": "owl.carousel"
+}
