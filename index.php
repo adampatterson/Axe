@@ -42,7 +42,7 @@ if (have_posts()):
 
 else:
     echo '<!-- template: index/no_posts -->';
-    get_template_part('templates/404');
+    get_template_part('templates/none');
 endif;
 
 get_template_part('templates/partials/footer');
