@@ -14,7 +14,7 @@ Backend Functions
  * @param array $contactmethods
  * @return array
  */
-function ax_contactmethods( $contactmethods ) {
+function axe_contactmethods( $contactmethods ) {
 	unset( $contactmethods['aim'] );
 	unset( $contactmethods['yim'] );
 	unset( $contactmethods['jabber'] );
@@ -25,7 +25,7 @@ function ax_contactmethods( $contactmethods ) {
 /**
  * Register Widget Areas
  */
-function ax_widgets_init() {
+function axe_widgets_init() {
 	// Main Sidebar
 	register_sidebar( array(
 		'name'          => __( 'Main Sidebar', 'mb' ),
@@ -63,7 +63,7 @@ function ax_widgets_init() {
  * @param string $url, request url
  * @return array request arguments
  */
-function ax_dont_update_theme( $r, $url ) {
+function axe_dont_update_theme( $r, $url ) {
 	if ( 0 !== strpos( $url, 'http://api.wordpress.org/themes/update-check' ) )
 		return $r; // Not a theme update request. Bail immediately.
 	$themes = unserialize( $r['body']['themes'] );
@@ -76,7 +76,7 @@ function ax_dont_update_theme( $r, $url ) {
 /**
  * Remove Dashboard Meta Boxes
  */
-function ax_remove_dashboard_widgets() {
+function axe_remove_dashboard_widgets() {
 	global $wp_meta_boxes;
 	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
@@ -92,7 +92,7 @@ function ax_remove_dashboard_widgets() {
 /**
  * Change Admin Menu Order
  */
-function ax_custom_menu_order( $menu_ord ) {
+function axe_custom_menu_order( $menu_ord ) {
 	if ( !$menu_ord ) return true;
 	return array(
 		 'index.php', // Dashboard
@@ -116,14 +116,14 @@ function ax_custom_menu_order( $menu_ord ) {
 /**
  * Hide Admin Areas that are not used
  */
-function ax_remove_menu_pages() {
+function axe_remove_menu_pages() {
 	remove_menu_page('link-manager.php');
 }
 
 /**
  * Remove default link for images
  */
-function ax_imagelink_setup() {
+function axe_imagelink_setup() {
 	$image_set = get_option( 'image_default_link_type' );
 	if ($image_set !== 'none') {
 		update_option('image_default_link_type', 'none');
@@ -133,7 +133,7 @@ function ax_imagelink_setup() {
 /**
  * Show Kitchen Sink in WYSIWYG Editor
  */
-function ax_unhide_kitchensink( $args ) {
+function axe_unhide_kitchensink( $args ) {
 	$args['wordpress_adv_hidden'] = false;
 	return $args;
 }
@@ -141,7 +141,7 @@ function ax_unhide_kitchensink( $args ) {
 /**
  * Remove Query Strings From Static Resources
  */
-function ax_remove_script_version( $src ){
+function axe_remove_script_version( $src ){
 	$parts = explode( '?', $src );
 	return $parts[0];
 }
@@ -149,7 +149,7 @@ function ax_remove_script_version( $src ){
 /**
  * Remove Read More Jump
  */
-function ax_remove_more_jump_link( $link ) {
+function axe_remove_more_jump_link( $link ) {
 	$offset = strpos( $link, '#more-' );
 	if ($offset) {
 		$end = strpos( $link, '"',$offset );

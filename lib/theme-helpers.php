@@ -7,7 +7,7 @@ Theme Helpers
 /**
  * Add capabilities for a custom post type
  */
-function ax_add_capabilities( $posttype ) {
+function axe_add_capabilities( $posttype ) {
 	// gets the author role
 	$role = get_role( 'administrator' );
 

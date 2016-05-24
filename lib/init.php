@@ -1,7 +1,7 @@
 <?php
 
-if ( ! function_exists( 'ax_setup' ) ):
-  function ax_setup() {
+if ( ! function_exists( 'axe_setup' ) ):
+  function axe_setup() {
 
     /****************************************
     Backend
@@ -23,7 +23,7 @@ if ( ! function_exists( 'ax_setup' ) ):
     ) );
 
     // Register Widget Areas
-    add_action( 'widgets_init', 'ax_widgets_init' );
+    add_action( 'widgets_init', 'axe_widgets_init' );
 
     // Enable support for Post Formats.
     // adding post format support
@@ -54,7 +54,7 @@ if ( ! function_exists( 'ax_setup' ) ):
     add_editor_style( 'editor-style.css' );
 
     // Don't update theme
-    add_filter( 'http_request_args', 'ax_dont_update_theme', 5, 2 );
+    add_filter( 'http_request_args', 'axe_dont_update_theme', 5, 2 );
 
     // Prevent File Modifications
     define ( 'DISALLOW_FILE_EDIT', true );
@@ -84,22 +84,22 @@ if ( ! function_exists( 'ax_setup' ) ):
     add_editor_style('assets/css/editor-style.css');
 
     // Remove Dashboard Meta Boxes
-    add_action( 'wp_dashboard_setup', 'ax_remove_dashboard_widgets' );
+    add_action( 'wp_dashboard_setup', 'axe_remove_dashboard_widgets' );
 
     add_theme_support( 'title-tag' );
 
     // Change Admin Menu Order
-    add_filter( 'custom_menu_order', 'ax_custom_menu_order' );
-    add_filter( 'menu_order', 'ax_custom_menu_order' );
+    add_filter( 'custom_menu_order', 'axe_custom_menu_order' );
+    add_filter( 'menu_order', 'axe_custom_menu_order' );
 
     // Hide Admin Areas that are not used
-    add_action( 'admin_menu', 'ax_remove_menu_pages' );
+    add_action( 'admin_menu', 'axe_remove_menu_pages' );
 
     // Remove default link for images
-    add_action( 'admin_init', 'ax_imagelink_setup', 10 );
+    add_action( 'admin_init', 'axe_imagelink_setup', 10 );
 
     // Show Kitchen Sink in WYSIWYG Editor
-    add_filter( 'tiny_mce_before_init', 'ax_unhide_kitchensink' );
+    add_filter( 'tiny_mce_before_init', 'axe_unhide_kitchensink' );
 
     /****************************************
     Frontend
@@ -118,11 +118,11 @@ if ( ! function_exists( 'ax_setup' ) ):
     // add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video') );
 
     // Remove Query Strings From Static Resources
-    add_filter( 'script_loader_src', 'ax_remove_script_version', 15, 1 );
-    add_filter( 'style_loader_src', 'ax_remove_script_version', 15, 1 );
+    add_filter( 'script_loader_src', 'axe_remove_script_version', 15, 1 );
+    add_filter( 'style_loader_src', 'axe_remove_script_version', 15, 1 );
 
     // Remove Read More Jump
-    add_filter( 'the_content_more_link', 'ax_remove_more_jump_link' );
+    add_filter( 'the_content_more_link', 'axe_remove_more_jump_link' );
 
     add_filter('get_avatar','add_gravatar_class');
     function add_gravatar_class($class) {
@@ -132,7 +132,7 @@ if ( ! function_exists( 'ax_setup' ) ):
 
 
   }
-  endif; // ax_setup
+  endif; // axe_setup
 
-add_action( 'after_setup_theme', 'ax_setup' );
+add_action( 'after_setup_theme', 'axe_setup' );
 
