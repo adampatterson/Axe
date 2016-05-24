@@ -39,6 +39,7 @@ if (have_posts()):
             get_template_part('templates/content', 'page');
         endif;
     endif;
+
 else:
     echo '<!-- template: index/no_posts -->';
     get_template_part('templates/404');

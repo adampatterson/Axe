@@ -42,7 +42,7 @@ if ( ! function_exists( 'axe_setup' ) ):
     );
 
     // Enable support for HTML5 markup.
-    add_theme_support( 'html5', array( 'comment-list', 'search-form', 'comment-form', ) );
+    add_theme_support( 'html5', array( 'comment-list', 'search-form', 'comment-form', 'gallery', 'caption') );
 
     // Execute shortcodes in widgets
     // add_filter('widget_text', 'do_shortcode');
@@ -114,8 +114,8 @@ if ( ! function_exists( 'axe_setup' ) ):
 	}
 	add_action('login_head', 'custom_login_logo');
 
-    // Add Post Formats Theme Support
-    // add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video') );
+//     Add Post Formats Theme Support
+     add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video') );
 
     // Remove Query Strings From Static Resources
     add_filter( 'script_loader_src', 'axe_remove_script_version', 15, 1 );
