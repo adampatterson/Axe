@@ -47,3 +47,6 @@ Since loading Bootstrap from the vendor folder means you can't modify your varia
 
 ###Credits
 Template tags are modified versions of [_S](http://underscores.me/)
+
+####Disclaimer
+ This theme is made for Me, and with my efficiencies in mind. That siad, If you have anyhting to add then send me an email hello@adampatterson.ca
