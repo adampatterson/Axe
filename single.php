@@ -16,4 +16,5 @@
         endif; ?>
     </section>
 </div>
+
 <? get_template_part('templates/partials/footer'); ?>

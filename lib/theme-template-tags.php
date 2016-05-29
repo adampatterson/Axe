@@ -21,11 +21,13 @@ if (!function_exists('axe_paging_nav')) :
         <nav class="navigation paging-navigation" role="navigation">
             <div class="nav-links">
                 <ul class="pager">
-                    <li class="next <?= (!get_next_posts_link())? 'disabled' : '' ?> nav-previous">
-                        <?php next_posts_link(__('<span class="meta-nav" aria-hidden="true">&larr;</span> Older posts', 'axe')); ?>
+                    <li class="next <?= (!get_next_posts_link()) ? 'disabled' : '' ?> nav-previous">
+                        <?php next_posts_link(__('<span class="meta-nav" aria-hidden="true">&larr;</span> Older posts',
+                            'axe')); ?>
                     </li>
-                    <li class="previous <?= (!get_previous_posts_link())? 'disabled' : '' ?> nav-next ">
-                        <?php previous_posts_link(__('Newer posts <span class="meta-nav" aria-hidden="true">&rarr;</span>', 'axe')); ?>
+                    <li class="previous <?= (!get_previous_posts_link()) ? 'disabled' : '' ?> nav-next ">
+                        <?php previous_posts_link(__('Newer posts <span class="meta-nav" aria-hidden="true">&rarr;</span>',
+                            'axe')); ?>
                     </li>
                 </ul>
             </div>
@@ -52,11 +54,14 @@ if (!function_exists('axe_post_nav')) :
             <div class="nav-links">
 
                 <ul class="pager">
-                    <li class="previous <?= (!get_next_post_link())? 'disabled' : '' ?> nav-previous">
-                        <?php next_post_link(     '%link', _x( '<span class="meta-nav" aria-hidden="true">&larr;</span> %title', 'Next post link' ) ); ?>
+                    <li class="previous <?= (!get_next_post_link()) ? 'disabled' : '' ?> nav-previous">
+                        <?php next_post_link('%link',
+                            _x('<span class="meta-nav" aria-hidden="true">&larr;</span> %title', 'Next post link')); ?>
                     </li>
-                    <li class="next <?= (!get_previous_post_link())? 'disabled' : '' ?> nav-next ">
-                        <?php previous_post_link( '%link', _x( '%title <span class="meta-nav" aria-hidden="true">&rarr;</span>', 'Previous post link' ) ); ?>
+                    <li class="next <?= (!get_previous_post_link()) ? 'disabled' : '' ?> nav-next ">
+                        <?php previous_post_link('%link',
+                            _x('%title <span class="meta-nav" aria-hidden="true">&rarr;</span>',
+                                'Previous post link')); ?>
                     </li>
                 </ul>
             </div>
@@ -72,9 +77,6 @@ if (!function_exists('axe_posted_on')) :
     function axe_posted_on()
     {
         $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-        if (get_the_time('U') !== get_the_modified_time('U')) {
-            $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
-        }
 
         $time_string = sprintf($time_string,
             esc_attr(get_the_date('c')),
@@ -84,19 +86,20 @@ if (!function_exists('axe_posted_on')) :
         );
 
         $posted_on = sprintf(
-            _x('Posted on %s', 'post date', 'axe'),
+            esc_html_x('Posted on %s', 'post date', 'axe'),
             '<a href="' . esc_url(get_permalink()) . '" rel="bookmark">' . $time_string . '</a>'
         );
 
         $byline = sprintf(
-            _x('by %s', 'post author', 'axe'),
+            esc_html_x('by %s', 'post author', 'axe'),
             '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html(get_the_author()) . '</a></span>'
         );
 
-        echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>';
+        echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
 
     }
 endif;
+
 
 if (!function_exists('axe_entry_footer')) :
     /**
@@ -125,6 +128,41 @@ if (!function_exists('axe_entry_footer')) :
             echo '</span>';
         }
 
+        edit_post_link('Edit', '<br/><span class="edit-link">', '</span>');
+    }
+endif;
+
+if (!function_exists('axe_entry_categories')) :
+    function axe_entry_categories()
+    {
+        if ('post' == get_post_type()) {
+            $categories_list = get_the_category_list(', ');
+            if ($categories_list && axe_categorized_blog()) {
+                printf('<span class="cat-links">' . '<strong>Categories:</strong> %1$s' . '</span>',
+                    $categories_list);
+            }
+        }
+    }
+endif;
+
+if (!function_exists('axe_entry_tags')) :
+    function axe_entry_tags()
+    {
+        if ('post' == get_post_type()) {
+            $tags_list = get_the_tag_list('', ', ');
+            if ($tags_list) {
+                printf('<span class="tags-links">' . __('<strong>Tags:</strong> %1$s', 'axe') . '</span>', $tags_list);
+            }
+        }
+    }
+endif;
+
+if (!function_exists('axe_entry_edit')) :
+    /**
+     * Prints HTML with meta information for the categories, tags and comments.
+     */
+    function axe_entry_edit()
+    {
         edit_post_link(__('Edit', 'axe'), '<span class="edit-link">', '</span>');
     }
 endif;

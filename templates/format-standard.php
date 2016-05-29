@@ -21,20 +21,19 @@
                 <div class="row">
                     <header class="col-md-12">
                         <h1><?php the_title(); ?></h1>
+                        <? /*
                         <p>
-                            <span>by</span>
-                            <?php the_author_posts_link(); ?>
-
-                            <span>on</span>
-                            <?php the_time(get_option('date_format')); ?>
-                        </p>
+                            <span>Posted by</span><?php the_author_posts_link(); ?>
+                            <span>on</span><?php the_time(get_option('date_format')); ?>
+                        </p> */ ?>
+                        <p><?php axe_posted_on() ?><?php axe_entry_edit(); ?></p>
                     </header>
 
                     <div class="content col-md-12">
                         <?php the_content(); ?>
                     </div>
-                    <!-- Taxonomies -->
-                    <footer class="col-md-12">
+                    <footer class="col-md-12 entry-footer terms tags">
+                        <? /*
                         <ul class="terms tags">
                             <?php
                             // Check if there are categories
@@ -53,9 +52,16 @@
                             }
                             ?>
                         </ul>
+*/ ?>
+                        <p><?php axe_entry_categories(); ?></p>
+                        <p><?php axe_entry_tags(); ?></p>
                     </footer>
 
-                    <? axe_post_nav(); ?>
+                    <div class="row">
+                        <div class="col-md-12 m-top-30">
+                            <? axe_post_nav(); ?>
+                        </div>
+                    </div>
 
                     <div class="col-md-12 m-top-30 m-bottom-30">
                         <?php echo get_avatar(get_the_author_meta('ID'), 96); ?>
@@ -66,6 +72,7 @@
                     <? get_template_part('templates/partials/mailing-list') ?>
 
                     <? get_template_part('templates/partials/comments') ?>
+                </div>
             </article>
         </div>
     </section>

@@ -13,10 +13,7 @@
     <div class="content" itemprop="text">
         <header>
             <h2><a href="<?php the_permalink(); ?>" title="<?php _e('Read Full Post', 'modernmag'); ?>"><?php the_title(); ?></a></h2>
-            <p>
-				By <? the_author_posts_link(); ?>
-				on <? the_time(get_option('date_format')); ?>
-			</p>
+            <p><?php axe_posted_on() ?></p>
         </header>
 
         <?php
