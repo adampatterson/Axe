@@ -1,66 +1,90 @@
 // Structural padding and margins
-$structure-loops: 150;
-$structure: 150px;
+$structure-loops: 100;
+$structure: 100px;
 $incremental: 5;
 
-@mixin calc-padding-type-structure($index, $class, $structure) {
-    .p-#{$class}-#{$index} {
-        padding-#{$class}: $structure !important;
+@mixin calc-padding-type-structure($index, $class, $structure, $media) {
+    @if($media != false) {
+        .p-#{$media}-#{$class}-#{$index} {
+            padding-#{$class}: $structure !important;
+        }
+    } @else {
+        .p-#{$class}-#{$index} {
+            padding-#{$class}: $structure !important;
+        }
     }
 }
 
-@mixin calc-padding-structure($index, $class, $structure) {
-    .p-#{$index} {
-        padding: $structure !important;
+@mixin calc-padding-structure($index, $class, $structure, $media) {
+    @if($media != false) {
+        .p-#{$media}-#{$index} {
+            padding: $structure !important;
+        }
+    } @else {
+        .p-#{$index} {
+            padding: $structure !important;
+        }
     }
 }
 
-@mixin calc-margin-type-structure($index, $class, $structure) {
-    .m-#{$class}-#{$index} {
-        margin-#{$class}: $structure !important;
+@mixin calc-margin-type-structure($index, $class, $structure, $media) {
+    @if($media != false) {
+        .m-#{$media}-#{$class}-#{$index} {
+            margin-#{$class}: $structure !important;
+        }
+    } @else {
+        .m-#{$class}-#{$index} {
+            margin-#{$class}: $structure !important;
+        }
     }
 }
 
-@mixin calc-margin-structure($index, $class, $structure) {
-    .m-#{$index} {
-        margin: $structure !important;
+@mixin calc-margin-structure($index, $class, $structure, $media) {
+    @if($media != false) {
+        .m-#{$media}-#{$index} {
+            margin: $structure !important;
+        }
+    } @else {
+        .m-#{$index} {
+            margin: $structure !important;
+        }
     }
 }
 
-@mixin loop-padding-structure($class, $structure) {
+@mixin make-structure($class, $media: false) {
     @while $structure-loops >= 0 {
-        @include calc-padding-type-structure($structure-loops, $class, $structure);
-        @include calc-padding-structure($structure-loops, $class, $structure);
+        @include calc-padding-type-structure($structure-loops, $class, $structure, $media);
+        @include calc-padding-structure($structure-loops, $class, $structure, $media);
+        @include calc-margin-type-structure($structure-loops, $class, $structure, $media);
+        @include calc-margin-structure($structure-loops, $class, $structure, $media);
         $structure: $structure - $incremental;
         $structure-loops: $structure-loops - $incremental;
     }
 }
 
-@mixin loop-margin-structure($class, $structure) {
-    @while $structure-loops >= 0 {
-        @include calc-margin-type-structure($structure-loops, $class, $structure);
-        @include calc-margin-structure($structure-loops, $class, $structure);
-        $structure: $structure - $incremental;
-        $structure-loops: $structure-loops - $incremental;
-    }
-}
-
-@mixin make-structure($class) {
-    @include loop-padding-structure($class, $structure);
-    @include loop-margin-structure($class, $structure);
-}
-
-@include make-structure(top);
-@include make-structure(right);
-@include make-structure(bottom);
-@include make-structure(left);
-
-// @todo add responsive structures
 @media #{$media-xs-max}{
-    .p-bottom-15-xs {
-        padding-bottom: 15px !important;
-    }
-    .p-top-15-xs {
-        padding-top: 15px !important;
-    }
+    @include make-structure(top, xs);
+    @include make-structure(right, xs);
+    @include make-structure(bottom, xs);
+    @include make-structure(left, xs);
+}
+@media #{$media-sm}{
+    @include make-structure(top, sm);
+    @include make-structure(right, sm);
+    @include make-structure(bottom, sm);
+    @include make-structure(left, sm);
+}
+
+@media #{$media-md}{
+    @include make-structure(top, md);
+    @include make-structure(right, md);
+    @include make-structure(bottom, md);
+    @include make-structure(left, md);
+}
+
+@media #{$media-lg-min}{
+    @include make-structure(top, lg);
+    @include make-structure(right, lg);
+    @include make-structure(bottom, lg);
+    @include make-structure(left, lg);
 }
