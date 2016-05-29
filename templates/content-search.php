@@ -7,10 +7,10 @@
                     <? if ( have_posts() ):
                         get_template_part( 'templates/loop','post' ); ?>
 
-                        <div class="center pagination">
-                            <?= get_previous_posts_link( ); ?>
-                            <?= get_next_posts_link( ); ?>
+                        <div class="text-center">
+                            <? axe_paging_nav() ?>
                         </div>
+
                     <? else:
                         get_template_part( 'templates/content', 'none' );
                     endif; ?>
