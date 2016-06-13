@@ -37,7 +37,7 @@
             <? /*
             <nav class="navbar p-top-15" id="header">
                 <div class="container">
-                    <div class="nav-logo pull-left m-top-15"><a href="/">
+                    <div class="nav-logo pull-left m-top-15"><a href="<?= home_url( '/' ) ?>">
                             <img src="<? __i() ?>live-wire.png" alt="">
                         </a>
                     </div>
@@ -73,7 +73,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <div class="navbar-brand nav-logo pull-left">
-                            <a href="/">
+                            <a href="<?= home_url( '/' ) ?>">
                                 <img src="<? __i() ?>logo.png" alt="">
                             </a>
                         </div>
