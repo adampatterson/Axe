@@ -1,5 +1,3 @@
-<?php get_template_part('templates/partials/header'); ?>
-
 <div class="wrapper">
     <div class="container">
 
@@ -16,5 +14,3 @@
 
     </div>
 </div>
-
-<?php get_template_part('templates/partials/footer'); ?>
