@@ -7,27 +7,6 @@ if (have_posts()):
     elseif (is_front_page() or is_home()):
         echo '<!-- template: index/home -->';
         get_template_part('templates/content', 'blog');
-    elseif (is_archive()):
-        $terms = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
-        $category = $terms->taxonomy;
-        if (file_exists(get_template_directory() . '/templates/archive-' . $category . '.php')):
-            echo '<!-- template: index/archive-' . $category . ' -->';
-            get_template_part('templates/archive', $category);
-        else:
-            echo '<!-- template: index/archive -->';
-            get_template_part('templates/archive', 'default');
-        endif;
-    elseif (is_search()):
-        echo '<!-- template: index/search -->';
-        get_template_part('templates/content', 'search');
-    elseif (is_single()):
-        while (have_posts()): the_post();
-            if (!get_post_format()) {
-                get_template_part('templates/format', 'standard');
-            } else {
-                get_template_part('templates/format', get_post_format());
-            }
-        endwhile;
     else:
         if (file_exists(get_template_directory() . '/templates/content-' . $post->post_name . '.php')):
             while (have_posts()) : the_post();

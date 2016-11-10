@@ -1,17 +1,16 @@
 <?php get_template_part('templates/partials/header'); ?>
 <div id="postWrapper">
-    <section id="main" role="main">
         <?php if (have_posts()):
             while (have_posts()):
-                the_post();
-
-                if(get_post_type() == 'post' && !get_post_format())
-                    get_template_part('templates/format', 'standard');
-                elseif (get_post_type() == 'post')
-                    get_template_part('templates/format', get_post_format());
-                else
-                    get_template_part('templates/single',get_post_type());
-
+                $terms = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
+                $category = $terms->taxonomy;
+                if (file_exists(get_template_directory() . '/templates/archive-' . $category . '.php')):
+                    echo '<!-- template: index/archive-' . $category . ' -->';
+                    get_template_part('templates/archive', $category);
+                else:
+                    echo '<!-- template: index/archive -->';
+                    get_template_part('templates/archive', 'default');
+                endif;
             endwhile;
         endif; ?>
     </section>
