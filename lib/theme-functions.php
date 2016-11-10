@@ -23,33 +23,6 @@ function axe_contactmethods( $contactmethods ) {
 }
 
 /**
- * Register Widget Areas
- */
-function axe_widgets_init() {
-	// Main Sidebar
-	register_sidebar( array(
-		'name'          => __( 'Main Sidebar', 'mb' ),
-		'id'            => 'main-sidebar',
-		'description'   => __( 'Widgets for Main Sidebar.', 'mb' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h4 class="widget-title">',
-		'after_title'   => '</h4>'
-	));
-
-	// Footer
-	register_sidebar( array(
-		'name'          => __( 'Footer', 'mb' ),
-		'id'            => 'footer-widgets',
-		'description'   => __( 'Widgets for Footer.', 'mb' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h4 class="widget-title">',
-		'after_title'   => '</h4>'
-	));
-}
-
-/**
  * Don't Update Theme
  * @since 1.0.0
  *
