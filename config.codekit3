@@ -222,6 +222,12 @@
 		"oAP": "\/lib\/init.php",
 		"oF": 0
 		},
+	"\/lib\/theme-api.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/theme-api.php",
+		"oF": 0
+		},
 	"\/lib\/theme-functions.php": {
 		"ft": 8192,
 		"oA": 0,
