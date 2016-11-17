@@ -3,6 +3,7 @@
  * Template Name: Archives
  */
 
+$data = get_fields();
 get_template_part('templates/partials/header');
 
 if (have_posts()):

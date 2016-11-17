@@ -1,4 +1,7 @@
-<?php get_template_part('templates/partials/header');
+<?php
+$data = get_fields();
+get_template_part('templates/partials/header');
+
 if (have_posts()):
     # Sort this out, Blog is not loading
     if (is_front_page() && is_home()):

@@ -1,4 +1,5 @@
-<?
+<?php
+$data = get_fields();
 get_template_part('templates/partials/header');
 
 $cat = get_query_var('cat');

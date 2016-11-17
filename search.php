@@ -1,4 +1,7 @@
-<?php get_template_part('templates/partials/header');
+<?php
+$data = get_fields();
+get_template_part('templates/partials/header');
+
 if (have_posts()):
     echo '<!-- template: index/search -->';
     get_template_part('templates/content', 'search');

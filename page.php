@@ -1,4 +1,6 @@
-<? get_template_part('templates/partials/header');
+<?php
+$data = get_fields();
+get_template_part('templates/partials/header');
 
 while (have_posts()) : the_post();
     if (is_front_page()):
