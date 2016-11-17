@@ -1,6 +1,7 @@
 <?php
+namespace Axe;
 
-class WordPressAPI
+class AxeAPI
 {
 
     public function __construct()
@@ -17,9 +18,10 @@ class WordPressAPI
         });
     }
 
-    public function sampleEndPoint(){
+    public function sampleEndPoint()
+    {
         return ['one', 'two'];
     }
 }
 
-new WordPressAPI;
+new AxeAPI;

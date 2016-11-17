@@ -270,6 +270,12 @@
 		"oAP": "\/lib\/theme-post-types.php",
 		"oF": 0
 		},
+	"\/lib\/theme-rewrite.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/theme-rewrite.php",
+		"oF": 0
+		},
 	"\/lib\/theme-template-tags.php": {
 		"ft": 8192,
 		"oA": 0,
