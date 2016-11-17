@@ -8,7 +8,7 @@ function __a() { return __t().'assets/'; }
 function __j() { echo __a().'js/'; }
 function __i() { echo __a().'img/'; }
 function __c() { echo __a().'css/'; }
-function __v() { echo __a().'vendor/'; }
+function __v() { echo __t().'vendor/'; }
 function __video() { echo __a().'video/'; }
 
 function underscore($string) { return strtolower(preg_replace('/(?<=\\w)([A-Z])/', '_\\1', $string)); }
