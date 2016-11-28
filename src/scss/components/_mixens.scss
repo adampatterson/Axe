@@ -9,3 +9,31 @@ $media-sm-min: "(min-width: #{$screen-sm-min})" !default;
 $media-sm-max: "(max-width: #{$screen-sm-max})" !default;
 
 $media-xs-max: "(max-width: #{$screen-xs-max})" !default;
+
+
+.text- {
+    &white {
+        color: $white;
+    }
+    &red {
+        color: $red;
+    }
+    &uppercase {
+        text-transform: uppercase;
+    }
+}
+
+.bg- {
+    &white {
+        background-color: $white;
+    }
+    &red {
+        background-color: $red;
+    }
+}
+
+.font- {
+    &open-sans {
+        font-family: $font-open-sans;
+    }
+}

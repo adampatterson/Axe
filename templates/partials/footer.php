@@ -9,5 +9,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <script type='text/javascript' src='<? __j() ?>app.js'></script>
+
+    <?php include( __DIR__ . '/admin-helper.php' ); ?>
+
 </body>
 </html>

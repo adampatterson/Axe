@@ -5,7 +5,8 @@
             <div class="col-md-12">
                 <section id="post-blog">
                     <? if ( have_posts() ):
-                        get_template_part( 'templates/loop','post' ); ?>
+
+                        include( get_template_part_acf( 'templates/loop', 'post' ) ); ?>
 
                         <div class="text-center">
                             <? axe_paging_nav() ?>
