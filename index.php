@@ -11,7 +11,7 @@ if ( have_posts() ):
         echo '<!-- template: index/home -->';
         include( get_template_part_acf( 'templates/content', 'blog' ) );
     else:
-        if ( file_exists( get_template_directory() . '/templates/content-' . $post->post_name . '.php' ) ):
+        if ( check_path( '/templates/content-' . $post->post_name . '.php' ) ):
             while ( have_posts() ) : the_post();
                 echo '<!-- template: index/content-' . $post->post_name . ' -->';
                 include( get_template_part_acf( 'templates/content', $post->post_name ) );
