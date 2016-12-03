@@ -24006,7 +24006,7 @@
 		},
 	"\/lib\/bootstrap-walker.php": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 2,
 		"oAP": "\/lib\/bootstrap-walker.php",
 		"oF": 0
 		},
@@ -25737,6 +25737,62 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/templates\/woo-product.php",
+		"oF": 0
+		},
+	"\/vendor\/autoload.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/autoload.php",
+		"oF": 0
+		},
+	"\/vendor\/composer\/autoload_classmap.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/composer\/autoload_classmap.php",
+		"oF": 0
+		},
+	"\/vendor\/composer\/autoload_namespaces.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/composer\/autoload_namespaces.php",
+		"oF": 0
+		},
+	"\/vendor\/composer\/autoload_psr4.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/composer\/autoload_psr4.php",
+		"oF": 0
+		},
+	"\/vendor\/composer\/autoload_real.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/composer\/autoload_real.php",
+		"oF": 0
+		},
+	"\/vendor\/composer\/autoload_static.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/composer\/autoload_static.php",
+		"oF": 0
+		},
+	"\/vendor\/composer\/ClassLoader.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/composer\/ClassLoader.php",
+		"oF": 0
+		},
+	"\/vendor\/composer\/installed.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/vendor\/composer\/installed-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/vendor\/composer\/LICENSE": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/composer\/LICENSE",
 		"oF": 0
 		},
 	"\/woocommerce.php": {

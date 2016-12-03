@@ -25,8 +25,10 @@ function axe_add_capabilities($posttype)
     $role->add_cap('edit_published_' . $posttype . 's');
 }
 
-function __t() {
-    return get_template_directory_uri() . '/';
+if ( ! function_exists( '__t' ) ) {
+    function __t() {
+        return get_template_directory_uri() . '/';
+    }
 }
 
 function __a() {
