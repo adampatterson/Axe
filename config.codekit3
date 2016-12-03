@@ -222,6 +222,42 @@
 		"oAP": "\/lib\/init.php",
 		"oF": 0
 		},
+	"\/lib\/plugins-core.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/plugins-core.php",
+		"oF": 0
+		},
+	"\/lib\/plugins\/acf-oembed_object.zip": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/plugins\/acf-oembed_object.zip",
+		"oF": 0
+		},
+	"\/lib\/plugins\/class-tgm-plugin-activation.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/plugins\/class-tgm-plugin-activation.php",
+		"oF": 0
+		},
+	"\/lib\/plugins\/example.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/plugins\/example.php",
+		"oF": 0
+		},
+	"\/lib\/plugins\/github-updater-6.1.1.zip": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/plugins\/github-updater-6.1.1.zip",
+		"oF": 0
+		},
+	"\/lib\/plugins\/tgm-example-plugin.zip": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/plugins\/tgm-example-plugin.zip",
+		"oF": 0
+		},
 	"\/lib\/theme-api.php": {
 		"ft": 8192,
 		"oA": 2,
@@ -1772,9 +1808,9 @@
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/style-min.css",
-		"oF": 0,
+		"oF": 1,
 		"oS": 0
 		},
 	"\/tag.php": {

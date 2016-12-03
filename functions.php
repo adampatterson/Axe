@@ -2,6 +2,7 @@
 /****************************************
  * Theme Setup
  *****************************************/
+require_once 'lib/plugins/class-tgm-plugin-activation.php';
 require_once('lib/init.php');
 require_once('lib/theme-options.php');
 require_once('lib/bootstrap-walker.php');
