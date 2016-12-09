@@ -1,5 +1,10 @@
 <?php
-
+/**
+ *
+ * Adapted from Edward McIntyre's wp_bootstrap_navwalker class.
+ * Removed support for glyphicon and added support for Font Awesome
+ *
+ */
 /**
  * Class Name: wp_bootstrap_navwalker
  * GitHub URI: https://github.com/twittem/wp-bootstrap-navwalker
@@ -9,6 +14,8 @@
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
+//exit if accessed directly
+if(!defined('ABSPATH')) exit;
 
 class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 
@@ -62,11 +69,26 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 
             $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
 
-            if ( $args->has_children )
-                $class_names .= ' dropdown';
+            /*
+			if ( $args->has_children )
+				$class_names .= ' dropdown';
+			*/
+
+            if($args->has_children && $depth === 0) { $class_names .= ' dropdown'; } elseif($args->has_children && $depth > 0) { $class_names .= ' dropdown-submenu'; }
 
             if ( in_array( 'current-menu-item', $classes ) )
                 $class_names .= ' active';
+
+            // remove Font Awesome icon from classes array and save the icon
+            // we will add the icon back in via a <span> below so it aligns with
+            // the menu item
+            if ( in_array('fa', $classes)) {
+                $key = array_search('fa', $classes);
+                $icon = $classes[$key + 1];
+                $class_names = str_replace($classes[$key+1], '', $class_names);
+                $class_names = str_replace($classes[$key], '', $class_names);
+
+            }
 
             $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
@@ -81,11 +103,11 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
             $atts['rel']    = ! empty( $item->xfn )		? $item->xfn	: '';
 
             // If item has_children add atts to a.
-            if ( $args->has_children && $depth === 0 ) {
+            // if ( $args->has_children && $depth === 0 ) {
+            if ( $args->has_children ) {
                 $atts['href']   		= '#';
                 $atts['data-toggle']	= 'dropdown';
                 $atts['class']			= 'dropdown-toggle';
-                $atts['aria-haspopup']	= 'true';
             } else {
                 $atts['href'] = ! empty( $item->url ) ? $item->url : '';
             }
@@ -102,15 +124,9 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 
             $item_output = $args->before;
 
-            /*
-             * Glyphicons
-             * ===========
-             * Since the the menu item is NOT a Divider or Header we check the see
-             * if there is a value in the attr_title property. If the attr_title
-             * property is NOT null we apply it as the class name for the glyphicon.
-             */
-            if ( ! empty( $item->attr_title ) )
-                $item_output .= '<a'. $attributes .'><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
+            // Font Awesome icons
+            if ( ! empty( $icon ) )
+                $item_output .= '<a'. $attributes .'><span class="fa ' . esc_attr( $icon ) . '"></span>&nbsp;';
             else
                 $item_output .= '<a'. $attributes .'>';
 

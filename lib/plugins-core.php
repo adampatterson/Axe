@@ -157,6 +157,12 @@ function axe_register_required_plugins() {
         ),
 
         array(
+            'name'     => 'CloudFlare Flexible SSL',
+            'slug'     => 'cloudflare-flexible-ssl',
+            'required' => false,
+        ),
+
+        array(
             'name'        => 'WordPress SEO by Yoast',
             'slug'        => 'wordpress-seo',
             'is_callable' => 'wpseo_init',

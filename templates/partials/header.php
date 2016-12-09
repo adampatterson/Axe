@@ -83,11 +83,12 @@
                     <div class="m-top-15 collapse navbar-collapse" id="menu">
                         <?php
                         // http://code.tutsplus.com/tutorials/how-to-integrate-bootstrap-navbar-into-wordpress-theme--wp-33410
+                        // https://github.com/jeffmould/multi-level-bootstrap-menu/blob/master/wp-bootstrap-navwalker.php
                         wp_nav_menu(array(
                                 'menu'           => 'main-menu',
                                 'theme_location' => 'main-menu',
                                 'menu_id'        => 'navigation',
-                                'depth'          => 2,
+                                'depth'          => 3,
                                 'container'      => false,
                                 'menu_class'     => 'nav navbar-nav primary-nav navbar-right',
                                 'walker'         => new wp_bootstrap_navwalker()

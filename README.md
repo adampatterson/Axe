@@ -10,7 +10,7 @@ Simply being able to plow ahead creating my site structures and loading in real 
 Another tip that I can provide is using `console.log` to output my ACF structures reducing the need to be to refer back to the admin pages. Check it out [here](https://gist.github.com/adampatterson/711a101d5d93f3226fe1).
 
 ###Build
-Included is a blower file preset with Bootstrap SASS, jQuery and a couple other commonly used packages. Bower is going to download packages to `/assets/vendor`. 
+Included is a blower file preset with Bootstrap SASS, jQuery and a couple other commonly used packages. Bower is going to download packages to `/vendor`. 
 
 The [src folder](https://github.com/adampatterson/Axe/tree/master/src) stores your SASS and JS that should be compiled into `/assets`.
 
