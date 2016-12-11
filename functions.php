@@ -1,6 +1,6 @@
 <?
 // For composer dependencies
-require 'vendor/autoload.php';
+// require 'vendor/autoload.php';
 
 // Theme Setup
 require_once 'lib/plugins/class-tgm-plugin-activation.php';
