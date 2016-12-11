@@ -16,7 +16,6 @@ require_once('lib/theme-template-tags.php');
 require_once( 'lib/theme-api.php' );
 require_once( 'lib/theme-rewrite.php' );
 
-
 /**
  * Load Jetpack compatibility file.
  * See: http://jetpack.me/support/infinite-scroll/
@@ -25,3 +24,6 @@ require_once( 'lib/theme-rewrite.php' );
 //require 'lib/theme-jetpack.php';
 
 require_once('lib/custom.php');
+
+// update_option('siteurl','http://example.com');
+// update_option('home','http://example.com');
