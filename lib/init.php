@@ -8,7 +8,9 @@ if ( ! function_exists( 'axe_setup' ) ) {
          *****************************************/
 
         // Don't load jQuery from WordPress
-        wp_deregister_script( 'jquery' );
+        add_action( 'init', function () {
+            wp_deregister_script( 'jquery' );
+        } );
         
         // Clean up the head
         remove_action( 'wp_head', 'rsd_link' );
