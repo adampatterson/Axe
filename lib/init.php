@@ -7,6 +7,9 @@ if ( ! function_exists( 'axe_setup' ) ) {
          * Backend
          *****************************************/
 
+        // Don't load jQuery from WordPress
+        wp_deregister_script( 'jquery' );
+        
         // Clean up the head
         remove_action( 'wp_head', 'rsd_link' );
         remove_action( 'wp_head', 'wlwmanifest_link' );
