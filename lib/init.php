@@ -8,7 +8,7 @@ if ( ! function_exists( 'axe_setup' ) ) {
          *****************************************/
 
         // Don't load jQuery from WordPress
-        add_action( 'init', function () {
+        add_action( 'wp_enqueue_scripts', function () {
             if ( is_admin() ) {
                 return;
             }
