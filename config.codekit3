@@ -212,6 +212,18 @@
 		"oAP": "\/index.php",
 		"oF": 0
 		},
+	"\/lib\/axe-api.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/axe-api.php",
+		"oF": 0
+		},
+	"\/lib\/axe-rewrite.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/axe-rewrite.php",
+		"oF": 0
+		},
 	"\/lib\/bootstrap-walker.php": {
 		"ft": 8192,
 		"oA": 2,
@@ -228,30 +240,6 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/lib\/init.php",
-		"oF": 0
-		},
-	"\/lib\/init_BACKUP_46221.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/lib\/init_BACKUP_46221.php",
-		"oF": 0
-		},
-	"\/lib\/init_BASE_46221.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/lib\/init_BASE_46221.php",
-		"oF": 0
-		},
-	"\/lib\/init_LOCAL_46221.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/lib\/init_LOCAL_46221.php",
-		"oF": 0
-		},
-	"\/lib\/init_REMOTE_46221.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/lib\/init_REMOTE_46221.php",
 		"oF": 0
 		},
 	"\/lib\/plugins-core.php": {
@@ -288,12 +276,6 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/lib\/plugins\/tgm-example-plugin.zip",
-		"oF": 0
-		},
-	"\/lib\/theme-api.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/lib\/theme-api.php",
 		"oF": 0
 		},
 	"\/lib\/theme-functions.php": {
@@ -336,12 +318,6 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/lib\/theme-post-types.php",
-		"oF": 0
-		},
-	"\/lib\/theme-rewrite.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/lib\/theme-rewrite.php",
 		"oF": 0
 		},
 	"\/lib\/theme-template-tags.php": {

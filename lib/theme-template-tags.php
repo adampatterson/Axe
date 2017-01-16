@@ -7,7 +7,7 @@
  * @package Handle
  */
 
-if ( ! function_exists( 'axe_paging_nav' ) ) :
+if ( ! function_exists( 'axe_paging_nav' ) ) {
 	/**
 	 * Display navigation to next/previous set of posts when applicable.
 	 */
@@ -33,9 +33,9 @@ if ( ! function_exists( 'axe_paging_nav' ) ) :
         </nav>
 		<?php
 	}
-endif;
+}
 
-if ( ! function_exists( 'axe_post_nav' ) ) :
+if ( ! function_exists( 'axe_post_nav' ) ) {
 	/**
 	 * Display navigation to next/previous post when applicable.
 	 */
@@ -66,9 +66,9 @@ if ( ! function_exists( 'axe_post_nav' ) ) :
         </nav>
 		<?php
 	}
-endif;
+}
 
-if ( ! function_exists( 'axe_posted_on' ) ) :
+if ( ! function_exists( 'axe_posted_on' ) ) {
 	/**
 	 * Prints HTML with meta information for the current post-date/time and author.
 	 */
@@ -95,10 +95,9 @@ if ( ! function_exists( 'axe_posted_on' ) ) :
 		echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
 
 	}
-endif;
+}
 
-
-if ( ! function_exists( 'axe_entry_footer' ) ) :
+if ( ! function_exists( 'axe_entry_footer' ) ) {
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
@@ -126,9 +125,9 @@ if ( ! function_exists( 'axe_entry_footer' ) ) :
 
 		edit_post_link( 'Edit', '<br/><span class="edit-link">', '</span>' );
 	}
-endif;
+}
 
-if ( ! function_exists( 'axe_entry_categories' ) ) :
+if ( ! function_exists( 'axe_entry_categories' ) ) {
 	function axe_entry_categories() {
 		if ( 'post' == get_post_type() ) {
 			$categories_list = get_the_category_list( ', ' );
@@ -138,9 +137,9 @@ if ( ! function_exists( 'axe_entry_categories' ) ) :
 			}
 		}
 	}
-endif;
+}
 
-if ( ! function_exists( 'axe_entry_tags' ) ) :
+if ( ! function_exists( 'axe_entry_tags' ) ) {
 	function axe_entry_tags() {
 		if ( 'post' == get_post_type() ) {
 			$tags_list = get_the_tag_list( '', ', ' );
@@ -149,18 +148,18 @@ if ( ! function_exists( 'axe_entry_tags' ) ) :
 			}
 		}
 	}
-endif;
+}
 
-if ( ! function_exists( 'axe_entry_edit' ) ) :
+if ( ! function_exists( 'axe_entry_edit' ) ) {
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
 	function axe_entry_edit() {
 		edit_post_link( __( 'Edit', 'axe' ), '<span class="edit-link">', '</span>' );
 	}
-endif;
+}
 
-if ( ! function_exists( 'the_archive_title' ) ) :
+if ( ! function_exists( 'the_archive_title' ) ) {
 	/**
 	 * Shim for `the_archive_title()`.
 	 *
@@ -223,9 +222,9 @@ if ( ! function_exists( 'the_archive_title' ) ) :
 			echo $before . $title . $after;
 		}
 	}
-endif;
+}
 
-if ( ! function_exists( 'the_archive_description' ) ) :
+if ( ! function_exists( 'the_archive_description' ) ) {
 	/**
 	 * Shim for `the_archive_description()`.
 	 *
@@ -250,7 +249,7 @@ if ( ! function_exists( 'the_archive_description' ) ) :
 			echo $before . $description . $after;
 		}
 	}
-endif;
+}
 
 /**
  * Returns true if a blog has more than 1 category.
@@ -286,13 +285,15 @@ function axe_categorized_blog() {
 /**
  * Flush out the transients used in axe_categorized_blog.
  */
-function axe_category_transient_flusher() {
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
+if ( ! function_exists( 'axe_category_transient_flusher' ) ) {
+	function axe_category_transient_flusher() {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+		// Like, beat it. Dig?
+		delete_transient( 'axe_categories' );
 	}
-	// Like, beat it. Dig?
-	delete_transient( 'axe_categories' );
-}
 
-add_action( 'edit_category', 'axe_category_transient_flusher' );
-add_action( 'save_post', 'axe_category_transient_flusher' );
+	add_action( 'edit_category', 'axe_category_transient_flusher' );
+	add_action( 'save_post', 'axe_category_transient_flusher' );
+}

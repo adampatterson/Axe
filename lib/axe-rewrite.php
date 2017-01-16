@@ -21,9 +21,10 @@ class AxeRewrites {
 		add_rewrite_tag( '%vehicle_id%', '([0-9]+)' );
 
 		// Get VDP pages - we only need rewrites for VDP since they're the only pages with custom URLs.
-		$posts = new \WP_Query( array( 'post_type'     => Plugin::INVENTORY_SLUG,
-		                               'post_name__in' => $this->plugin->inventory_types['vdp']['defaults'],
-		                               'post_status'   => 'publish'
+		$posts = new \WP_Query( array(
+			'post_type'     => Plugin::INVENTORY_SLUG,
+			'post_name__in' => $this->plugin->inventory_types['vdp']['defaults'],
+			'post_status'   => 'publish'
 		) );
 
 		// Create custom rules based on the permalink.
