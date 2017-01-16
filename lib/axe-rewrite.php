@@ -5,8 +5,9 @@ namespace Axe;
 class AxeRewrites {
 
 	public function __construct() {
-//        https://codex.wordpress.org/Rewrite_API/add_rewrite_tag
-//        https://developer.wordpress.org/reference/functions/add_rewrite_tag/
+//      https://codex.wordpress.org/Rewrite_API/add_rewrite_tag
+//      https://developer.wordpress.org/reference/functions/add_rewrite_tag/
+//		http://wordpress.stackexchange.com/questions/26388/how-to-create-custom-url-routes
 		add_action( 'init', function () {
 			add_rewrite_tag( '%location%', '([^&]+)', 'location=' );
 			add_rewrite_rule( '^goto/([^/]*)/([^/]*)/?', 'index.php?location=$matches[1]&name=$matches[2]', 'top' );
