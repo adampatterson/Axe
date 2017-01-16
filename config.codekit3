@@ -202,7 +202,7 @@
 		},
 	"\/functions.php": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 2,
 		"oAP": "\/functions.php",
 		"oF": 0
 		},
@@ -226,8 +226,32 @@
 		},
 	"\/lib\/init.php": {
 		"ft": 8192,
-		"oA": 0,
+		"oA": 2,
 		"oAP": "\/lib\/init.php",
+		"oF": 0
+		},
+	"\/lib\/init_BACKUP_46221.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/init_BACKUP_46221.php",
+		"oF": 0
+		},
+	"\/lib\/init_BASE_46221.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/init_BASE_46221.php",
+		"oF": 0
+		},
+	"\/lib\/init_LOCAL_46221.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/init_LOCAL_46221.php",
+		"oF": 0
+		},
+	"\/lib\/init_REMOTE_46221.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/init_REMOTE_46221.php",
 		"oF": 0
 		},
 	"\/lib\/plugins-core.php": {
@@ -358,9 +382,9 @@
 		"ema": 1,
 		"eSQ": 1,
 		"ft": 4096,
-		"oA": 1,
+		"oA": 0,
 		"oAP": "\/README.html",
-		"oF": 1,
+		"oF": 0,
 		"oFM": 0,
 		"oS": 0,
 		"pHT": 0,

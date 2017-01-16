@@ -7,6 +7,14 @@ if ( ! function_exists( 'axe_setup' ) ) {
 		 * Backend
 		 *****************************************/
 
+        // Don't load jQuery from WordPress
+        add_action( 'wp_enqueue_scripts', function () {
+            if ( is_admin() ) {
+                return;
+            }
+            wp_deregister_script( 'jquery' );
+        } );
+        
 		// Clean up the head
 		remove_action( 'wp_head', 'rsd_link' );
 		remove_action( 'wp_head', 'wlwmanifest_link' );
