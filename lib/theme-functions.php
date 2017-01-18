@@ -161,4 +161,6 @@ if ( ! function_exists( 'axe_remove_more_jump_link' ) ) {
 	}
 }
 
-show_admin_bar( false );
+if ( ! function_exists( 'enable_admin_bar' ) ) {
+	show_admin_bar(false);
+}
