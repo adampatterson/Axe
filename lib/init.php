@@ -14,7 +14,7 @@ if ( ! function_exists( 'axe_setup' ) ) {
             }
             wp_deregister_script( 'jquery' );
         } );
-        
+
 		// Clean up the head
 		remove_action( 'wp_head', 'rsd_link' );
 		remove_action( 'wp_head', 'wlwmanifest_link' );
@@ -91,9 +91,9 @@ if ( ! function_exists( 'axe_setup' ) ) {
 		if ( ! function_exists( 'custom_login_logo' ) ) {
 			function custom_login_logo() {
 				echo '<style type="text/css">
-	    h1 a { background-image: url(' . get_bloginfo( 'template_directory' ) . '/assets/img/adminlogo.png) !important; height: auto;}
-	    body.login{ background: #fff; }
-	    </style>';
+        h1 a { background-image: url(' . get_bloginfo( 'template_directory' ) . '/assets/img/adminlogo.png) !important; height: auto;}
+        body.login{ background: #fff; }
+        </style>';
 			}
 
 			add_action( 'login_head', 'custom_login_logo' );
@@ -122,8 +122,8 @@ if ( ! function_exists( 'axe_setup' ) ) {
 			acf_add_options_sub_page( 'General Settings' );
 		}
 
-		add_action( 'tgmpa_register', 'axe_register_required_plugins' );
-		require_once( 'plugins-core.php' );
+//		add_action( 'tgmpa_register', 'axe_register_required_plugins' );
+//		require_once( 'plugins-core.php' );
 	}
 } // axe_setup
 
