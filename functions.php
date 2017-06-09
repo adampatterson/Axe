@@ -13,8 +13,6 @@ require_once( 'lib/theme-widgets.php' );
 require_once( 'lib/theme-menus.php' );
 require_once( 'lib/theme-functions.php' );
 require_once( 'lib/theme-template-tags.php' );
-require_once( 'lib/axe-api.php' );
-require_once( 'lib/axe-rewrite.php' );
 
 /**
  * Load Jetpack compatibility file.
