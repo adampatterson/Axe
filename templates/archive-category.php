@@ -13,19 +13,22 @@ $yourcat = get_category($cat);
         </div>
 
         <div class="row">
+            <div class="col-md-10 col-md-offset-1">
 
-            <section id="blog" class="col-md-12">
-                <? if (have_posts()):
-                    include(get_template_part_acf('templates/loop', 'post')); ?>
+                <section id="blog">
+                    <? if (have_posts()):
+                        include(get_template_part_acf('templates/loop', 'post')); ?>
 
-                    <div class="text-center">
-                        <? axe_paging_nav() ?>
-                    </div>
-                <? else:
-                    include(get_template_part_acf('templates/content', 'none'));
-                endif; ?>
-            </section>
+                        <div class="text-center">
+                            <? axe_paging_nav() ?>
+                        </div>
+                    <? else:
+                        include(get_template_part_acf('templates/content', 'none'));
+                    endif; ?>
+                </section>
 
+            </div>
         </div>
+
     </div>
 </div>
