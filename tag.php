@@ -1,26 +1,20 @@
 <?
 get_template_part('templates/partials/header');
 
-$term_id = get_query_var('tag_id');
+$term_id  = get_query_var('tag_id');
 $taxonomy = 'post_tag';
-$args ='include=' . $term_id;
-$terms = get_terms( $taxonomy, $args ); ?>
+$args     = 'include=' . $term_id;
+$terms    = get_terms($taxonomy, $args);
 
-<div class="wrapper terms">
-    <h3 class="entry-title"><?= $terms[0]->slug; ?></h3>
-</div>
+$term_slug = (is_array($terms)) ? $terms[0]->slug : '';
 
-<section id="post-blog">
-    <? if ( have_posts() ):
-    get_template_part( 'templates/loop','post' ); ?>
+if (check_path('/templates/archive-' . $term_slug . '.php')):
+    echo '<!-- template: archive/' . $term_slug . ' -->';
+    include(get_template_part_acf('templates/archive', $term_slug));
+else:
+    echo '<!-- template: archive/tag -->';
+    include(get_template_part_acf('templates/archive', 'tag'));
+endif;
 
-    <div class="center pagination">
-        <?= get_previous_posts_link( ); ?>
-        <?= get_next_posts_link( ); ?>
-    </div>
-    <? else:
-        get_template_part( 'templates/content', 'none' );
-    endif; ?>
-</section>
 
-<? get_template_part('templates/partials/footer');
+get_template_part('templates/partials/footer');
