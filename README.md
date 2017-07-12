@@ -16,7 +16,7 @@ The [src folder](https://github.com/adampatterson/Axe/tree/master/src) stores yo
 
 Use whatever build tool you want. A CodeKit file has been included to get up and running FAST. Gulp and Grunt are fine but do you really need it?
 
-###Page templates
+### Page templates
 Placing a file under `templates/content-home.php` will resolve the home page. Using `content-contact.php` would be used by `/contact`
 
 ### Post format templates
