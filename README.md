@@ -57,7 +57,7 @@ Template tags are modified versions of [_S](http://underscores.me/)
  
  ## Tip
  
-This `.htaccess` tip from (Steve Grunwell)[http://stevegrunwell.github.io/wordpress-git/#/13] will attempt to load an upload file locally before trying your production server.
+This `.htaccess` tip from [Steve Grunwell](http://stevegrunwell.github.io/wordpress-git/#/13) will attempt to load an upload file locally before trying your production server.
 
 ```
 <IfModule mod_rewrite.c>
