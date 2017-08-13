@@ -16,13 +16,13 @@ $yourcat = get_category($cat);
             <div class="col-md-10 col-md-offset-1">
 
                 <section id="blog">
-                    <? if (have_posts()):
+                    <?php if (have_posts()):
                         include(get_template_part_acf('templates/loop', 'post')); ?>
 
                         <div class="text-center">
-                            <? axe_paging_nav() ?>
+                            <?php axe_paging_nav() ?>
                         </div>
-                    <? else:
+                    <?php else:
                         include(get_template_part_acf('templates/content', 'none'));
                     endif; ?>
                 </section>

@@ -1,4 +1,4 @@
-<? while ( have_posts() ) : the_post(); ?>
+<?php while ( have_posts() ) : the_post(); ?>
     <article <?php post_class(); ?> itemscope="" itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
         <?php if ( has_post_thumbnail() ) { ?>
             <div class="image">
@@ -53,4 +53,4 @@
             </footer>
         </div>
     </article>
-<? endwhile ?>
+<?php endwhile ?>

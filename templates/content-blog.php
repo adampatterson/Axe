@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-12">
                 <section id="blog">
-                    <? include( get_template_part_acf( 'templates/loop', 'post' ) ); ?>
+                    <?php include( get_template_part_acf( 'templates/loop', 'post' ) ); ?>
                 </section>
             </div>
         </div>
