@@ -10,7 +10,7 @@
         <header class="header_image header_source" <?= $style ?>>
             <div class="container">
                 <div class="video embed-container">
-                    <? the_field('video'); ?>
+                    <?php the_field('video'); ?>
                 </div>
             </div>
         </header>
@@ -38,9 +38,9 @@
                         <p><?php echo get_the_author_meta('description'); ?></p>
                     </div>
 
-                    <? get_template_part('templates/partials/mailing-list') ?>
+                    <?php get_template_part('templates/partials/mailing-list') ?>
 
-                    <? get_template_part('templates/partials/comments') ?>
+                    <?php get_template_part('templates/partials/comments') ?>
                 </div>
             </article>
         </div>

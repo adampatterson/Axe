@@ -39,11 +39,11 @@ if (is_null($post)){
 <div id="wrapper">
     <div class="navbar-wrapper">
         <div class="container">
-            <? /*
+            <?php /*
             <nav class="navbar p-top-15" id="header">
                 <div class="container">
                     <div class="nav-logo pull-left m-top-15"><a href="<?= home_url( '/' ) ?>">
-                            <img src="<? __i() ?>live-wire.png" alt="">
+                            <img src="<?php __i() ?>live-wire.png" alt="">
                         </a>
                     </div>
                     <nav id="menu" class="pull-right m-top-15">
@@ -52,7 +52,7 @@ if (is_null($post)){
                         wp_nav_menu(array(
                                 'menu'           => 'main-menu',
                                 'theme_location' => 'main-menu',
-<? get_template_part('templates/partials/navigation'); ?>
+<?php get_template_part('templates/partials/navigation'); ?>
                                 'depth'          => 2,
                                 'container'      => false,
                                 'menu_class'     => 'primary-nav pull-right',
@@ -79,7 +79,7 @@ if (is_null($post)){
                         </button>
                         <div class="navbar-brand nav-logo pull-left">
                             <a href="<?= home_url( '/' ) ?>">
-                                <img src="<? __i() ?>logo.png" alt="">
+                                <img src="<?php __i() ?>logo.png" alt="">
                             </a>
                         </div>
                     </div>
@@ -111,8 +111,8 @@ if (is_null($post)){
         </div>
     </div>
 
-<? /*
+<?php /*
      <div id="sidebar">
-        <? get_template_part('templates/partials/sidebar'); ?>
+        <?php get_template_part('templates/partials/sidebar'); ?>
     </div>
 */ ?>

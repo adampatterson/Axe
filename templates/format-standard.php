@@ -11,7 +11,7 @@
         <header class="header_image header_source" <?= $style ?> >
             <div class="container">
                 <div class="video embed-container">
-                    <? the_field('video'); ?>
+                    <?php the_field('video'); ?>
                 </div>
             </div>
         </header>
@@ -21,7 +21,7 @@
                 <div class="row">
                     <header class="col-md-12">
                         <h1><?php the_title(); ?></h1>
-                        <? /*
+                        <?php /*
                         <p>
                             <span>Posted by</span><?php the_author_posts_link(); ?>
                             <span>on</span><?php the_time(get_option('date_format')); ?>
@@ -33,7 +33,7 @@
                         <?php the_content(); ?>
                     </div>
                     <footer class="col-md-12 entry-footer terms tags">
-                        <? /*
+                        <?php /*
                         <ul class="terms tags">
                             <?php
                             // Check if there are categories
@@ -59,7 +59,7 @@
 
                     <div class="row">
                         <div class="col-md-12 m-top-30">
-                            <? axe_post_nav(); ?>
+                            <?php axe_post_nav(); ?>
                         </div>
                     </div>
 
@@ -69,9 +69,9 @@
                         <p><?php echo get_the_author_meta( 'description' ); ?></p>
                     </div>
 
-                    <? get_template_part( 'templates/partials/mailing-list' ) ?>
+                    <?php get_template_part( 'templates/partials/mailing-list' ) ?>
 
-                    <? get_template_part( 'templates/partials/comments' ) ?>
+                    <?php get_template_part( 'templates/partials/comments' ) ?>
                 </div>
             </article>
         </div>

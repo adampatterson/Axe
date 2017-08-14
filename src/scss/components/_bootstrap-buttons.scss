@@ -64,12 +64,6 @@ a.btn {
 
 // Alternate buttons
 // --------------------------------------------------
-.btn-orange {
-    @include button-variant($white, $orange, $orange);
-}
-.btn-orange.btn-link{
-    color: $orange;
-}
 .btn-default {
     @include button-variant($grey-600, $grey-100, $grey-100);
 }
