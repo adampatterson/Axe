@@ -1,5 +1,6 @@
 <?php
 $data = get_fields();
+
 include( get_template_part_acf( 'templates/partials/header' ) );
 
 while ( have_posts() ) : the_post();
