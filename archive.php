@@ -8,7 +8,7 @@ include( get_template_part_acf( 'templates/partials/header' ) );
 
 if ( have_posts() ):
     $terms    = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-    $category = $terms->taxonomy;
+    $category = ($terms) ? $terms->taxonomy : null;
     if ( check_path( get_template_directory() . '/templates/archive-' . $category . '.php' ) ):
         echo '<!-- template: index/archive-' . $category . ' -->';
         include( get_template_part_acf( 'templates/archive', $category ) );
