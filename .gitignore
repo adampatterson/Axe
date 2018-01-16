@@ -7,3 +7,4 @@ node_modules
 /vendor
 /src/vendor
 /node_modules
+/assets/vendor

@@ -36,6 +36,9 @@ $media-xs-max: "(max-width: #{$screen-xs-max})" !default;
     &open-sans {
         font-family: $font-open-sans;
     }
+    &roboto {
+        font-family: $font-roboto;
+    }
 }
 
 
