@@ -10,12 +10,16 @@
 
     <script
         type='application/ld+json'>{"@context":"http:\/\/schema.org","@type":"WebSite","url":"<?= home_url('/'); ?>","name":"<?= bloginfo('name') ?>","potentialAction":{"@type":"SearchAction","target":"<?= home_url('/'); ?>?s={search_term}","query-input":"required name=search_term"}}
+
+
+
     </script>
 
     <?php wp_head(); ?>
     <link rel="stylesheet" href="<?= __c() ?>base.css"/>
 </head>
 <?php
+$post = ( ! isset($post)) ? null : $post;
 if (is_null($post)) {
     $post            = (object)$post;
     $post->post_name = '';
@@ -90,14 +94,14 @@ if (is_null($post)) {
                         // https://github.com/jeffmould/multi-level-bootstrap-menu/blob/master/wp-bootstrap-navwalker.php
                         if (has_nav_menu('main-menu')) {
                             wp_nav_menu(array(
-                                    'menu'           => 'main-menu',
-                                    'theme_location' => 'main-menu',
-                                    'menu_id'        => 'navigation',
-                                    'depth'          => 3,
-                                    'container'      => false,
-                                    'menu_class'     => 'nav navbar-nav primary-nav navbar-right',
-                                    'walker'         => new wp_bootstrap_navwalker()
-                                ));
+                                'menu'           => 'main-menu',
+                                'theme_location' => 'main-menu',
+                                'menu_id'        => 'navigation',
+                                'depth'          => 3,
+                                'container'      => false,
+                                'menu_class'     => 'nav navbar-nav primary-nav navbar-right',
+                                'walker'         => new wp_bootstrap_navwalker()
+                            ));
                         }
                         #get_search_form();
                         ?>
