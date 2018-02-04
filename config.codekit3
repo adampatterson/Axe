@@ -7,7 +7,7 @@
 		"uuidString": "697868E0-2FB2-48E7-B4DE-AEC4D92ACE2E"
 		}
 	],
-"creatorBuild": "26148",
+"creatorBuild": "26261",
 "files": {
 	"\/.bowerrc": {
 		"cB": 0,
@@ -37385,6 +37385,10 @@
 		"id-match": {
 			"active": 0,
 			"optionString": "'^[a-z]+([A-Z][a-z]+)*$', {'properties': false, 'onlyDeclarations': true}"
+			},
+		"implicit-arrow-linebreak": {
+			"active": 0,
+			"optionString": "'beside'"
 			},
 		"indent": {
 			"active": 0,
