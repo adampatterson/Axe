@@ -50,7 +50,6 @@ if ( ! function_exists( 'axe_post_nav' ) ) {
         ?>
         <nav class="navigation post-navigation" role="navigation">
             <div class="nav-links">
-
                 <ul class="pager">
                     <li class="previous <?= ( ! get_next_post_link() ) ? 'disabled' : '' ?> nav-previous">
                         <?php next_post_link( '%link',
