@@ -2,7 +2,7 @@
     <article <?php post_class(); ?> itemscope="" itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
         <?php if ( has_post_thumbnail() ) { ?>
             <div class="image">
-                <a href="<?php the_permalink(); ?>" title="<?php _e( 'Read Full Post', 'modernmag' ); ?>">
+                <a href="<?php the_permalink(); ?>" title="Read Full Post">
                     <?php the_post_thumbnail( 'grid', array(
                         'class' => "img-responsive",
                     ) ); ?>
@@ -13,7 +13,7 @@
         <div class="content" itemprop="text">
             <header>
                 <h2><a href="<?php the_permalink(); ?>"
-                       title="<?php _e( 'Read Full Post', 'modernmag' ); ?>"><?php the_title(); ?></a></h2>
+                       title="Read Full Post"><?php the_title(); ?></a></h2>
                 <p><?php axe_posted_on() ?></p>
             </header>
 

@@ -45,6 +45,19 @@ Since loading Bootstrap from the vendor folder means you can't modify your varia
 
 `bootstrap-custom` allows you to easily comment out any unused Bootstrap code that you wont be using. This lets you output a more minimal css file.
 
+### Structure
+
+Another helpful inclusion is the [_structure.scss](https://github.com/adampatterson/Axe/blob/master/src/scss/components/_structure.scss) file which gives you 5px incremental adjustments to padding and margins thoguht HTML. 
+
+**For example:**
+
+```
+<div class="p-top-50 p-sm-top-15 m-30"></div>
+```
+
+This would result in a 50px padding for everything except small where you wuld end up with a 15px top padding. This div would also have a margin of 30 on all sides.
+
+
 ### Child theme
 https://github.com/adampatterson/Handle
 
