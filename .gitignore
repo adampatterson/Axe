@@ -8,3 +8,4 @@ node_modules
 /src/vendor
 /node_modules
 /assets/vendor
+/yarn.lock
