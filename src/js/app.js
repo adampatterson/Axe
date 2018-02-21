@@ -1,3 +1,5 @@
+//import $ from 'jquery';
+
 // Variables
 var win_obj = $(window),
     doc_obj = $(document);

@@ -10,8 +10,14 @@ let bundles = {
     ]
 }
 
+let extractLibs = [
+    'jquery',
+]
+
 mix
     .setPublicPath('./')
     .sass('src/scss/base.scss', 'assets/css').options(scssOptions)
-    .scripts(bundles.all, 'assets/js/app.js')
+    // Extract libraries requires ECMAScript 6 imports in your code.
+    // .js(bundles.all, 'assets/js/app.js').extract(extractLibs)
+    .js(bundles.all, 'assets/js/app.js')
     .version()

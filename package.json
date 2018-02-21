@@ -7,7 +7,6 @@
     "directories": {
         "doc": "docs"
     },
-    "private": true,
     "scripts": {
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -23,5 +22,6 @@
         "laravel-mix": "^2.0"
     },
     "dependencies": {
+        "jquery": "^3.3.1"
     }
 }
