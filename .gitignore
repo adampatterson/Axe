@@ -10,3 +10,4 @@ node_modules
 /assets/vendor
 /yarn.lock
 /package-lock.json
+/mix-manifest.json
