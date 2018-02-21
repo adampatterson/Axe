@@ -69,6 +69,13 @@ if ( ! function_exists('__v')) {
     }
 }
 
+if ( ! function_exists('__m')) {
+    function __m()
+    {
+        return template_directory('mix-manifest.json');
+    }
+}
+
 if ( ! function_exists('__video')) {
     function __video()
     {
@@ -172,4 +179,26 @@ function template_directory( $template_name )
     }
 
     return false;
+}
+
+if ( ! function_exists('mix')) {
+    function mix( $path )
+    {
+        $pathWithOutSlash = ltrim($path, '/');
+        $pathWithSlash    = '/' . ltrim($path, '/');
+        $manifestFile     = __m();
+
+//        No manifest file was found so return whatever was passed to mix().
+        if ( ! $manifestFile) {
+            return __t() . $pathWithOutSlash;
+        }
+
+        $manifestArray = json_decode(file_get_contents($manifestFile), true);
+        if (array_key_exists($pathWithSlash, $manifestArray)) {
+            return __t() . ltrim($manifestArray[$pathWithSlash], '/');
+        }
+
+//        No file was found in the manifest, return whatever was passed to mix().
+        return __t() . $pathWithOutSlash;
+    }
 }

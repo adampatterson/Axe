@@ -9,11 +9,13 @@
     <title><?php wp_title('|', true, 'right'); ?><?php bloginfo('name') ?></title>
 
     <script
-        type='application/ld+json'>{"@context":"http:\/\/schema.org","@type":"WebSite","url":"<?= home_url('/'); ?>","name":"<?= bloginfo('name') ?>","potentialAction":{"@type":"SearchAction","target":"<?= home_url('/'); ?>?s={search_term}","query-input":"required name=search_term"}}
+            type='application/ld+json'>{"@context":"http:\/\/schema.org","@type":"WebSite","url":"<?= home_url('/'); ?>
+        ","name":"<?= bloginfo('name') ?>","potentialAction":{"@type":"SearchAction","target":"<?= home_url('/'); ?>?s={search_term}","query-input":"required name=search_term"}}
+
     </script>
 
     <?php wp_head(); ?>
-    <link rel="stylesheet" href="<?= __c() ?>base.css"/>
+    <link rel="stylesheet" href=" <?= mix('/assets/css/base.css') ?>"/>
 </head>
 <?php
 $post = ( ! isset($post)) ? null : $post;
@@ -77,10 +79,12 @@ if (is_null($post)) {
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu"
                                 aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
-                                class="icon-bar"></span> <span class="icon-bar"></span>
+                                    class="icon-bar"></span> <span class="icon-bar"></span>
                         </button>
                         <div class="navbar-brand nav-logo pull-left">
-                            <a href="<?= home_url('/') ?>"> <img src="<?php __i() ?>logo.png" alt=""> </a>
+                            <a href="<?= home_url('/') ?>">
+                                <img src="<?php __i() ?>logo.png" alt="">
+                            </a>
                         </div>
                     </div>
 
