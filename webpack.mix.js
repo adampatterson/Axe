@@ -1,23 +1,23 @@
-let mix = require('laravel-mix')
+let mix = require( 'laravel-mix' );
 
 let scssOptions = {
-    processCssUrls: false
-}
+  processCssUrls: false
+};
 
 let bundles = {
-    'all': [
-        './src/js/app.js'
-    ]
-}
+  'all': [
+    './src/js/app.js'
+  ]
+};
 
 let extractLibs = [
-    'jquery',
-]
+  'jquery'
+];
 
-mix
-    .setPublicPath('./')
-    .sass('src/scss/base.scss', 'assets/css').options(scssOptions)
+mix.setPublicPath( './' ).
+    sass( 'src/scss/base.scss', 'assets/css' ).
+    options( scssOptions )
     // Extract libraries requires ECMAScript 6 imports in your code.
     // .js(bundles.all, 'assets/js/app.js').extract(extractLibs)
-    .js(bundles.all, 'assets/js/app.js')
-    .version()
+    .js( bundles.all, 'assets/js/app.js' ).
+    version();
