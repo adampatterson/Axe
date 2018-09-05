@@ -1,17 +1,31 @@
 <?php
 $data = get_fields();
-include(get_template_part_acf('templates/partials/header'));
+include( get_template_part_acf( 'templates/partials/header' ) );
 
-$cat     = get_query_var('cat');
-$yourcat = get_category($cat);
+$cat     = get_query_var( 'cat' );
+$yourcat = get_category( $cat ); ?>
 
-if (check_path('/templates/archive-' . $post->post_name . '.php')):
-    echo '<!-- template: page/' . $post->post_name . ' -->';
-    include(get_template_part_acf('templates/archive', $post->post_name));
-else:
-    echo '<!-- template: archive/category -->';
-    include(get_template_part_acf('templates/archive', 'category'));
-endif;
+    <div class="wrapper terms">
+        <div class="container">
+            <h3 class="entry-title"><?= $yourcat->slug; ?></h3>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="container">
+            <section id="post-caegory">
+                <? if ( have_posts() ):
+                    include( get_template_part_acf( 'templates/loop', 'post' ) ); ?>
+
+                    <div class="text-center">
+                        <? axe_paging_nav() ?>
+                    </div>
+                <? else:
+                    include( get_template_part_acf( 'templates/content', 'none' ) );
+                endif; ?>
+            </section>
+        </div>
+    </div>
 
 
-include(get_template_part_acf('templates/partials/footer'));
+<? include( get_template_part_acf( 'templates/partials/footer' ) );
