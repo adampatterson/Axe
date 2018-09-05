@@ -13,9 +13,9 @@ if (have_posts()):
         elseif (get_post_type() == 'post'):
             echo '<!-- template: templates/format-' . get_post_format() . ' -->';
             include(get_template_part_acf('templates/format', get_post_format()));
-        elseif (check_path('/templates/content-' . get_post_type() . '.php')):
-            echo '<!-- template: templates/content-' . get_post_type . ' -->';
-            include(get_template_part_acf('templates/content', get_post_type()));
+        elseif (check_path('/templates/single-' . get_post_type() . '.php')):
+            echo '<!-- template: templates/single-' . get_post_type() . ' -->';
+            include(get_template_part_acf('templates/single', get_post_type()));
         else:
             echo '<!-- template: templates/content-single -->';
             include(get_template_part_acf('templates/content', 'single'));
