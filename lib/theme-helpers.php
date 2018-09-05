@@ -160,6 +160,8 @@ function check_path( $template_name )
     if (file_exists(STYLESHEETPATH . '/' . $template_name) or file_exists(TEMPLATEPATH . '/' . $template_name)) {
         return TEMPLATEPATH . '/' . $template_name;
     }
+
+    return false;
 }
 
 /**
