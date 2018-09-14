@@ -69,6 +69,13 @@ if ( ! function_exists('__v')) {
     }
 }
 
+if ( ! function_exists('__lib')) {
+    function __lib($path)
+    {
+        return template_directory('/lib/' . $path);
+    }
+}
+
 if ( ! function_exists('__m')) {
     function __m()
     {
