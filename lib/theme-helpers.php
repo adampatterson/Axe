@@ -8,7 +8,7 @@
  * Add capabilities for a custom post type
  */
 if ( ! function_exists('axe_add_capabilities')) {
-    function axe_add_capabilities( $posttype )
+    function axe_add_capabilities($posttype)
     {
         // gets the author role
         $role = get_role('administrator');
@@ -28,6 +28,11 @@ if ( ! function_exists('axe_add_capabilities')) {
 }
 
 if ( ! function_exists('__t')) {
+    /**
+     * The root template directory, this can be over written in the child theme.
+     *
+     * @return string
+     */
     function __t()
     {
         return get_template_directory_uri() . '/';
@@ -35,6 +40,11 @@ if ( ! function_exists('__t')) {
 }
 
 if ( ! function_exists('__a')) {
+    /**
+     * Assets relative to the template directory.
+     *
+     * @return string
+     */
     function __a()
     {
         return __t() . 'assets/';
@@ -42,6 +52,10 @@ if ( ! function_exists('__a')) {
 }
 
 if ( ! function_exists('__j')) {
+
+    /**
+     * Echoes the Javascript path.
+     */
     function __j()
     {
         echo __a() . 'js/';
@@ -49,6 +63,9 @@ if ( ! function_exists('__j')) {
 }
 
 if ( ! function_exists('__i')) {
+    /**
+     * Echoes the Images path.
+     */
     function __i()
     {
         echo __a() . 'img/';
@@ -56,6 +73,9 @@ if ( ! function_exists('__i')) {
 }
 
 if ( ! function_exists('__c')) {
+    /**
+     * Echoes the CSS path.
+     */
     function __c()
     {
         echo __a() . 'css/';
@@ -63,6 +83,9 @@ if ( ! function_exists('__c')) {
 }
 
 if ( ! function_exists('__v')) {
+    /**
+     * Echoes the Vendor path.
+     */
     function __v()
     {
         echo __t() . 'vendor/';
@@ -70,6 +93,9 @@ if ( ! function_exists('__v')) {
 }
 
 if ( ! function_exists('__lib')) {
+    /**
+     * Returns the Lib path.
+     */
     function __lib($path)
     {
         return template_directory('/lib/' . $path);
@@ -77,6 +103,11 @@ if ( ! function_exists('__lib')) {
 }
 
 if ( ! function_exists('__m')) {
+    /**
+     * Returns the mix-manifest.json file
+     *
+     * @return bool|string
+     */
     function __m()
     {
         return template_directory('mix-manifest.json');
@@ -84,6 +115,9 @@ if ( ! function_exists('__m')) {
 }
 
 if ( ! function_exists('__video')) {
+    /**
+     *  Echos the video path.
+     */
     function __video()
     {
         echo __a() . 'video/';
@@ -95,7 +129,7 @@ if ( ! function_exists('__video')) {
  *
  * @return string
  */
-function underscore( $string )
+function underscore($string)
 {
     return strtolower(preg_replace('/(?<=\\w)([A-Z])/', '_\\1', $string));
 }
@@ -108,7 +142,7 @@ function underscore( $string )
  *
  * @return array
  */
-function get_cat_hierchy( $parent, $args )
+function get_cat_hierchy($parent, $args)
 {
     $cats = get_categories($args);
     $ret  = new stdClass;
@@ -133,7 +167,7 @@ function get_cat_hierchy( $parent, $args )
  *
  * @return string
  */
-function get_template_part_acf( $slug, $name = null )
+function get_template_part_acf($slug, $name = null)
 {
     $templates = array();
     $name      = (string)$name;
@@ -162,7 +196,7 @@ function get_template_part_acf( $slug, $name = null )
  *
  * @return string
  */
-function check_path( $template_name )
+function check_path($template_name)
 {
     if (file_exists(STYLESHEETPATH . '/' . $template_name) or file_exists(TEMPLATEPATH . '/' . $template_name)) {
         return TEMPLATEPATH . '/' . $template_name;
@@ -176,7 +210,7 @@ function check_path( $template_name )
  *
  * @return bool|string
  */
-function template_directory( $template_name )
+function template_directory($template_name)
 {
     $template_name = trim($template_name, "/");
 
@@ -191,7 +225,7 @@ function template_directory( $template_name )
 }
 
 if ( ! function_exists('mix')) {
-    function mix( $path )
+    function mix($path)
     {
         $pathWithOutSlash = ltrim($path, '/');
         $pathWithSlash    = '/' . ltrim($path, '/');
@@ -209,5 +243,12 @@ if ( ! function_exists('mix')) {
 
 //        No file was found in the manifest, return whatever was passed to mix().
         return __t() . $pathWithOutSlash;
+    }
+}
+
+if ( ! function_exists('is_sub_page')) {
+    function is_sub_page($post)
+    {
+        return is_page() && $post->post_parent > 0;
     }
 }
