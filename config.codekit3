@@ -33456,6 +33456,13 @@
 		"oAP": "/page.php",
 		"oF": 0
 		},
+	"/README.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "/README.html",
+		"oF": 0
+		},
 	"/README.md": {
 		"cB": 0,
 		"cS": 0,
