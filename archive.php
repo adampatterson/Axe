@@ -6,6 +6,7 @@ $data = get_fields();
 
 include(get_template_part_acf('templates/partials/header'));
 
+echo '<!-- master/archive -->';
 if (have_posts()):
     $terms    = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
     $category = ($terms) ? $terms->taxonomy : null;

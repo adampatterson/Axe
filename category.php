@@ -1,7 +1,7 @@
 <?php
 $data = get_fields();
 include( get_template_part_acf( 'templates/partials/header' ) );
-
+echo '<!-- master/category -->';
 $cat     = get_query_var( 'cat' );
 $yourcat = get_category( $cat ); ?>
 

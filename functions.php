@@ -1,4 +1,4 @@
-<?
+<?php
 // For composer dependencies
 // require 'vendor/autoload.php';
 

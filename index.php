@@ -3,6 +3,7 @@ $data = get_fields();
 
 include(get_template_part_acf('templates/partials/header'));
 
+echo '<!-- master/index -->';
 if (have_posts()):
     # Sort this out, Blog is not loading
     if (is_front_page() or is_home()):

@@ -3,6 +3,7 @@ $data = get_fields();
 
 include(get_template_part_acf('templates/partials/header'));
 
+echo '<!-- master/single -->';
 if (have_posts()):
     while (have_posts()):
         the_post();
