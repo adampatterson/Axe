@@ -65,6 +65,7 @@ See [loop-post.php](https://github.com/adampatterson/Axe/blob/master/templates/l
 
 `__video()` - Echos the video path. `/assets/video/`
 
+*Functions in the parent theme should be wrapped with `function_exists` extend the child theme and prevent any conflicts.*
 
 
 ## Style
