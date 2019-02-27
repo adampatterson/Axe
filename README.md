@@ -106,22 +106,4 @@ Template tags are heavily modified versions of [_S](http://underscores.me/)
 
 
 #### Disclaimer
- This theme is made for Me, and with my efficiencies in mind. That said, If you have anything to add then send me an email hello@adampatterson.ca
-
-
-## Tip
-
-This `.htaccess` tip from [Steve Grunwell](http://stevegrunwell.github.io/wordpress-git/#/13) will attempt to load an upload file locally before trying your production server.
-
-```
-<IfModule mod_rewrite.c>
-  RewriteEngine on
-
-  # Attempt to load files from production if
-  # they're not in our local version
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule wp-content/uploads/(.*) \
-    http://{PROD}/wp-content/uploads/$1 [NC,L]
-</IfModule>
-```
+This theme is made for Me, and with my efficiencies in mind. That said, If you have anything to add then send me an email hello@adampatterson.ca
