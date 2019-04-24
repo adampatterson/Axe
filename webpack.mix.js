@@ -6,6 +6,8 @@ let scssOptions = {
 
 let bundles = {
     'all': [
+        "./assets/vendor/jquery/dist/jquery.min.js",
+        "./assets/vendor/bootstrap/dist/js/bootstrap.bundle.js",
         './src/js/app.js'
     ]
 }
@@ -22,9 +24,9 @@ mix.setPublicPath('./')
 
 mix.sass('src/scss/base.scss', 'assets/css').options(scssOptions)
 // Extract libraries requires ECMAScript 6 imports in your code.
-// mix.js(bundles.all, 'assets/js/app.js').extract(extractLibs)
+mix.js(bundles.all, 'assets/js/app.js').extract(extractLibs)
 
-mix.js(bundles.all, 'assets/js/app.js').version()
+//mix.js(bundles.all, 'assets/js/app.js').version()
 
 
 // Production

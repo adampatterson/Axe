@@ -1,19 +1,11 @@
+/* Bootstrap 4 */
+@import "../../assets/vendor/bootstrap/scss/functions";
 @import "components/base-variables";
 @import "components/bootstrap-variables";
+@import "components/bootstrap-mixins";
 @import "components/bootstrap-custom";
 @import "components/mixens";
 @import "components/fonts";
-@import "components/structure";
-
-/* Bootstrap 4
-@import "../../assets/vendor/bootstrap/scss/functions";
-@import "components/base-variables";
-@import "components/bootstrap4-variables";
-@import "components/bootstrap4-mixins";
-@import "components/bootstrap4-custom";
-@import "components/mixens";
-@import "components/fonts";
- */
 
 // External Components
 // @import "components/materialize";

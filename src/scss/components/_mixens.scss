@@ -1,16 +1,3 @@
-$media-lg-min: "(min-width: #{$screen-lg-min})" !default;
-
-$media-md: "(min-width: #{$screen-md-min}) and (max-width: #{$screen-md-max})" !default;
-$media-md-min: "(min-width: #{$screen-md-min})" !default;
-$media-md-max: "(max-width: #{$screen-md-max})" !default;
-
-$media-sm: "(min-width: #{$screen-sm-min}) and (max-width: #{$screen-sm-max})" !default;
-$media-sm-min: "(min-width: #{$screen-sm-min})" !default;
-$media-sm-max: "(max-width: #{$screen-sm-max})" !default;
-
-$media-xs-max: "(max-width: #{$screen-xs-max})" !default;
-
-
 .text- {
     &white {
         color: $white;
@@ -48,54 +35,4 @@ $media-xs-max: "(max-width: #{$screen-xs-max})" !default;
     &garamond {
         font-family: $font-garamond;
     }
-}
-
-
-/*
-// Adapted from https://medium.freecodecamp.com/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862#.5exxw2u1n
-.my-box {
-    padding: 10px;
-
-    @include for-size(tablet-landscape-up) {
-        padding: 20px;
-    }
-}
- */
-@mixin for-size($size) {
-    @if $size == phone-only {
-        @media (max-width: $screen-xs-max) { @content; }
-    } @else if $size == tablet-portrait-up {
-        @media (min-width: $screen-sm-min) { @content; }
-    } @else if $size == tablet-landscape-up {
-        @media (min-width: $screen-md-min) { @content; }
-    } @else if $size == desktop-up {
-        @media (min-width: $screen-lg-min) { @content; }
-    } @else if $size == big-desktop-up {
-        @media (min-width: 1800px) { @content; }
-    }
-}
-
-/*
-.my-box {
-  padding: 10px;
-
-  @include for-desktop-up {
-    padding: 20px;
-  }
-}
- */
-@mixin for-phone-only {
-    @media (max-width: $screen-xs-max) { @content; }
-}
-@mixin for-tablet-portrait-up {
-    @media (min-width: $screen-sm-min) { @content; }
-}
-@mixin for-tablet-landscape-up {
-    @media (min-width: $screen-md-min) { @content; }
-}
-@mixin for-desktop-up {
-    @media (min-width: $screen-lg-min) { @content; }
-}
-@mixin for-big-desktop-up {
-    @media (min-width: 1800px) { @content; }
 }

@@ -1,4 +1,4 @@
-//import $ from 'jquery';
+//import $ from 'jquery'; // ES6
 
 // Variables
 var win_obj = $(window),
