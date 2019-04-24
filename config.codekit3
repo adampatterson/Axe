@@ -69,16 +69,6 @@
 		"oAP": "/archive.php",
 		"oF": 0
 		},
-	"/assets/css/base.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 2,
-		"oAP": "/assets/css/base-min.css",
-		"oF": 0,
-		"oS": 0
-		},
 	"/assets/css/base.css.map": {
 		"cB": 0,
 		"ft": 8192,
@@ -210,16 +200,13 @@
 		"oT": 1,
 		"q": 100
 		},
-	"/assets/js/app.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/assets/js/min/app-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
+	"/assets/js/app.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/assets/js/app.js.map",
+		"oF": 0
 		},
 	"/assets/js/manifest.js": {
 		"bF": 0,
@@ -24063,7 +24050,7 @@
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
-		"oA": 1,
+		"oA": 2,
 		"oAP": "/assets/vendor/parsleyjs/bower_components/jquery/dist/jquery.js",
 		"oF": 0,
 		"sC": 1,
@@ -35411,6 +35398,17 @@
 		"oAP": "/license.txt",
 		"oF": 0
 		},
+	"/min/webpack.mix-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/min/min/webpack.mix-min-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
 	"/mix-manifest.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -35418,6 +35416,56 @@
 		"oF": 0,
 		"oO": 0,
 		"oS": 1
+		},
+	"/node_modules": {
+		"ft": 65536,
+		"oA": 2,
+		"oAP": "/build/node_modules",
+		"oF": 0
+		},
+	"/node_modules/glob/glob.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/node_modules/glob/min/glob-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"/node_modules/jquery/dist/jquery.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/node_modules/jquery/dist/min/jquery-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"/node_modules/lodash/lodash.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/node_modules/lodash/min/lodash-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"/node_modules/minimist/index.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/node_modules/minimist/min/index-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
 		},
 	"/package-lock.json": {
 		"ft": 524288,
