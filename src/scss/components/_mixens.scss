@@ -36,8 +36,17 @@ $media-xs-max: "(max-width: #{$screen-xs-max})" !default;
     &open-sans {
         font-family: $font-open-sans;
     }
+
+    &josefin {
+        font-family: $font-josefin;
+    }
+
     &roboto {
         font-family: $font-roboto;
+    }
+
+    &garamond {
+        font-family: $font-garamond;
     }
 }
 

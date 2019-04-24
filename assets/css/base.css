@@ -3825,8 +3825,14 @@ a.label:hover, a.label:focus {
 .font-open-sans {
   font-family: "Open Sans", sans-serif; }
 
+.font-josefin {
+  font-family: "Josefin Sans", sans-serif; }
+
 .font-roboto {
   font-family: "Roboto", sans-serif; }
+
+.font-garamond {
+  font-family: "EB Garamond", serif; }
 
 /*
 // Adapted from https://medium.freecodecamp.com/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862#.5exxw2u1n

@@ -37220,6 +37220,32 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"/src/scss/components/_font.garamond.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/src/scss/css/_font.garamond.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"/src/scss/components/_font.josefin.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/src/scss/css/_font.josefin.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"/src/scss/components/_font.opensans.scss": {
 		"aP": 0,
 		"bl": 0,
