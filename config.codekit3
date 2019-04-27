@@ -240,28 +240,6 @@
 		"sC": 1,
 		"tS": 0
 		},
-	"/assets/js/min/manifest-min.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/assets/js/min/min/manifest-min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"/assets/js/min/vendor-min.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/assets/js/min/min/vendor-min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
 	"/assets/js/vendor.js": {
 		"bF": 0,
 		"ft": 64,
@@ -37972,17 +37950,6 @@
 		"oA": 2,
 		"oAP": "/license.txt",
 		"oF": 0
-		},
-	"/min/webpack.mix-min.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/min/min/webpack.mix-min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
 		},
 	"/mix-manifest.json": {
 		"ft": 524288,
