@@ -8,6 +8,9 @@
  * Add capabilities for a custom post type
  */
 if ( ! function_exists('axe_add_capabilities')) {
+    /**
+     * @param $posttype
+     */
     function axe_add_capabilities($posttype)
     {
         // gets the author role
@@ -225,6 +228,11 @@ function template_directory($template_name)
 }
 
 if ( ! function_exists('mix')) {
+    /**
+     * @param $path
+     *
+     * @return string
+     */
     function mix($path)
     {
         $pathWithOutSlash = ltrim($path, '/');
@@ -247,6 +255,11 @@ if ( ! function_exists('mix')) {
 }
 
 if ( ! function_exists('is_sub_page')) {
+    /**
+     * @param $post
+     *
+     * @return bool
+     */
     function is_sub_page($post)
     {
         return is_page() && $post->post_parent > 0;
