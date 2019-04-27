@@ -51,6 +51,9 @@ if ( ! function_exists( 'axe_setup' ) ) {
 		// Enable Post Thumbnails
 		add_theme_support( 'post-thumbnails' );
 
+		// Adds theme support for wide images.
+        add_theme_support( 'align-wide' );
+
 		// Content Width
 		if ( ! isset( $content_width ) ) {
 			$content_width = 805;
