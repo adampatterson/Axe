@@ -11,15 +11,19 @@ if (have_posts()):
         if (get_post_type() == 'post' && ! get_post_format()):
             echo '<!-- template: templates/format-standard -->';
             include(get_template_part_acf('templates/format', 'standard'));
-        elseif (get_post_type() == 'post'):
+
+        elseif (check_path('/templates/format-' . get_post_format() . '.php')):
             echo '<!-- template: templates/format-' . get_post_format() . ' -->';
             include(get_template_part_acf('templates/format', get_post_format()));
+
         elseif (check_path('/templates/single-' . get_post_type() . '.php')):
             echo '<!-- template: templates/single-' . get_post_type() . ' -->';
             include(get_template_part_acf('templates/single', get_post_type()));
+
         else:
             echo '<!-- template: templates/content-single -->';
             include(get_template_part_acf('templates/content', 'single'));
+
         endif;
     endwhile;
 endif;
