@@ -26,7 +26,7 @@ mix.sass('src/scss/base.scss', 'assets/css').options(scssOptions)
 // Extract libraries requires ECMAScript 6 imports in your code.
 mix.js(bundles.all, 'assets/js/app.js').extract(extractLibs)
 
-//mix.js(bundles.all, 'assets/js/app.js').version()
+mix.version()
 
 
 // Production
