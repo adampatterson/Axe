@@ -102,6 +102,8 @@ Another helpful inclusion is the [_structure.scss](https://github.com/adampatter
 
 This would result in a 50px padding for everything except small where you would end up with a 15px top padding. This div would also have a margin of 30 on all sides.
 
+## Dummy Content for Gutenberg
+Sridhar Katakam has provided an article outlining how to add [dummy content for Gutenberg](https://sridharkatakam.com/dummy-content-for-gutenberg/). 
 
 ### Child theme
 https://github.com/adampatterson/Handle
