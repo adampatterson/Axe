@@ -44,34 +44,7 @@ if (is_null($post)) {
 <div id="wrapper">
     <div class="navbar-wrapper">
         <div class="container">
-            <?php /*
-            <nav class="navbar p-top-15" id="header">
-                <div class="container">
-                    <div class="nav-logo pull-left m-top-15"><a href="<?= home_url( '/' ) ?>">
-                            <img src="<?php __i() ?>live-wire.png" alt="">
-                        </a>
-                    </div>
-                    <nav id="menu" class="pull-right m-top-15">
-                        <?php
-                        // http://code.tutsplus.com/tutorials/how-to-integrate-bootstrap-navbar-into-wordpress-theme--wp-33410
-                        wp_nav_menu(array(
-                                'menu'           => 'main-menu',
-                                'theme_location' => 'main-menu',
-<?php get_template_part('templates/partials/navigation'); ?>
-                                'depth'          => 2,
-                                'container'      => false,
-                                'menu_class'     => 'primary-nav pull-right',
-                                'walker'         => new wp_bootstrap_navwalker()
-                            )
-                        );
-                        #get_search_form();
-                        ?>
-                    </nav>
 
-                </div>
-            </nav>
-
-*/ ?>
             <nav class="navbar p-top-15" id="header">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
