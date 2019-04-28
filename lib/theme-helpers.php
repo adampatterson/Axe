@@ -265,3 +265,19 @@ if ( ! function_exists('is_sub_page')) {
         return is_page() && $post->post_parent > 0;
     }
 }
+
+if ( ! function_exists('markdown_title')) {
+    /**
+     * Converts markdown in post titles.
+     *
+     * @param $post_title
+     *
+     * @return string|string[]|null
+     */
+    function markdown_title($post_title)
+    {
+        $formatted_title = preg_replace(array('/(\*\*|__)(.*?)\1/', '/(\*|_)(.*?)\1/'), array('<strong>\2</strong>', '<em>\2</em>'), $post_title);
+
+        return $formatted_title;
+    }
+}
