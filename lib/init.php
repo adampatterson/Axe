@@ -3,7 +3,6 @@
 if ( ! function_exists('axe_setup')) {
     function axe_setup()
     {
-
         /****************************************
          * Backend
          *****************************************/
@@ -15,6 +14,17 @@ if ( ! function_exists('axe_setup')) {
             }
             wp_deregister_script('jquery');
         });
+
+        // Prevent File Modifications
+        define('DISALLOW_FILE_EDIT', true);
+
+        /*
+        Content Width
+        https://codex.wordpress.org/Content_Width
+        */
+        if ( ! isset($content_width)) {
+            $content_width = 1140;
+        }
 
         // Clean up the head
         remove_action('wp_head', 'rsd_link');
@@ -41,14 +51,6 @@ if ( ! function_exists('axe_setup')) {
         // Don't update theme
         add_filter('http_request_args', 'axe_dont_update_theme', 5, 2);
 
-        // Prevent File Modifications
-        define('DISALLOW_FILE_EDIT', true);
-
-        // Set Content Width
-        if ( ! isset($content_width)) {
-            $content_width = 1140;
-        }
-
         // Enable Post Thumbnails
         add_theme_support('post-thumbnails');
 
@@ -56,14 +58,6 @@ if ( ! function_exists('axe_setup')) {
         add_theme_support('align-wide');
 
         add_theme_support('title-tag');
-
-        /*
-        Content Width
-        https://codex.wordpress.org/Content_Width
-        */
-        if ( ! isset($content_width)) {
-            $content_width = 805;
-        }
 
         // Enable Custom Headers
         // add_theme_support( 'custom-header' );
@@ -97,19 +91,9 @@ if ( ! function_exists('axe_setup')) {
          *****************************************/
 
         // custom admin login logo
-        if ( ! function_exists('custom_login_logo')) {
-            function custom_login_logo()
-            {
-                echo '<style type="text/css">
-        h1 a { background-image: url(' . get_bloginfo('template_directory') . '/assets/img/adminlogo.png) !important; height: auto;}
-        body.login{ background: #fff; }
-        </style>';
-            }
+        add_action('login_head', 'custom_login_logo');
 
-            add_action('login_head', 'custom_login_logo');
-        }
-
-//     Add Post Formats Theme Support
+        // Add Post Formats Theme Support
         add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video'));
 
         // Remove Query Strings From Static Resources
@@ -118,23 +102,15 @@ if ( ! function_exists('axe_setup')) {
 
         // Remove Read More Jump
         add_filter('the_content_more_link', 'axe_remove_more_jump_link');
+        add_filter('excerpt_more', 'axe_excerpt');
 
         add_filter('get_avatar', 'add_gravatar_class');
-        function add_gravatar_class($class)
-        {
-            $class = str_replace("class='avatar", "class='avatar img-circle", $class);
-
-            return $class;
-        }
 
         if (function_exists('wp_new_excerpt')) {
             acf_add_options_page();
             acf_add_options_sub_page('General Settings');
         }
 
-        /**
-         * Setup MarkDown in titles
-         */
         if ( ! is_admin()) {
             add_filter('the_title', 'markdown_title');
             add_filter('widget_title', 'markdown_title');

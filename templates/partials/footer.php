@@ -16,6 +16,11 @@
         #get_search_form();
         ?>
     </div>
+    <?php if (is_active_sidebar('footer-widgets')) { ?>
+        <div class="widget-footer">
+            <?php dynamic_sidebar('footer-widgets'); ?>
+        </div>
+    <?php } ?>
 </footer>
 </div>
 <?php wp_footer(); ?>

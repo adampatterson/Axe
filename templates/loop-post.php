@@ -1,11 +1,11 @@
-<?php while ( have_posts() ) : the_post(); ?>
+<?php while (have_posts()) : the_post(); ?>
     <article <?php post_class(); ?> itemscope="" itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
-        <?php if ( has_post_thumbnail() ) { ?>
+        <?php if (has_post_thumbnail()) { ?>
             <div class="image">
                 <a href="<?php the_permalink(); ?>" title="Read Full Post">
-                    <?php the_post_thumbnail( 'grid', array(
+                    <?php the_post_thumbnail('grid', array(
                         'class' => "img-responsive",
-                    ) ); ?>
+                    )); ?>
                 </a>
             </div>
         <?php } ?>
@@ -18,15 +18,13 @@
             </header>
 
             <?php
-            if ( get_theme_mod( 'archives_style' ) == 'content' ) {
+            if (get_theme_mod('archives_style') == 'content') {
                 the_content();
-            } else {
-                $excerpt = get_the_excerpt();
-                ?>
+            } else { ?>
+                <p><?= get_the_excerpt(); ?></p>
                 <p>
-                    <?php echo $excerpt; ?>
-                    <a href="<?php the_permalink(); ?>" title="Read More">
-                        Read More...
+                    <a href="<?php the_permalink(); ?>" title="Keep Reading">
+                        Keep Reading
                     </a>
                 </p>
             <?php } ?>
@@ -36,16 +34,16 @@
                     <?php
                     // Check if there are categories
                     // If so, output them
-                    $terms = get_the_terms( get_the_ID(), 'category' );
-                    if ( is_array( $terms ) ) {
+                    $terms = get_the_terms(get_the_ID(), 'category');
+                    if (is_array($terms)) {
                         ?>
-                        <li><?php the_terms( get_the_ID(), 'category', 'Categories: ', ', ' ); ?></li>
+                        <li><?php the_terms(get_the_ID(), 'category', 'Categories: ', ', '); ?></li>
                         <?php
                     }
-                    $terms = get_the_terms( get_the_ID(), 'post_tag' );
-                    if ( is_array( $terms ) ) {
+                    $terms = get_the_terms(get_the_ID(), 'post_tag');
+                    if (is_array($terms)) {
                         ?>
-                        <li><?php the_terms( get_the_ID(), 'post_tag', 'Tags: ', ', ' ); ?></li>
+                        <li><?php the_terms(get_the_ID(), 'post_tag', 'Tags: ', ', '); ?></li>
                         <?php
                     }
                     ?>
