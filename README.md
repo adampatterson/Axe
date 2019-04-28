@@ -10,11 +10,21 @@ Simply being able to plow ahead creating my site structures and loading in real 
 Another tip that I can provide is using `console.log` to output my ACF structures reducing the need to be to refer back to the admin pages. Check it out [here](https://gist.github.com/adampatterson/711a101d5d93f3226fe1).
 
 ### Build
-Included is a blower file preset with Bootstrap SASS, jQuery and a couple other commonly used packages. Bower is going to download packages to `/src/vendor`.
+Included is a bower file preset with Bootstrap SASS, jQuery and a couple other commonly used packages. Bower will install packages to `/src/vendor`.
 
 The [src folder](https://github.com/adampatterson/Axe/tree/master/src) stores your SASS and JS that should be compiled into `/assets`.
 
-Use whatever build tool you want. A CodeKit file has been included to get up and running FAST. Gulp and Grunt are fine but do you really need it?
+Use whatever build tool you want. A CodeKit file has been included to get up and running FAST. There is also an optional basic Webpack config that takes advantage of [Laravel Mix](https://laravel.com/docs/5.8/mix). If you are looking for a more advanced Mix configuration then have a look at the officual docs.
+
+**Mix Installation**
+https://laravel.com/docs/5.8/mix#installation
+
+**Running Mix**
+https://laravel.com/docs/5.8/mix#running-mix
+* The `webpack.mix.js` file is located in the theme root directory
+* `npm run watch` to start browserSync with LiveReload and proxy to your custom URL
+* `npm run dev` to quickly compile and bundle all the assets without watching
+* `npm run prod` to compile the assets for production
 
 ## Home page
 Placing a file under `templates/content-home.php` will resolve the home page and would be used by `/`
