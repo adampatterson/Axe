@@ -29,25 +29,9 @@
                 </p>
             <?php } ?>
 
-            <footer>
-                <ul class="terms tags">
-                    <?php
-                    // Check if there are categories
-                    // If so, output them
-                    $terms = get_the_terms(get_the_ID(), 'category');
-                    if (is_array($terms)) {
-                        ?>
-                        <li><?php the_terms(get_the_ID(), 'category', 'Categories: ', ', '); ?></li>
-                        <?php
-                    }
-                    $terms = get_the_terms(get_the_ID(), 'post_tag');
-                    if (is_array($terms)) {
-                        ?>
-                        <li><?php the_terms(get_the_ID(), 'post_tag', 'Tags: ', ', '); ?></li>
-                        <?php
-                    }
-                    ?>
-                </ul>
+            <footer class="col-md-12 entry-footer terms">
+                <p class="post-categories"><?php axe_entry_categories(); ?></p>
+                <p class="post-tags"><?php axe_entry_tags(); ?></p>
             </footer>
         </div>
     </article>

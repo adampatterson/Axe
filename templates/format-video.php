@@ -26,11 +26,17 @@
                     <div class="content col-md-12">
                         <?php the_content(); ?>
                     </div>
-                    <!-- Taxonomies -->
-                    <footer class="col-md-12 entry-footer terms tags">
-                        <p><?php axe_entry_categories(); ?></p>
-                        <p><?php axe_entry_tags(); ?></p>
+
+                    <footer class="col-md-12 entry-footer terms">
+                        <p class="post-categories"><?php axe_entry_categories(); ?></p>
+                        <p class="post-tags"><?php axe_entry_tags(); ?></p>
                     </footer>
+
+                    <div class="row post-navigation">
+                        <div class="col-md-12 post-navigation">
+                            <?php axe_post_nav(); ?>
+                        </div>
+                    </div>
 
                     <div class="row post-author">
                         <?php get_template_part('templates/partials/post-author') ?>
