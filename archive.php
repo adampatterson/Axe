@@ -14,6 +14,9 @@ if (have_posts()):
     if (check_path('/templates/archive-' . $category . '.php')):
         echo '<!-- template: index/archive-' . $category . ' -->';
         include(get_template_part_acf('templates/archive', $category));
+    elseif (check_path('/templates/archive-' . $terms . '.php')):
+        echo '<!-- template: index/archive-' . $terms . ' -->';
+        include(get_template_part_acf('templates/archive', $terms));
     else:
         echo '<!-- template: index/archive -->';
         include(get_template_part_acf('templates/archive', 'default'));
