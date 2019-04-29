@@ -6,7 +6,7 @@ $category = get_category($cat);
 <div class="content-wrapper">
     <div class="container">
 
-        <h3 class="entry-title">Category results for: <?= $category->name; ?></h3>
+        <h3 class="entry-title"><?= the_archive_title(); ?></h3>
 
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
