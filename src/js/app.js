@@ -1,8 +1,8 @@
-//import $ from 'jquery'; // ES6
+//import jQuery from 'jquery'; // ES6
 
 // Variables
-var win_obj = $(window),
-    doc_obj = $(document);
+var win_obj = jQuery(window),
+    doc_obj = jQuery(document);
 
 // Functions
 
