@@ -12,6 +12,7 @@ require_once( 'lib/theme-widgets.php' );
 require_once( 'lib/theme-menus.php' );
 require_once( 'lib/theme-functions.php' );
 require_once( 'lib/theme-template-tags.php' );
+require_once( 'lib/customizer.php' );
 
 /**
  * Load Jetpack compatibility file.
