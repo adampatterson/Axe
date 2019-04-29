@@ -3,8 +3,8 @@
         <?php if (has_post_thumbnail()) { ?>
             <div class="image">
                 <a href="<?php the_permalink(); ?>" title="Read Full Post">
-                    <?php the_post_thumbnail('grid', array(
-                        'class' => "img-responsive",
+                    <?php the_post_thumbnail('featured', array(
+                        'class' => "img-fluid",
                     )); ?>
                 </a>
             </div>
@@ -17,17 +17,12 @@
                 <p><?php axe_posted_on() ?></p>
             </header>
 
-            <?php
-            if (get_theme_mod('archives_style') == 'content') {
-                the_content();
-            } else { ?>
-                <p><?= get_the_excerpt(); ?></p>
-                <p>
-                    <a href="<?php the_permalink(); ?>" title="Keep Reading">
-                        Keep Reading
-                    </a>
-                </p>
-            <?php } ?>
+            <p><?= get_the_excerpt(); ?></p>
+            <p>
+                <a href="<?php the_permalink(); ?>" title="Keep Reading">
+                    Keep Reading
+                </a>
+            </p>
 
             <footer class="col-md-12 entry-footer terms">
                 <p class="post-categories"><?php axe_entry_categories(); ?></p>
