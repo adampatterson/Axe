@@ -9,7 +9,7 @@
                 'menu_id'        => 'footer-navigation',
                 'depth'          => 1,
                 'container'      => false,
-                'menu_class'     => 'nav justify-content-center secondary-nav',
+                'menu_class'     => 'nav justify-content-center secondary-nav pt-5',
                 'walker'         => new wp_bootstrap_navwalker()
             ));
         }

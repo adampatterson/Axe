@@ -20,7 +20,7 @@
                 <div class="row">
                     <header class="col-md-12">
                         <h1><?php the_title(); ?></h1>
-                        <p><?php axe_posted_on() ?></p>
+                        <p><?php axe_posted_on() ?> <?php axe_entry_edit(); ?></p>
                     </header>
 
                     <div class="content col-md-12">
