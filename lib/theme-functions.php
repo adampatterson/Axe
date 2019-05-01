@@ -196,9 +196,8 @@ if ( ! function_exists('custom_login_logo')) {
         body.login{ background: #fff; }
         </style>';
     }
-
 }
-
 if ( ! function_exists('enable_admin_bar')) {
+
     show_admin_bar(true);
 }

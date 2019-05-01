@@ -11,23 +11,22 @@
         <?php } ?>
 
         <div class="content" itemprop="text">
-            <header>
-                <h2><a href="<?php the_permalink(); ?>"
-                       title="Read Full Post"><?php the_title(); ?></a></h2>
-                <p><?php axe_posted_on() ?></p>
-            </header>
+            <h2><a href="<?php the_permalink(); ?>"
+                   title="Read Full Post"><?php the_title(); ?></a></h2>
+            <p><?php axe_posted_on() ?></p>
+
+            <div class="entry-footer terms">
+                <p class="post-categories"><?php axe_entry_categories(); ?></p>
+                <p class="post-tags"><?php axe_entry_tags(); ?></p>
+            </div>
 
             <p><?= get_the_excerpt(); ?></p>
+
             <p>
-                <a href="<?php the_permalink(); ?>" title="Keep Reading">
+                <a href="<?php the_permalink(); ?>" title="Keep Reading" class="btn btn-outline-primary">
                     Keep Reading
                 </a>
             </p>
-
-            <footer class="col-md-12 entry-footer terms">
-                <p class="post-categories"><?php axe_entry_categories(); ?></p>
-                <p class="post-tags"><?php axe_entry_tags(); ?></p>
-            </footer>
         </div>
     </article>
-<?php endwhile ?>
+<?php endwhile; ?>

@@ -26,7 +26,7 @@ if (have_posts()):
 //      If everything fails use content-single.php
         else:
             echo '<!-- template: templates/content-single -->';
-            include(get_template_part_acf('templates/content', 'single'));
+            include(get_template_part_acf('templates/format', 'standard'));
 
         endif;
     endwhile;
