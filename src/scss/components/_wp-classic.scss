@@ -20,17 +20,36 @@ div.aligncenter {
     margin: 5px 20px 20px 0;
 }
 
-.alignfull {
-    margin: 32px calc(50% - 50vw);
+.alignfull,
+.alignwide {
+    margin-bottom: 2em;
     max-width: 100vw;
     width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    max-width: none;
+
+    img {
+        max-width: 100vw;
+        display: block;
+    }
+
+    @media (max-width: 600px) {
+        &.wp-block-gallery {
+            margin-left: -8px;
+            margin-right: -8px;
+            width: inherit;
+        }
+    }
 }
 
-.alignwide {
-    margin: 32px calc(25% - 25vw);
-    max-width: 100vw;
-    width: 100vw;
+@media only screen and (min-width: 1475px) {
+    .alignwide {
+        width: 75vw;
+        margin-left: calc(50% - 75vw / 2);
+    }
 }
+
 
 a img {
     &.alignright {

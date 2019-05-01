@@ -12,3 +12,5 @@ node_modules
 /package-lock.json
 /mix-manifest.json
 /assets/js/manifest.js
+/assets/js/vendor.js.map
+*.map
