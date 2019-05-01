@@ -192,7 +192,7 @@ if ( ! function_exists('custom_login_logo')) {
     function custom_login_logo()
     {
         echo '<style type="text/css">
-        h1 a { background-image: url(' . get_bloginfo('template_directory') . '/assets/img/adminlogo.png) !important; height: auto;}
+        h1 a { background-image: url(' . __t() . '/assets/img/adminlogo.png) !important; height: auto;}
         body.login{ background: #fff; }
         </style>';
     }
