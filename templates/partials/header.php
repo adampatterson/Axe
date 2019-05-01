@@ -17,13 +17,7 @@
     <?php wp_head(); ?>
     <link rel="stylesheet" href=" <?= mix('/assets/css/base.css') ?>"/>
 </head>
-<?php
-$post = ( ! isset($post)) ? null : $post;
-if (is_null($post)) {
-    $post            = (object)$post;
-    $post->post_name = '';
-}
-?>
+
 <body <?php body_class($post->post_name); ?>>
 <script>
     (function (i, s, o, g, r, a, m) {

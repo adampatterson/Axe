@@ -29,22 +29,22 @@ https://laravel.com/docs/5.8/mix#running-mix
 ## Home page
 Placing a file under `templates/content-home.php` will resolve the home page and would be used by `/`
 
-### Page templates
+## Page templates
 Placing a file under `templates/content-{slug}.php` will resolve the home page. Using `content-contact.php` would be used by `/contact`
 
-### Sub Page templates
+## Sub Page templates
 Placing a file under `templates/sub-{parent_slug}.php` will resolve the home page. Using `sub-services.php` would be used by all pages under service like `/services/design`
 
-### Post format templates
+## Post format templates
 Placing a file under `templates/format-video.php` will resolve all video formats.
 
-### Custom Post Type templates
+## Custom Post Type templates
 Placing a file under `templates/single-books.php` will resolve all custom post type single posts.
 
-### Custom Taxonomies
+## Custom Taxonomies
 Placing a file under `templates/archive-books.php` will resolve a custom taxonomy for Books `/books/sci-fi/` also using a custom loop. The default archive would be `archive-default.php` using the default post loop.
 
-### Custom Loops
+## Custom Loops
 If you have a custom post type called Books, creating `content-books.php` and loading a custom loop like `loop-books.php` with all the necessary "Loop" code would give you your custom book loop.
 
 See [loop-post.php](https://github.com/adampatterson/Axe/blob/master/templates/loop-post.php) for an example.
@@ -90,22 +90,10 @@ Since loading Bootstrap from the vendor folder means you can't modify your varia
 
 `bootstrap-custom` allows you to easily comment out any unused Bootstrap code that you wont be using. This lets you output a more minimal css file.
 
-### Structure
-
-Another helpful inclusion is the [_structure.scss](https://github.com/adampatterson/Axe/blob/master/src/scss/components/_structure.scss) file which gives you 5px incremental adjustments to padding and margins through out HTML.
-
-**For example:**
-
-```
-<div class="p-top-50 p-sm-top-15 m-30"></div>
-```
-
-This would result in a 50px padding for everything except small where you would end up with a 15px top padding. This div would also have a margin of 30 on all sides.
-
 ## Dummy Content for Gutenberg
 Sridhar Katakam has provided an article outlining how to add [dummy content for Gutenberg](https://sridharkatakam.com/dummy-content-for-gutenberg/). 
 
-### Child theme
+# Child theme
 https://github.com/adampatterson/Handle
 
 If you will be using ACF with your child theme uncomment the [following](https://github.com/adampatterson/Handle/blob/master/functions.php#L13) so that ACF will store the `.json` files in your working Child theme.
