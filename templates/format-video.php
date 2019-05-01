@@ -20,32 +20,15 @@
                 <div class="row">
                     <header class="col-md-12">
                         <h1><?php the_title(); ?></h1>
-                        <p><?php axe_posted_on() ?> <?php axe_entry_edit(); ?></p>
+                        <p><?php axe_posted_on() ?><?php axe_entry_edit(); ?></p>
                     </header>
 
                     <div class="content col-md-12">
                         <?php the_content(); ?>
                     </div>
 
-                    <footer class="col-md-12 entry-footer terms">
-                        <p class="post-categories"><?php axe_entry_categories(); ?></p>
-                        <p class="post-tags"><?php axe_entry_tags(); ?></p>
-                    </footer>
-
-                    <div class="row post-navigation">
-                        <div class="col-md-12 post-navigation">
-                            <?php axe_post_nav(); ?>
-                        </div>
-                    </div>
-
-                    <div class="row post-author">
-                        <?php get_template_part('templates/partials/post-author') ?>
-                    </div>
-
-                    <?php get_template_part('templates/partials/mailing-list') ?>
-
-                    <?php get_template_part('templates/partials/comments') ?>
                 </div>
+                <?php get_template_part('templates/partials/post-footer') ?>
             </article>
         </div>
     </section>
