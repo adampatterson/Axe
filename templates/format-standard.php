@@ -3,7 +3,7 @@
         <?php
         $style = '';
         if (has_post_thumbnail()) {
-            $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'featured');
+            $image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'featured');
             $style = "style='background-image: url($image[0]); position: relative; background-size: cover !important;'";
         } ?>
         <div class="container">

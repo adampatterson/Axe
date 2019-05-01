@@ -1,9 +1,10 @@
 <?php
 include(get_template_part_acf('templates/partials/header'));
-echo '<!-- master/category -->';
+
 $cat           = get_query_var('cat');
 $category      = get_category($cat);
 $category_slug = $category->slug;
+$post          = get_post();
 
 echo '<!-- master/tag -->';
 if (check_path('/templates/archive-' . $category_slug . '.php')):
