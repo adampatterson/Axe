@@ -228,6 +228,23 @@ if ( ! function_exists('mix')) {
     }
 }
 
+if ( ! function_exists('dd')) {
+    /**
+     * Var_dump and die method
+     *
+     * @return void
+     */
+    function dd()
+    {
+        echo '<pre>';
+        array_map(function ($x) {
+            var_dump($x);
+        }, func_get_args());
+        echo '</pre>';
+        die;
+    }
+}
+
 if ( ! function_exists('is_sub_page')) {
     /**
      * @param $post
@@ -253,5 +270,12 @@ if ( ! function_exists('markdown_title')) {
         $formatted_title = preg_replace(array('/(\*\*|__)(.*?)\1/', '/(\*|_)(.*?)\1/'), array('<strong>\2</strong>', '<em>\2</em>'), $post_title);
 
         return $formatted_title;
+    }
+}
+
+if ( ! function_exists('axe_posts_link_attributes')) {
+    function axe_posts_link_attributes()
+    {
+        return 'class="page-link"';
     }
 }
