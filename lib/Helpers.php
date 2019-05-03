@@ -16,6 +16,18 @@ if ( ! function_exists('__t')) {
     }
 }
 
+if ( ! function_exists('__p')) {
+    /**
+     * Returns the Parent template path.
+     *
+     * @return string
+     */
+    function __p()
+    {
+        return TEMPLATEPATH . '/';
+    }
+}
+
 if ( ! function_exists('__a')) {
     /**
      * Assets relative to the template directory.
@@ -194,6 +206,7 @@ function template_directory($template_name)
     if (file_exists(STYLESHEETPATH . '/' . $template_name)) {
         return STYLESHEETPATH . '/' . $template_name;
     }
+    
     if (file_exists(TEMPLATEPATH . '/' . $template_name)) {
         return TEMPLATEPATH . '/' . $template_name;
     }
@@ -254,28 +267,5 @@ if ( ! function_exists('is_sub_page')) {
     function is_sub_page($post)
     {
         return is_page() && $post->post_parent > 0;
-    }
-}
-
-if ( ! function_exists('markdown_title')) {
-    /**
-     * Converts markdown in post titles.
-     *
-     * @param $post_title
-     *
-     * @return string|string[]|null
-     */
-    function markdown_title($post_title)
-    {
-        $formatted_title = preg_replace(array('/(\*\*|__)(.*?)\1/', '/(\*|_)(.*?)\1/'), array('<strong>\2</strong>', '<em>\2</em>'), $post_title);
-
-        return $formatted_title;
-    }
-}
-
-if ( ! function_exists('axe_posts_link_attributes')) {
-    function axe_posts_link_attributes()
-    {
-        return 'class="page-link"';
     }
 }

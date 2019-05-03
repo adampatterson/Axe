@@ -1,24 +1,11 @@
 <?php
 // For composer dependencies
-// require 'vendor/autoload.php';
+if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) :
+    require_once dirname(__FILE__) . '/vendor/autoload.php';
+endif;
 
-// Theme Setup
-require_once( 'lib/init.php' );
-require_once( 'lib/theme-options.php' );
-require_once( 'lib/bootstrap-walker.php' );
-require_once( 'lib/theme-helpers.php' );
-require_once( 'lib/theme-media.php' );
-require_once( 'lib/theme-widgets.php' );
-require_once( 'lib/theme-menus.php' );
-require_once( 'lib/theme-functions.php' );
-require_once( 'lib/theme-template-tags.php' );
-require_once( 'lib/customizer.php' );
+if (class_exists('Axe\\Init')) :
+    Axe\Init::register_services();
+endif;
 
-/**
- * Load Jetpack compatibility file.
- * See: http://jetpack.me/support/infinite-scroll/
- * todo: adjust content classes
- */
-//require 'lib/theme-jetpack.php';
-
-require_once( 'lib/custom.php' );
+require_once('lib/template-tags.php');
