@@ -31,9 +31,12 @@ class Theme
         Content Width
         https://codex.wordpress.org/Content_Width
         */
-        if ( ! isset($content_width)) {
-            $content_width = 1140;
-        }
+
+        /**
+         * Set the content width based on the theme's design and stylesheet
+         */
+        add_action('after_setup_theme', [$this, 'axe_content_width'], 0);
+
 
         // Clean up the head
         remove_action('wp_head', 'rsd_link');
@@ -107,6 +110,17 @@ class Theme
         $parts = explode('?', $src);
 
         return $parts[0];
+    }
+
+    public function axe_content_width()
+    {
+        global $content_width;
+
+        if (has_post_format('gallery')) {
+            $content_width = 1140;
+        } else {
+            $content_width = 1140;
+        }
     }
 
 }
