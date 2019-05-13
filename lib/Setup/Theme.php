@@ -5,7 +5,7 @@ namespace Axe\Setup;
 class Theme
 {
 
-    public function register()
+    public function __construct()
     {
         add_filter('next_posts_link_attributes', [$this, 'axe_posts_link_attributes'], 10, 1);
         add_filter('previous_posts_link_attributes', [$this, 'axe_posts_link_attributes'], 10, 1);

@@ -10,7 +10,7 @@ namespace Axe\Setup;
 class JetPack
 {
 
-    public function register()
+    public function __construct()
     {
         if ( ! class_exists('Jetpack')) {
             return;

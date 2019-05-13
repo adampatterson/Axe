@@ -5,16 +5,13 @@ namespace Axe\Setup;
 class Admin
 {
 
-    /**
-     *
-     */
-    public function register()
+    public function __construct()
     {
-
         if ( ! function_exists('enable_admin_bar')) {
 
             show_admin_bar(true);
         }
+
         // Add Editor Style
         add_editor_style('editor-style.css');
 
@@ -168,10 +165,11 @@ class Admin
 
     public function custom_login_logo()
     {
-        echo '<style type="text/css">
-        h1 a { background-image: url(' . __t() . '/assets/img/adminlogo.png) !important; height: auto;}
-        body.login{ background: #fff; }
-        </style>';
+//        var_dump('axe.adminlogo');
+//        echo '<style type="text/css">
+//        h1 a { background-image: url(' . __t() . '/assets/img/adminlogo.png) !important; height: auto;}
+//        body.login{ background: #fff; }
+//        </style>';
     }
 
     /**
@@ -223,6 +221,4 @@ class Admin
 
         return $contactmethods;
     }
-
-
 }

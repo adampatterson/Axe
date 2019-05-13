@@ -5,7 +5,7 @@ namespace Axe\Setup;
 class Menu
 {
 
-    public function register()
+    public function __construct()
     {
         // wp menus
         add_theme_support('menus');
