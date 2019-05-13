@@ -206,7 +206,7 @@ function template_directory($template_name)
     if (file_exists(STYLESHEETPATH . '/' . $template_name)) {
         return STYLESHEETPATH . '/' . $template_name;
     }
-    
+
     if (file_exists(TEMPLATEPATH . '/' . $template_name)) {
         return TEMPLATEPATH . '/' . $template_name;
     }
