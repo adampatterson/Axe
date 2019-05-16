@@ -1,9 +1,20 @@
 <?php
-/**
- * Register Widget Areas
- */
-if ( ! function_exists('axe_widgets_init')) {
-    function axe_widgets_init()
+
+namespace Axe\Core;
+
+class Widgets
+{
+
+    public function register()
+    {
+        add_action('widgets_init', [$this, 'axe_widgets_init']);
+        add_action('widgets_init', [$this, 'unregister_default_widgets'], 11);
+    }
+
+    /**
+     * Register Widget Areas
+     */
+    public function axe_widgets_init()
     {
         // Main Sidebar
         register_sidebar(array(
@@ -27,10 +38,8 @@ if ( ! function_exists('axe_widgets_init')) {
             'after_title'   => '</h4>'
         ));
     }
-}
 
-if ( ! function_exists('unregister_default_widgets')) {
-    function unregister_default_widgets()
+    public function unregister_default_widgets()
     {
         unregister_widget('WP_Widget_Pages');
         unregister_widget('WP_Widget_Calendar');
@@ -48,5 +57,4 @@ if ( ! function_exists('unregister_default_widgets')) {
         unregister_widget('Twenty_Eleven_Ephemera_Widget');
     }
 
-    add_action('widgets_init', 'unregister_default_widgets', 11);
 }

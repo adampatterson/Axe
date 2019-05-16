@@ -67,3 +67,48 @@
     padding: .5em;
     border: 1px solid currentColor
 }
+
+.wp-block-embed {
+    &.is-type-video {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+
+        iframe, object, embed, video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &.aligncenter.is-type-rich {
+        > .wp-block-embed__wrapper iframe,
+        > .wp-block-embed__wrapper twitter-widget {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+    }
+
+    &.is-provider-spotify iframe {
+        width: 600px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    &.wp-block-embed-wordpress {
+        > .wp-block-embed__wrapper iframe {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+    }
+
+    &.is-provider-giphy,
+    &.is-provider-flickr {
+        .wp-block-embed__wrapper {
+            text-align: center;
+        }
+    }
+}

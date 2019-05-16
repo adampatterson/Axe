@@ -10,7 +10,7 @@
                 'depth'          => 1,
                 'container'      => false,
                 'menu_class'     => 'nav justify-content-center secondary-nav pt-5',
-                'walker'         => new wp_bootstrap_navwalker()
+                'walker'         => new Axe\Core\Walker()
             ));
         }
         #get_search_form();

@@ -19,7 +19,7 @@
                         'depth'          => 3,
                         'container'      => false,
                         'menu_class'     => 'nav navbar-nav primary-nav ml-auto',
-                        'walker'         => new wp_bootstrap_navwalker()
+                        'walker'         => new Axe\Core\Walker()
                     ));
                 }
                 //            get_search_form();

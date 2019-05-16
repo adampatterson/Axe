@@ -248,6 +248,7 @@ if ( ! function_exists('the_archive_description')) {
  *
  * @return bool
  */
+if ( ! function_exists('axe_categorized_blog')) {
 function axe_categorized_blog()
 {
     if (false === ($all_the_cool_cats = get_transient('axe_categories'))) {
@@ -273,6 +274,7 @@ function axe_categorized_blog()
         // This blog has only 1 category so axe_categorized_blog should return false.
         return false;
     }
+}
 }
 
 /**
