@@ -5,10 +5,10 @@ namespace Axe\Setup;
 class Theme
 {
 
-    public function register()
+    public function __construct()
     {
-        add_filter('next_posts_link_attributes', [$this, 'axe_posts_link_attributes'], 10, 1);
-        add_filter('previous_posts_link_attributes', [$this, 'axe_posts_link_attributes'], 10, 1);
+        add_filter('next_posts_link_attributes', [$this, 'posts_link_attributes'], 10, 1);
+        add_filter('previous_posts_link_attributes', [$this, 'posts_link_attributes'], 10, 1);
 
         if ( ! is_admin()) {
             add_filter('the_title', [$this, 'markdown_title']);
@@ -35,7 +35,7 @@ class Theme
         /**
          * Set the content width based on the theme's design and stylesheet
          */
-        add_action('after_setup_theme', [$this, 'axe_content_width'], 0);
+        add_action('after_setup_theme', [$this, 'content_width'], 0);
 
 
         // Clean up the head
@@ -76,14 +76,14 @@ class Theme
         add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video'));
 
         // Remove Query Strings From Static Resources
-        add_filter('script_loader_src', [$this, 'axe_remove_script_version'], 15, 1);
-        add_filter('style_loader_src', [$this, 'axe_remove_script_version'], 15, 1);
+        add_filter('script_loader_src', [$this, 'remove_script_version'], 15, 1);
+        add_filter('style_loader_src', [$this, 'remove_script_version'], 15, 1);
     }
 
     /**
      * @return string
      */
-    function axe_posts_link_attributes()
+    function posts_link_attributes()
     {
         return 'class="page-link"';
     }
@@ -105,14 +105,14 @@ class Theme
     /**
      * Remove Query Strings From Static Resources
      */
-    public function axe_remove_script_version($src)
+    public function remove_script_version($src)
     {
         $parts = explode('?', $src);
 
         return $parts[0];
     }
 
-    public function axe_content_width()
+    public function content_width()
     {
         global $content_width;
 

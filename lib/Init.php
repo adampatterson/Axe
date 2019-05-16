@@ -12,7 +12,6 @@ class Init
     public static function get_services()
     {
         return [
-            Init::class,
             Core\Media::class,
             Core\Options::class,
             Core\Walker::class,
@@ -22,6 +21,7 @@ class Init
             Setup\JetPack::class,
             Setup\Menu::class,
             Setup\Theme::class,
+            Setup\Template::class,
             Custom\Custom::class,
         ];
     }

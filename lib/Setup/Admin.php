@@ -5,16 +5,13 @@ namespace Axe\Setup;
 class Admin
 {
 
-    /**
-     *
-     */
-    public function register()
+    public function __construct()
     {
-
         if ( ! function_exists('enable_admin_bar')) {
 
             show_admin_bar(true);
         }
+
         // Add Editor Style
         add_editor_style('editor-style.css');
 
@@ -22,24 +19,24 @@ class Admin
         add_editor_style('assets/css/editor-style.css');
 
         // Show Kitchen Sink in WYSIWYG Editor
-        add_filter('tiny_mce_before_init', [$this, 'axe_unhide_kitchensink']);
+        add_filter('tiny_mce_before_init', [$this, 'unhide_kitchensink']);
 
         // Remove Dashboard Meta Boxes
-        add_action('wp_dashboard_setup', [$this, 'axe_remove_dashboard_widgets']);
+        add_action('wp_dashboard_setup', [$this, 'remove_dashboard_widgets']);
 
         // Change Admin Menu Order
-        add_filter('custom_menu_order', [$this, 'axe_custom_menu_order']);
-        add_filter('menu_order', [$this, 'axe_custom_menu_order']);
+        add_filter('custom_menu_order', [$this, 'custom_menu_order']);
+        add_filter('menu_order', [$this, 'custom_menu_order']);
 
         // Hide Admin Areas that are not used
-        add_action('admin_menu', [$this, 'axe_remove_menu_pages']);
+        add_action('admin_menu', [$this, 'remove_menu_pages']);
 
         // Remove default link for images
-        add_action('admin_init', [$this, 'axe_imagelink_setup'], 10);
+        add_action('admin_init', [$this, 'imagelink_setup'], 10);
 
         // Remove Read More Jump
-        add_filter('the_content_more_link', [$this, 'axe_remove_more_jump_link']);
-        add_filter('excerpt_more', [$this, 'axe_excerpt']);
+        add_filter('the_content_more_link', [$this, 'remove_more_jump_link']);
+        add_filter('excerpt_more', [$this, 'excerpt']);
 
         add_filter('get_avatar', [$this, 'add_gravatar_class']);
 
@@ -47,15 +44,15 @@ class Admin
         add_action('login_head', [$this, 'custom_login_logo']);
 
         // Don't update theme
-        add_filter('http_request_args', [$this, 'axe_dont_update_theme'], 5, 2);
+        add_filter('http_request_args', [$this, 'dont_update_theme'], 5, 2);
 
-        add_filter('user_contactmethods', [$this, 'axe_contactmethods']);
+        add_filter('user_contactmethods', [$this, 'contactmethods']);
     }
 
     /**
      * Show Kitchen Sink in WYSIWYG Editor
      */
-    public function axe_unhide_kitchensink($args)
+    public function unhide_kitchensink($args)
     {
         $args['wordpress_adv_hidden'] = false;
 
@@ -65,7 +62,7 @@ class Admin
     /**
      * Remove Dashboard Meta Boxes
      */
-    public function axe_remove_dashboard_widgets()
+    public function remove_dashboard_widgets()
     {
         global $wp_meta_boxes;
         unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
@@ -82,7 +79,7 @@ class Admin
     /**
      * Change Admin Menu Order
      */
-    public function axe_custom_menu_order($menu_ord)
+    public function custom_menu_order($menu_ord)
     {
         if ( ! $menu_ord) {
             return true;
@@ -110,7 +107,7 @@ class Admin
     /**
      * Hide Admin Areas that are not used
      */
-    public function axe_remove_menu_pages()
+    public function remove_menu_pages()
     {
         remove_menu_page('link-manager.php');
     }
@@ -118,7 +115,7 @@ class Admin
     /**
      * Remove default link for images
      */
-    public function axe_imagelink_setup()
+    public function imagelink_setup()
     {
         $image_set = get_option('image_default_link_type');
         if ($image_set !== 'none') {
@@ -133,7 +130,7 @@ class Admin
      *
      * @return mixed
      */
-    public function axe_remove_more_jump_link($link)
+    public function remove_more_jump_link($link)
     {
         $offset = strpos($link, '#more-');
         if ($offset) {
@@ -149,7 +146,7 @@ class Admin
     /**
      * @return string
      */
-    public function axe_excerpt()
+    public function excerpt()
     {
         return '...';
     }
@@ -168,10 +165,11 @@ class Admin
 
     public function custom_login_logo()
     {
-        echo '<style type="text/css">
-        h1 a { background-image: url(' . __t() . '/assets/img/adminlogo.png) !important; height: auto;}
-        body.login{ background: #fff; }
-        </style>';
+//        var_dump('axe.adminlogo');
+//        echo '<style type="text/css">
+//        h1 a { background-image: url(' . __t() . '/assets/img/adminlogo.png) !important; height: auto;}
+//        body.login{ background: #fff; }
+//        </style>';
     }
 
     /**
@@ -190,7 +188,7 @@ class Admin
      * @link http://markjaquith.wordpress.com/2009/12/14/excluding-your-plugin-or-theme-from-update-checks/
      *
      */
-    public function axe_dont_update_theme($r, $url)
+    public function dont_update_theme($r, $url)
     {
         if (0 !== strpos($url, 'http://api.wordpress.org/themes/update-check')) {
             return $r;
@@ -215,7 +213,7 @@ class Admin
      *
      * @author Bill Erickson
      */
-    public function axe_contactmethods($contactmethods)
+    public function contactmethods($contactmethods)
     {
         unset($contactmethods['aim']);
         unset($contactmethods['yim']);
@@ -223,6 +221,4 @@ class Admin
 
         return $contactmethods;
     }
-
-
 }
