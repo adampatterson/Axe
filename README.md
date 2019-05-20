@@ -7,7 +7,19 @@ My build workflow might not be very orthodox but I typically review the design, 
 
 Simply being able to plow ahead creating my site structures and loading in real or fake content lets me have something tangible to work with.
 
-Another tip that I can provide is using `console.log` to output my ACF structures reducing the need to be to refer back to the admin pages. Check it out [here](https://gist.github.com/adampatterson/711a101d5d93f3226fe1).
+Another tip that I can provide is using `console.log` to output my ACF structures reducing the need to be to refer back to the admin pages.
+
+```
+/*
+ * Load this in your footer, and 
+ * check to see if the user is logged in.
+ * /
+<? $data = get_fields();?>
+<script>
+    console.log(<?= json_encode($data) ?>)
+</script>
+```
+
 
 ### Build
 Included is a bower file preset with Bootstrap SASS, jQuery and a couple other commonly used packages. Bower will install packages to `/src/vendor`.
@@ -103,7 +115,7 @@ Opening `theme-helpers.php` and uncommenting the function on [line 6](https://gi
 
 ### Credits
 Template tags are heavily modified versions of [_S](http://underscores.me/)
-
+Some of the class registration was inspired from by [Alecaddd](https://github.com/Alecaddd/awps)
 
 #### Disclaimer
 This theme is made for Me, and with my efficiencies in mind. That said, If you have anything to add then send me an email hello@adampatterson.ca
