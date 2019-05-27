@@ -61,14 +61,6 @@
 		"oAP": "/acf-json/.gitkeep",
 		"oF": 0
 		},
-	"/archive.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/archive.php",
-		"oF": 0
-		},
 	"/assets/css/base.css": {
 		"aP": 0,
 		"bl": 0,
@@ -199,6 +191,17 @@
 		"oAP": "/assets/ico/favicon.ico",
 		"oF": 0
 		},
+	"/assets/img/adminlogo.png": {
+		"ft": 32768,
+		"iS": 642,
+		"oA": 0,
+		"oAP": "/assets/img/adminlogo.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"/assets/img/logo.png": {
 		"ft": 32768,
 		"iS": 3753,
@@ -240,6 +243,14 @@
 		"sC": 1,
 		"tS": 0
 		},
+	"/assets/js/manifest.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/assets/js/manifest.js.map",
+		"oF": 0
+		},
 	"/assets/js/vendor.js": {
 		"bF": 0,
 		"ft": 64,
@@ -250,6 +261,14 @@
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
+		},
+	"/assets/js/vendor.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/assets/js/vendor.js.map",
+		"oF": 0
 		},
 	"/assets/vendor/BigVideo.js/.bower.json": {
 		"ft": 524288,
@@ -37839,6 +37858,25 @@
 		"oAP": "/functions.php",
 		"oF": 0
 		},
+	"/Handle-ChildTheme/README.md": {
+		"cB": 0,
+		"cS": 0,
+		"eF": 0,
+		"eL": 1,
+		"ema": 1,
+		"eSQ": 1,
+		"ft": 4096,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/Handle-ChildTheme/README.html",
+		"oF": 0,
+		"oFM": 0,
+		"oS": 0,
+		"pHT": 0,
+		"pME": 1,
+		"rFN": 0,
+		"uCM": 0
+		},
 	"/index.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -37855,12 +37893,60 @@
 		"oAP": "/lib/bootstrap-walker.php",
 		"oF": 0
 		},
+	"/lib/Core/Media.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Core/Media.php",
+		"oF": 0
+		},
+	"/lib/Core/Options.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Core/Options.php",
+		"oF": 0
+		},
+	"/lib/Core/Walker.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Core/Walker.php",
+		"oF": 0
+		},
+	"/lib/Core/Widgets.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Core/Widgets.php",
+		"oF": 0
+		},
 	"/lib/custom.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/lib/custom.php",
+		"oF": 0
+		},
+	"/lib/Custom/Custom.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Custom/Custom.php",
+		"oF": 0
+		},
+	"/lib/Helpers.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Helpers.php",
 		"oF": 0
 		},
 	"/lib/init.php": {
@@ -37871,76 +37957,60 @@
 		"oAP": "/lib/init.php",
 		"oF": 0
 		},
-	"/lib/theme-functions.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/lib/theme-functions.php",
-		"oF": 0
-		},
-	"/lib/theme-helpers.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/lib/theme-helpers.php",
-		"oF": 0
-		},
-	"/lib/theme-jetpack.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/lib/theme-jetpack.php",
-		"oF": 0
-		},
-	"/lib/theme-media.php": {
+	"/lib/Setup/Admin.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 2,
-		"oAP": "/lib/theme-media.php",
+		"oAP": "/lib/Setup/Admin.php",
 		"oF": 0
 		},
-	"/lib/theme-menus.php": {
+	"/lib/Setup/Customizer.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 2,
-		"oAP": "/lib/theme-menus.php",
+		"oAP": "/lib/Setup/Customizer.php",
 		"oF": 0
 		},
-	"/lib/theme-options.php": {
+	"/lib/Setup/JetPack.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 2,
-		"oAP": "/lib/theme-options.php",
+		"oAP": "/lib/Setup/JetPack.php",
 		"oF": 0
 		},
-	"/lib/theme-post-types.php": {
+	"/lib/Setup/Menu.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 2,
-		"oAP": "/lib/theme-post-types.php",
+		"oAP": "/lib/Setup/Menu.php",
 		"oF": 0
 		},
-	"/lib/theme-template-tags.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/lib/theme-template-tags.php",
-		"oF": 0
-		},
-	"/lib/theme-widgets.php": {
+	"/lib/Setup/Template.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 2,
-		"oAP": "/lib/theme-widgets.php",
+		"oAP": "/lib/Setup/Template.php",
+		"oF": 0
+		},
+	"/lib/Setup/Theme.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Setup/Theme.php",
+		"oF": 0
+		},
+	"/lib/template-tags.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/template-tags.php",
 		"oF": 0
 		},
 	"/license.txt": {
@@ -38039,14 +38109,6 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/page.php",
-		"oF": 0
-		},
-	"/README.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/README.html",
 		"oF": 0
 		},
 	"/README.md": {
@@ -39922,6 +39984,45 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"/src/scss/components/_wp-classic.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/src/scss/css/_wp-classic.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"/src/scss/components/_wp-gutenberg.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/src/scss/css/_wp-gutenberg.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"/src/scss/components/_wp-widget.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/src/scss/css/_wp-widget.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"/src/scss/editor-style.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -39959,14 +40060,6 @@
 		"hM": 0,
 		"oA": 2,
 		"oAP": "/templates/archive-category.php",
-		"oF": 0
-		},
-	"/templates/archive-default.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/templates/archive-default.php",
 		"oF": 0
 		},
 	"/templates/archive-tag.php": {
@@ -40081,14 +40174,6 @@
 		"oAP": "/templates/partials/admin-helper.php",
 		"oF": 0
 		},
-	"/templates/partials/comments.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/templates/partials/comments.php",
-		"oF": 0
-		},
 	"/templates/partials/footer.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -40121,6 +40206,38 @@
 		"oAP": "/templates/partials/navigation.php",
 		"oF": 0
 		},
+	"/templates/partials/post-author.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/templates/partials/post-author.php",
+		"oF": 0
+		},
+	"/templates/partials/post-comments.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/templates/partials/post-comments.php",
+		"oF": 0
+		},
+	"/templates/partials/post-footer.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/templates/partials/post-footer.php",
+		"oF": 0
+		},
+	"/templates/partials/sidebar.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/templates/partials/sidebar.php",
+		"oF": 0
+		},
 	"/templates/woo-product-listing.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -40143,6 +40260,14 @@
 		"hM": 0,
 		"oA": 2,
 		"oAP": "/vendor/composer/autoload_classmap.php",
+		"oF": 0
+		},
+	"/vendor/composer/autoload_files.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/vendor/composer/autoload_files.php",
 		"oF": 0
 		},
 	"/vendor/composer/autoload_namespaces.php": {
