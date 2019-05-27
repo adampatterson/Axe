@@ -25,6 +25,8 @@
     "jquery-sticky": "~1.0.3",
     "ekko-lightbox": "latest",
     "js-cookie": "^2.1.1",
-    "mixitup": "^2.1.11"
+    "mixitup": "^2.1.11",
+    "lity": "^2.3.1",
+    "photoswipe": "^4.1.3"
   }
 }
