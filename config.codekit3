@@ -37898,12 +37898,12 @@
 		"oAP": "/lib/custom.php",
 		"oF": 0
 		},
-	"/lib/init.php": {
+	"/lib/Init.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 2,
-		"oAP": "/lib/init.php",
+		"oAP": "/lib/Init.php",
 		"oF": 0
 		},
 	"/lib/theme-functions.php": {
