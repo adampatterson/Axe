@@ -21,7 +21,7 @@ class Init
             Setup\JetPack::class,
             Setup\Menu::class,
             Setup\Theme::class,
-            Setup\Template::class,
+            Template::class,
             Custom\Custom::class,
         ];
     }
