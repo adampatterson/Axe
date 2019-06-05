@@ -1,4 +1,6 @@
 <?php
+require_once('lib/Helpers.php');
+
 require_once('lib/template-tags.php');
 
 // For composer dependencies

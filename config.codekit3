@@ -37885,14 +37885,6 @@
 		"oAP": "/index.php",
 		"oF": 0
 		},
-	"/lib/bootstrap-walker.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/lib/bootstrap-walker.php",
-		"oF": 0
-		},
 	"/lib/Core/Media.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -37925,14 +37917,6 @@
 		"oAP": "/lib/Core/Widgets.php",
 		"oF": 0
 		},
-	"/lib/custom.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/lib/custom.php",
-		"oF": 0
-		},
 	"/lib/Custom/Custom.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -37949,12 +37933,12 @@
 		"oAP": "/lib/Helpers.php",
 		"oF": 0
 		},
-	"/lib/init.php": {
+	"/lib/Init.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 2,
-		"oAP": "/lib/init.php",
+		"oAP": "/lib/Init.php",
 		"oF": 0
 		},
 	"/lib/Setup/Admin.php": {
@@ -37989,14 +37973,6 @@
 		"oAP": "/lib/Setup/Menu.php",
 		"oF": 0
 		},
-	"/lib/Setup/Template.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/lib/Setup/Template.php",
-		"oF": 0
-		},
 	"/lib/Setup/Theme.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -38011,6 +37987,14 @@
 		"hM": 0,
 		"oA": 2,
 		"oAP": "/lib/template-tags.php",
+		"oF": 0
+		},
+	"/lib/Template.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Template.php",
 		"oF": 0
 		},
 	"/license.txt": {
@@ -40260,14 +40244,6 @@
 		"hM": 0,
 		"oA": 2,
 		"oAP": "/vendor/composer/autoload_classmap.php",
-		"oF": 0
-		},
-	"/vendor/composer/autoload_files.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/vendor/composer/autoload_files.php",
 		"oF": 0
 		},
 	"/vendor/composer/autoload_namespaces.php": {

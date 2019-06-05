@@ -1,9 +1,9 @@
 {
     "require": {
-
     },
     "autoload": {
-        "psr-4": { "Axe\\": "./lib" },
-        "files": [ "./lib/Helpers.php" ]
+        "psr-4": {
+            "Axe\\": "./lib"
+        }
     }
 }
