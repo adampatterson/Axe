@@ -37981,14 +37981,6 @@
 		"oAP": "/lib/Setup/Theme.php",
 		"oF": 0
 		},
-	"/lib/template-tags.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/lib/template-tags.php",
-		"oF": 0
-		},
 	"/lib/Template.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -40188,6 +40180,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/templates/partials/navigation.php",
+		"oF": 0
+		},
+	"/templates/partials/pagination.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/templates/partials/pagination.php",
 		"oF": 0
 		},
 	"/templates/partials/post-author.php": {

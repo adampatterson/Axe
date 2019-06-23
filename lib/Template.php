@@ -94,7 +94,7 @@ class Template
         if ('post' == get_post_type()) {
             /* translators: used between list items, there is a space after the comma */
             $categories_list = get_the_category_list(__(', ', 'axe'));
-            if ($categories_list && axe_categorized_blog()) {
+            if ($categories_list && categorized_blog()) {
                 printf('<span class="cat-links">' . __('Posted in %1$s', 'axe') . '</span>', $categories_list);
             }
 
@@ -118,7 +118,7 @@ class Template
     {
         if ('post' == get_post_type()) {
             $categories_list = get_the_category_list(', ');
-            if ($categories_list && axe_categorized_blog()) {
+            if ($categories_list && self::categorized_blog()) {
                 printf('<span class="category-links">' . '<strong>Categories:</strong> %1$s' . '</span>', $categories_list);
             }
         }
@@ -219,7 +219,7 @@ class Template
      * @todo Remove this function when WordPress 4.3 is released.
      *
      */
-    public function the_archive_description($before = '', $after = '')
+    public static function the_archive_description($before = '', $after = '')
     {
         $description = apply_filters('get_the_archive_description', term_description());
 
@@ -241,7 +241,7 @@ class Template
      *
      * @return bool
      */
-    public function axe_categorized_blog()
+    public static function categorized_blog()
     {
         if (false === ($all_the_cool_cats = get_transient('axe_categories'))) {
             // Create an array of all the categories that are attached to posts.
@@ -260,16 +260,16 @@ class Template
         }
 
         if ($all_the_cool_cats > 1) {
-            // This blog has more than 1 category so axe_categorized_blog should return true.
+            // This blog has more than 1 category so categorized_blog should return true.
             return true;
         } else {
-            // This blog has only 1 category so axe_categorized_blog should return false.
+            // This blog has only 1 category so categorized_blog should return false.
             return false;
         }
     }
 
     /**
-     * Flush out the transients used in axe_categorized_blog.
+     * Flush out the transients used in categorized_blog.
      */
     public function axe_category_transient_flusher()
     {

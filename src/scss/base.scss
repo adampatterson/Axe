@@ -3,10 +3,11 @@ Based off of Bootstrap 4.1.3
 This file allows you to customize what Bootstrap includes
  */
 @import "../../assets/vendor/bootstrap/scss/functions";
-@import "components/base-variables";
 @import "components/bootstrap-variables";
+@import "components/base-variables";
 @import "components/bootstrap-mixins";
 @import "components/bootstrap-custom";
+
 @import "components/mixens";
 @import "components/fonts";
 @import "components/wp-gutenberg";
