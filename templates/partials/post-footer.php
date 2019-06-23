@@ -1,13 +1,13 @@
 <footer class="row entry-footer terms mt-4">
     <div class="col-md-12">
-        <p class="post-categories"><?php axe_entry_categories(); ?></p>
-        <p class="post-tags"><?php axe_entry_tags(); ?></p>
+        <p class="post-categories"><?php Axe\Template::post_categories(); ?></p>
+        <p class="post-tags"><?php Axe\Template::post_tags(); ?></p>
     </div>
 </footer>
 
 <div class="row post-navigation">
     <div class="col-md-12 my-5">
-        <?php axe_post_nav(); ?>
+        <?php Axe\Template::post_nav(); ?>
     </div>
 </div>
 

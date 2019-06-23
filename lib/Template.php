@@ -8,7 +8,7 @@ namespace Axe;
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package Handle
+ * @package Axe
  */
 class Template
 {
@@ -22,33 +22,30 @@ class Template
     /**
      * Display navigation to next/previous set of posts when applicable.
      */
-    public function axe_paging_nav()
+    public static function pagination_nav()
     {
         // Don't print empty markup if there's only one page.
         if ($GLOBALS['wp_query']->max_num_pages < 2) {
             return;
         }
         ?>
-        <nav class="navigation paging-navigation" role="navigation">
-            <div class="nav-links">
-                <ul class="pager">
-                    <li class="next <?= ( ! get_next_posts_link()) ? 'disabled' : '' ?> nav-previous">
-                        <?php next_posts_link(__('<span class="meta-nav" aria-hidden="true">&larr;</span> Older posts', 'axe')); ?>
-                    </li>
-                    <li class="previous <?= ( ! get_previous_posts_link()) ? 'disabled' : '' ?> nav-next ">
-                        <?php previous_posts_link(__('Newer posts <span class="meta-nav" aria-hidden="true">&rarr;</span>', 'axe')); ?>
-                    </li>
-                </ul>
-            </div>
+        <nav class="navigation post-navigation" role="navigation">
+            <ul class="pagination justify-content-center">
+                <li class="next <?= ( ! get_next_posts_link()) ? 'disabled' : '' ?> nav-previous page-item mr-auto">
+                    <?php next_posts_link(__('<span class="meta-nav" aria-hidden="true">&larr;</span> Older posts', 'axe')); ?>
+                </li>
+                <li class="previous <?= ( ! get_previous_posts_link()) ? 'disabled' : '' ?> nav-next page-item ml-auto">
+                    <?php previous_posts_link(__('Newer posts <span class="meta-nav" aria-hidden="true">&rarr;</span>', 'axe')); ?>
+                </li>
+            </ul>
         </nav>
         <?php
     }
 
-
     /**
      * Display navigation to next/previous post when applicable.
      */
-    public function axe_post_nav()
+    public static function post_nav()
     {
         // Don't print empty markup if there's nowhere to navigate.
         $previous = (is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false, '', true);
@@ -60,22 +57,21 @@ class Template
         ?>
         <nav class="navigation post-navigation" role="navigation">
             <ul class="pagination justify-content-center">
-                <li class="previous <?= ( ! get_next_post_link()) ? 'disabled' : '' ?> nav-previous page-item mr-auto">
-                    <?php next_post_link('%link', _x('<span class="meta-nav" aria-hidden="true">&larr;</span> %title', 'Next post link')); ?>
+                <li class="next <?= ( ! get_next_post_link()) ? 'disabled' : '' ?> nav-previous page-item mr-auto">
+                    <?php next_post_link('%link', __('<span class="meta-nav" aria-hidden="true">&larr;</span> %title', 'Next post link')); ?>
                 </li>
-                <li class="next <?= ( ! get_previous_post_link()) ? 'disabled' : '' ?> nav-next page-item ml-auto">
-                    <?php previous_post_link('%link', _x('%title <span class="meta-nav" aria-hidden="true">&rarr;</span>', 'Previous post link')); ?>
+                <li class="previous <?= ( ! get_previous_post_link()) ? 'disabled' : '' ?> nav-next page-item ml-auto">
+                    <?php previous_post_link('%link', __('%title <span class="meta-nav" aria-hidden="true">&rarr;</span>', 'Previous post link')); ?>
                 </li>
             </ul>
         </nav>
         <?php
     }
 
-
     /**
      * Prints HTML with meta information for the current post-date/time and author.
      */
-    public function axe_posted_on()
+    public static function posted_on()
     {
         $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 
@@ -89,11 +85,10 @@ class Template
 
     }
 
-
     /**
      * Prints HTML with meta information for the categories, tags and comments.
      */
-    public function axe_entry_footer()
+    public static function axe_entry_footer()
     {
         // Hide category and tag text for pages.
         if ('post' == get_post_type()) {
@@ -119,19 +114,17 @@ class Template
         edit_post_link('Edit', '<br/><span class="edit-link">', '</span>');
     }
 
-
-    public function axe_entry_categories()
+    public static function post_categories()
     {
         if ('post' == get_post_type()) {
             $categories_list = get_the_category_list(', ');
             if ($categories_list && axe_categorized_blog()) {
-                printf('<span class="cat-links">' . '<strong>Categories:</strong> %1$s' . '</span>', $categories_list);
+                printf('<span class="category-links">' . '<strong>Categories:</strong> %1$s' . '</span>', $categories_list);
             }
         }
     }
 
-
-    public function axe_entry_tags()
+    public static function post_tags()
     {
         if ('post' == get_post_type()) {
             $tags_list = get_the_tag_list('', ', ');
@@ -141,15 +134,13 @@ class Template
         }
     }
 
-
     /**
      * Prints HTML with meta information for the categories, tags and comments.
      */
-    public function axe_entry_edit()
+    public static function edit_post()
     {
         edit_post_link(__('Edit', 'axe'), '<span class="edit-link">', '</span>');
     }
-
 
     /**
      * Shim for `the_archive_title()`.
@@ -162,7 +153,7 @@ class Template
      * @todo Remove this function when WordPress 4.3 is released.
      *
      */
-    public function the_archive_title($before = '', $after = '')
+    public static function the_archive_title($before = '', $after = '')
     {
         if (is_category()) {
             $title = sprintf(__('Category: %s', 'axe'), single_cat_title('', false));

@@ -3,12 +3,14 @@
 $term_id  = get_query_var('tag_id');
 $taxonomy = 'post_tag';
 $args     = 'include=' . $term_id;
-$terms    = get_terms($taxonomy, $args); ?>
+$terms    = get_terms($taxonomy, $args);
+
+?>
 
 <div class="content-wrapper">
     <div class="container">
 
-        <h3 class="entry-title"><?= the_archive_title(); ?></h3>
+        <h1 class="entry-title pb-5"><?= Axe\Template::the_archive_title(); ?></h1>
 
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -17,8 +19,10 @@ $terms    = get_terms($taxonomy, $args); ?>
                     <?php if (have_posts()):
                         include(get_template_part_acf('templates/loop', 'post')); ?>
 
-                        <div class="text-center">
-                            <?php axe_paging_nav() ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?php get_template_part('templates/partials/pagination') ?>
+                            </div>
                         </div>
 
                     <?php else:

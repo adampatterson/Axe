@@ -9,7 +9,7 @@
                         include( get_template_part_acf( 'templates/loop', 'post' ) ); ?>
 
                         <div class="text-center">
-                            <?php axe_paging_nav() ?>
+                            <?php axe_pagination_nav() ?>
                         </div>
 
                     <?php else:
