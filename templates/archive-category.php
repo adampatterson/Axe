@@ -6,12 +6,10 @@ $category = get_category($cat);
 <div class="content-wrapper">
     <div class="container">
 
-        <h1 class="entry-title pb-5"><?= Axe\Template::the_archive_title(); ?></h1>
-
-        <?php Axe\Template::the_archive_description() ?>
+        <?php include(get_template_part_acf('templates/partials/archive', 'header')); ?>
 
         <div class="row">
-            <div class="col-md-9 col-md-offset-1">
+            <div class="col-md-10 col-md-offset-1">
 
                 <section id="post-blog">
                     <?php if (have_posts()):

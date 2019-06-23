@@ -40150,6 +40150,14 @@
 		"oAP": "/templates/partials/admin-helper.php",
 		"oF": 0
 		},
+	"/templates/partials/archive-header.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/templates/partials/archive-header.php",
+		"oF": 0
+		},
 	"/templates/partials/footer.php": {
 		"cB": 0,
 		"ft": 8192,

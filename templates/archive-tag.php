@@ -4,13 +4,12 @@ $term_id  = get_query_var('tag_id');
 $taxonomy = 'post_tag';
 $args     = 'include=' . $term_id;
 $terms    = get_terms($taxonomy, $args);
-
 ?>
 
 <div class="content-wrapper">
     <div class="container">
 
-        <h1 class="entry-title pb-5"><?= Axe\Template::the_archive_title(); ?></h1>
+        <?php include(get_template_part_acf('templates/partials/archive', 'header')); ?>
 
         <div class="row">
             <div class="col-md-10 col-md-offset-1">

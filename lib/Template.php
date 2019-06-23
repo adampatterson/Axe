@@ -88,13 +88,13 @@ class Template
     /**
      * Prints HTML with meta information for the categories, tags and comments.
      */
-    public static function axe_entry_footer()
+    public static function post_footer()
     {
         // Hide category and tag text for pages.
         if ('post' == get_post_type()) {
             /* translators: used between list items, there is a space after the comma */
             $categories_list = get_the_category_list(__(', ', 'axe'));
-            if ($categories_list && categorized_blog()) {
+            if ($categories_list && self::categorized_blog()) {
                 printf('<span class="cat-links">' . __('Posted in %1$s', 'axe') . '</span>', $categories_list);
             }
 
