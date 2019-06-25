@@ -61,6 +61,14 @@
 		"oAP": "/acf-json/.gitkeep",
 		"oF": 0
 		},
+	"/archive.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/archive.php",
+		"oF": 0
+		},
 	"/assets/css/base.css": {
 		"aP": 0,
 		"bl": 0,
