@@ -5,6 +5,34 @@ namespace Axe\Setup;
 class Theme
 {
 
+    public $default_header = array(
+        'default-image'          => '',
+        'width'                  => 0,
+        'height'                 => 0,
+        'flex-height'            => false,
+        'flex-width'             => false,
+        'uploads'                => true,
+        'random-default'         => false,
+        'header-text'            => true,
+        'default-text-color'     => '',
+        'wp-head-callback'       => '',
+        'admin-head-callback'    => '',
+        'admin-preview-callback' => '',
+    );
+
+    public $default_background = array(
+        'default-color'          => '',
+        'default-image'          => '',
+        'default-repeat'         => 'repeat',
+        'default-position-x'     => 'left',
+        'default-position-y'     => 'top',
+        'default-size'           => 'auto',
+        'default-attachment'     => 'scroll',
+        'wp-head-callback'       => '_custom_background_cb',
+        'admin-head-callback'    => '',
+        'admin-preview-callback' => ''
+    );
+
     public function __construct()
     {
         add_filter('next_posts_link_attributes', [$this, 'posts_link_attributes'], 10, 1);
@@ -65,10 +93,10 @@ class Theme
         add_theme_support('title-tag');
 
         // Enable Custom Headers
-        // add_theme_support( 'custom-header' );
+        add_theme_support('custom-header', $this->default_header);
 
         // Enable Custom Backgrounds
-        // add_theme_support( 'custom-background' );
+        add_theme_support('custom-background', $this->default_background);
 
         add_theme_support('title-tag');
 
