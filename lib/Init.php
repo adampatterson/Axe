@@ -17,6 +17,7 @@ class Init
             Core\Walker::class,
             Core\Widgets::class,
             Setup\Admin::class,
+            Setup\About::class,
             Setup\Customizer::class,
             Setup\JetPack::class,
             Setup\Menu::class,
