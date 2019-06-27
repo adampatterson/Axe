@@ -4,7 +4,7 @@ $category = get_category($cat);
 ?>
 
 <div class="content-wrapper">
-    <div class="container">
+    <div class="container pt-5">
 
         <?php include(get_template_part_acf('templates/partials/archive', 'header')); ?>
 
