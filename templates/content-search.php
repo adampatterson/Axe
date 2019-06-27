@@ -1,5 +1,5 @@
-<div class="wrapper">
-    <div class="container">
+<div class="content-wrapper">
+    <div class="container pt-5">
 
         <div class="row">
             <div class="col-md-12">
@@ -8,8 +8,10 @@
 
                         include( get_template_part_acf( 'templates/loop', 'post' ) ); ?>
 
-                        <div class="text-center">
-                            <?php axe_pagination_nav() ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?php get_template_part('templates/partials/pagination') ?>
+                            </div>
                         </div>
 
                     <?php else:
