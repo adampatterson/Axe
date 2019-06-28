@@ -5,7 +5,7 @@ namespace Axe\Setup;
 class About
 {
 
-    public function register()
+    public function __construct()
     {
         add_action('admin_menu', [$this, 'axe_about_page']);
     }

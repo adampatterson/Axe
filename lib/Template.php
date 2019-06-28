@@ -15,8 +15,8 @@ class Template
 
     public function __construct()
     {
-        add_action('edit_category', [$this, 'axe_category_transient_flusher']);
-        add_action('save_post', [$this, 'axe_category_transient_flusher']);
+        add_action('edit_category', [$this, 'category_transient_flusher']);
+        add_action('save_post', [$this, 'category_transient_flusher']);
     }
 
     /**
@@ -271,7 +271,7 @@ class Template
     /**
      * Flush out the transients used in categorized_blog.
      */
-    public function axe_category_transient_flusher()
+    public function category_transient_flusher()
     {
         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
             return;

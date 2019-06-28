@@ -5,16 +5,16 @@ namespace Axe\Core;
 class Widgets
 {
 
-    public function register()
+    public function __construct()
     {
-        add_action('widgets_init', [$this, 'axe_widgets_init']);
+        add_action('widgets_init', [$this, 'widgets_init']);
         add_action('widgets_init', [$this, 'unregister_default_widgets'], 11);
     }
 
     /**
      * Register Widget Areas
      */
-    public function axe_widgets_init()
+    public function widgets_init()
     {
         // Main Sidebar
         register_sidebar(array(

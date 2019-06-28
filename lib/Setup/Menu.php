@@ -17,7 +17,7 @@ class Menu
         ));
 
         add_filter('nav_menu_css_class', [$this, 'add_classes_on_li'], 1, 3);
-        add_filter('wp_nav_menu', [$this, 'add_classes_on_a']);
+        add_filter('wp_nav_menu', [$this, 'add_classes_on_link']);
     }
 
     public function add_classes_on_li($classes, $item, $args)
@@ -27,7 +27,7 @@ class Menu
         return $classes;
     }
 
-    public function add_classes_on_a($ulclass)
+    public function add_classes_on_link($ulclass)
     {
         return preg_replace('/<a /', '<a class="nav-link"', $ulclass);
     }

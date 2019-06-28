@@ -37949,6 +37949,14 @@
 		"oAP": "/lib/Init.php",
 		"oF": 0
 		},
+	"/lib/Setup/About.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Setup/About.php",
+		"oF": 0
+		},
 	"/lib/Setup/Admin.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -40124,14 +40132,6 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/templates/format-standard.php",
-		"oF": 0
-		},
-	"/templates/format-video.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/templates/format-video.php",
 		"oF": 0
 		},
 	"/templates/loop-post.php": {

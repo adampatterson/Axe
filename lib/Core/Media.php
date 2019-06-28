@@ -4,7 +4,7 @@ namespace Axe\Core;
 
 class Media
 {
-    public function register()
+    public function __construct()
     {
         add_image_size( 'featured', 1600, 600, true ); // Without Blur
         add_image_size( 'gallery', 625, 1000 );
