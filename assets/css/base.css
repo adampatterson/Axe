@@ -6800,6 +6800,10 @@ a img.aligncenter {
     margin: 0;
     padding: 0 4px 5px; }
 
+.gallery-caption {
+  display: none;
+  visibility: hidden; }
+
 /* Text meant only for screen readers. */
 .screen-reader-text {
   border: 0;

@@ -37997,6 +37997,14 @@
 		"oAP": "/lib/Setup/Theme.php",
 		"oF": 0
 		},
+	"/lib/Setup/WooCommerce.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Setup/WooCommerce.php",
+		"oF": 0
+		},
 	"/lib/Template.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -40110,14 +40118,6 @@
 		"oAP": "/templates/content-search.php",
 		"oF": 0
 		},
-	"/templates/content-single.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/templates/content-single.php",
-		"oF": 0
-		},
 	"/templates/content.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -40230,6 +40230,14 @@
 		"oAP": "/templates/partials/post-footer.php",
 		"oF": 0
 		},
+	"/templates/partials/product-footer.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/templates/partials/product-footer.php",
+		"oF": 0
+		},
 	"/templates/partials/sidebar.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -40337,12 +40345,12 @@
 		"oAP": "/woocommerce.php",
 		"oF": 0
 		},
-	"/yarn.lock": {
+	"/woocommerce/.gitkeep": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 2,
-		"oAP": "/yarn.lock",
+		"oAP": "/woocommerce/.gitkeep",
 		"oF": 0
 		}
 	},

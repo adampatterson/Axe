@@ -7,11 +7,6 @@ class Admin
 
     public function __construct()
     {
-        if ( ! function_exists('enable_admin_bar')) {
-
-            show_admin_bar(true);
-        }
-
         // Add Editor Style
         add_editor_style('editor-style.css');
 
