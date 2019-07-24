@@ -3,14 +3,16 @@
         <section>
             <?php
             $style = '';
-            if (has_post_thumbnail()) {
+            if (has_post_thumbnail()):
                 $image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'featured');
                 $style = "style='background-image: url($image[0]); position: relative; background-size: cover !important;'";
-            } ?>
+            endif; ?>
             <div class="container">
-                <figure class="wp-block-image alignwide">
-                    <img src="<?= $image[0] ?>" alt="" class="<?= the_title(); ?>">
-                </figure>
+                <?php if (has_post_thumbnail()): ?>
+                    <figure class="wp-block-image alignwide">
+                        <img src="<?= $image[0] ?>" alt="" class="<?= the_title(); ?>">
+                    </figure>
+                <?php endif; ?>
 
                 <article>
                     <div class="row">
