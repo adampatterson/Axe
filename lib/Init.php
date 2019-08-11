@@ -20,6 +20,7 @@ class Init
             Setup\About::class,
             Setup\Customizer::class,
             Setup\JetPack::class,
+            Setup\WooCommerce::class,
             Setup\Menu::class,
             Setup\Theme::class,
             Template::class,
