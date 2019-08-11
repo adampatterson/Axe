@@ -20,6 +20,11 @@ Another tip that I can provide is using `console.log` to output my ACF structure
 </script>
 ```
 
+### Supports 
+
+ * Favicon
+ * [Header Image](https://codex.wordpress.org/Custom_Headers) 
+ * [Background Image](https://codex.wordpress.org/Custom_Backgrounds)
 
 ### Build
 Included is a bower file preset with Bootstrap SASS, jQuery and a couple other commonly used packages. Bower will install packages to `/src/vendor`.
@@ -108,10 +113,16 @@ Sridhar Katakam has provided an article outlining how to add [dummy content for 
 # Child theme
 https://github.com/adampatterson/Handle
 
-If you will be using ACF with your child theme uncomment the [following](https://github.com/adampatterson/Handle/blob/master/functions.php#L13) so that ACF will store the `.json` files in your working Child theme.
-
 Opening `theme-helpers.php` and uncommenting the function on [line 6](https://github.com/adampatterson/Handle/blob/master/lib/theme-helpers.php#L6) would allows the child theme to serve all of your themes assets.
 
+
+## Plugins
+Blade will require a few plugins to run:
+
+ * Advanced Custom Fields **Required**
+ * Custom Post Type UI
+ * WooCommerce
+ * JetPack
 
 ### Credits
 Template tags are heavily modified versions of [_S](http://underscores.me/)
