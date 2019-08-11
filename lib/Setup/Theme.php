@@ -21,7 +21,7 @@ class Theme
     );
 
     public $default_background = array(
-        'default-color'          => '',
+        'default-color'          => 'ffffff',
         'default-image'          => '',
         'default-repeat'         => 'repeat',
         'default-position-x'     => 'left',
@@ -98,13 +98,11 @@ class Theme
         // Enable Custom Backgrounds
         add_theme_support('custom-background', $this->default_background);
 
-        add_theme_support('title-tag');
-
         // Add Post Formats Theme Support
         add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video'));
 
         // Remove Query Strings From Static Resources
-        add_filter('script_loader_src', [$this, 'remove_script_version'], 15, 1);
+//        add_filter('script_loader_src', [$this, 'remove_script_version'], 15, 1);
         add_filter('style_loader_src', [$this, 'remove_script_version'], 15, 1);
     }
 
