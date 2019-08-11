@@ -23,7 +23,7 @@ if ( ! function_exists('__p')) {
      */
     function __p()
     {
-        return TEMPLATEPATH . '/';
+        return get_template_directory() . '/';
     }
 }
 
@@ -186,8 +186,8 @@ function get_template_part_acf($slug, $name = null)
  */
 function check_path($template_name)
 {
-    if (file_exists(STYLESHEETPATH . '/' . $template_name) or file_exists(TEMPLATEPATH . '/' . $template_name)) {
-        return TEMPLATEPATH . '/' . $template_name;
+    if (file_exists(get_stylesheet_directory() . '/' . $template_name) or file_exists(get_template_directory() . '/' . $template_name)) {
+        return get_template_directory() . '/' . $template_name;
     }
 
     return false;
@@ -202,12 +202,12 @@ function template_directory($template_name)
 {
     $template_name = trim($template_name, "/");
 
-    if (file_exists(STYLESHEETPATH . '/' . $template_name)) {
-        return STYLESHEETPATH . '/' . $template_name;
+    if (file_exists(get_stylesheet_directory() . '/' . $template_name)) {
+        return get_stylesheet_directory() . '/' . $template_name;
     }
 
-    if (file_exists(TEMPLATEPATH . '/' . $template_name)) {
-        return TEMPLATEPATH . '/' . $template_name;
+    if (file_exists(get_template_directory() . '/' . $template_name)) {
+        return get_template_directory() . '/' . $template_name;
     }
 
     return false;
@@ -266,5 +266,22 @@ if ( ! function_exists('is_sub_page')) {
     function is_sub_page($post)
     {
         return is_page() && $post->post_parent > 0;
+    }
+}
+
+
+if ( ! function_exists('show_template')) {
+    /**
+     * Returns the local WordPress template path.
+     *
+     * @return mixed
+     */
+    function show_template()
+    {
+        if (is_super_admin()) {
+            global $template;
+
+            return str_replace(get_theme_root(), "", $template);
+        }
     }
 }
