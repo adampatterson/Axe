@@ -1,4 +1,6 @@
 let mix = require('laravel-mix')
+let glob = require('glob-all')
+require('laravel-mix-purgecss')
 
 let scssOptions = {
     processCssUrls: false
@@ -6,8 +8,8 @@ let scssOptions = {
 
 let bundles = {
     'all': [
-        "./assets/vendor/jquery/dist/jquery.min.js",
-        "./assets/vendor/bootstrap/dist/js/bootstrap.bundle.js",
+        './assets/vendor/jquery/dist/jquery.min.js',
+        './assets/vendor/bootstrap/dist/js/bootstrap.bundle.js',
         './src/js/app.js'
     ]
 }
@@ -24,9 +26,21 @@ mix.setPublicPath('./')
 
 mix.sass('src/scss/base.scss', 'assets/css').options(scssOptions)
 // Extract libraries requires ECMAScript 6 imports in your code.
-mix.js(bundles.all, 'assets/js/app.js').extract(extractLibs)
+   .js(bundles.all, 'assets/js/app.js').extract(extractLibs)
 
-mix.version()
+   .purgeCss(
+       {
+           enabled: true,
+           paths: glob.sync([
+               path.join(__dirname, 'templates/**/*.php'),
+               path.join(__dirname, '/assets/js/**/*.js'),
+           ]),
+           extensions: ['html', 'js', 'php'],
+           styleExtensions: ['.purged.css']
+       }
+   )
+
+   .version()
 
 
 // Production

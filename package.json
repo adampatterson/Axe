@@ -3,7 +3,11 @@
     "version": "0.0.1",
     "author": "Adam Patterson",
     "description": "Axe Theme",
+    "homepage": "https://github.com/adampatterson/Axe/",
     "private": true,
+    "bugs": {
+        "url": "https://github.com/adampatterson/Axe/issues"
+    },
     "directories": {
         "doc": "docs"
     },
@@ -22,12 +26,18 @@
         "browser-sync-webpack-plugin": "2.0.1",
         "cross-env": "^5.1",
         "laravel-mix": "^4.0.15",
+        "laravel-mix-polyfill": "^1.0.2",
+        "laravel-mix-purgecss": "^4.1.0",
         "node-sass": "^4.11.0",
         "sass": "^1.19.0",
         "sass-loader": "7.*",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "jquery": "^3.3.1"
+        "jquery": "^3.3.1",
+        "node-sass": "^4.11.0",
+        "sass": "^1.18.0",
+        "sass-loader": "^7.1.0",
+        "glob-all": "^3.1.0"
     }
 }
