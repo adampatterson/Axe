@@ -6,8 +6,11 @@
 */
 
 // Loaded in base.scss
-//@import "../../../assets/vendor/bootstrap/scss/functions";
-//@import "../../../assets/vendor/bootstrap/scss/variables";
+@import "../../../assets/vendor/bootstrap/scss/functions";
+@import "../../../assets/vendor/bootstrap/scss/variables";
+
+// Removes theme colours
+@import "bootstrap-remove-theme";
 
 @import "../../../assets/vendor/bootstrap/scss/mixins";
 @import "../../../assets/vendor/bootstrap/scss/root";

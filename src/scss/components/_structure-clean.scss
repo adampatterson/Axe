@@ -1,0 +1,115 @@
+$loops: 100;
+$max-value: 100px;
+$increment: 5;
+
+$breakpoints: (
+    standard: false,
+    xs: true,
+    sm: true,
+    md: true,
+    lg: true,
+    xl: true,
+);
+
+$sizes: (
+    standard: (
+        all: false,
+        top: t,
+        right: r,
+        bottom: b,
+        left: l,
+        tb: tb,
+        lr: lr
+    ),
+);
+
+@mixin make-structure($breakpoint: '') {
+    @while $loops >= 0 {
+
+        @each $sizeNames, $positions in $sizes {
+            @each $position, $class-name in $positions {
+                @if $position == all {
+                    .p-#{$loops}#{$breakpoint} {
+                        padding: #{$loops}px !important;
+                    }
+                    .m-#{$loops}#{$breakpoint} {
+                        margin: #{$loops}px !important;
+                    }
+                } @else if $position == tb {
+                    .p-#{$class-name}-#{$loops}#{$breakpoint} {
+                        padding-top: #{$loops}px !important;
+                        padding-bottom: #{$loops}px !important;
+                    }
+                    .m-#{$class-name}-#{$loops}#{$breakpoint} {
+                        margin-top: #{$loops}px !important;
+                        margin-bottom: #{$loops}px !important;
+                    }
+                } @else if $position == lr {
+                    .p-#{$class-name}-#{$loops}#{$breakpoint} {
+                        padding-left: #{$loops}px !important;
+                        padding-right: #{$loops}px !important;
+                    }
+                    .m-#{$class-name}-#{$loops}#{$breakpoint} {
+                        margin-left: #{$loops}px !important;
+                        margin-right: #{$loops}px !important;
+                    }
+                } @else {
+                    .p-#{$class-name}-#{$loops}#{$breakpoint} {
+                        padding-#{$position}: #{$loops}px !important;
+                    }
+                    .m-#{$class-name}-#{$loops}#{$breakpoint} {
+                        margin-#{$position}: #{$loops}px !important;
+                    }
+                }
+            }
+        }
+
+        $max-value: $max-value - $increment;
+        $loops: $loops - $increment;
+    }
+    // Loops the sizes
+}
+
+@mixin make-break-point($breakpoint, $media) {
+    @if ($media == true) {
+        @include media-breakpoint-only($breakpoint) {
+            @include make-structure(-#{$breakpoint})
+        }
+    } @else {
+        @include make-structure()
+    }
+}
+
+@mixin make-media-structure() {
+    @each $breakpoint, $media in $breakpoints {
+        @include make-break-point($breakpoint, $media)
+    }
+}
+
+@include make-media-structure();
+
+.m-t-auto {
+    margin-top: auto;
+}
+
+.m-b-auto {
+    margin-bottom: auto;
+}
+
+.m-tb-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.m-l-auto {
+    margin-left: auto;
+}
+
+.m-r-auto {
+    margin-right: auto;
+}
+
+.m-lr-auto {
+    margin-left: auto;
+    margin-right: auto;
+}

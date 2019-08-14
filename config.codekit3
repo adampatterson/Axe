@@ -259,6 +259,17 @@
 		"oAP": "/assets/js/manifest.js.map",
 		"oF": 0
 		},
+	"/assets/js/min/manifest-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/assets/js/min/min/manifest-min-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
 	"/assets/js/vendor.js": {
 		"bF": 0,
 		"ft": 64,
@@ -39841,6 +39852,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"/src/scss/components/_bootstrap-remove-theme.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/src/scss/css/_bootstrap-remove-theme.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"/src/scss/components/_bootstrap-variables.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -39967,6 +39991,19 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/src/scss/css/_mixens.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"/src/scss/components/_structure-clean.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/src/scss/css/_structure-clean.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -40230,20 +40267,20 @@
 		"oAP": "/templates/partials/post-footer.php",
 		"oF": 0
 		},
-	"/templates/partials/product-footer.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/templates/partials/product-footer.php",
-		"oF": 0
-		},
 	"/templates/partials/sidebar.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 2,
 		"oAP": "/templates/partials/sidebar.php",
+		"oF": 0
+		},
+	"/templates/woo-page.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/templates/woo-page.php",
 		"oF": 0
 		},
 	"/templates/woo-product-listing.php": {
