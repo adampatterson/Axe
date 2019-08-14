@@ -6,7 +6,9 @@
                 <? /*<img src="<?php __i() ?>logo.png" alt="">*/ ?>
                 <p class="site-description"><?php echo get_bloginfo( 'description', 'display' ); ?></p>
             </a>
-
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <nav class="collapse navbar-collapse" id="menu">
                 <?php
                 // http://code.tutsplus.com/tutorials/how-to-integrate-bootstrap-navbar-into-wordpress-theme--wp-33410
