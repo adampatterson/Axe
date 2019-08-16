@@ -1,5 +1,6 @@
 let mix = require('laravel-mix')
 let glob = require('glob-all')
+
 require('laravel-mix-purgecss')
 
 let scssOptions = {
@@ -18,6 +19,72 @@ let extractLibs = [
     'jquery'
 ]
 
+const purgecssWordpress = {
+    whitelist: [
+        'rtl',
+        'home',
+        'blog',
+        'archive',
+        'date',
+        'error404',
+        'logged-in',
+        'admin-bar',
+        'no-customize-support',
+        'custom-background',
+        'wp-custom-logo',
+        'aligncenter',
+        'alignleft',
+        'alignright',
+        'wp-caption',
+        'wp-caption-text'
+    ],
+    whitelistPatterns: [
+        /^rtl(-.*)?$/,
+        /^home(-.*)?$/,
+        /^blog(-.*)?$/,
+        /^archive(-.*)?$/,
+        /^date(-.*)?$/,
+        /^error404(-.*)?$/,
+        /^logged-in(-.*)?$/,
+        /^admin-bar(-.*)?$/,
+        /^no-customize-support(-.*)?$/,
+        /^wp-custom-logo(-.*)?$/,
+        /^search(-.*)?$/,
+        /^nav(-.*)?$/,
+        /^wp(-.*)?$/,
+        /^screen(-.*)?$/,
+        /^navigation(-.*)?$/,
+        /^(.*)-template(-.*)?$/,
+        /^(.*)?-?single(-.*)?$/,
+        /^postid-(.*)?$/,
+        /^post-(.*)?$/,
+        /^attachmentid-(.*)?$/,
+        /^attachment(-.*)?$/,
+        /^page(-.*)?$/,
+        /^(post-type-)?archive(-.*)?$/,
+        /^author(-.*)?$/,
+        /^gallery(-.*)?$/,
+        /^category(-.*)?$/,
+        /^tag(-.*)?$/,
+        /^card(-.*)?$/,
+        /^menu(-.*)?$/,
+        /^tags(-.*)?$/,
+        /^tax-(.*)?$/,
+        /^term-(.*)?$/,
+        /^date-(.*)?$/,
+        /^(.*)?-?paged(-.*)?$/,
+        /^says(-.*)?$/,
+        /^depth(-.*)?$/,
+        /^comment(-.*)?$/,
+        /^comments(-.*)?$/,
+        /^children(-.*)?$/,
+        /^crnb(-.*)?$/,
+        /^custom(-.*)?$/,
+        /^custom-background(-.*)?$/,
+        /^port-description(-.*)?$/
+    ],
+}
+
 mix.autoload({
     'jquery': ['$', 'window.jQuery', 'jQuery']
 })
@@ -28,17 +95,20 @@ mix.sass('src/scss/base.scss', 'assets/css').options(scssOptions)
 // Extract libraries requires ECMAScript 6 imports in your code.
    .js(bundles.all, 'assets/js/app.js').extract(extractLibs)
 
-   .purgeCss(
-       {
-           enabled: true,
-           paths: glob.sync([
-               path.join(__dirname, 'templates/**/*.php'),
-               path.join(__dirname, '/assets/js/**/*.js'),
-           ]),
-           extensions: ['html', 'js', 'php'],
-           styleExtensions: ['.purged.css']
-       }
-   )
+//   .purgeCss(
+//       {
+//           enabled: mix.inProduction(),
+//           paths: glob.sync([
+//               path.join(__dirname, 'templates/**/*.php'),
+//               path.join(__dirname, '/assets/js/**/*.js'),
+//           ]),
+//           extensions: ['html', 'js', 'php'],
+//
+//           // Other options are passed through to Purgecss
+//           whitelist: purgecssWordpress.whitelist,
+//           whitelistPatterns: purgecssWordpress.whitelistPatterns,
+//       }
+//   )
 
    .version()
 
