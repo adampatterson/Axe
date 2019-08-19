@@ -32,11 +32,14 @@ const purgecssWordpress = {
         'no-customize-support',
         'custom-background',
         'wp-custom-logo',
-        'aligncenter',
-        'alignleft',
+        'pagination',
+        'alignnone',
         'alignright',
+        'alignleft',
         'wp-caption',
-        'wp-caption-text'
+        'wp-caption-text',
+        'screen-reader-text',
+        'comment-list',
     ],
     whitelistPatterns: [
         /^rtl(-.*)?$/,
@@ -48,10 +51,11 @@ const purgecssWordpress = {
         /^logged-in(-.*)?$/,
         /^admin-bar(-.*)?$/,
         /^no-customize-support(-.*)?$/,
-        /^wp-custom-logo(-.*)?$/,
         /^search(-.*)?$/,
         /^nav(-.*)?$/,
         /^wp(-.*)?$/,
+        /^wp-block-(a-z)?$/,
+        /^wp-custom-logo(-.*)?$/,
         /^screen(-.*)?$/,
         /^navigation(-.*)?$/,
         /^(.*)-template(-.*)?$/,
@@ -89,26 +93,28 @@ mix.autoload({
     'jquery': ['$', 'window.jQuery', 'jQuery']
 })
 
-mix.setPublicPath('./')
+mix
+    .setPublicPath('./')
 
-mix.sass('src/scss/base.scss', 'assets/css').options(scssOptions)
-// Extract libraries requires ECMAScript 6 imports in your code.
-   .js(bundles.all, 'assets/js/app.js').extract(extractLibs)
+    .sass('src/scss/base.scss', 'assets/css').options(scssOptions)
+    // Extract libraries requires ECMAScript 6 imports in your code.
+    // .js(bundles.all, 'assets/js/app.js').extract(extractLibs)
+   .js(bundles.all, 'assets/js/app.js')
 
-//   .purgeCss(
-//       {
-//           enabled: mix.inProduction(),
-//           paths: glob.sync([
-//               path.join(__dirname, 'templates/**/*.php'),
-//               path.join(__dirname, '/assets/js/**/*.js'),
-//           ]),
-//           extensions: ['html', 'js', 'php'],
-//
-//           // Other options are passed through to Purgecss
-//           whitelist: purgecssWordpress.whitelist,
-//           whitelistPatterns: purgecssWordpress.whitelistPatterns,
-//       }
-//   )
+   .purgeCss(
+       {
+           enabled: mix.inProduction(),
+           paths: glob.sync([
+               path.join(__dirname, 'templates/**/*.php'),
+               path.join(__dirname, '/assets/js/**/*.js'),
+           ]),
+           extensions: ['html', 'js', 'php'],
+
+           // Other options are passed through to Purgecss
+           whitelist: purgecssWordpress.whitelist,
+           whitelistPatterns: purgecssWordpress.whitelistPatterns,
+       }
+   )
 
    .version()
 
