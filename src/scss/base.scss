@@ -4,14 +4,13 @@ This file allows you to customize what Bootstrap includes
  */
 @import "components/base-variables";
 @import "components/bootstrap-custom";
-
 @import "components/mixens";
+@import "components/structure-clean";
 @import "components/fonts";
 @import "components/wp-gutenberg";
 @import "components/wp-classic";
 @import "components/wp-widget";
 
-@import "components/structure-clean";
 
 // External Components
 // @import "components/materialize";

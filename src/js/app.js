@@ -1,4 +1,5 @@
-//import jQuery from 'jquery'; // ES6
+//import jQuery from 'jquery';
+//import 'bootstrap';
 
 // Variables
 var win_obj = jQuery(window),

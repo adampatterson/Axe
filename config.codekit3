@@ -38021,17 +38021,6 @@
 		"oAP": "/license.txt",
 		"oF": 0
 		},
-	"/min/webpack.mix-min.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/min/min/webpack.mix-min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
 	"/mix-manifest.json": {
 		"ft": 524288,
 		"oA": 1,

@@ -9,4 +9,3 @@ endif;
 if (class_exists('Axe\\Init')) :
     Axe\Init::register_services();
 endif;
-

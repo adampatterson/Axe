@@ -16,7 +16,8 @@ let bundles = {
 }
 
 let extractLibs = [
-    'jquery'
+    'jquery',
+    'bootstrap',
 ]
 
 const purgecssWordpress = {
@@ -105,6 +106,7 @@ mix
        {
            enabled: mix.inProduction(),
            paths: glob.sync([
+               path.join(__dirname, '*.php'),
                path.join(__dirname, 'templates/**/*.php'),
                path.join(__dirname, '/assets/js/**/*.js'),
            ]),
