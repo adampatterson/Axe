@@ -1,17 +1,20 @@
 <?php if (is_user_logged_in()):
     if (isset($data)): ?>
         <script>
+            // ACF Data
             console.log(<?= json_encode($data) ?>)
         </script>
     <?php endif;
 
     if (isset($products)): ?>
         <script>
-            console.log(<?= json_encode($products) ?>)
+          // is product
+          console.log(<?= json_encode($products) ?>)
         </script>
     <?php endif;
     if (class_exists('WooCommerce')): ?>
         <script>
+            // Is WooCommerce Installed
             console.log(<?= json_encode([
                 'is_shop'             => is_shop(),
                 'is_product_category' => is_product_category(),
