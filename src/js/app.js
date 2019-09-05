@@ -1,5 +1,5 @@
-//import jQuery from 'jquery';
-//import 'bootstrap';
+import jQuery from 'jquery';
+import 'bootstrap';
 
 // Variables
 var win_obj = jQuery(window),

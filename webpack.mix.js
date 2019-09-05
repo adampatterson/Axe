@@ -9,8 +9,6 @@ let scssOptions = {
 
 let bundles = {
     'all': [
-        './assets/vendor/jquery/dist/jquery.min.js',
-        './assets/vendor/bootstrap/dist/js/bootstrap.bundle.js',
         './src/js/app.js'
     ]
 }
@@ -98,9 +96,10 @@ mix
     .setPublicPath('./')
 
     .sass('src/scss/base.scss', 'assets/css').options(scssOptions)
+
     // Extract libraries requires ECMAScript 6 imports in your code.
-    // .js(bundles.all, 'assets/js/app.js').extract(extractLibs)
-   .js(bundles.all, 'assets/js/app.js')
+     .js(bundles.all, 'assets/js/app.js').extract(extractLibs)
+//   .js(bundles.all, 'assets/js/app.js')
 
    .purgeCss(
        {
@@ -117,6 +116,10 @@ mix
            whitelistPatterns: purgecssWordpress.whitelistPatterns,
        }
    )
+
+    .autoload({
+        'jquery': ['$', 'window.jQuery', 'jQuery']
+    })
 
    .version()
 
