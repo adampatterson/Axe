@@ -4,7 +4,7 @@
             <a class="navbar-brand mr-auto" href="<?= home_url('/') ?>">
                 <h3><?php bloginfo('name'); ?></h3>
                 <? /*<img src="<?php __i() ?>logo.png" alt="">*/ ?>
-                <p class="site-description"><?php echo get_bloginfo( 'description', 'display' ); ?></p>
+                <p class="site-description"><?php echo get_bloginfo('description', 'display'); ?></p>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
