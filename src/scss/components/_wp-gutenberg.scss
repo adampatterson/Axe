@@ -51,6 +51,11 @@
     max-width: 100px
 }
 
+.wp-block-spacer {
+    display: block;
+    clear: both;
+}
+
 .wp-block-table {
     overflow-x: auto;
     display: block;

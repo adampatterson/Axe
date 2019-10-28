@@ -26,6 +26,40 @@ Another tip that I can provide is using `console.log` to output my ACF structure
  * [Header Image](https://codex.wordpress.org/Custom_Headers) 
  * [Background Image](https://codex.wordpress.org/Custom_Backgrounds)
 
+### Theme Structure
+
+    Axe/
+    ├── acf-json/
+    │   └── ...
+    ├── assets/
+    │   └── ...
+    │   └── css
+    │   └── fonts
+    │   └── ico
+    │   └── img
+    │   └── js
+    │   └── vendor
+    ├── lib/
+    │   └── ...
+    ├── src/
+    │   └── ...
+    │   └── js
+    │   └── scss
+    ├── templates/
+    │   └── ...    
+    │   └── partials/
+    │   └── content-{slug}.php
+    │   └── sub-{parent_slug}.php
+    ├── vendor/
+    │   └── ...    
+    ├── woocommerce/
+    │   └── ...
+    ├── bower.json
+    ├── composer.json
+    ├── package.json
+    └── webpack.mix.js
+
+
 ### Build
 Included is a bower file preset with Bootstrap SASS, jQuery and a couple other commonly used packages. Bower will install packages to `/src/vendor`.
 
@@ -33,7 +67,7 @@ The [src folder](https://github.com/adampatterson/Axe/tree/master/src) stores yo
 
 Use whatever build tool you want. A CodeKit file has been included to get up and running FAST. There is also an optional basic Webpack config that takes advantage of [Laravel Mix](https://laravel.com/docs/5.8/mix). If you are looking for a more advanced Mix configuration then have a look at the officual docs.
 
-**Mix Installation**
+**Mix Installation**as
 https://laravel.com/docs/5.8/mix#installation
 
 **Running Mix**
@@ -94,7 +128,6 @@ See [loop-post.php](https://github.com/adampatterson/Axe/blob/master/templates/l
 
 *Functions in the parent theme should be wrapped with `function_exists` extend the child theme and prevent any conflicts.*
 
-
 ## Style
 ```
 @import "components/base-variables";
@@ -114,7 +147,6 @@ Sridhar Katakam has provided an article outlining how to add [dummy content for 
 https://github.com/adampatterson/Handle
 
 Opening `theme-helpers.php` and uncommenting the function on [line 6](https://github.com/adampatterson/Handle/blob/master/lib/theme-helpers.php#L6) would allows the child theme to serve all of your themes assets.
-
 
 ## Plugins
 Blade will require a few plugins to run:
