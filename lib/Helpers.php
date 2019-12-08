@@ -76,7 +76,7 @@ if ( ! function_exists('__v')) {
      */
     function __v()
     {
-        echo __t() . 'vendor/';
+        echo __a() . 'vendor/';
     }
 }
 
@@ -123,6 +123,16 @@ function underscore($string)
 }
 
 /**
+ * @param $string
+ *
+ * @return string
+ */
+function dash($string)
+{
+    return strtolower(preg_replace('/(?<=\\w)([A-Z])/', '-\\1', $string));
+}
+
+/**
  * @param $parent
  * @param $args
  *
@@ -151,7 +161,7 @@ function get_cat_hierchy($parent, $args)
  * @param null $name
  * @param null $data
  *
- * Allows the passthrough of data to tempalte partials.
+ * Allows the passthrough of data to template partials.
  *
  * @return string
  */
