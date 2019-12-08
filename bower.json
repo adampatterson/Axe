@@ -12,7 +12,6 @@
     "prettyphoto": "git://github.com/scaron/prettyphoto.git#master",
     "owl.carousel": "latest",
     "font-awesome": "fontawesome#~4.4.0",
-    "Materialize": "materialize#~0.97.2",
     "jquery-sticky": "~1.0.3",
     "ekko-lightbox": "latest",
     "js-cookie": "^2.1.1",

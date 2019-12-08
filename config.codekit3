@@ -39830,32 +39830,6 @@
 		"oS": 0,
 		"uL": 1
 		},
-	"/src/scss/components/_materialize-prefix.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/src/scss/css/_materialize-prefix.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"/src/scss/components/_materialize.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "/src/scss/css/_materialize.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
 	"/src/scss/components/_mixens.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -40228,14 +40202,6 @@
 		"oA": 2,
 		"oAP": "/vendor/composer/ClassLoader.php",
 		"oF": 0
-		},
-	"/vendor/composer/installed.json": {
-		"ft": 524288,
-		"oA": 1,
-		"oAP": "/vendor/composer/installed-min.json",
-		"oF": 0,
-		"oO": 0,
-		"oS": 1
 		},
 	"/vendor/composer/LICENSE": {
 		"cB": 0,
