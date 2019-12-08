@@ -207,7 +207,6 @@ class Template
         }
     }
 
-
     /**
      * Shim for `the_archive_description()`.
      *
