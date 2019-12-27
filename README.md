@@ -68,10 +68,10 @@ The [src folder](https://github.com/adampatterson/Axe/tree/master/src) stores yo
 Use whatever build tool you want. A CodeKit file has been included to get up and running FAST. There is also an optional basic Webpack config that takes advantage of [Laravel Mix](https://laravel.com/docs/5.8/mix). If you are looking for a more advanced Mix configuration then have a look at the officual docs.
 
 **Mix Installation**as
-https://laravel.com/docs/5.8/mix#installation
+https://laravel.com/docs/master/mix
 
 **Running Mix**
-https://laravel.com/docs/5.8/mix#running-mix
+https://laravel.com/docs/master/mix#installation
 * The `webpack.mix.js` file is located in the theme root directory
 * `npm run watch` to start browserSync with LiveReload and proxy to your custom URL
 * `npm run dev` to quickly compile and bundle all the assets without watching
@@ -131,14 +131,15 @@ See [loop-post.php](https://github.com/adampatterson/Axe/blob/master/templates/l
 ## Style
 ```
 @import "components/base-variables";
-@import "components/bootstrap-variables";
-@import "components/bootstrap-custom";
+@import "~bootstrap/scss/bootstrap";
 ```
-Since loading Bootstrap from the vendor folder means you can't modify your variables without risk over overwriting them, A copy has been made in the `/src` folder.
+With the addition of PurgeCSS to the build script you can safely include the entire Bootstrap library. Once a production build has been done, any unused CSS classes will be removed.
 
 `base-variables` houses any site specific variables that you might need.
 
-`bootstrap-custom` allows you to easily comment out any unused Bootstrap code that you wont be using. This lets you output a more minimal css file.
+[PurgeCss](https://github.com/FullHuman/purgecss) supports white listing of css class names, some defaults have been included in the `webpack.mix.js` file [here](https://github.com/adampatterson/Handle/blob/68bdd609a582baa4df0cadec67bf0d437bb60029/webpack.mix.js#L21).
+
+It's also possible to [whitelist](https://github.com/FullHuman/purgecss-docs/blob/master/whitelisting.md#in-the-css-directly) specific classes or chunks of css.
 
 ## Dummy Content for Gutenberg
 Sridhar Katakam has provided an article outlining how to add [dummy content for Gutenberg](https://sridharkatakam.com/dummy-content-for-gutenberg/). 
