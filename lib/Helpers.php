@@ -119,7 +119,7 @@ if ( ! function_exists('__video')) {
  */
 function underscore($string)
 {
-    return strtolower(preg_replace('/(?<=\\w)([A-Z])/', '_\\1', $string));
+    return strtolower(preg_replace('/[[:space:]]+/', '_', $string));
 }
 
 /**
@@ -129,7 +129,7 @@ function underscore($string)
  */
 function dash($string)
 {
-    return strtolower(preg_replace('/(?<=\\w)([A-Z])/', '-\\1', $string));
+    return strtolower(preg_replace('/[[:space:]]+/', '-', $string));
 }
 
 /**
