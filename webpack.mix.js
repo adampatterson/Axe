@@ -84,7 +84,10 @@ const purgecssWordpress = {
         /^crnb(-.*)?$/,
         /^custom(-.*)?$/,
         /^custom-background(-.*)?$/,
-        /^port-description(-.*)?$/
+        /^port-description(-.*)?$/,
+        /^gform_(.*)?$/,
+        /^gfield_(.*)?$/,
+        /^validation_(.*)?$/
     ],
 }
 
