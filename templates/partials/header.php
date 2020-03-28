@@ -8,6 +8,9 @@
 
     <script type='application/ld+json'>{"@context":"http:\/\/schema.org","@type":"WebSite","url":"<?= home_url('/'); ?>
         ","name":"<?= bloginfo('name') ?>","potentialAction":{"@type":"SearchAction","target":"<?= home_url('/'); ?>?s={search_term}","query-input":"required name=search_term"}}
+
+
+
     </script>
 
     <?php wp_head(); ?>
@@ -39,3 +42,5 @@ if (is_null($post)) {
 </script>
 <div id="wrapper">
     <?php get_template_part('templates/partials/navigation'); ?>
+
+    <?php get_template_part('templates/partials/custom-header'); ?>

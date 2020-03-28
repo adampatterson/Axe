@@ -16040,6 +16040,10 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 /* purgecss start ignore */
+.wp-block-cover {
+  max-height: 50vh;
+}
+
 .wp-block-code {
   padding: .8em 1em;
   border: 1px solid #e2e4e7;
@@ -16324,5 +16328,16 @@ a img.aligncenter {
 }
 
 /* purgecss end ignore */
+#site-header {
+  width: 100%;
+  height: 35vh;
+  min-height: 280px;
+  background-size: cover;
+  background-position: center;
+}
+
+#site-header h1 {
+  color: #ffffff;
+}
 
 /*# sourceMappingURL=base.css.map*/

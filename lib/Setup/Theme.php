@@ -5,36 +5,40 @@ namespace Axe\Setup;
 class Theme
 {
 
-    public $default_header = array(
-        'default-image'          => '',
-        'width'                  => 0,
-        'height'                 => 0,
-        'flex-height'            => false,
-        'flex-width'             => false,
-        'uploads'                => true,
-        'random-default'         => false,
-        'header-text'            => true,
-        'default-text-color'     => '',
-        'wp-head-callback'       => '',
-        'admin-head-callback'    => '',
-        'admin-preview-callback' => '',
-    );
+    public $default_header;
 
-    public $default_background = array(
-        'default-color'          => 'ffffff',
-        'default-image'          => '',
-        'default-repeat'         => 'repeat',
-        'default-position-x'     => 'left',
-        'default-position-y'     => 'top',
-        'default-size'           => 'auto',
-        'default-attachment'     => 'scroll',
-        'wp-head-callback'       => '_custom_background_cb',
-        'admin-head-callback'    => '',
-        'admin-preview-callback' => ''
-    );
+    public $default_background;
 
     public function __construct()
     {
+        $this->default_header = [
+            'default-image'          => esc_url(__t() . '/assets/img/header-default.jpg'),
+            'width'                  => 1920,
+            'height'                 => 1280,
+            'flex-height'            => false,
+            'flex-width'             => false,
+            'uploads'                => true,
+            'random-default'         => false,
+            'header-text'            => true,
+            'default-text-color'     => '000000',
+            'wp-head-callback'       => '',
+            'admin-head-callback'    => '',
+            'admin-preview-callback' => '',
+        ];
+
+        $this->default_background = [
+            'default-color'          => 'ffffff',
+            'default-image'          => '',
+            'default-repeat'         => 'repeat',
+            'default-position-x'     => 'left',
+            'default-position-y'     => 'top',
+            'default-size'           => 'auto',
+            'default-attachment'     => 'scroll',
+            'wp-head-callback'       => '_custom_background_cb',
+            'admin-head-callback'    => '',
+            'admin-preview-callback' => ''
+        ];
+
         add_filter('next_posts_link_attributes', [$this, 'posts_link_attributes'], 10, 1);
         add_filter('previous_posts_link_attributes', [$this, 'posts_link_attributes'], 10, 1);
 
