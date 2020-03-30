@@ -140,7 +140,7 @@ function dash($string)
  *
  * @return array
  */
-function get_cat_hierchy($parent, $args)
+function get_cat_hierarchy($parent, $args)
 {
     $cats = get_categories($args);
     $ret  = new stdClass;
@@ -149,7 +149,7 @@ function get_cat_hierchy($parent, $args)
         if ($cat->parent == $parent) {
             $id                 = $cat->cat_ID;
             $ret->$id           = $cat;
-            $ret->$id->children = get_cat_hierchy($id, $args);
+            $ret->$id->children = get_cat_hierarchy($id, $args);
         }
     }
 
@@ -293,5 +293,52 @@ if ( ! function_exists('show_template')) {
 
             return str_replace(get_theme_root(), "", $template);
         }
+    }
+}
+
+
+if ( ! function_exists('get_the_logo')) {
+    /**
+     * @param bool $include_link
+     * @param string $custom_logo_css
+     * @param string $custom_link_css
+     *
+     * @return bool|string
+     *
+     * Returns an HTML link including the logo, Or just the path the the logo image.
+     */
+    function get_the_logo($include_link = false, $custom_logo_css = 'site-logo custom-logo img-fluid', $custom_link_css = 'logo custom-logo-link')
+    {
+        $logo = wp_get_attachment_image(get_theme_mod('custom_logo'), 'full', false, ['class' => $custom_logo_css]);
+
+        if ( ! $logo) {
+            return false;
+        }
+
+        $url = esc_url(home_url('/'));
+
+        if ($include_link) {
+            return sprintf('<a href="%1$s" class="%2$s" rel="home">%3$s</a>', $url, $custom_link_css, $logo);
+        }
+
+        return $logo;
+    }
+}
+
+if ( ! function_exists('if_custom_logo')) {
+    /**
+     * @return bool
+     *
+     * Simple function to adjust the template if there is a custom logo or not.
+     */
+    function if_custom_logo()
+    {
+        $logo = wp_get_attachment_image(get_theme_mod('custom_logo'), 'full');
+
+        if ( ! $logo) {
+            return false;
+        }
+
+        return true;
     }
 }

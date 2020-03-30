@@ -6,8 +6,10 @@ class Theme
 {
 
     public $default_header;
-
     public $default_background;
+    public $default_logo;
+    public $default_logo_class;
+    public $default_logo_link_class;
 
     public function __construct()
     {
@@ -38,6 +40,15 @@ class Theme
             'admin-head-callback'    => '',
             'admin-preview-callback' => ''
         ];
+
+        $this->default_logo = [
+            'width'      => 250,
+            'height'     => 250,
+            'flex-width' => true,
+        ];
+
+        $this->default_logo_class      = 'img-fluid ';
+        $this->default_logo_link_class = '';
 
         add_filter('next_posts_link_attributes', [$this, 'posts_link_attributes'], 10, 1);
         add_filter('previous_posts_link_attributes', [$this, 'posts_link_attributes'], 10, 1);
@@ -99,6 +110,10 @@ class Theme
         // Enable Custom Headers
         add_theme_support('custom-header', $this->default_header);
 
+        // Add theme support for Custom Logo.
+        add_theme_support('custom-logo', $this->default_logo);
+        add_filter('get_custom_logo', [$this, 'change_logo_class']);
+
         // Enable Custom Backgrounds
         add_theme_support('custom-background', $this->default_background);
 
@@ -140,6 +155,14 @@ class Theme
         $parts = explode('?', $src);
 
         return $parts[0];
+    }
+
+    public function change_logo_class($html)
+    {
+//        $html = str_replace('custom-logo', $this->default_logo_class, $html);
+        $html = str_replace('custom-logo-link', $this->default_logo_link_class, $html);
+
+        return $html;
     }
 
     public function content_width()

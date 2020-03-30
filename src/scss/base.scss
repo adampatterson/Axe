@@ -12,6 +12,12 @@ This file allows you to customize what Bootstrap includes
 @import "components/wp-classic";
 @import "components/wp-widget";
 
+.navbar-brand img {
+    max-height: 100px;
+    width: auto;
+    display: inline-block;
+}
+
 #site-header {
     width: 100%;
     height: 35vh;
@@ -23,6 +29,7 @@ This file allows you to customize what Bootstrap includes
         color: #ffffff;
     }
 }
+
 
 // External Components
 // @import "components/materialize";

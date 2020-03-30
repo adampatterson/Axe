@@ -128,6 +128,12 @@ See [loop-post.php](https://github.com/adampatterson/Axe/blob/master/templates/l
 
 *Functions in the parent theme should be wrapped with `function_exists` extend the child theme and prevent any conflicts.*
 
+`show_template()` - 
+
+`get_the_logo()` - 
+
+`if_custom_logo()` - 
+
 ## Style
 ```
 @import "components/base-variables";
@@ -147,7 +153,7 @@ Sridhar Katakam has provided an article outlining how to add [dummy content for 
 # Child theme
 https://github.com/adampatterson/Handle
 
-Opening `theme-helpers.php` and uncommenting the function on [line 6](https://github.com/adampatterson/Handle/blob/master/lib/theme-helpers.php#L6) would allows the child theme to serve all of your themes assets.
+Opening `Helpers.php` and uncommenting the function on [line 6](https://github.com/adampatterson/Handle/blob/master/lib/Helpers.php#L6) would allows the child theme to serve all of your themes assets.
 
 ## Plugins
 Blade will require a few plugins to run:
