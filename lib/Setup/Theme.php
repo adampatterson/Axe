@@ -131,6 +131,8 @@ class Theme
         // Remove Query Strings From Static Resources
 //        add_filter('script_loader_src', [$this, 'remove_script_version'], 15, 1);
         add_filter('style_loader_src', [$this, 'remove_script_version'], 15, 1);
+
+//        load_theme_textdomain( 'axe', get_template_directory() . '/languages' );
     }
 
     function custom_header()
