@@ -21,10 +21,10 @@ class Media
     public function add_image_sizes_editor($sizes)
     {
         return array_merge($sizes, [
-            'featured'   => __('Featured'),
-            'gallery'    => __('Gallery'),
-            'grid'       => __('Grid'),
-            'square'     => __('Square'),
+            'featured'   => __('Featured', 'axe'),
+            'gallery'    => __('Gallery', 'axe'),
+            'grid'       => __('Grid', 'axe'),
+            'square'     => __('Square', 'axe'),
         ]);
     }
 }

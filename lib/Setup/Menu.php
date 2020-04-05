@@ -12,8 +12,8 @@ class Menu
 
         // Register menus
         register_nav_menus(array(
-            'main-menu'    => 'Main Menu',
-            'footer-links' => 'Footer Links'
+            'main-menu'    => __('Main Menu', 'axe'),
+            'footer-links' => __('Footer Links', 'axe')
         ));
 
         add_filter('nav_menu_css_class', [$this, 'add_classes_on_li'], 1, 3);

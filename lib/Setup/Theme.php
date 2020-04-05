@@ -6,6 +6,7 @@ class Theme
 {
 
     public $default_header;
+    public $default_header_image;
     public $default_background;
     public $default_logo;
     public $default_logo_class;
@@ -14,7 +15,7 @@ class Theme
     public function __construct()
     {
         $this->default_header = [
-            'default-image'          => esc_url(__t() . '/assets/img/header-default.jpg'),
+            'default-image'          => esc_url(__t() . 'assets/img/header-default.jpg'),
             'width'                  => 1920,
             'height'                 => 1280,
             'flex-height'            => false,
@@ -26,6 +27,14 @@ class Theme
             'wp-head-callback'       => '',
             'admin-head-callback'    => '',
             'admin-preview-callback' => '',
+        ];
+
+        $this->default_header_image = [
+            'default-image' => [
+                'url'           => '%s/assets/img/header-default.jpg',
+                'thumbnail_url' => '%s/assets/img/header-default.jpg',
+                'description'   => __('Default Header Image', 'axe'),
+            ]
         ];
 
         $this->default_background = [
@@ -80,6 +89,8 @@ class Theme
          */
         add_action('after_setup_theme', [$this, 'content_width'], 0);
 
+        add_action('after_setup_theme', [$this, 'custom_header'], 0);
+
 
         // Clean up the head
         remove_action('wp_head', 'rsd_link');
@@ -107,9 +118,6 @@ class Theme
 
         add_theme_support('title-tag');
 
-        // Enable Custom Headers
-        add_theme_support('custom-header', $this->default_header);
-
         // Add theme support for Custom Logo.
         add_theme_support('custom-logo', $this->default_logo);
         add_filter('get_custom_logo', [$this, 'change_logo_class']);
@@ -123,6 +131,13 @@ class Theme
         // Remove Query Strings From Static Resources
 //        add_filter('script_loader_src', [$this, 'remove_script_version'], 15, 1);
         add_filter('style_loader_src', [$this, 'remove_script_version'], 15, 1);
+    }
+
+    function custom_header()
+    {
+        // Enable Custom Headers
+        add_theme_support('custom-header', $this->default_header);
+        register_default_headers($this->default_header_image);
     }
 
     /**

@@ -58,10 +58,10 @@ class Template
         <nav class="navigation post-navigation" role="navigation">
             <ul class="pagination justify-content-center">
                 <li class="next <?= ( ! get_next_post_link()) ? 'disabled' : '' ?> nav-previous page-item mr-auto">
-                    <?php next_post_link('%link', __('<span class="meta-nav" aria-hidden="true">&larr;</span> %title', 'Next post link')); ?>
+                    <?php next_post_link('%link', __('<span class="meta-nav" aria-hidden="true">&larr;</span> %title', 'Next post link', 'axe')); ?>
                 </li>
                 <li class="previous <?= ( ! get_previous_post_link()) ? 'disabled' : '' ?> nav-next page-item ml-auto">
-                    <?php previous_post_link('%link', __('%title <span class="meta-nav" aria-hidden="true">&rarr;</span>', 'Previous post link')); ?>
+                    <?php previous_post_link('%link', __('%title <span class="meta-nav" aria-hidden="true">&rarr;</span>', 'Previous post link', 'axe')); ?>
                 </li>
             </ul>
         </nav>

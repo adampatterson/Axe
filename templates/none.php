@@ -6,7 +6,7 @@
                 <section id="post-404" <?php post_class(); ?>>
                     <article>
                         <h1>No posts yet!</h1>
-                        <p class="lead"><?php printf( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'handle' ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
+                        <p class="lead"><?php printf( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'axe' ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
                     </article>
                 </section>
             </div>

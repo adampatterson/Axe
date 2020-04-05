@@ -210,6 +210,25 @@
 		"oT": 1,
 		"q": 100
 		},
+	"/assets/img/credits.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/assets/img/credits.txt",
+		"oF": 0
+		},
+	"/assets/img/header-default.jpg": {
+		"ft": 16384,
+		"iS": 706115,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/assets/img/header-default.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
 	"/assets/img/logo.png": {
 		"ft": 32768,
 		"iS": 3753,
@@ -40018,6 +40037,14 @@
 		"hM": 0,
 		"oA": 2,
 		"oAP": "/templates/partials/archive-header.php",
+		"oF": 0
+		},
+	"/templates/partials/custom-header.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/templates/partials/custom-header.php",
 		"oF": 0
 		},
 	"/templates/partials/footer.php": {
