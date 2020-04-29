@@ -279,7 +279,6 @@ if ( ! function_exists('is_sub_page')) {
     }
 }
 
-
 if ( ! function_exists('show_template')) {
     /**
      * Returns the local WordPress template path.
@@ -293,6 +292,29 @@ if ( ! function_exists('show_template')) {
 
             return str_replace(get_theme_root(), "", $template);
         }
+    }
+}
+
+if ( ! function_exists('show_woo_listing')) {
+    /**
+     * Returns the local WordPress template path.
+     *
+     * @return mixed
+     */
+    function show_woo_listing()
+    {
+        return class_exists('WooCommerce') and is_shop() and ! is_product();
+    }
+}
+if ( ! function_exists('show_woo_single_product')) {
+    /**
+     * Returns the local WordPress template path.
+     *
+     * @return mixed
+     */
+    function show_woo_single_product()
+    {
+        return class_exists('WooCommerce') and is_product();
     }
 }
 
