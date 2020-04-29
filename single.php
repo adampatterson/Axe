@@ -23,10 +23,10 @@ if (have_posts()):
             echo '<!-- template: templates/single-' . get_post_type() . ' -->';
             include(get_template_part_acf('templates/single', get_post_type()));
 
-//      WooCommerce Product
+//      WooCommerce Single Product
         elseif (is_product()):
-            echo '<!-- template: woo/page -->';
-            include(get_template_part_acf('templates/woo', 'product-listing'));
+            echo '<!-- template: woo/single -->';
+            include(get_template_part_acf('templates/woo', 'single'));
 
 //      If everything fails use content-single.php
         else:

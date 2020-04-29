@@ -27,11 +27,44 @@ class Widgets
             'after_title'   => '</h4>'
         ));
 
+        // Woo Commerce Listing Sidebar
+        register_sidebar(array(
+            'name'          => 'WooCommerce Listing Sidebar',
+            'id'            => 'woo-sidebar',
+            'description'   => __('Widgets for WooCommerce Sidebar', 'axe'),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h4 class="widget-title">',
+            'after_title'   => '</h4>'
+        ));
+
+        // Woo Commerce Single Product Sidebar
+        register_sidebar(array(
+            'name'          => 'WooCommerce Single Product Sidebar',
+            'id'            => 'woo-single-sidebar',
+            'description'   => __('Widgets for WooCommerce Sidebar', 'axe'),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h4 class="widget-title">',
+            'after_title'   => '</h4>'
+        ));
+
         // Above Post
         register_sidebar(array(
-            'name'          => 'Single Post',
-            'id'            => 'post-widgets',
-            'description'   => __('Widgets for Single Posts', 'axe'),
+            'name'          => 'Above Post',
+            'id'            => 'above-post-widgets',
+            'description'   => __('Widgets for Above the Post', 'axe'),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h4 class="widget-title">',
+            'after_title'   => '</h4>'
+        ));
+
+        // Below Post
+        register_sidebar(array(
+            'name'          => 'Below Post',
+            'id'            => 'below-post-widgets',
+            'description'   => __('Widgets for Below the Post', 'axe'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
             'before_title'  => '<h4 class="widget-title">',
@@ -42,7 +75,7 @@ class Widgets
         register_sidebar(array(
             'name'          => 'Footer',
             'id'            => 'footer-widgets',
-            'description'   => __('Widgets for Footer', 'axe'),
+            'description'   => __('Widgets for the Footer', 'axe'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
             'before_title'  => '<h4 class="widget-title">',

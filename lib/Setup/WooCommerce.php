@@ -9,6 +9,7 @@ class WooCommerce
     {
         add_filter('loop_shop_per_page', [$this, 'loop_shop_per_page'], 999);
         add_filter('loop_shop_columns', [$this, 'loop_columns'], 999);
+        add_filter('loop_shop_columns', [$this, 'loop_columns'], 999);
     }
 
     /**
@@ -28,7 +29,7 @@ class WooCommerce
      *
      * @return int
      */
-    function loop_columns()
+    public function loop_columns()
     {
         return 3;
     }
