@@ -19,8 +19,38 @@ class Widgets
         // Main Sidebar
         register_sidebar(array(
             'name'          => 'Main Sidebar',
-            'id'            => 'main-sidebar',
+            'id'            => 'main',
             'description'   => __('Widgets for Main Sidebar', 'axe'),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h4 class="widget-title">',
+            'after_title'   => '</h4>'
+        ));
+
+        register_sidebar(array(
+            'name'          => 'Top Widgets',
+            'id'            => 'widgets_top',
+            'description'   => __('Widgets for Top of the page', 'axe'),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h4 class="widget-title">',
+            'after_title'   => '</h4>'
+        ));
+
+        register_sidebar(array(
+            'name'          => 'Bottom Widgets',
+            'id'            => 'widgets_bottom',
+            'description'   => __('Widgets for Bottom of the page', 'axe'),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h4 class="widget-title">',
+            'after_title'   => '</h4>'
+        ));
+
+        register_sidebar(array(
+            'name'          => 'Blog Sidebar',
+            'id'            => 'blog',
+            'description'   => __('Widgets for Main Blog', 'axe'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
             'before_title'  => '<h4 class="widget-title">',
@@ -41,7 +71,7 @@ class Widgets
         // Woo Commerce Single Product Sidebar
         register_sidebar(array(
             'name'          => 'WooCommerce Single Product Sidebar',
-            'id'            => 'woo-single-sidebar',
+            'id'            => 'woo-single',
             'description'   => __('Widgets for WooCommerce Sidebar', 'axe'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
@@ -51,8 +81,8 @@ class Widgets
 
         // Above Post
         register_sidebar(array(
-            'name'          => 'Above Post',
-            'id'            => 'above-post-widgets',
+            'name'          => 'Widgets Above Post',
+            'id'            => 'widgets_post_above',
             'description'   => __('Widgets for Above the Post', 'axe'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
@@ -62,8 +92,8 @@ class Widgets
 
         // Below Post
         register_sidebar(array(
-            'name'          => 'Below Post',
-            'id'            => 'below-post-widgets',
+            'name'          => 'Widgets Below Post',
+            'id'            => 'widgets_post_below',
             'description'   => __('Widgets for Below the Post', 'axe'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
@@ -74,7 +104,7 @@ class Widgets
         // Footer
         register_sidebar(array(
             'name'          => 'Footer',
-            'id'            => 'footer-widgets',
+            'id'            => 'footer',
             'description'   => __('Widgets for the Footer', 'axe'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',

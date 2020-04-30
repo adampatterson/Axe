@@ -1,5 +1,9 @@
 <div class="content-wrapper">
+
     <div class="container pt-5">
+
+        <?php get_template_part('templates/partials/widgets', 'post-above') ?>
+
         <section>
             <?php
             $style = '';

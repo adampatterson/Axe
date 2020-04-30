@@ -1,3 +1,5 @@
+
+<?php get_template_part('templates/partials/widgets','bottom'); ?>
 <footer>
     <div class="container">
         <?php
@@ -16,9 +18,9 @@
         #get_search_form();
         ?>
     </div>
-    <?php if (is_active_sidebar('footer-widgets')) { ?>
+    <?php if (is_active_sidebar('footer')) { ?>
         <div class="widget-footer">
-            <?php dynamic_sidebar('footer-widgets'); ?>
+            <?php dynamic_sidebar('footer'); ?>
         </div>
     <?php } ?>
 </footer>
