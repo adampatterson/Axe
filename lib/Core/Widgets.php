@@ -5,16 +5,49 @@ namespace Axe\Core;
 class Widgets
 {
 
+    /**
+     * @var string
+     */
+    private $path;
+
     public function __construct()
     {
-        add_action('widgets_init', [$this, 'widgets_init']);
+        $this->path = get_template_directory();
+
+        add_action('widgets_init', [$this, 'register_sidebars']);
+        add_action('widgets_init', [$this, 'register_widgets']);
         add_action('widgets_init', [$this, 'unregister_default_widgets'], 11);
+    }
+
+    public function register_widgets()
+    {
+        $widgets = [
+            'Posts'
+        ];
+
+        foreach ($widgets as $widget) {
+
+            $file = $this->path . '/lib/Widgets/' . $widget . '.php';
+
+            // Skip if already included or if file is missing
+            if (class_exists($widget) or ! file_exists($file)) {
+                continue;
+            }
+
+            // Include the widget class
+            require_once $file;
+
+            if ( ! class_exists($widget)) {
+                continue;
+            }
+        }
+
     }
 
     /**
      * Register Widget Areas
      */
-    public function widgets_init()
+    public function register_sidebars()
     {
         // Main Sidebar
         register_sidebar(array(

@@ -6,17 +6,6 @@ class Customizer
 {
 
     // https://codex.wordpress.org/Theme_Customization_API
-
-    // Enable Sidebar
-    // Sidebar
-    // Blog
-    // Home
-    // WooCommerce
-    // Footer
-    // Hero Background
-    // Fav Icon
-    // Site Logo
-
     public function __construct()
     {
         add_action('customize_register', [$this, 'axe_theme_customize_register']);
