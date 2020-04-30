@@ -22,23 +22,29 @@ class Widgets
     public function register_widgets()
     {
         $widgets = [
-            'Posts'
+            'Posts' => 'Axe\Widgets\Posts'
         ];
 
-        foreach ($widgets as $widget) {
+        foreach ($widgets as $fileName => $widget) {
 
-            $file = $this->path . '/lib/Widgets/' . $widget . '.php';
+            $file = $this->path . '/lib/Widgets/' . $fileName . '.php';
 
-            // Skip if already included or if file is missing
-            if (class_exists($widget) or ! file_exists($file)) {
+            // Skip if the file is missing.
+            if ( ! file_exists($file)) {
                 continue;
             }
 
             // Include the widget class
             require_once $file;
 
+            // Make sure the Class exists
             if ( ! class_exists($widget)) {
                 continue;
+            }
+
+            if (method_exists($widget, 'register_widget')) {
+                $caller = new $widget;
+                $caller->register_widget();
             }
         }
 
