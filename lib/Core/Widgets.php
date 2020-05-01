@@ -9,10 +9,18 @@ class Widgets
      * @var string
      */
     private $path;
+    /**
+     * @var string[]
+     */
+    private $widgets;
 
     public function __construct()
     {
         $this->path = get_template_directory();
+
+        $this->widgets = [
+            'Posts' => 'Axe\Widgets\Posts'
+        ];
 
         add_action('widgets_init', [$this, 'register_sidebars']);
         add_action('widgets_init', [$this, 'register_widgets']);
@@ -21,11 +29,7 @@ class Widgets
 
     public function register_widgets()
     {
-        $widgets = [
-            'Posts' => 'Axe\Widgets\Posts'
-        ];
-
-        foreach ($widgets as $fileName => $widget) {
+        foreach ($this->widgets as $fileName => $widget) {
 
             $file = $this->path . '/lib/Widgets/' . $fileName . '.php';
 
@@ -67,7 +71,7 @@ class Widgets
         ));
 
         register_sidebar(array(
-            'name'          => 'Top Widgets',
+            'name'          => 'Widgets Page Top',
             'id'            => 'widgets_top',
             'description'   => __('Widgets for Top of the page', 'axe'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -77,7 +81,7 @@ class Widgets
         ));
 
         register_sidebar(array(
-            'name'          => 'Bottom Widgets',
+            'name'          => 'Widgets Page Bottom',
             'id'            => 'widgets_bottom',
             'description'   => __('Widgets for Bottom of the page', 'axe'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
