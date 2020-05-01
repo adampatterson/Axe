@@ -8,16 +8,14 @@ use WP_Widget;
 class Posts extends WP_Widget
 {
 
+    use Base;
+
     /**
      * Posts constructor.
      */
     function __construct()
     {
-        parent::__construct('axe_widget_post',
-
-            __('Axe - Recent Posts', 'axe'),
-
-            ['description' => __('Axe Recent posts.', 'axe')]);
+        parent::__construct('axe_widget_post', __('Axe - Recent Posts', 'axe'), ['description' => __('Axe Recent posts.', 'axe')]);
     }
 
     /**
@@ -26,8 +24,7 @@ class Posts extends WP_Widget
      */
     public function widget($args, $instance)
     {
-        $title  = apply_filters('widget_title', $instance['title']);
-        $number = apply_filters('widget_number', $instance['number']);
+        $title = apply_filters('widget_title', $instance['title']);
 
         $query_args = array('posts_per_page' => $instance['number'], 'ignore_sticky_posts' => 1);
 
@@ -93,51 +90,16 @@ class Posts extends WP_Widget
 
         $instance = array_merge($defaults, (array)$instance);
         extract($instance);
-        ?>
 
-        <p>
-            <label for="<?= esc_attr($this->get_field_id('title')); ?>"><?php _e('Title:'); ?></label>
-            <input class="widefat" id="<?= $this->get_field_id('title'); ?>" name="<?= $this->get_field_name('title'); ?>" type="text" value="<?= esc_attr($title); ?>"/>
-        </p>
+        echo $this->input($title, 'title', 'Title:');
+        echo $this->input($number, 'number', 'Number of posts:', 'number');
+        echo $this->input($by_tag, 'by_tag', 'By Tag:');
 
-        <p>
-            <label for="<?= esc_attr($this->get_field_id('number')); ?>"><?php _e('Number of posts:'); ?></label>
-            <input class="widefat" id="<?= $this->get_field_id('number'); ?>" name="<?= $this->get_field_name('number'); ?>" type="number" step="1" min="1" size="3" value="<?= esc_attr($number); ?>"/>
-        </p>
+        echo $this->check($show_excerpt, 'show_excerpt', 'Show Excerpt');
+        echo $this->check($show_date, 'show_date', 'Show Date');
+        echo $this->check($show_thumb, 'show_thumb', 'Show Thumbnails');
 
-        <p>
-            <label for="<?= esc_attr($this->get_field_id('by_tag')); ?>"><?php _e('By Tag:'); ?></label>
-            <input class="widefat" id="<?= $this->get_field_id('by_tag'); ?>" name="<?= $this->get_field_name('by_tag'); ?>" type="text" value="<?= esc_attr($by_tag); ?>"/>
-        </p>
-
-        <p>
-            <label for="<?= esc_attr($this->get_field_id('style')); ?>"><?= esc_html_x('Style:', 'Admin', 'axe'); ?></label>
-
-            <select id="<?= esc_attr($this->get_field_id('style')); ?>" name="<?= esc_attr($this->get_field_name('style')); ?>" class="widefat">
-                <option value="" <?php selected($style, ''); ?>><?= esc_html_x('Small - Meta Above', 'Admin', 'axe'); ?></option>
-                <option value="meta-below" <?php selected($style, 'meta-below'); ?>><?= esc_html_x('Small - Meta Below', 'Admin', 'axe'); ?></option>
-                <option value="large" <?php selected($style, 'large'); ?>><?= esc_html_x('Medium - Medium Image & Meta', 'Admin', 'axe'); ?></option>
-                <option value="full" <?php selected($style, 'full'); ?>><?= esc_html_x('Full Width Image & Large Title', 'Admin', 'axe'); ?></option>
-            </select>
-        </p>
-
-        <p>
-            <input id="<?= esc_attr($this->get_field_id('show_excerpt')); ?>" name="<?= esc_attr($this->get_field_name('show_excerpt')); ?>" type="checkbox" class="checkbox" <?php checked($show_excerpt); ?> />
-            <label for="<?= esc_attr($this->get_field_id('show_excerpt')); ?>"><?= esc_html_x('Show Excerpt', 'Admin', 'axe'); ?></label>
-        </p>
-
-        <p>
-            <input id="<?= esc_attr($this->get_field_id('show_date')); ?>" name="<?= esc_attr($this->get_field_name('show_date')); ?>" type="checkbox" class="checkbox" <?php checked($show_date); ?> />
-            <label for="<?= esc_attr($this->get_field_id('show_date')); ?>"><?= esc_html_x('Show Date', 'Admin', 'axe'); ?></label>
-        </p>
-
-        <p>
-            <input id="<?= esc_attr($this->get_field_id('show_thumb')); ?>" name="<?= esc_attr($this->get_field_name('show_thumb')); ?>" type="checkbox" class="checkbox" value="1" <?php checked($show_thumb); ?> />
-
-            <label for="<?= esc_attr($this->get_field_id('show_thumb')); ?>"><?= esc_html_x('Show Thumbnails', 'Admin', 'axe'); ?></label>
-        </p>
-
-        <?php
+        echo $this->select($style, 'style', 'Style:', ['meta-below' => 'Small - Meta Below', 'meta-above' => 'Small - Meta Above', 'large' => 'Medium - Medium Image & Meta', 'full' => 'Small - Meta BelowFull Width Image & Large Title']);
     }
 
     public function register_widget()
