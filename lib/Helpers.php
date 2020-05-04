@@ -364,3 +364,25 @@ if ( ! function_exists('if_custom_logo')) {
         return true;
     }
 }
+
+function word_count()
+{
+    global $post;
+    //Variable: Additional characters which will be considered as a 'word'
+    $char_list = '';
+    /** MODIFY IF YOU LIKE.  Add characters inside the single quotes. **/ //$char_list = '0123456789'; /** If you want to count numbers as 'words' **/
+    //$char_list = '&@'; /** If you want count certain symbols as 'words' **/
+    return str_word_count(strip_tags($post->post_content), 0, $char_list);
+}
+
+/**
+ * @return float
+ *
+ * <p><?= readTime() ?> minute read</p>
+ */
+function readTime()
+{
+    $words = word_count();
+
+    return ceil($words / 200);
+}
