@@ -33,8 +33,7 @@ class Posts extends WP_Widget
             $query_args = array_merge($query_args, array('tag' => $instance['by_tag']));
         }
 
-        $query = new WP_Query(apply_filters('bunyad_widget_posts_query_args', $query_args));
-
+        $query = new WP_Query($query_args);
 
         // Before and after widget arguments are defined by themes
         echo $args['before_widget'];
@@ -42,8 +41,27 @@ class Posts extends WP_Widget
             echo $args['before_title'] . $title . $args['after_title'];
         }
 
-        // This is where you run the code and display the output
-        echo __('Content Here!', 'axe');
+        while ($query->have_posts()) {
+            $query->the_post();
+
+            switch ($instance['style']) {
+                case 'meta-below':
+                case 'meta-above':
+                    echo "Meta Options";
+                    break;
+                case 'large':
+                    echo "large";
+                    break;
+                case 'full':
+                    echo "Full";
+                    break;
+                default:
+                    echo 'default';
+                    break;
+            }
+
+            echo get_the_title();
+        }
 
         echo $args['after_widget'];
     }
