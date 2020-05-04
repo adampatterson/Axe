@@ -24,8 +24,8 @@ class Posts extends WP_Widget
      */
     public function widget($args, $instance)
     {
-        $title = apply_filters('widget_title', $instance['title']);
-
+        $basePath   = '';
+        $title      = apply_filters('widget_title', $instance['title']);
         $query_args = array('posts_per_page' => $instance['number'], 'ignore_sticky_posts' => 1);
 
         // Show by tag
@@ -44,23 +44,8 @@ class Posts extends WP_Widget
         while ($query->have_posts()) {
             $query->the_post();
 
-            switch ($instance['style']) {
-                case 'meta-below':
-                case 'meta-above':
-                    echo "Meta Options";
-                    break;
-                case 'large':
-                    echo "large";
-                    break;
-                case 'full':
-                    echo "Full";
-                    break;
-                default:
-                    echo 'default';
-                    break;
-            }
-
-            echo get_the_title();
+            // While not using ACF here, get_template_part_acf allows data set here to be accessed inside of the widget template.
+            include(get_template_part_acf('templates/widgets/posts', $instance['style']));
         }
 
         echo $args['after_widget'];
@@ -117,7 +102,7 @@ class Posts extends WP_Widget
         echo $this->check($show_date, 'show_date', 'Show Date');
         echo $this->check($show_thumb, 'show_thumb', 'Show Thumbnails');
 
-        echo $this->select($style, 'style', 'Style:', ['meta-below' => 'Small - Meta Below', 'meta-above' => 'Small - Meta Above', 'large' => 'Medium - Medium Image & Meta', 'full' => 'Small - Meta BelowFull Width Image & Large Title']);
+        echo $this->select($style, 'style', 'Style:', ['meta-below' => 'Small - Meta Below', 'meta-above' => 'Small - Meta Above', 'medium' => 'Medium - Medium Image & Meta', 'full' => 'Small - Meta BelowFull Width Image & Large Title']);
     }
 
     public function register_widget()
