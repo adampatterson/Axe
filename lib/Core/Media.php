@@ -11,6 +11,7 @@ class Media
         add_image_size('gallery', 625, 1000);
         add_image_size('grid', 625, 625, true);
         add_image_size('square', 150, 150, true);
+        add_image_size('sidebar', 470, 353, true);
 
         if (is_admin()) {
             // Add image sizes to the editor
@@ -25,6 +26,7 @@ class Media
             'gallery'    => __('Gallery', 'axe'),
             'grid'       => __('Grid', 'axe'),
             'square'     => __('Square', 'axe'),
+            'sidebar' => __('Sidebar', 'axe'),
         ]);
     }
 }

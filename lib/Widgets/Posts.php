@@ -65,9 +65,10 @@ class Posts extends WP_Widget
             $new[$key] = wp_kses_post($val);
         }
 
-        $new['show_excerpt'] = ! empty($new['show_excerpt']) ? 1 : 0;
-        $new['show_date']    = ! empty($new['show_date']) ? 1 : 0;
-        $new['show_thumb']   = ! empty($new['show_thumb']) ? 1 : 0;
+        $new['show_excerpt']  = ! empty($new['show_excerpt']) ? 1 : 0;
+        $new['show_date']     = ! empty($new['show_date']) ? 1 : 0;
+        $new['show_thumb']    = ! empty($new['show_thumb']) ? 1 : 0;
+        $new['show_category'] = ! empty($new['show_category']) ? 1 : 0;
 
         return $new;
     }
@@ -82,13 +83,14 @@ class Posts extends WP_Widget
     public function form($instance)
     {
         $defaults = array(
-            'title'        => 'Recent Posts',
-            'by_tag'       => '',
-            'style'        => 'list',
-            'number'       => 5,
-            'show_thumb'   => 1,
-            'show_date'    => 1,
-            'show_excerpt' => 0,
+            'title'         => 'Recent Posts',
+            'by_tag'        => '',
+            'style'         => 'list',
+            'number'        => 5,
+            'show_thumb'    => 1,
+            'show_category' => 1,
+            'show_date'     => 1,
+            'show_excerpt'  => 0,
         );
 
         $instance = array_merge($defaults, (array)$instance);
@@ -101,6 +103,7 @@ class Posts extends WP_Widget
         echo $this->check($show_excerpt, 'show_excerpt', 'Show Excerpt');
         echo $this->check($show_date, 'show_date', 'Show Date');
         echo $this->check($show_thumb, 'show_thumb', 'Show Thumbnails');
+        echo $this->check($show_category, 'show_category', 'Show Category');
 
         echo $this->select($style, 'style', 'Style:', [
             'meta-below' => 'Small - Meta Below',
