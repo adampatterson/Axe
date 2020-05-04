@@ -114,14 +114,26 @@ class Template
         edit_post_link('Edit', '<br/><span class="edit-link">', '</span>');
     }
 
-    public static function post_categories()
+    public static function post_categories($single = false)
     {
         if ('post' == get_post_type()) {
-            $categories_list = get_the_category_list(', ');
-            if ($categories_list && self::categorized_blog()) {
-                printf('<span class="category-links">' . '<strong>Categories:</strong> %1$s' . '</span>', $categories_list);
+            if ( ! $single) {
+                $categories_list = get_the_category_list(', ');
+                if ($categories_list && self::categorized_blog()) {
+                    printf('<span class="category-links">' . '<strong>Categories:</strong> %1$s' . '</span>', $categories_list);
+                }
+            } else {
+                $category = current(get_the_category());
+                ?>
+                <a href="<?= esc_url(get_category_link($category)); ?>" class="category"><?= esc_html($category->name); ?></a>
+                <?php
             }
         }
+    }
+
+    public static function meta_category()
+    {
+        return self::post_categories(true);
     }
 
     public static function post_tags()
