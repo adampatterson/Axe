@@ -102,7 +102,12 @@ class Posts extends WP_Widget
         echo $this->check($show_date, 'show_date', 'Show Date');
         echo $this->check($show_thumb, 'show_thumb', 'Show Thumbnails');
 
-        echo $this->select($style, 'style', 'Style:', ['meta-below' => 'Small - Meta Below', 'meta-above' => 'Small - Meta Above', 'medium' => 'Medium - Medium Image & Meta', 'full' => 'Small - Meta BelowFull Width Image & Large Title']);
+        echo $this->select($style, 'style', 'Style:', [
+            'meta-below' => 'Small - Meta Below',
+            'meta-above' => 'Small - Meta Above',
+            'medium'     => 'Medium - Medium Image & Meta',
+            'full'       => 'Full - Meta Below Full Width Image & Large Title'
+        ]);
     }
 
     public function register_widget()
