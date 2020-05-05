@@ -24,8 +24,17 @@ class Posts extends WP_Widget
      */
     public function widget($args, $instance)
     {
-        $basePath   = '';
-        $title      = apply_filters('widget_title', $instance['title']);
+        $basePath = '';
+
+        // Defaults, On preview none of the variables will be set.
+
+        $title         = (array_key_exists('title', $instance) ? $instance['title'] : __('Recent Posts', 'axe'));
+        $show_excerpt  = (array_key_exists('show_excerpt', $instance) ? $instance['show_excerpt'] : true);
+        $show_date     = (array_key_exists('show_date', $instance) ? $instance['show_date'] : true);
+        $show_thumb    = (array_key_exists('show_thumb', $instance) ? $instance['show_thumb'] : true);
+        $show_category = (array_key_exists('show_category', $instance) ? $instance['show_category'] : true);
+        $show_author   = (array_key_exists('show_author', $instance) ? $instance['show_author'] : false);
+
         $query_args = array('posts_per_page' => $instance['number'], 'ignore_sticky_posts' => 1);
 
         // Show by tag
@@ -40,14 +49,17 @@ class Posts extends WP_Widget
         if ( ! empty($title)) {
             echo $args['before_title'] . $title . $args['after_title'];
         }
-
-        while ($query->have_posts()) {
-            $query->the_post();
-
-            // While not using ACF here, get_template_part_acf allows data set here to be accessed inside of the widget template.
-            include(get_template_part_acf('templates/widgets/posts', $instance['style']));
-        }
-
+        ?>
+        <ul class="list-unstyled">
+            <?php
+            while ($query->have_posts()) {
+                $query->the_post();
+                // While not using ACF here, get_template_part_acf allows data set here to be accessed inside of the widget template.
+                include(get_template_part_acf('templates/widgets/posts', $instance['style']));
+            }
+            ?>
+        </ul>
+        <?php
         echo $args['after_widget'];
     }
 
@@ -69,6 +81,7 @@ class Posts extends WP_Widget
         $new['show_date']     = ! empty($new['show_date']) ? 1 : 0;
         $new['show_thumb']    = ! empty($new['show_thumb']) ? 1 : 0;
         $new['show_category'] = ! empty($new['show_category']) ? 1 : 0;
+        $new['show_author']   = ! empty($new['show_author']) ? 1 : 0;
 
         return $new;
     }
@@ -83,7 +96,7 @@ class Posts extends WP_Widget
     public function form($instance)
     {
         $defaults = array(
-            'title'         => 'Recent Posts',
+            'title'         => __('Recent Posts', 'axe'),
             'by_tag'        => '',
             'style'         => 'list',
             'number'        => 5,
@@ -91,6 +104,7 @@ class Posts extends WP_Widget
             'show_category' => 1,
             'show_date'     => 1,
             'show_excerpt'  => 0,
+            'show_author'   => 0,
         );
 
         $instance = array_merge($defaults, (array)$instance);
@@ -100,16 +114,16 @@ class Posts extends WP_Widget
         echo $this->input($number, 'number', 'Number of posts:', 'number');
         echo $this->input($by_tag, 'by_tag', 'By Tag:');
 
-        echo $this->check($show_excerpt, 'show_excerpt', 'Show Excerpt');
-        echo $this->check($show_date, 'show_date', 'Show Date');
-        echo $this->check($show_thumb, 'show_thumb', 'Show Thumbnails');
-        echo $this->check($show_category, 'show_category', 'Show Category');
+        echo $this->check($show_excerpt, 'show_excerpt', __('Show Excerpt', 'axe'));
+        echo $this->check($show_date, 'show_date', __('Show Date', 'axe'));
+        echo $this->check($show_thumb, 'show_thumb', __('Show Thumbnails', 'axe'));
+        echo $this->check($show_category, 'show_category', __('Show Category', 'axe'));
+        echo $this->check($show_author, 'show_author', __('Show Author', 'axe'));
 
-        echo $this->select($style, 'style', 'Style:', [
-            'meta-below' => 'Small - Meta Below',
-            'meta-above' => 'Small - Meta Above',
-            'medium'     => 'Medium - Medium Image & Meta',
-            'full'       => 'Full - Meta Below Full Width Image & Large Title'
+        echo $this->select($style, 'style', __('Style:', 'axe'), [
+            'meta-below' => __('Medium - Meta Below', 'axe'),
+            'meta-above' => __('Medium - Meta Above', 'axe'),
+            'full'       => __('Full - Meta Below Full Width Image & Large Title', 'axe')
         ]);
     }
 
