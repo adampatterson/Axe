@@ -2,7 +2,7 @@
     <div class="container pt-5">
         <div class="row">
             <?php if (is_active_sidebar('woo-sidebar')) { ?>
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <?php } else { ?>
                 <div class="col-md-12">
                     <?php } ?>

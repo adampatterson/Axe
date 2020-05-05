@@ -6,7 +6,7 @@
 
         <div class="row">
             <?php if (is_active_sidebar('main')) { ?>
-            <section class="col-md-9">
+            <section class="col-md-8">
                 <?php } else { ?>
                 <section class="col-md-12">
                     <?php } ?>

@@ -3,7 +3,7 @@
 
         <div class="row">
             <?php if (is_active_sidebar('woo-single')) { ?>
-            <div class="col-md-9">
+            <div class="col-md-8">
             <?php } else { ?>
             <div class="col-md-12">
             <?php } ?>
