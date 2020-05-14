@@ -29,6 +29,7 @@ class Posts extends WP_Widget
         // Defaults, On preview none of the variables will be set.
 
         $title         = (array_key_exists('title', $instance) ? $instance['title'] : __('Recent Posts', 'axe'));
+        $style         = (array_key_exists('style', $instance) ? $instance['style'] : 'full');
         $show_excerpt  = (array_key_exists('show_excerpt', $instance) ? $instance['show_excerpt'] : true);
         $show_date     = (array_key_exists('show_date', $instance) ? $instance['show_date'] : true);
         $show_thumb    = (array_key_exists('show_thumb', $instance) ? $instance['show_thumb'] : true);
@@ -50,15 +51,15 @@ class Posts extends WP_Widget
             echo $args['before_title'] . $title . $args['after_title'];
         }
         ?>
-        <ul class="list-unstyled">
+        <div class="axe-widget-posts container">
             <?php
             while ($query->have_posts()) {
                 $query->the_post();
                 // While not using ACF here, get_template_part_acf allows data set here to be accessed inside of the widget template.
-                include(get_template_part_acf('templates/widgets/posts', $instance['style']));
+                include(get_template_part_acf('templates/widgets/posts', $style));
             }
             ?>
-        </ul>
+        </div>
         <?php
         echo $args['after_widget'];
     }
@@ -98,7 +99,7 @@ class Posts extends WP_Widget
         $defaults = array(
             'title'         => __('Recent Posts', 'axe'),
             'by_tag'        => '',
-            'style'         => 'list',
+            'style'         => 'full',
             'number'        => 5,
             'show_thumb'    => 1,
             'show_category' => 1,
@@ -121,8 +122,8 @@ class Posts extends WP_Widget
         echo $this->check($show_author, 'show_author', __('Show Author', 'axe'));
 
         echo $this->select($style, 'style', __('Style:', 'axe'), [
-            'meta-below' => __('Medium - Meta Below', 'axe'),
             'meta-above' => __('Medium - Meta Above', 'axe'),
+            'meta-below' => __('Medium - Meta Below', 'axe'),
             'full'       => __('Full - Meta Below Full Width Image & Large Title', 'axe')
         ]);
     }
