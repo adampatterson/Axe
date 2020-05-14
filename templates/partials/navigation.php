@@ -23,6 +23,7 @@
                         'menu_id'        => 'navigation',
                         'depth'          => 3,
                         'container'      => false,
+                        'escape_titles'  => false,
                         'menu_class'     => 'nav navbar-nav primary-nav ml-auto',
                         'walker'         => new Axe\Core\Walker()
                     ));
