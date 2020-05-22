@@ -378,9 +378,9 @@ function word_count()
 /**
  * @return float
  *
- * <p><?= readTime() ?> minute read</p>
+ * <p><?= read_time() ?> minute read</p>
  */
-function readTime()
+function read_time()
 {
     $words = word_count();
 

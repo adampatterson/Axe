@@ -264,11 +264,11 @@ class Walker extends Walker_Nav_Menu
          *
          * Not having escape_titles set, or setting escape_titles to true will result in escaped titles.
          */
-        if (property_exists($args, 'escape_titles') && ! $args->escape_titles) {
+        if (property_exists($args, 'escape_titles') && false == $args->escape_titles) {
             $title = apply_filters('the_title', $item->title, $item->ID);
         } else {
             /** This filter is documented in wp-includes/post-template.php */
-            $title = apply_filters('the_title', esc_attr($item->title), $item->ID);
+            $title = apply_filters('the_title', esc_html($item->title), $item->ID);
         }
 
         /**
