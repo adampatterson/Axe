@@ -13,3 +13,5 @@ node_modules
 /mix-manifest.json
 /assets/js/manifest.js
 *.map
+/assets/js/vendor.js.LICENSE.txt
+/assets/js/app.js.LICENSE.txt

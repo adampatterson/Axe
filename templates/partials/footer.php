@@ -1,5 +1,3 @@
-
-<?php get_template_part('templates/partials/widgets','bottom'); ?>
 <footer>
     <div class="container">
         <?php

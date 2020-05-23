@@ -44,7 +44,5 @@ if (is_null($post)) {
     <?php get_template_part('templates/partials/navigation'); ?>
 
     <?php get_template_part('templates/partials/custom-header'); ?>
-    <?php get_template_part('templates/partials/widgets','top'); ?>
-
 
 

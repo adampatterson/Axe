@@ -95,46 +95,41 @@ mix.autoload({
     'jquery': ['$', 'window.jQuery', 'jQuery']
 })
 
-mix
-    .setPublicPath('./')
-
-    .sass('src/scss/base.scss', 'assets/css').options(scssOptions)
-
+mix.setPublicPath('./')
+   .sass('src/scss/base.scss', 'assets/css')
+   .options(scssOptions)
     // Extract libraries requires ECMAScript 6 imports in your code.
-     .js(bundles.all, 'assets/js/app.js').extract(extractLibs)
-//   .js(bundles.all, 'assets/js/app.js')
+   .js(bundles.all, 'assets/js/app.js').extract(extractLibs)
+    //   .js(bundles.all, 'assets/js/app.js')
 
+   .purgeCss(
+       {
+           enabled: mix.inProduction(),
+           paths: () => glob.sync([
+               path.join(__dirname, '*.php'),
+               path.join(__dirname, 'templates/**/*.php'),
+               path.join(__dirname, 'assets/js/**/*.js'),
+           ]),
+           extensions: ['html', 'js', 'php'],
 
+           // Other options are passed through to Purgecss
+           whitelist: purgecssWordpress.whitelist,
+           whitelistPatterns: purgecssWordpress.whitelistPatterns,
+       }
+   )
 
-    .autoload({
-        'jquery': ['$', 'window.jQuery', 'jQuery']
-    })
+   .autoload({
+       'jquery': ['$', 'window.jQuery', 'jQuery']
+   })
 
    .version()
 
-
 // Production
 if (mix.inProduction()) {
-    mix.purgeCss(
-        {
-            enabled: true,
-            paths: glob.sync([
-                path.join(__dirname, '*.php'),
-                path.join(__dirname, 'templates/**/*.php'),
-                path.join(__dirname, '/assets/js/**/*.js'),
-            ]),
-            extensions: ['html', 'js', 'php'],
-
-            // Other options are passed through to Purgecss
-            whitelist: purgecssWordpress.whitelist,
-            whitelistPatterns: purgecssWordpress.whitelistPatterns,
-        }
-    )
-
     mix.options({
         terser: {
             terserOptions: {
-                warnings: true
+                warnings: false
             }
         }
     })

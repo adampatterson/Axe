@@ -11,8 +11,6 @@
     </div>
 </div>
 
-<?php get_template_part('templates/partials/widgets', 'post-below') ?>
-
 <div class="row post-author mb-5">
     <?php get_template_part('templates/partials/post-author') ?>
 </div>
