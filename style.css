@@ -1,12 +1,13 @@
 /*
 Theme Name: Axe
 Author: Adam Patterson
-Author URI: http://adampatterson.ca
+Author URI: https://adampatterson.ca
 Theme URI: https://github.com/adampatterson/Axe
 GitHub Plugin URI: https://github.com/adampatterson/Axe
-Description: Designed to be a minimal implementation of a WordPress theme, Axe cuts throguh the repedative setup.
+Description: Designed to be a minimal implementation of a WordPress theme, Axe cuts through the repetitive setup.
 Version: 1.1
 License: GNU General Public License
 License URI: license.txt
-Tags:
+Text Domain: axe
+Domain Path: /languages
 */

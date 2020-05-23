@@ -1,0 +1,126 @@
+/* purgecss start ignore */
+
+.wp-block-cover {
+    max-height: 50vh;
+}
+
+.wp-block-code {
+    padding: .8em 1em;
+    border: 1px solid #e2e4e7;
+    border-radius: 4px
+}
+
+.wp-block-code, .wp-block-preformatted pre {
+    font-family: Menlo, Consolas, monaco, monospace;
+    font-size: 14px;
+    color: #23282d
+}
+
+.wp-block-pullquote {
+    border-top: 4px solid #555d66;
+    border-bottom: 4px solid #555d66;
+    color: #40464d
+}
+
+.wp-block-pullquote__citation, .wp-block-pullquote cite, .wp-block-pullquote footer {
+    color: #40464d;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-style: italic
+}
+
+.wp-block-quote {
+    margin: 20px 0
+}
+
+.wp-block-quote__citation, .wp-block-quote cite, .wp-block-quote footer {
+    color: #6c7781;
+    font-size: 13px;
+    margin-top: 1em;
+    position: relative;
+    font-style: normal
+}
+
+.wp-block-quote:not(.is-large):not(.is-style-large) {
+    border-left: 4px solid #000;
+    padding-left: 1em
+}
+
+.wp-block-separator {
+    border: none;
+    border-bottom: 2px solid #8f98a1;
+    margin: 1.65em auto
+}
+
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+    max-width: 100px
+}
+
+.wp-block-spacer {
+    display: block;
+    clear: both;
+}
+
+.wp-block-table {
+    overflow-x: auto;
+    display: block;
+    border-collapse: collapse;
+    width: 100%
+}
+
+.wp-block-table tbody, .wp-block-table tfoot, .wp-block-table thead {
+    width: 100%;
+    min-width: 240px;
+    display: table
+}
+
+.wp-block-table td, .wp-block-table th {
+    padding: .5em;
+    border: 1px solid currentColor
+}
+
+.wp-block-embed {
+    &.is-type-video {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+
+        iframe, object, embed, video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &.aligncenter.is-type-rich {
+        > .wp-block-embed__wrapper iframe,
+        > .wp-block-embed__wrapper twitter-widget {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+    }
+
+    &.is-provider-spotify iframe {
+        width: 600px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    &.wp-block-embed-wordpress {
+        > .wp-block-embed__wrapper iframe {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+    }
+
+    &.is-provider-giphy,
+    &.is-provider-flickr {
+        .wp-block-embed__wrapper {
+            text-align: center;
+        }
+    }
+}
+/* purgecss end ignore */

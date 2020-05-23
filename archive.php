@@ -1,23 +1,32 @@
 <?php
-/**
- * Template Name: Archives
- */
 $data = get_fields();
+$post = get_post();
 
 include(get_template_part_acf('templates/partials/header'));
 
 echo '<!-- master/archive -->';
-if (have_posts()):
-    $terms    = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
-    $category = ($terms) ? $terms->taxonomy : null;
 
-    if (check_path('/templates/archive-' . $category . '.php')):
-        echo '<!-- template: index/archive-' . $category . ' -->';
-        include(get_template_part_acf('templates/archive', $category));
-    else:
-        echo '<!-- template: index/archive -->';
-        include(get_template_part_acf('templates/archive', 'default'));
+if (have_posts()):
+    if (is_archive()):
+        $post_type = get_post_type();
+
+        if ($post_type) {
+            $post_type_data = get_post_type_object($post_type);
+            $post_type_slug = $post_type_data->rewrite['slug'];
+        }
+
+        if (check_path('/templates/archive-' . $post_type_slug . '.php')):
+            echo '<!-- template: index/archive-' . $post_type_slug . ' -->';
+            include(get_template_part_acf('templates/archive', $post_type_slug));
+        else:
+            echo '<!-- template: index/archive -->';
+            include(get_template_part_acf('templates/archive', 'default'));
+        endif;
     endif;
+
+else:
+    echo '<!-- template: index/no_posts -->';
+    include(get_template_part_acf('templates/archive', 'default'));
 endif;
 
 include(get_template_part_acf('templates/partials/footer'));

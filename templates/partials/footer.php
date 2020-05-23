@@ -1,5 +1,5 @@
 <footer>
-    <div class="container text-center">
+    <div class="container">
         <?php
         // http://code.tutsplus.com/tutorials/how-to-integrate-bootstrap-navbar-into-wordpress-theme--wp-33410
         if (has_nav_menu('footer-links')) {
@@ -7,15 +7,20 @@
                 'menu'           => 'footer-links',
                 'theme_location' => 'footer-links',
                 'menu_id'        => 'footer-navigation',
-                'depth'          => 2,
+                'depth'          => 1,
                 'container'      => false,
-                'menu_class'     => 'nav navbar-nav primary-nav navbar-right',
-                'walker'         => new wp_bootstrap_navwalker()
+                'menu_class'     => 'nav justify-content-center secondary-nav pt-5',
+                'walker'         => new Axe\Core\Walker()
             ));
         }
         #get_search_form();
         ?>
     </div>
+    <?php if (is_active_sidebar('footer')) { ?>
+        <div class="widget-footer">
+            <?php dynamic_sidebar('footer'); ?>
+        </div>
+    <?php } ?>
 </footer>
 </div>
 <?php wp_footer(); ?>

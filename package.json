@@ -3,7 +3,11 @@
     "version": "0.0.1",
     "author": "Adam Patterson",
     "description": "Axe Theme",
+    "homepage": "https://github.com/adampatterson/Axe/",
     "private": true,
+    "bugs": {
+        "url": "https://github.com/adampatterson/Axe/issues"
+    },
     "directories": {
         "doc": "docs"
     },
@@ -17,17 +21,20 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "bower": "^1.8.8",
-        "browser-sync": "^2.26.4",
-        "browser-sync-webpack-plugin": "2.0.1",
-        "cross-env": "^5.1",
-        "laravel-mix": "^4.0.15",
-        "node-sass": "^4.11.0",
-        "sass": "^1.19.0",
-        "sass-loader": "7.*",
+        "browser-sync": "^2.26.7",
+        "browser-sync-webpack-plugin": "2.2.2",
+        "cross-env": "^5.2",
+        "laravel-mix": "^5.0.4",
+        "laravel-mix-purgecss": "^4.1",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "jquery": "^3.3.1"
+        "bootstrap": "^4.3.1",
+        "glob-all": "^3.1.0",
+        "jquery": "^3.4.1",
+        "popper.js": "^1.15.0",
+        "node-sass": "^4.12.0",
+        "sass": "^1.26.3",
+        "sass-loader": "^8.0.2"
     }
 }

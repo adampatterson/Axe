@@ -1,10 +1,11 @@
-<?
-get_template_part('templates/partials/header');
+<?php
+include(get_template_part_acf('templates/partials/header'));
 
 $term_id  = get_query_var('tag_id');
 $taxonomy = 'post_tag';
 $args     = 'include=' . $term_id;
 $terms    = get_terms($taxonomy, $args);
+$post     = get_post();
 
 $term_slug = (is_array($terms)) ? $terms[0]->slug : '';
 
@@ -17,5 +18,4 @@ else:
     include(get_template_part_acf('templates/archive', 'tag'));
 endif;
 
-
-get_template_part('templates/partials/footer');
+include(get_template_part_acf('templates/partials/footer'));

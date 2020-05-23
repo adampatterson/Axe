@@ -1,0 +1,22 @@
+/* purgecss start ignore */
+.instagram-pics {
+    list-style: none;
+    margin: 0;
+
+    li {
+        float: left;
+        width: 33.333%;
+        padding: 2px;
+
+        img {
+            width: 100%
+        }
+    }
+}
+
+.null-instagram-feed p.clear {
+    clear: both;
+}
+/* purgecss end ignore */
+
+

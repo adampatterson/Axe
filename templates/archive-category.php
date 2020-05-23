@@ -1,27 +1,26 @@
 <?php
-$cat     = get_query_var('cat');
-$yourcat = get_category($cat);
+$cat      = get_query_var('cat');
+$category = get_category($cat);
 ?>
 
 <div class="content-wrapper">
-    <div class="container">
+    <div class="container pt-5">
 
-        <div class="wrapper terms">
-            <div class="container">
-                <h3 class="entry-title">Category results for: <?= $yourcat->name; ?></h3>
-            </div>
-        </div>
+        <?php include(get_template_part_acf('templates/partials/archive', 'header')); ?>
 
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
 
-                <section id="blog">
+                <section id="post-blog">
                     <?php if (have_posts()):
                         include(get_template_part_acf('templates/loop', 'post')); ?>
 
-                        <div class="text-center">
-                            <?php axe_paging_nav() ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?php get_template_part('templates/partials/pagination') ?>
+                            </div>
                         </div>
+
                     <?php else:
                         include(get_template_part_acf('templates/content', 'none'));
                     endif; ?>

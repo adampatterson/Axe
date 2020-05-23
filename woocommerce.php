@@ -1,8 +1,8 @@
 <?php
-$data = get_fields();
-include( get_template_part_acf( 'templates/partials/header' ) );
 
-echo '<!-- template: woo/page -->';
-include( get_template_part_acf( 'templates/woo', 'product-listing' ) );
+/*
+While it is possible to use the Woo Commerce is_shop, is_product checks
+you will loose out on some Woo functionality.
 
-include( get_template_part_acf( 'templates/partials/footer' ) );
+https://github.com/woocommerce/woocommerce/wiki/Declaring-WooCommerce-support-in-themes
+*/

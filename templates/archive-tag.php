@@ -3,28 +3,29 @@
 $term_id  = get_query_var('tag_id');
 $taxonomy = 'post_tag';
 $args     = 'include=' . $term_id;
-$terms    = get_terms($taxonomy, $args); ?>
+$terms    = get_terms($taxonomy, $args);
+?>
 
 <div class="content-wrapper">
-    <div class="container">
+    <div class="container pt-5">
 
-        <div class="wrapper terms">
-            <h3 class="entry-title">Taxonomy results for: <?= $terms[0]->name; ?></h3>
-        </div>
+        <?php include(get_template_part_acf('templates/partials/archive', 'header')); ?>
 
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
 
                 <section id="post-blog">
                     <?php if (have_posts()):
-                        get_template_part('templates/loop', 'post'); ?>
+                        include(get_template_part_acf('templates/loop', 'post')); ?>
 
-                        <div class="center pagination">
-                            <?= get_previous_posts_link(); ?>
-                            <?= get_next_posts_link(); ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?php get_template_part('templates/partials/pagination') ?>
+                            </div>
                         </div>
+
                     <?php else:
-                        get_template_part('templates/content', 'none');
+                        include(get_template_part_acf('templates/content', 'none'));
                     endif; ?>
                 </section>
 

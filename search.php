@@ -1,6 +1,8 @@
 <?php
 $data = get_fields();
-get_template_part('templates/partials/header');
+$post = get_post();
+
+include(get_template_part_acf('templates/partials/header'));
 
 echo '<!-- master/search -->';
 if (have_posts()):
@@ -11,4 +13,4 @@ else:
     get_template_part('templates/none');
 endif;
 
-get_template_part('templates/partials/footer');
+include(get_template_part_acf('templates/partials/footer'));

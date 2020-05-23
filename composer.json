@@ -1,5 +1,9 @@
 {
     "require": {
-
+    },
+    "autoload": {
+        "psr-4": {
+            "Axe\\": "lib/"
+        }
     }
 }

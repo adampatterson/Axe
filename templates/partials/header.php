@@ -6,11 +6,10 @@
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
-    <title><?php wp_title('|', true, 'right'); ?><?php bloginfo('name') ?></title>
-
-    <script
-            type='application/ld+json'>{"@context":"http:\/\/schema.org","@type":"WebSite","url":"<?= home_url('/'); ?>
+    <script type='application/ld+json'>{"@context":"http:\/\/schema.org","@type":"WebSite","url":"<?= home_url('/'); ?>
         ","name":"<?= bloginfo('name') ?>","potentialAction":{"@type":"SearchAction","target":"<?= home_url('/'); ?>?s={search_term}","query-input":"required name=search_term"}}
+
+
 
     </script>
 
@@ -42,53 +41,8 @@ if (is_null($post)) {
     ga('send', 'pageview')
 </script>
 <div id="wrapper">
-    <div class="navbar-wrapper">
-        <div class="container">
+    <?php get_template_part('templates/partials/navigation'); ?>
 
-            <nav class="navbar p-top-15" id="header">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu"
-                                aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
-                                    class="icon-bar"></span> <span class="icon-bar"></span>
-                        </button>
-                        <div class="navbar-brand nav-logo pull-left">
-                            <a href="<?= home_url('/') ?>">
-                                <img src="<?php __i() ?>logo.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="m-top-15 collapse navbar-collapse" id="menu">
-                        <?php
-                        // http://code.tutsplus.com/tutorials/how-to-integrate-bootstrap-navbar-into-wordpress-theme--wp-33410
-                        // https://github.com/jeffmould/multi-level-bootstrap-menu/blob/master/wp-bootstrap-navwalker.php
-                        if (has_nav_menu('main-menu')) {
-                            wp_nav_menu(array(
-                                'menu'           => 'main-menu',
-                                'theme_location' => 'main-menu',
-                                'menu_id'        => 'navigation',
-                                'depth'          => 3,
-                                'container'      => false,
-                                'menu_class'     => 'nav navbar-nav primary-nav navbar-right',
-                                'walker'         => new wp_bootstrap_navwalker()
-                            ));
-                        }
-                        #get_search_form();
-                        ?>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>
+    <?php get_template_part('templates/partials/custom-header'); ?>
 
 
-        </div>
-    </div>
-
-    <?php /*
-     <div id="sidebar">
-        <?php get_template_part('templates/partials/sidebar'); ?>
-    </div>
-*/ ?>

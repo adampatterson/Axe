@@ -17,43 +17,16 @@ $font-color:                    #212121;
 $link-color:                    darken($font-color, 10%);
 $link-hover-color:              darken($font-color, 20%);
 
-$grey-35:                       #FAFAFA;
-$grey-50:                       #F5F5F5;
-$grey-75:                       #EFEFEF;
-$grey-100:                      #E3E3E3;
-$grey-150:                      lighten(#757575, 40%);
-$grey-200:                      lighten(#757575, 30%);
-$grey-300:                      lighten(#757575, 15%);
-$grey-400:                      #757575;
-$grey-500:                      lighten(#3D3D3D, 20%);
-$grey-600:                      lighten(#3D3D3D, 10%);
-$grey-700:                      #3D3D3D;
-$grey-800:                      #212121;
-
-$orange:                     #ff5a00;
-$orange-light:               lighten($orange, 15%);
-$orange-dark:                darken($orange, 10%);
-
-$blue:                       #239fc4;
-$blue-light:                 lighten($blue, 15%);
-$blue-dark:                  darken($blue, 25%);
-
-$brand-primary:                 $orange;
-$brand-primary-light:           $orange-light;
-$brand-primary-dark:            $orange-dark;
-$brand-secondary:               $blue;
-$brand-secondary-dark:          $blue-dark;
-$brand-secondary-light:         $blue-light;
-
-$querystring-random-variable:  random(100000);
+//$theme-colors: (
+//    "primary": #0074d9,
+//);
 
 $red:                           #d61313;
 $font-color:                    $white;
 
 $font-open-sans:                'Open Sans', sans-serif;
 $font-roboto:                   'Roboto', sans-serif;
-
-$font-open-sans:                'Open Sans', sans-serif;
-$font-roboto:                   'Roboto', sans-serif;
 $font-josefin:                  'Josefin Sans', sans-serif;
 $font-garamond:                 'EB Garamond', serif;
+
+// Bootstrap override

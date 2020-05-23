@@ -1,22 +1,25 @@
 <div class="content-wrapper">
-    <div class="container">
+    <div class="container pt-5">
 
         <div class="row">
-            <div class="col-md-12">
-                <section id="blog">
-                    <?php include( get_template_part_acf( 'templates/loop', 'post' ) ); ?>
-                </section>
-            </div>
-        </div>
+            <?php if (is_active_sidebar('blog')) { ?>
+            <div class="col-md-8">
+                <?php } else { ?>
+                <div class="col-md-12">
+                    <?php } ?>
+                    <section id="blog">
+                        <?php include(get_template_part_acf('templates/loop', 'post')); ?>
+                    </section>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="center pagination">
-                    <?= get_previous_posts_link(); ?>
-                    <?= get_next_posts_link(); ?>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <?php get_template_part('templates/partials/pagination') ?>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
+                <?php get_template_part('templates/partials/sidebar', 'blog') ?>
+            </div>
+
+        </div>
     </div>
-</div>
