@@ -3,6 +3,9 @@
 namespace Axe\Core;
 
 /**
+ * Class Looper
+ * @package Axe\Core
+ *
  * $axeLoop = new Axe\Core\Looper;
  * while ($axeLoop->have_posts()) : the_post();
  *      $axeLoop->first()
@@ -10,10 +13,7 @@ namespace Axe\Core;
  *      $axeLoop->even()
  *      $axeLoop->odd()
  *      $axeLoop->last()
-  * endwhile;
- *
- * Class Looper
- * @package Axe\Core
+ * endwhile;
  */
 class Looper
 {
