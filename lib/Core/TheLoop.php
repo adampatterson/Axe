@@ -3,19 +3,19 @@
 namespace Axe\Core;
 
 /**
- * Class Looper
+ * Class TheLoop
  * @package Axe\Core
  *
- * $axeLoop = new Axe\Core\Looper;
- * while ($axeLoop->have_posts()) : the_post();
- *      $axeLoop->first()
- *      $axeLoop->index()
- *      $axeLoop->even()
- *      $axeLoop->odd()
- *      $axeLoop->last()
+ * $loop = new Axe\Core\TheLoop;
+ * while ($loop->have_posts()) : the_post();
+ *      $loop->first()
+ *      $loop->index()
+ *      $loop->even()
+ *      $loop->odd()
+ *      $loop->last()
  * endwhile;
  */
-class Looper
+class TheLoop
 {
 
     /**
