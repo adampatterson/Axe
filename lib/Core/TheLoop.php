@@ -10,6 +10,8 @@ namespace Axe\Core;
  * while ($loop->have_posts()) : the_post();
  *      $loop->first()
  *      $loop->index()
+ *      $loop->iteration()
+ *      $loop->count()
  *      $loop->even()
  *      $loop->odd()
  *      $loop->last()
@@ -53,19 +55,39 @@ class TheLoop
     /**
      * Sets and increments the current index.
      */
-    public function iterate()
+    private function iterate()
     {
         $this->index = $this->index + 1;
     }
 
     /**
-     * Returns the current post index on the page.
+     * The index of the current loop iteration (starts at 0).
      *
      * @return int
      */
     public function index()
     {
+        return $this->index - 1;
+    }
+
+    /**
+     * The current loop iteration (starts at 1).
+     *
+     * @return int
+     */
+    public function iteration()
+    {
         return $this->index;
+    }
+
+    /**
+     * The total number of posts being iterated.
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->wp_query->posts);
     }
 
     /**
