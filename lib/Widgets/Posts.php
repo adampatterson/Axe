@@ -27,8 +27,8 @@ class Posts extends WP_Widget
         $basePath = '';
 
         // Defaults, On preview none of the variables will be set.
-
         $title         = (array_key_exists('title', $instance) ? $instance['title'] : __('Recent Posts', 'axe'));
+        $number        = (array_key_exists('number', $instance) ? $instance['number'] : 5);
         $style         = (array_key_exists('style', $instance) ? $instance['style'] : 'full');
         $show_excerpt  = (array_key_exists('show_excerpt', $instance) ? $instance['show_excerpt'] : true);
         $show_date     = (array_key_exists('show_date', $instance) ? $instance['show_date'] : true);
@@ -36,7 +36,7 @@ class Posts extends WP_Widget
         $show_category = (array_key_exists('show_category', $instance) ? $instance['show_category'] : true);
         $show_author   = (array_key_exists('show_author', $instance) ? $instance['show_author'] : false);
 
-        $query_args = array('posts_per_page' => $instance['number'], 'ignore_sticky_posts' => 1);
+        $query_args = array('posts_per_page' => $number, 'ignore_sticky_posts' => 1);
 
         // Show by tag
         if ( ! empty($instance['by_tag'])) {
