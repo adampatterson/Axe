@@ -19,7 +19,11 @@ class Widgets
         $this->path = get_template_directory();
 
         $this->widgets = [
-            'Posts' => 'Axe\Widgets\Posts'
+            'Posts'       => 'Axe\Widgets\Posts',
+            'Instagram'   => 'Axe\Widgets\Instagram',
+            'Twitter'     => 'Axe\Widgets\Twitter',
+            'About'       => 'Axe\Widgets\About',
+            'MailingList' => 'Axe\Widgets\MailingList',
         ];
 
         add_action('widgets_init', [$this, 'register_sidebars']);
