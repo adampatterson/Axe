@@ -107,7 +107,7 @@ class Widgets
         // Woo Commerce Listing Sidebar
         register_sidebar(array(
             'name'          => 'WooCommerce Listing Sidebar',
-            'id'            => 'woo-sidebar',
+            'id'            => 'shop',
             'description'   => __('Widgets for WooCommerce Sidebar', 'axe'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
@@ -118,7 +118,7 @@ class Widgets
         // Woo Commerce Single Product Sidebar
         register_sidebar(array(
             'name'          => 'WooCommerce Single Product Sidebar',
-            'id'            => 'woo-single',
+            'id'            => 'shop-single',
             'description'   => __('Widgets for WooCommerce Sidebar', 'axe'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',

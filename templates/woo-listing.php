@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <div class="container pt-5">
         <div class="row">
-            <?php if (is_active_sidebar('woo-sidebar')) { ?>
+            <?php if (is_active_sidebar('shop')) { ?>
                 <div class="col-md-8">
             <?php } else { ?>
                 <div class="col-md-12">
@@ -14,7 +14,7 @@
                     </section>
                 </div>
 
-                <?php get_template_part('templates/partials/sidebar', 'woo-sidebar') ?>
+                <?php get_template_part('templates/partials/sidebar', 'shop') ?>
             </div>
 
         </div>
