@@ -156,7 +156,7 @@ https://github.com/adampatterson/Handle
 Opening `Helpers.php` and uncommenting the function on [line 6](https://github.com/adampatterson/Handle/blob/master/lib/Helpers.php#L6) would allows the child theme to serve all of your themes assets.
 
 ## Plugins
-Blade will require a few plugins to run:
+Axe will require a few plugins to run:
 
  * Advanced Custom Fields **Required**
  * Custom Post Type UI
