@@ -37743,6 +37743,25 @@
 		"oAP": "/category.php",
 		"oF": 0
 		},
+	"/CODE_OF_CONDUCT.md": {
+		"cB": 0,
+		"cS": 0,
+		"eF": 0,
+		"eL": 1,
+		"ema": 1,
+		"eSQ": 1,
+		"ft": 4096,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/CODE_OF_CONDUCT.html",
+		"oF": 0,
+		"oFM": 0,
+		"oS": 0,
+		"pHT": 0,
+		"pME": 1,
+		"rFN": 0,
+		"uCM": 0
+		},
 	"/composer.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -37800,6 +37819,14 @@
 		"hM": 0,
 		"oA": 2,
 		"oAP": "/lib/Core/Options.php",
+		"oF": 0
+		},
+	"/lib/Core/TheLoop.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Core/TheLoop.php",
 		"oF": 0
 		},
 	"/lib/Core/Walker.php": {
@@ -37906,6 +37933,14 @@
 		"oAP": "/lib/Template.php",
 		"oF": 0
 		},
+	"/lib/Widgets/About.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Widgets/About.php",
+		"oF": 0
+		},
 	"/lib/Widgets/Base.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -37914,12 +37949,36 @@
 		"oAP": "/lib/Widgets/Base.php",
 		"oF": 0
 		},
+	"/lib/Widgets/Instagram.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Widgets/Instagram.php",
+		"oF": 0
+		},
+	"/lib/Widgets/MailingList.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Widgets/MailingList.php",
+		"oF": 0
+		},
 	"/lib/Widgets/Posts.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 2,
 		"oAP": "/lib/Widgets/Posts.php",
+		"oF": 0
+		},
+	"/lib/Widgets/Twitter.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/lib/Widgets/Twitter.php",
 		"oF": 0
 		},
 	"/license.txt": {
@@ -37951,6 +38010,17 @@
 		"oF": 0,
 		"oO": 0,
 		"oS": 1
+		},
+	"/node_modules/bootstrap/dist/js/bootstrap.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/node_modules/bootstrap/dist/js/min/bootstrap-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
 		},
 	"/node_modules/glob/glob.js": {
 		"bF": 0,
@@ -38029,6 +38099,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/page.php",
+		"oF": 0
+		},
+	"/pnpm-lock.yaml": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/pnpm-lock.yaml",
 		"oF": 0
 		},
 	"/README.md": {
@@ -40135,36 +40213,20 @@
 		"oAP": "/templates/partials/sidebar-blog.php",
 		"oF": 0
 		},
-	"/templates/partials/sidebar-main.php": {
+	"/templates/partials/sidebar-shop-single.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 2,
-		"oAP": "/templates/partials/sidebar-main.php",
+		"oAP": "/templates/partials/sidebar-shop-single.php",
 		"oF": 0
 		},
-	"/templates/partials/sidebar-woo-sidebar.php": {
+	"/templates/partials/sidebar-shop.php": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 2,
-		"oAP": "/templates/partials/sidebar-woo-sidebar.php",
-		"oF": 0
-		},
-	"/templates/partials/sidebar-woo-single.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/templates/partials/sidebar-woo-single.php",
-		"oF": 0
-		},
-	"/templates/partials/widgets-bottom.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/templates/partials/widgets-bottom.php",
+		"oAP": "/templates/partials/sidebar-shop.php",
 		"oF": 0
 		},
 	"/templates/partials/widgets-post-above.php": {
@@ -40181,14 +40243,6 @@
 		"hM": 0,
 		"oA": 2,
 		"oAP": "/templates/partials/widgets-post-below.php",
-		"oF": 0
-		},
-	"/templates/partials/widgets-top.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/templates/partials/widgets-top.php",
 		"oF": 0
 		},
 	"/templates/widgets/posts-full.php": {
