@@ -25,7 +25,7 @@ class Init
             Setup\Menu::class,
             Setup\Theme::class,
             Template::class,
-            Custom\Custom::class,
+            Custom::class,
         ];
     }
 

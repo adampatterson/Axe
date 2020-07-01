@@ -1,6 +1,6 @@
 <?php
 
-namespace Axe\Custom;
+namespace Axe;
 
 class Custom
 {
