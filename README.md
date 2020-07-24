@@ -102,7 +102,9 @@ See [loop-post.php](https://github.com/adampatterson/Axe/blob/master/templates/l
 
 ## Helper Functions
 
-`mix()` - Allows you to use Laravel Mix with WordPress [read more here](https://www.adampatterson.ca/2018/axe-handle-updated-to-include-webpack-mix/)
+`mix()` - Allows you to use Laravel Mix with WordPress [read more here](https://www.adampatterson.ca/2018/axe-handle-updated-to-include-webpack-mix/). 
+
+`mix($filepath, $useParent = true)` - In some cases the core theme might be used with a network site and will require the ability to load assets from both the Child and Parent theme. Omitting useParent will keep the same functionality.
 
 `get_template_part_acf()` - Works exactly like `get_template_part()` except that it uses an include making it more suitable to use with ACF. You can include your custom content once which is already done for you. Have a look [here](https://github.com/adampatterson/Axe/blob/master/index.php#L2).
 
@@ -133,6 +135,9 @@ See [loop-post.php](https://github.com/adampatterson/Axe/blob/master/templates/l
 `get_the_logo()` - 
 
 `if_custom_logo()` - 
+
+@todo: Loop Helpers
+@todo: Widgets
 
 ## Style
 ```
