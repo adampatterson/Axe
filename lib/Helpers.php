@@ -33,9 +33,9 @@ if ( ! function_exists('__a')) {
      *
      * @return string
      */
-    function __a()
+    function __a($useParent = false)
     {
-        return __t() . 'assets/';
+        return __t($useParent) . 'assets/';
     }
 }
 
@@ -44,9 +44,9 @@ if ( ! function_exists('__j')) {
     /**
      * Echoes the Javascript path.
      */
-    function __j()
+    function __j($useParent = false)
     {
-        echo __a() . 'js/';
+        echo __a($useParent) . 'js/';
     }
 }
 
@@ -54,9 +54,9 @@ if ( ! function_exists('__i')) {
     /**
      * Echoes the Images path.
      */
-    function __i()
+    function __i($useParent = false)
     {
-        echo __a() . 'img/';
+        echo __a($useParent) . 'img/';
     }
 }
 
@@ -64,9 +64,9 @@ if ( ! function_exists('__c')) {
     /**
      * Echoes the CSS path.
      */
-    function __c()
+    function __c($useParent = false)
     {
-        echo __a() . 'css/';
+        echo __a($useParent) . 'css/';
     }
 }
 
@@ -74,9 +74,9 @@ if ( ! function_exists('__v')) {
     /**
      * Echoes the Vendor path.
      */
-    function __v()
+    function __v($useParent = false)
     {
-        echo __a() . 'vendor/';
+        echo __a($useParent) . 'vendor/';
     }
 }
 
@@ -96,9 +96,26 @@ if ( ! function_exists('__m')) {
      *
      * @return bool|string
      */
-    function __m()
+    function __m($useParent)
     {
-        return template_directory('mix-manifest.json');
+        $template_name = "mix-manifest.json";
+
+        // Force the Parent Manifest
+        if ($useParent and file_exists(get_template_directory() . '/' . $template_name)) {
+            return get_template_directory() . '/' . $template_name;
+        }
+
+        // Check the Child Manifest
+        if (file_exists(get_stylesheet_directory() . '/' . $template_name)) {
+            return get_stylesheet_directory() . '/' . $template_name;
+        }
+
+        // Return to the Core Manifest.
+        if (file_exists(get_template_directory() . '/' . $template_name)) {
+            return get_template_directory() . '/' . $template_name;
+        }
+
+        return false;
     }
 }
 
@@ -106,9 +123,9 @@ if ( ! function_exists('__video')) {
     /**
      *  Echos the video path.
      */
-    function __video()
+    function __video($useParent = false)
     {
-        echo __a() . 'video/';
+        echo __a($useParent) . 'video/';
     }
 }
 
@@ -229,24 +246,25 @@ if ( ! function_exists('mix')) {
      *
      * @return string
      */
-    function mix($path)
+    function mix($path, $useParent = false)
     {
         $pathWithOutSlash = ltrim($path, '/');
         $pathWithSlash    = '/' . ltrim($path, '/');
-        $manifestFile     = __m();
+        $manifestFile     = __m($useParent);
 
 //        No manifest file was found so return whatever was passed to mix().
         if ( ! $manifestFile) {
-            return __t() . $pathWithOutSlash;
+            return __t($useParent) . $pathWithOutSlash;
         }
 
         $manifestArray = json_decode(file_get_contents($manifestFile), true);
+
         if (array_key_exists($pathWithSlash, $manifestArray)) {
-            return __t() . ltrim($manifestArray[$pathWithSlash], '/');
+            return __t($useParent) . ltrim($manifestArray[$pathWithSlash], '/');
         }
 
 //        No file was found in the manifest, return whatever was passed to mix().
-        return __t() . $pathWithOutSlash;
+        return __t($useParent) . $pathWithOutSlash;
     }
 }
 
@@ -385,4 +403,34 @@ function read_time()
     $words = word_count();
 
     return ceil($words / 200);
+}
+
+function is_developer()
+{
+    if (is_user_logged_in()) {
+        $user = wp_get_current_user();
+
+        return in_array('developer', $user->roles);
+    }
+
+    return false;
+}
+
+function hide_adminbar_for_developers()
+{
+    if (is_developer()) {
+        add_filter('show_admin_bar', '__return_false');
+    }
+}
+
+/**
+ * @param $string
+ *
+ * @return string
+ */
+function make_slug($string)
+{
+    $string = str_replace('#', '', $string);
+
+    return strtolower(preg_replace('/[[:space:]]+/', '_', $string));
 }
