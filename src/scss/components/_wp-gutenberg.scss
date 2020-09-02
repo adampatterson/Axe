@@ -86,6 +86,11 @@
         height: 0;
         overflow: hidden;
 
+        .wp-block-embed__wrapper {
+            position: initial;
+        }
+
+        
         iframe, object, embed, video {
             position: absolute;
             top: 0;
