@@ -11,7 +11,7 @@
     </script>
 
     <?php wp_head(); ?>
-    <link rel="stylesheet" href=" <?= mix('/assets/css/base.css') ?>"/>
+    <link rel="stylesheet" href="<?= mix('/assets/css/base.css') ?>"/>
 </head>
 <?php
 $post = ( ! isset($post)) ? null : $post;
