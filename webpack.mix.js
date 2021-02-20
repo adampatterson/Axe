@@ -1,5 +1,4 @@
 let mix = require('laravel-mix')
-let glob = require('glob-all')
 
 require('laravel-mix-purgecss')
 
@@ -99,17 +98,18 @@ mix.setPublicPath('./')
    .sass('src/scss/base.scss', 'assets/css')
    .options(scssOptions)
     // Extract libraries requires ECMAScript 6 imports in your code.
-   .js(bundles.all, 'assets/js/app.js').extract(extractLibs)
-    //   .js(bundles.all, 'assets/js/app.js')
+   .js(bundles.all, 'assets/js/app.js')
+   .extract(extractLibs)
 
    .purgeCss(
        {
            enabled: mix.inProduction(),
-           paths: () => glob.sync([
+           paths: () => [
                path.join(__dirname, '*.php'),
                path.join(__dirname, 'templates/**/*.php'),
+               path.join(__dirname, 'woocommerce/**/*.php'),
                path.join(__dirname, 'assets/js/**/*.js'),
-           ]),
+           ],
            extensions: ['html', 'js', 'php'],
 
            // Other options are passed through to Purgecss
