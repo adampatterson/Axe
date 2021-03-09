@@ -24,7 +24,7 @@ if (have_posts()):
             include(get_template_part_acf('templates/single', get_post_type()));
 
 //      WooCommerce Single Product
-        elseif (is_product()):
+        elseif (function_exists('is_product') and is_product()):
             echo '<!-- template: woo/single -->';
             include(get_template_part_acf('templates/woo', 'single'));
 
