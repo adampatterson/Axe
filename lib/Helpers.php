@@ -90,32 +90,31 @@ if ( ! function_exists('__lib')) {
     }
 }
 
-if ( ! function_exists('__m')) {
+if ( ! function_exists( 'mix' ) ) {
     /**
-     * Returns the mix-manifest.json file
+     * @param $path
      *
-     * @return bool|string
+     * @return string
      */
-    function __m($useParent)
-    {
-        $template_name = "mix-manifest.json";
+    function mix( $path, $useParent = false ) {
+        $pathWithOutSlash  = ltrim( $path, '/' );
+        $pathWithSlash     = '/' . ltrim( $path, '/' );
+        $pathWithOutAssets = '/' . ltrim( $pathWithSlash, '/assets' );
+        $manifestFile      = __m( $useParent );
 
-        // Force the Parent Manifest
-        if ($useParent and file_exists(get_template_directory() . '/' . $template_name)) {
-            return get_template_directory() . '/' . $template_name;
+//        No manifest file was found so return whatever was passed to mix().
+        if ( ! $manifestFile ) {
+            return __t( $useParent ) . $pathWithOutSlash;
         }
 
-        // Check the Child Manifest
-        if (file_exists(get_stylesheet_directory() . '/' . $template_name)) {
-            return get_stylesheet_directory() . '/' . $template_name;
+        $manifestArray = json_decode( file_get_contents( $manifestFile ), true );
+
+        if ( array_key_exists( $pathWithOutAssets, $manifestArray ) ) {
+            return __t( $useParent ) . 'assets/' . ltrim( $manifestArray[ $pathWithOutAssets ], '/' );
         }
 
-        // Return to the Core Manifest.
-        if (file_exists(get_template_directory() . '/' . $template_name)) {
-            return get_template_directory() . '/' . $template_name;
-        }
-
-        return false;
+//        No file was found in the manifest, return whatever was passed to mix().
+        return __t( $useParent ) . $pathWithOutSlash;
     }
 }
 
@@ -238,6 +237,34 @@ function template_directory($template_name)
     }
 
     return false;
+}
+
+if ( ! function_exists( '__m' ) ) {
+    /**
+     * Returns the mix-manifest.json file
+     *
+     * @return bool|string
+     */
+    function __m( $useParent ) {
+        $template_name = "mix-manifest.json";
+
+        // Force the Parent Manifest
+        if ( $useParent and file_exists( get_template_directory() . '/' . $template_name ) ) {
+            return get_template_directory() . '/' . $template_name;
+        }
+
+        // Check the Child Manifest
+        if ( file_exists( get_stylesheet_directory() . '/' . $template_name ) ) {
+            return get_stylesheet_directory() . '/' . $template_name;
+        }
+
+        // Return to the Core Manifest.
+        if ( file_exists( get_template_directory() . '/' . $template_name ) ) {
+            return get_template_directory() . '/' . $template_name;
+        }
+
+        return false;
+    }
 }
 
 if ( ! function_exists('mix')) {

@@ -3,7 +3,11 @@ let mix = require('laravel-mix')
 require('laravel-mix-purgecss')
 
 let scssOptions = {
-    processCssUrls: false
+    processCssUrls: false,
+    fileLoaderDirs: {
+        images: '/assets/images',
+        fonts: '/assets/fonts'
+    }
 }
 
 let bundles = {
@@ -94,7 +98,8 @@ mix.autoload({
     'jquery': ['$', 'window.jQuery', 'jQuery']
 })
 
-mix.setPublicPath('./')
+mix.setResourceRoot('../../')
+   .setPublicPath('./')
    .sass('src/scss/base.scss', 'assets/css')
    .options(scssOptions)
     // Extract libraries requires ECMAScript 6 imports in your code.
