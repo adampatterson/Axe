@@ -1,6 +1,7 @@
 <?php
 $data = get_fields();
 $post = get_post();
+//$options = get_field('key', 'option');
 
 include(get_template_part_acf('templates/partials/header'));
 echo '<!-- master/single -->';
