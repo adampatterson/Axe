@@ -28,7 +28,6 @@
 <script src="<?= __j() ?>manifest.js"></script>
 <script type='text/javascript' src='<?= mix('/assets/js/vendor.js') ?>'></script>
 <script type='text/javascript' src='<?= mix('/assets/js/app.js') ?>'></script>
-
 <?php include(get_template_part_acf('templates/partials/admin-helper')); ?>
 
 </body>
