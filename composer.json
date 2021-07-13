@@ -1,5 +1,8 @@
 {
     "require": {
+        "nesbot/carbon": "^2.49",
+        "tightenco/collect": "^8.34",
+        "laravel/helpers": "^1.4"
     },
     "autoload": {
         "psr-4": {
