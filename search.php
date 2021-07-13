@@ -1,7 +1,8 @@
 <?php
-
-$data = get_fields();
-$post = get_post();
+/*
+ * All globally availbile ACF data is loaded here.
+ */
+include(__DIR__.'/lib/data.php');
 
 include(get_template_part_acf('templates/partials/header'));
 

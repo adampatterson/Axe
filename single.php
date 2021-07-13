@@ -1,7 +1,8 @@
 <?php
-$data = get_fields();
-$post = get_post();
-//$options = get_field('key', 'option');
+/*
+ * All globally availbile ACF data is loaded here.
+ */
+include(__DIR__.'/lib/data.php');
 
 include(get_template_part_acf('templates/partials/header'));
 echo '<!-- master/single -->';
@@ -19,9 +20,14 @@ if (have_posts()):
             echo '<!-- template: templates/format-standard -->';
             include(get_template_part_acf('templates/format', 'standard'));
 
+//      Attachment
+        elseif (is_attachment()):
+            echo '<!-- template: templates/single-attachment.php -->';
+            include(get_template_part_acf('templates/single', 'attachment'));
+
 //      Custom Post Type
-        elseif (check_path('/templates/single-' . get_post_type() . '.php')):
-            echo '<!-- template: templates/single-' . get_post_type() . ' -->';
+        elseif (check_path('/templates/single-'.get_post_type().'.php')):
+            echo '<!-- template: templates/single-'.get_post_type().'.php -->';
             include(get_template_part_acf('templates/single', get_post_type()));
 
 //      WooCommerce Single Product
