@@ -50,17 +50,18 @@ Another tip that I can provide is using `console.log` to output my ACF structure
     ├── templates/
     │   └── ...    
     │   └── partials/
+    │   └── partials/loop-{type}.php
+    │   └── partials/blocs/
     │   └── content-{slug}.php
+    │   └── single-{slug}.php
     │   └── sub-{parent_slug}.php
     ├── vendor/
     │   └── ...    
     ├── woocommerce/
     │   └── ...
-    ├── bower.json
     ├── composer.json
     ├── package.json
     └── webpack.mix.js
-
 
 ### Build
 Included is a bower file preset with Bootstrap SASS, jQuery and a couple other commonly used packages. Bower will install packages to `/src/vendor`.
