@@ -3,6 +3,8 @@
  * Theme Helpers
  *****************************************/
 
+use Illuminate\Support\Arr;
+
 if ( ! function_exists('__t')) {
     /**
      * The root template directory, this can be over written in the child theme.
@@ -11,7 +13,7 @@ if ( ! function_exists('__t')) {
      */
     function __t()
     {
-        return get_template_directory_uri() . '/';
+        return get_template_directory_uri().'/';
     }
 }
 
@@ -23,7 +25,7 @@ if ( ! function_exists('__p')) {
      */
     function __p()
     {
-        return get_template_directory() . '/';
+        return get_template_directory().'/';
     }
 }
 
@@ -35,18 +37,17 @@ if ( ! function_exists('__a')) {
      */
     function __a($useParent = false)
     {
-        return __t($useParent) . 'assets/';
+        return __t($useParent).'assets/';
     }
 }
 
 if ( ! function_exists('__j')) {
-
     /**
      * Echoes the Javascript path.
      */
     function __j($useParent = false)
     {
-        echo __a($useParent) . 'js/';
+        echo __a($useParent).'js/';
     }
 }
 
@@ -56,7 +57,7 @@ if ( ! function_exists('__i')) {
      */
     function __i($useParent = false)
     {
-        echo __a($useParent) . 'img/';
+        echo __a($useParent).'img/';
     }
 }
 
@@ -66,7 +67,7 @@ if ( ! function_exists('__c')) {
      */
     function __c($useParent = false)
     {
-        echo __a($useParent) . 'css/';
+        echo __a($useParent).'css/';
     }
 }
 
@@ -76,7 +77,7 @@ if ( ! function_exists('__v')) {
      */
     function __v($useParent = false)
     {
-        echo __a($useParent) . 'vendor/';
+        echo __a($useParent).'vendor/';
     }
 }
 
@@ -86,35 +87,36 @@ if ( ! function_exists('__lib')) {
      */
     function __lib($path)
     {
-        return template_directory('/lib/' . $path);
+        return template_directory('/lib/'.$path);
     }
 }
 
-if ( ! function_exists( 'mix' ) ) {
+if ( ! function_exists('mix')) {
     /**
      * @param $path
      *
      * @return string
      */
-    function mix( $path, $useParent = false ) {
-        $pathWithOutSlash  = ltrim( $path, '/' );
-        $pathWithSlash     = '/' . ltrim( $path, '/' );
-        $pathWithOutAssets = '/' . ltrim( $pathWithSlash, '/assets' );
-        $manifestFile      = __m( $useParent );
+    function mix($path, $useParent = false)
+    {
+        $pathWithOutSlash  = ltrim($path, '/');
+        $pathWithSlash     = '/'.ltrim($path, '/');
+        $pathWithOutAssets = '/'.ltrim($pathWithSlash, '/assets');
+        $manifestFile      = __m($useParent);
 
 //        No manifest file was found so return whatever was passed to mix().
-        if ( ! $manifestFile ) {
-            return __t( $useParent ) . $pathWithOutSlash;
+        if ( ! $manifestFile) {
+            return __t($useParent).$pathWithOutSlash;
         }
 
-        $manifestArray = json_decode( file_get_contents( $manifestFile ), true );
+        $manifestArray = json_decode(file_get_contents($manifestFile), true);
 
-        if ( array_key_exists( $pathWithOutAssets, $manifestArray ) ) {
-            return __t( $useParent ) . 'assets/' . ltrim( $manifestArray[ $pathWithOutAssets ], '/' );
+        if (array_key_exists($pathWithOutAssets, $manifestArray)) {
+            return __t($useParent).'assets/'.ltrim($manifestArray[$pathWithOutAssets], '/');
         }
 
 //        No file was found in the manifest, return whatever was passed to mix().
-        return __t( $useParent ) . $pathWithOutSlash;
+        return __t($useParent).$pathWithOutSlash;
     }
 }
 
@@ -124,7 +126,7 @@ if ( ! function_exists('__video')) {
      */
     function __video($useParent = false)
     {
-        echo __a($useParent) . 'video/';
+        echo __a($useParent).'video/';
     }
 }
 
@@ -169,13 +171,13 @@ function get_cat_hierarchy($parent, $args)
         }
     }
 
-    return (array)$ret;
+    return (array) $ret;
 }
 
 /**
  * @param      $slug
- * @param null $name
- * @param null $data
+ * @param  null  $name
+ * @param  null  $data
  *
  * Allows the passthrough of data to template partials.
  *
@@ -184,7 +186,7 @@ function get_cat_hierarchy($parent, $args)
 function get_template_part_acf($slug, $name = null)
 {
     $templates = array();
-    $name      = (string)$name;
+    $name      = (string) $name;
 
     if ($name == null) {
         $templates[] = "{$slug}.php";
@@ -193,7 +195,7 @@ function get_template_part_acf($slug, $name = null)
     }
 
     $located = '';
-    foreach ((array)$templates as $template_name) {
+    foreach ((array) $templates as $template_name) {
         if ( ! $template_name) {
             continue;
         }
@@ -212,8 +214,8 @@ function get_template_part_acf($slug, $name = null)
  */
 function check_path($template_name)
 {
-    if (file_exists(get_stylesheet_directory() . '/' . $template_name) or file_exists(get_template_directory() . '/' . $template_name)) {
-        return get_template_directory() . '/' . $template_name;
+    if (file_exists(get_stylesheet_directory().'/'.$template_name) or file_exists(get_template_directory().'/'.$template_name)) {
+        return get_template_directory().'/'.$template_name;
     }
 
     return false;
@@ -228,39 +230,40 @@ function template_directory($template_name)
 {
     $template_name = trim($template_name, "/");
 
-    if (file_exists(get_stylesheet_directory() . '/' . $template_name)) {
-        return get_stylesheet_directory() . '/' . $template_name;
+    if (file_exists(get_stylesheet_directory().'/'.$template_name)) {
+        return get_stylesheet_directory().'/'.$template_name;
     }
 
-    if (file_exists(get_template_directory() . '/' . $template_name)) {
-        return get_template_directory() . '/' . $template_name;
+    if (file_exists(get_template_directory().'/'.$template_name)) {
+        return get_template_directory().'/'.$template_name;
     }
 
     return false;
 }
 
-if ( ! function_exists( '__m' ) ) {
+if ( ! function_exists('__m')) {
     /**
      * Returns the mix-manifest.json file
      *
      * @return bool|string
      */
-    function __m( $useParent ) {
+    function __m($useParent)
+    {
         $template_name = "mix-manifest.json";
 
         // Force the Parent Manifest
-        if ( $useParent and file_exists( get_template_directory() . '/' . $template_name ) ) {
-            return get_template_directory() . '/' . $template_name;
+        if ($useParent and file_exists(get_template_directory().'/'.$template_name)) {
+            return get_template_directory().'/'.$template_name;
         }
 
         // Check the Child Manifest
-        if ( file_exists( get_stylesheet_directory() . '/' . $template_name ) ) {
-            return get_stylesheet_directory() . '/' . $template_name;
+        if (file_exists(get_stylesheet_directory().'/'.$template_name)) {
+            return get_stylesheet_directory().'/'.$template_name;
         }
 
         // Return to the Core Manifest.
-        if ( file_exists( get_template_directory() . '/' . $template_name ) ) {
-            return get_template_directory() . '/' . $template_name;
+        if (file_exists(get_template_directory().'/'.$template_name)) {
+            return get_template_directory().'/'.$template_name;
         }
 
         return false;
@@ -276,22 +279,22 @@ if ( ! function_exists('mix')) {
     function mix($path, $useParent = false)
     {
         $pathWithOutSlash = ltrim($path, '/');
-        $pathWithSlash    = '/' . ltrim($path, '/');
+        $pathWithSlash    = '/'.ltrim($path, '/');
         $manifestFile     = __m($useParent);
 
 //        No manifest file was found so return whatever was passed to mix().
         if ( ! $manifestFile) {
-            return __t($useParent) . $pathWithOutSlash;
+            return __t($useParent).$pathWithOutSlash;
         }
 
         $manifestArray = json_decode(file_get_contents($manifestFile), true);
 
         if (array_key_exists($pathWithSlash, $manifestArray)) {
-            return __t($useParent) . ltrim($manifestArray[$pathWithSlash], '/');
+            return __t($useParent).ltrim($manifestArray[$pathWithSlash], '/');
         }
 
 //        No file was found in the manifest, return whatever was passed to mix().
-        return __t($useParent) . $pathWithOutSlash;
+        return __t($useParent).$pathWithOutSlash;
     }
 }
 
@@ -309,6 +312,22 @@ if ( ! function_exists('dd')) {
         }, func_get_args());
         echo '</pre>';
         die;
+    }
+}
+
+if ( ! function_exists('dump')) {
+    /**
+     * Var_dump method
+     *
+     * @return void
+     */
+    function dump()
+    {
+        echo '<pre>';
+        array_map(function ($x) {
+            var_dump($x);
+        }, func_get_args());
+        echo '</pre>';
     }
 }
 
@@ -366,16 +385,19 @@ if ( ! function_exists('show_woo_single_product')) {
 
 if ( ! function_exists('get_the_logo')) {
     /**
-     * @param bool $include_link
-     * @param string $custom_logo_css
-     * @param string $custom_link_css
+     * @param  bool  $include_link
+     * @param  string  $custom_logo_css
+     * @param  string  $custom_link_css
      *
      * @return bool|string
      *
      * Returns an HTML link including the logo, Or just the path the the logo image.
      */
-    function get_the_logo($include_link = false, $custom_logo_css = 'site-logo custom-logo img-fluid', $custom_link_css = 'logo custom-logo-link')
-    {
+    function get_the_logo(
+        $include_link = false,
+        $custom_logo_css = 'site-logo custom-logo img-fluid',
+        $custom_link_css = 'logo custom-logo-link'
+    ) {
         $logo = wp_get_attachment_image(get_theme_mod('custom_logo'), 'full', false, ['class' => $custom_logo_css]);
 
         if ( ! $logo) {
@@ -460,4 +482,57 @@ function make_slug($string)
     $string = str_replace('#', '', $string);
 
     return strtolower(preg_replace('/[[:space:]]+/', '_', $string));
+}
+
+/*
+ * Helpers for working with ACF data objects
+ */
+if (class_exists('Arr')) {
+    /**
+     * @param $haystack
+     * @param $needle
+     * @param  null  $default
+     *
+     * @return mixed
+     */
+    function _get($haystack, $needle, $default = null)
+    {
+        return Arr::get($haystack, $needle, $default);
+    }
+
+    /**
+     * @param $haystack
+     * @param $needle
+     * @param  false  $default
+     *
+     * @return bool|mixed
+     */
+    function _has($haystack, $needle, $default = false)
+    {
+        if (Arr::get($haystack, $needle, false)) {
+            return true;
+        }
+
+        return $default;
+    }
+} else {
+    /**
+     * @param $haystack
+     * @param $needle
+     * @param  null  $default
+     */
+    function _get($haystack, $needle, $default = null)
+    {
+        echo "Run composer install";
+    }
+
+    /**
+     * @param $haystack
+     * @param $needle
+     * @param  null  $default
+     */
+    function _has($haystack, $needle, $default = false)
+    {
+        echo "Run composer install";
+    }
 }
