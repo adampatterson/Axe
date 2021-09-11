@@ -2,7 +2,7 @@
 /*
  * All globally availbile ACF data is loaded here.
  */
-include(__DIR__.'/lib/data.php');
+include(__THEME_DATA__.'/lib/data.php');
 
 include(get_template_part_acf('templates/partials/header'));
 
