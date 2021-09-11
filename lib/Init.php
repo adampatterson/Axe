@@ -43,7 +43,7 @@ class Init
     /**
      * Initialize the class
      *
-     * @param class $class class from the services array
+     * @param  class  $class  class from the services array
      *
      * @return class instance        new instance of the class
      */
