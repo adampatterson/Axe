@@ -185,7 +185,7 @@ function get_cat_hierarchy($parent, $args)
  */
 function get_template_part_acf($slug, $name = null)
 {
-    $templates = array();
+    $templates = [];
     $name      = (string) $name;
 
     if ($name == null) {
@@ -393,8 +393,7 @@ if ( ! function_exists('get_the_logo')) {
      *
      * Returns an HTML link including the logo, Or just the path the the logo image.
      */
-    function get_the_logo(
-        $include_link = false,
+    function get_the_logo($include_link = false,
         $custom_logo_css = 'site-logo custom-logo img-fluid',
         $custom_link_css = 'logo custom-logo-link'
     ) {
@@ -534,5 +533,18 @@ if (class_exists('Arr')) {
     function _has($haystack, $needle, $default = false)
     {
         echo "Run composer install";
+    }
+}
+
+function setBaseDataPath()
+{
+    if (file_exists(get_stylesheet_directory().'/lib/data.php')) {
+        define('__THEME_DATA__', get_stylesheet_directory());
+        return;
+    }
+
+    if (file_exists(get_template_directory().'/lib/data.php')) {
+        define('__THEME_DATA__', get_template_directory());
+        return;
     }
 }
