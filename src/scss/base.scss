@@ -1,5 +1,5 @@
 /*
-Based off of Bootstrap 4.1.3
+Based off of Bootstrap 5.1.^
 This file allows you to customize what Bootstrap includes
  */
 @import "components/base-variables";
@@ -10,7 +10,7 @@ This file allows you to customize what Bootstrap includes
 @import "components/fonts";
 @import "components/wp-gutenberg";
 @import "components/wp-classic";
-@import "components/wp-widget";
+//@import "components/wp-widget";
 
 .navbar-brand img {
     max-height: 100px;
@@ -30,7 +30,4 @@ This file allows you to customize what Bootstrap includes
     }
 }
 
-
 // External Components
-// @import "components/materialize";
-

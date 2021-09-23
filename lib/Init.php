@@ -15,7 +15,7 @@ class Init
             Core\Media::class,
             Core\Options::class,
             Core\Walker::class,
-            Core\Widgets::class,
+//            Core\Widgets::class,
             Core\TheLoop::class,
             Setup\Admin::class,
             Setup\About::class,
