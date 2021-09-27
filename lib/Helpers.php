@@ -3,6 +3,7 @@
  * Theme Helpers
  *****************************************/
 
+use Carbon\Carbon;
 use Illuminate\Support\Arr;
 
 if ( ! function_exists('__t')) {
@@ -270,32 +271,26 @@ if ( ! function_exists('__m')) {
     }
 }
 
-if ( ! function_exists('mix')) {
-    /**
-     * @param $path
-     *
-     * @return string
-     */
-    function mix($path, $useParent = false)
-    {
-        $pathWithOutSlash = ltrim($path, '/');
-        $pathWithSlash    = '/'.ltrim($path, '/');
-        $manifestFile     = __m($useParent);
 
+function mix($path, $useParent = false)
+{
+    $pathWithOutSlash = ltrim($path, '/');
+    $pathWithSlash    = '/'.ltrim($path, '/');
+    $manifestFile     = __m($useParent);
 //        No manifest file was found so return whatever was passed to mix().
-        if ( ! $manifestFile) {
-            return __t($useParent).$pathWithOutSlash;
-        }
-
-        $manifestArray = json_decode(file_get_contents($manifestFile), true);
-
-        if (array_key_exists($pathWithSlash, $manifestArray)) {
-            return __t($useParent).ltrim($manifestArray[$pathWithSlash], '/');
-        }
-
-//        No file was found in the manifest, return whatever was passed to mix().
+    if ( ! $manifestFile) {
         return __t($useParent).$pathWithOutSlash;
     }
+
+    $manifestArray = json_decode(file_get_contents($manifestFile), true);
+
+    if (array_key_exists($pathWithSlash, $manifestArray)) {
+        return __t($useParent).ltrim($manifestArray[$pathWithSlash], '/');
+    }
+
+//        No file was found in the manifest, return whatever was passed to mix().
+    return __t($useParent).$pathWithOutSlash;
+
 }
 
 if ( ! function_exists('dd')) {
@@ -304,15 +299,17 @@ if ( ! function_exists('dd')) {
      *
      * @return void
      */
-    function dd()
-    {
-        echo '<pre>';
-        array_map(function ($x) {
-            var_dump($x);
-        }, func_get_args());
-        echo '</pre>';
-        die;
-    }
+    /*
+        function dd()
+        {
+            echo '<pre>';
+            array_map(function ($x) {
+                var_dump($x);
+            }, func_get_args());
+            echo '</pre>';
+            die;
+        }
+    */
 }
 
 if ( ! function_exists('dump')) {
@@ -321,6 +318,7 @@ if ( ! function_exists('dump')) {
      *
      * @return void
      */
+    /*
     function dump()
     {
         echo '<pre>';
@@ -329,6 +327,7 @@ if ( ! function_exists('dump')) {
         }, func_get_args());
         echo '</pre>';
     }
+    */
 }
 
 if ( ! function_exists('is_sub_page')) {
@@ -483,58 +482,54 @@ function make_slug($string)
     return strtolower(preg_replace('/[[:space:]]+/', '_', $string));
 }
 
+/**
+ * @param $date
+ * @param  bool  $format
+ *
+ * @return string
+ */
+function format_date($date, $format = false)
+{
+    $timezone = get_option('timezone_string');
+    if ( ! $format) {
+        return Carbon::parse($format, $timezone)->toFormattedDateString();
+    }
+
+    return \Carbon\Carbon::parse($date, $timezone)->format($format);
+}
+
 /*
  * Helpers for working with ACF data objects
  */
-if (class_exists('Arr')) {
-    /**
-     * @param $haystack
-     * @param $needle
-     * @param  null  $default
-     *
-     * @return mixed
-     */
-    function _get($haystack, $needle, $default = null)
-    {
-        return Arr::get($haystack, $needle, $default);
-    }
 
-    /**
-     * @param $haystack
-     * @param $needle
-     * @param  false  $default
-     *
-     * @return bool|mixed
-     */
-    function _has($haystack, $needle, $default = false)
-    {
-        if (Arr::get($haystack, $needle, false)) {
-            return true;
-        }
-
-        return $default;
-    }
-} else {
-    /**
-     * @param $haystack
-     * @param $needle
-     * @param  null  $default
-     */
-    function _get($haystack, $needle, $default = null)
-    {
-        echo "Run composer install";
-    }
-
-    /**
-     * @param $haystack
-     * @param $needle
-     * @param  null  $default
-     */
-    function _has($haystack, $needle, $default = false)
-    {
-        echo "Run composer install";
-    }
+/**
+ * @param $haystack
+ * @param $needle
+ * @param  null  $default
+ *
+ * @return mixed
+ */
+function _get($haystack, $needle, $default = null)
+{
+    return Arr::get($haystack, $needle, $default);
 }
+
+/**
+ * @param $haystack
+ * @param $needle
+ * @param  false  $default
+ *
+ * @return bool|mixed
+ */
+function _has($haystack, $needle, $default = false)
+{
+    if (Arr::has($haystack, $needle, false)) {
+        return true;
+    }
+
+    return $default;
+}
+
 
 function setBaseDataPath()
 {
