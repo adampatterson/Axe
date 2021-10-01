@@ -6,7 +6,7 @@ This file allows you to customize what Bootstrap includes
 @import "~bootstrap/scss/bootstrap";
 
 @import "components/mixens";
-@import "components/structure-clean";
+//@import "components/structure-clean";  // Not needed with BS 5 but allows finer adjustments
 @import "components/fonts";
 @import "components/wp-gutenberg";
 @import "components/wp-classic";
