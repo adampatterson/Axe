@@ -2,9 +2,11 @@
     &white {
         color: $white;
     }
+
     &red {
         color: $red;
     }
+
     &uppercase {
         text-transform: uppercase;
     }
@@ -14,8 +16,39 @@
     &white {
         background-color: $white;
     }
+
     &red {
         background-color: $red;
+    }
+
+    &gray- {
+        &200 {
+            background-color: $gray-200;
+        }
+
+        &400 {
+            background-color: $gray-400;
+        }
+
+        &600 {
+            background-color: $gray-600;
+        }
+    }
+
+    &cover {
+        background-size: cover; // Full height background
+    }
+
+    &center {
+        background-position: center;
+    }
+
+    &fixed {
+        background-attachment: fixed;
+    }
+
+    &trans {
+        background-color: rgba($black, 0.20);
     }
 }
 
