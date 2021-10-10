@@ -25,7 +25,7 @@
                         'depth'          => 3,
                         'container'      => false,
                         'escape_titles'  => false,
-                        'menu_class'     => 'nav navbar-nav primary-nav ml-auto',
+                        'menu_class'     => 'nav navbar-nav primary-nav ms-auto',
                         'walker'         => new Axe\Core\Walker()
                     ]);
                 }
