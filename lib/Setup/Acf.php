@@ -24,7 +24,7 @@ class Acf
 
     public function acf_init()
     {
-        acf_update_setting('google_api_key', 'AIzaSyAfcO-AX4ESPyo6suUa4f9vhVfRcBgyxQc');
+        acf_update_setting('google_api_key', '');
     }
 
     public function acf_save()
