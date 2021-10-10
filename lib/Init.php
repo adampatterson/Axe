@@ -17,6 +17,7 @@ class Init
             Core\Walker::class,
 //            Core\Widgets::class,
             Core\TheLoop::class,
+            Setup\Acf::class,
             Setup\Admin::class,
             Setup\About::class,
             Setup\Customizer::class,
