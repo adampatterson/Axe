@@ -6,12 +6,12 @@ $category      = get_category($cat);
 $category_slug = $category->slug;
 $post          = get_post();
 
-echo '<!-- master/tag -->';
+echo '<!-- master/category -->';
 if (check_path('/templates/archive-' . $category_slug . '.php')):
     echo '<!-- template: archive/' . $category_slug . ' -->';
     include(get_template_part_acf('templates/archive', $category_slug));
 else:
-    echo '<!-- template: archive/tag -->';
+    echo '<!-- template: archive/category -->';
     include(get_template_part_acf('templates/archive', 'category'));
 endif;
 
