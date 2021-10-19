@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <div class="container pt-5">
 
-        <?php include(get_template_part_acf('templates/partials/archive', 'header')); ?>
+        <?php include(get_template_part_acf('templates/partials/author', 'header')); ?>
 
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
