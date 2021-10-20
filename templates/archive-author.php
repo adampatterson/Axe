@@ -3,6 +3,8 @@
 
         <?php include(get_template_part_acf('templates/partials/author', 'header')); ?>
 
+        <?php /*
+
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
 
@@ -23,6 +25,8 @@
 
             </div>
         </div>
+
+ */ ?>
 
     </div>
 </div>

@@ -4,4 +4,10 @@
 <div class="col-md-10">
     <h3>About <?php the_author_posts_link(); ?></h3>
     <p><?php echo get_the_author_meta('description'); ?></p>
+    <?php
+    /*
+     * Add Shcema
+     * Social Links
+     */
+    ?>
 </div>
