@@ -381,12 +381,12 @@ if ( ! function_exists('show_woo_single_product')) {
     }
 }
 
-
 if ( ! function_exists('get_the_logo')) {
     /**
      * @param  bool  $include_link
      * @param  string  $custom_logo_css
      * @param  string  $custom_link_css
+     * @param  string  $size
      *
      * @return bool|string
      *
@@ -394,9 +394,10 @@ if ( ! function_exists('get_the_logo')) {
      */
     function get_the_logo($include_link = false,
         $custom_logo_css = 'site-logo custom-logo img-fluid',
-        $custom_link_css = 'logo custom-logo-link'
+        $custom_link_css = 'logo custom-logo-link',
+        $size = 'full'
     ) {
-        $logo = wp_get_attachment_image(get_theme_mod('custom_logo'), 'full', false, ['class' => $custom_logo_css]);
+        $logo = wp_get_attachment_image(get_theme_mod('custom_logo'), $size, false, ['class' => $custom_logo_css]);
 
         if ( ! $logo) {
             return false;
@@ -406,6 +407,26 @@ if ( ! function_exists('get_the_logo')) {
 
         if ($include_link) {
             return sprintf('<a href="%1$s" class="%2$s" rel="home">%3$s</a>', $url, $custom_link_css, $logo);
+        }
+
+        return $logo;
+    }
+}
+
+if ( ! function_exists('get_the_logo_url')) {
+    /**
+     * @param  string  $size
+     *
+     * @return bool|string
+     *
+     * Returns the site lgoo image path.
+     */
+    function get_the_logo_url($size)
+    {
+        $logo = wp_get_attachment_image_url(get_theme_mod('custom_logo'), $size, false);
+
+        if ( ! $logo) {
+            return false;
         }
 
         return $logo;
