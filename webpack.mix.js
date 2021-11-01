@@ -5,7 +5,7 @@ require('laravel-mix-purgecss')
 let scssOptions = {
     processCssUrls: true,
     fileLoaderDirs: {
-        images: '/assets/images',
+        images: '/assets/img',
         fonts: '/assets/fonts'
     }
 }
