@@ -370,6 +370,19 @@ if ( ! function_exists('show_woo_listing')) {
         return class_exists('WooCommerce') and is_shop() and ! is_product();
     }
 }
+
+if ( ! function_exists('show_woo_category')) {
+    /**
+     * Returns the local WordPress template path.
+     *
+     * @return mixed
+     */
+    function show_woo_category()
+    {
+        return class_exists('WooCommerce') and is_product_category() and ! is_product();
+    }
+}
+
 if ( ! function_exists('show_woo_single_product')) {
     /**
      * Returns the local WordPress template path.
