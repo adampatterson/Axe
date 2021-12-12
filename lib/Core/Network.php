@@ -56,6 +56,19 @@ class Network
         return $logo;
     }
 
+    static function getLogo($id = false, $class = '', $size = 'logo-sm')
+    {
+        if ($id) {
+            switch_to_blog($id);
+            $logo = get_the_logo(true, 'site-logo', $class, $size);
+            restore_current_blog();
+        } else {
+            $logo = get_the_logo(true, 'site-logo', $class, $size);
+        }
+
+        return $logo;
+    }
+
     public function setMainSiteData($cacheKey)
     {
         switch_to_blog(1);
