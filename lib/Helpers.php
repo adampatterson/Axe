@@ -493,6 +493,9 @@ function make_slug($string)
 {
     $string = str_replace('#', '', $string);
 
+    // Remove accented letters
+    $string = iconv('UTF-8','ASCII//TRANSLIT',$string);
+
     return strtolower(preg_replace('/[[:space:]]+/', '_', $string));
 }
 
