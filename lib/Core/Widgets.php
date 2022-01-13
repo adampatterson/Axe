@@ -64,7 +64,7 @@ class Widgets
     public function register_sidebars()
     {
         // Main Sidebar
-        register_sidebar(array(
+        register_sidebar([
             'name'          => 'Main Sidebar',
             'id'            => 'main',
             'description'   => __('Widgets for Main Sidebar', 'axe'),
@@ -72,9 +72,9 @@ class Widgets
             'after_widget'  => '</section>',
             'before_title'  => '<h4 class="widget-title">',
             'after_title'   => '</h4>'
-        ));
+        ]);
 
-        register_sidebar(array(
+        register_sidebar([
             'name'          => 'Widgets Page Top',
             'id'            => 'widgets_top',
             'description'   => __('Widgets for Top of the page', 'axe'),
@@ -82,9 +82,9 @@ class Widgets
             'after_widget'  => '</section>',
             'before_title'  => '<h4 class="widget-title">',
             'after_title'   => '</h4>'
-        ));
+        ]);
 
-        register_sidebar(array(
+        register_sidebar([
             'name'          => 'Widgets Page Bottom',
             'id'            => 'widgets_bottom',
             'description'   => __('Widgets for Bottom of the page', 'axe'),
@@ -92,9 +92,9 @@ class Widgets
             'after_widget'  => '</section>',
             'before_title'  => '<h4 class="widget-title">',
             'after_title'   => '</h4>'
-        ));
+        ]);
 
-        register_sidebar(array(
+        register_sidebar([
             'name'          => 'Blog Sidebar',
             'id'            => 'blog',
             'description'   => __('Widgets for Main Blog', 'axe'),
@@ -102,10 +102,10 @@ class Widgets
             'after_widget'  => '</section>',
             'before_title'  => '<h4 class="widget-title">',
             'after_title'   => '</h4>'
-        ));
+        ]);
 
         // Woo Commerce Listing Sidebar
-        register_sidebar(array(
+        register_sidebar([
             'name'          => 'Shop Sidebar',
             'id'            => 'shop',
             'description'   => __('Widgets for WooCommerce Sidebar', 'axe'),
@@ -113,10 +113,10 @@ class Widgets
             'after_widget'  => '</section>',
             'before_title'  => '<h4 class="widget-title">',
             'after_title'   => '</h4>'
-        ));
+        ]);
 
         // Woo Commerce Single Product Sidebar
-        register_sidebar(array(
+        register_sidebar([
             'name'          => 'Single Product Sidebar',
             'id'            => 'shop-single',
             'description'   => __('Widgets for WooCommerce Sidebar', 'axe'),
@@ -124,10 +124,10 @@ class Widgets
             'after_widget'  => '</section>',
             'before_title'  => '<h4 class="widget-title">',
             'after_title'   => '</h4>'
-        ));
+        ]);
 
         // Above Post
-        register_sidebar(array(
+        register_sidebar([
             'name'          => 'Widgets Above Post',
             'id'            => 'widgets_post_above',
             'description'   => __('Widgets for Above the Post', 'axe'),
@@ -135,10 +135,10 @@ class Widgets
             'after_widget'  => '</section>',
             'before_title'  => '<h4 class="widget-title">',
             'after_title'   => '</h4>'
-        ));
+        ]);
 
         // Below Post
-        register_sidebar(array(
+        register_sidebar([
             'name'          => 'Widgets Below Post',
             'id'            => 'widgets_post_below',
             'description'   => __('Widgets for Below the Post', 'axe'),
@@ -146,10 +146,10 @@ class Widgets
             'after_widget'  => '</section>',
             'before_title'  => '<h4 class="widget-title">',
             'after_title'   => '</h4>'
-        ));
+        ]);
 
         // Footer
-        register_sidebar(array(
+        register_sidebar([
             'name'          => 'Footer',
             'id'            => 'footer',
             'description'   => __('Widgets for the Footer', 'axe'),
@@ -157,7 +157,7 @@ class Widgets
             'after_widget'  => '</section>',
             'before_title'  => '<h4 class="widget-title">',
             'after_title'   => '</h4>'
-        ));
+        ]);
     }
 
     public function unregister_default_widgets()
