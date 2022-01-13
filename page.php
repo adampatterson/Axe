@@ -27,15 +27,17 @@ while (have_posts()) : the_post();
             endif;
 
 //      Single Page
-        elseif (check_path('/templates/content-' . $post->post_name . '.php')):
-            echo '<!-- template: templates/content-' . $post->post_name . ' -->';
+        elseif (check_path('/templates/content-'.$post->post_name.'.php')):
+            echo '<!-- template: templates/content-'.$post->post_name.' -->';
             include(get_template_part_acf('templates/content', $post->post_name));
 
 //      WooCommerce Product Listing
         elseif (show_woo_listing()):
             echo '<!-- template: templates/woo-listing -->';
             include(get_template_part_acf('templates/woo', 'listing'));
-
+        elseif (show_woo_category()):
+            echo '<!-- template: templates/woo-category -->';
+            include(get_template_part_acf('templates/woo', 'category'));
         else:
             echo '<!-- template: templates/content-page -->';
             include(get_template_part_acf('templates/content', 'page'));

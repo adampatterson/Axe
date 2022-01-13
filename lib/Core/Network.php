@@ -56,14 +56,27 @@ class Network
         return $logo;
     }
 
+    static function getLogo($id = false, $class = '', $size = 'logo-sm')
+    {
+        if ($id) {
+            switch_to_blog($id);
+            $logo = get_the_logo(true, 'site-logo', $class, $size);
+            restore_current_blog();
+        } else {
+            $logo = get_the_logo(true, 'site-logo', $class, $size);
+        }
+
+        return $logo;
+    }
+
     public function setMainSiteData($cacheKey)
     {
-        switch_to_blog(37);
+        switch_to_blog(1);
 
         $this->networkOptions[1]['title']   = get_bloginfo('name');
         $this->networkOptions[1]['options'] = Options::get();
 
-        set_site_transient($cacheKey, self::$networkOptions, self::$expireCache);
+        set_site_transient($cacheKey, $this->networkOptions, $this->expireCache);
 
         restore_current_blog(); // NEED to restore the cuirrent blog
     }
