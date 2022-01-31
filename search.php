@@ -2,17 +2,13 @@
 /*
  * All globally availbile ACF data is loaded here.
  */
+
+use Axe\Core\Content;
+
 include(__THEME_DATA__.'/lib/data.php');
 
 include(get_template_part_acf('templates/partials/header'));
 
-echo '<!-- master/search -->';
-if (have_posts()):
-    echo '<!-- template: search/search -->';
-    include(get_template_part_acf('templates/content', 'search'));
-else:
-    echo '<!-- template: search/no_posts -->';
-    include(get_template_part_acf('templates/none'));
-endif;
+(new Content)->search();
 
 include(get_template_part_acf('templates/partials/footer'));

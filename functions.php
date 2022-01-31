@@ -10,4 +10,5 @@ if (class_exists('Axe\Init')) :
     Axe\Init::register_services();
 endif;
 
+// Loads the date from the core or child theme.
 setBaseDataPath();

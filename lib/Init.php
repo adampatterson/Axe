@@ -13,6 +13,7 @@ class Init
     {
         return [
             Core\Media::class,
+            Core\Content::class,
             Core\Options::class,
             Core\Walker::class,
             Core\Widgets::class,
