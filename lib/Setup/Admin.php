@@ -42,6 +42,9 @@ class Admin
         add_filter('http_request_args', [$this, 'dont_update_theme'], 5, 2);
 
         add_filter('user_contactmethods', [$this, 'contactmethods']);
+
+        // Adds quick link to the ACF options page.
+        add_action('admin_bar_menu', [$this, 'add_toolbar_items'], 200);
     }
 
     /**
@@ -216,4 +219,19 @@ class Admin
 
         return $contactmethods;
     }
+
+    public function add_toolbar_items($admin_bar)
+    {
+        $admin_bar->add_menu([
+            'id'     => 'options',
+            'parent' => 'site-name',
+            'title'  => 'Options',
+            'href'   => admin_url().'admin.php?page=acf-options-general-settings',
+            'meta'   => [
+                'title' => __('Options'),
+                'class' => 'axe_acf_options'
+            ],
+        ]);
+    }
+
 }
