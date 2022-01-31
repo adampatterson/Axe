@@ -1,4 +1,4 @@
-Axe
+Axe 
 ==
 
 Axe is a simple bare-bones WordPress starter theme and structure. It is a theme meant to get you set up and running as
@@ -240,6 +240,17 @@ serve all of your themes assets.
 * WooCommerce
 * JetPack
 
+## To-Do's
+
+* Create a model for ACF and other data sources
+* Document a lot of the inner code such as helpers
+* Document included packages
+* Document the build process
+* Document Child theme process using ( Handle )
+* Build out a demo theme ( Blade )
+* Update to Bootstrap 5
+* Fix WebPack PurgeCSS
+
 ### Credits
 
 Template tags are heavily modified versions of [_S](http://underscores.me/), Class registration was inspired
@@ -252,4 +263,4 @@ Adam Patterson ( [@adampatterson](http://twitter.com/adampatterson)
 
 #### Disclaimer
 
-This theme is made for Me, and with my efficiencies in mind. That said, If you have anything to add please email me at hello@adampatterson.ca
+This theme reflects my workflow and process, with that said, If you have anything to add please email me at hello@adampatterson.ca
