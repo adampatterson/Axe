@@ -24,4 +24,14 @@ class Model
     {
         return get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
     }
+
+    static function data()
+    {
+        return get_fields();
+    }
+
+    static function post()
+    {
+        return get_post();
+    }
 }
