@@ -1,4 +1,4 @@
-Axe 
+Axe
 ==
 
 Axe is a simple bare-bones WordPress starter theme and structure. It is a theme meant to get you set up and running as
@@ -76,7 +76,8 @@ to the admin pages.
 
 A `package.json` file with Bootstrap and jQuery is included.
 
-The [src folder](https://github.com/adampatterson/Axe/tree/master/src) stores your SASS and JS that will be compiled into `/assets` using  [Laravel Mix](https://laravel.com/docs/5.8/mix). 
+The [src folder](https://github.com/adampatterson/Axe/tree/master/src) stores your SASS and JS that will be compiled
+into `/assets` using  [Laravel Mix](https://laravel.com/docs/5.8/mix).
 
 If you are looking for a more advanced Mix configuration, then have a look at the official docs.
 
@@ -91,19 +92,72 @@ https://laravel.com/docs/master/mix#installation
 ## General Concepts
 
 #### Templates
+
 @todo templates
 
 #### Partials
+
 @todo partials
 
 #### Child Themes
+
 @todo child theme
 
 #### Models
-@todo models
+
+Models should be added to the child theme as they would be site specific.
+
+By adding your custom WordPress queries to a model, you can keep your code nice and organized.
+
+Let's pretend that we are working with an automotive website, and we have a number of posts under a custom post type
+called `vehicles` and they are tagged with a `style`.
+
+```php
+<?php
+
+namespace Handle\Custom;
+
+class Model extends \Axe\Core\Model
+{
+    static function getVehicleByStyle($styleSlug)
+    {
+        return new \WP_Query([
+            'post_type' => 'vehicles',
+            'tax_query' => [
+                [
+                    'taxonomy' => 'style',
+                    'terms'    => [$styleSlug],
+                    'field'    => 'slug',
+                ]
+            ]
+        ]);
+    }
+}
+````
 
 #### Extending Classes
-@todo extending
+
+A lot of the core functionality in Axe can be extended in a child theme.
+
+A very basic example could be `Axe\Core\Network::class`.
+
+Create a new file in your child theme.
+
+```php
+namespace Handle\Custom;
+
+class Network extends \Axe\Core\Network
+{
+    public function register()
+    {
+        parent::__construct();
+    }
+
+    public function SomethingNew(){
+        ...
+    }
+}
+```
 
 #### Composer
 
@@ -143,7 +197,8 @@ See [loop-post.php](https://github.com/adampatterson/Axe/blob/master/templates/l
 
 ## Helper Functions
 
-Axe uses composer to load the majority of the core helper functions, learn more [here](https://github.com/adampatterson/Axe-Helpers).
+Axe uses composer to load the majority of the core helper functions, learn
+more [here](https://github.com/adampatterson/Axe-Helpers).
 
 The Axe Helpers will load a couple packages
 
@@ -161,8 +216,9 @@ the ability to load assets from both the Child and Parent theme. Omitting usePar
 
 ---
 
-`get_template_part_acf()` - Works exactly like `get_template_part()` except that it uses an include. This makes it more suitable to use with ACF. 
-You can include your custom content once which is already done for you. Have a look [here](https://github.com/adampatterson/Axe/blob/master/index.php#L2).
+`get_template_part_acf()` - Works exactly like `get_template_part()` except that it uses an include. This makes it more
+suitable to use with ACF. You can include your custom content once which is already done for you. Have a
+look [here](https://github.com/adampatterson/Axe/blob/master/index.php#L2).
 
 ---
 
@@ -240,23 +296,29 @@ conflicts.*
 With the addition of PurgeCSS to the build script you can safely include the entire Bootstrap library. Once a production
 build has been done, any unused CSS classes will be removed.
 
-`base-variables` holds any site specific variables that you might need including any Bootstrap [customizations](https://getbootstrap.com/docs/5.1/customize/sass/) 
+`base-variables` holds any site specific variables that you might need including any
+Bootstrap [customizations](https://getbootstrap.com/docs/5.1/customize/sass/)
 
 [PurgeCss](https://github.com/FullHuman/purgecss) supports white listing of css class names, some defaults have been
-included in the `webpack.mix.js` file [here](https://github.com/adampatterson/Handle/blob/68bdd609a582baa4df0cadec67bf0d437bb60029/webpack.mix.js#L21).
+included in the `webpack.mix.js`
+file [here](https://github.com/adampatterson/Handle/blob/68bdd609a582baa4df0cadec67bf0d437bb60029/webpack.mix.js#L21).
 
-It's also possible to [whitelist](https://github.com/FullHuman/purgecss-docs/blob/master/whitelisting.md#in-the-css-directly) specific
+It's also possible
+to [whitelist](https://github.com/FullHuman/purgecss-docs/blob/master/whitelisting.md#in-the-css-directly) specific
 classes or chunks of css.
 
 ## Dummy Content for Gutenberg
-Sridhar Katakam has provided an article outlining how to add [dummy content for Gutenberg](https://sridharkatakam.com/dummy-content-for-gutenberg/).
+
+Sridhar Katakam has provided an article outlining how to
+add [dummy content for Gutenberg](https://sridharkatakam.com/dummy-content-for-gutenberg/).
 
 # Child theme
+
 https://github.com/adampatterson/Handle
 
 Opening `/lib/Helpers.php` and uncommenting the function
-on [line 6](https://github.com/adampatterson/Handle/blob/master/lib/Helpers.php#L6) would allow the child theme to
-serve all of your themes assets.
+on [line 6](https://github.com/adampatterson/Handle/blob/master/lib/Helpers.php#L6) would allow the child theme to serve
+all of your themes assets.
 
 ## Recommended Plugins
 
@@ -281,7 +343,7 @@ serve all of your themes assets.
 ### Credits
 
 Template tags are heavily modified versions of [_S](http://underscores.me/), Class registration was inspired
- by [Alecaddd](https://github.com/Alecaddd/awps)
+by [Alecaddd](https://github.com/Alecaddd/awps)
 
 ### Contributors:
 
@@ -290,4 +352,5 @@ Adam Patterson ( [@adampatterson](http://twitter.com/adampatterson)
 
 #### Disclaimer
 
-This theme reflects my workflow and process, with that said, If you have anything to add please email me at hello@adampatterson.ca
+This theme reflects my workflow and process, with that said, If you have anything to add please email me at
+hello@adampatterson.ca
