@@ -35,6 +35,7 @@ class Network
     public function getMainSite()
     {
         $cacheKey = $this->makeCacheKey('main_site');
+
         // Get fresh data.
         if ($this->isExpired($cacheKey)) {
             $this->setMainSiteData($cacheKey);
@@ -56,14 +57,14 @@ class Network
         return $logo;
     }
 
-    static function getLogo($id = false, $class = '', $size = 'logo-sm')
+    static function getLogo($id = false, $class = 'site-logo', $linkClass = '', $size = 'logo-sm')
     {
         if ($id) {
             switch_to_blog($id);
-            $logo = get_the_logo(true, 'site-logo', $class, $size);
+            $logo = get_the_logo(true, $class, $linkClass, $size);
             restore_current_blog();
         } else {
-            $logo = get_the_logo(true, 'site-logo', $class, $size);
+            $logo = get_the_logo(true, $class, $linkClass, $size);
         }
 
         return $logo;
