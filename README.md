@@ -25,13 +25,13 @@ to the admin pages.
 </script>
 ```
 
-### Supports
+## Supports
 
 * Favicon
 * [Header Image](https://codex.wordpress.org/Custom_Headers)
 * [Background Image](https://codex.wordpress.org/Custom_Backgrounds)
 
-### Theme Structure
+## Theme Structure
 
     Axe/
     ├── acf-json/
@@ -68,11 +68,11 @@ to the admin pages.
     ├── package.json
     └── webpack.mix.js
 
-### Getting Set up
+## Getting Set up
 
 `npm i && php composer i && npm run prod`
 
-### Build
+## Build
 
 A `package.json` file with Bootstrap and jQuery is included.
 
@@ -89,21 +89,21 @@ https://laravel.com/docs/master/mix#installation
 * `npm run dev` to quickly compile and bundle all the assets without watching
 * `npm run prod` to compile the assets for production
 
-## General Concepts
+# General Concepts
 
-#### Templates
+### Templates
 
 @todo templates
 
-#### Partials
+### Partials
 
 @todo partials
 
-#### Child Themes
+### Child Themes
 
 @todo child theme
 
-#### Models
+### Models
 
 Models should be added to the child theme as they would be site specific.
 
@@ -135,7 +135,9 @@ class Model extends \Axe\Core\Model
 }
 ````
 
-#### Extending Classes
+_Related, `/lib/data.php` contains the data that will be loaded in each page and passed through to each included template if using the `get_template_part_acf()` method._
+
+### Extending Classes
 
 A lot of the core functionality in Axe can be extended in a child theme.
 
@@ -159,7 +161,7 @@ class Network extends \Axe\Core\Network
 }
 ```
 
-#### Composer
+### Composer
 
 ## Home page
 
@@ -350,7 +352,7 @@ by [Alecaddd](https://github.com/Alecaddd/awps)
 Adam Patterson ( [@adampatterson](http://twitter.com/adampatterson)
 / [adampatterson.ca](https://www.adampatterson.ca/) )
 
-#### Disclaimer
+### Disclaimer
 
 This theme reflects my workflow and process, with that said, If you have anything to add please email me at
 hello@adampatterson.ca
