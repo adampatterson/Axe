@@ -1,38 +1,126 @@
-.text- {
-    &white {
-        color: $white;
+/*--------------------------------------------------------------
+## Text
+--------------------------------------------------------------*/
+.text-white {
+    color: $white;
+}
+
+.text-red {
+    color: $red;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+/*--------------------------------------------------------------
+## Background
+   --------------------------------------------------------------*/
+.bg-white {
+    background-color: $white;
+}
+
+.bg-red {
+    background-color: $red;
+}
+
+
+.bg-cover {
+    background-size: cover; // Full height background
+}
+
+.bg-fixed {
+    background-attachment: fixed;
+}
+
+.bg-half-cover {
+    background-size: cover; // Half height background
+    background-repeat: no-repeat, no-repeat;
+    background-size: 50% 100%;
+    background-position: left top, right top;
+}
+
+.bg-center {
+    background-position: center;
+}
+
+.bg-top-center {
+    background-position: top center;
+}
+
+.bg-trans {
+    background-color: rgba($black, 0.75);
+}
+
+.bg-trans-light {
+    background-color: rgba($black, 0.20);
+}
+
+.bg-gray- {
+    &200 {
+        background-color: $gray-200;
     }
-    &red {
-        color: $red;
+
+    &400 {
+        background-color: $gray-400;
     }
-    &uppercase {
-        text-transform: uppercase;
+
+    &600 {
+        background-color: $gray-600;
     }
 }
 
-.bg- {
-    &white {
-        background-color: $white;
-    }
-    &red {
-        background-color: $red;
-    }
+.bg-black {
+    background-color: black;
 }
 
-.font- {
-    &open-sans {
-        font-family: $font-open-sans;
-    }
+/*--------------------------------------------------------------
+## Fonts
+   --------------------------------------------------------------*/
+.font-josefin {
+    font-family: $font-josefin;
+}
 
-    &josefin {
-        font-family: $font-josefin;
-    }
+.font-roboto {
+    font-family: $font-roboto;
+}
 
-    &roboto {
-        font-family: $font-roboto;
-    }
+.font-libre {
+    font-family: $font-libre;
+}
 
-    &garamond {
-        font-family: $font-garamond;
-    }
+.font-kristi {
+    font-family: $font-kristi;
+}
+
+.font-raleway {
+    font-family: $font-raleway;
+}
+
+.font-fredericka {
+    font-family: $font-fredericka;
+}
+
+.font-rocksalt {
+    font-family: $font-rocksalt;
+}
+
+.font-marker {
+    font-family: $font-marker;
+}
+
+.font-yesteryear {
+    font-family: $font-yesteryear;
+}
+
+.font-seaweed {
+    font-family: $font-seaweed;
+}
+
+.font-satisfy {
+    font-family: $font-satisfy;
+}
+
+.font-poppins {
+    font-family: $font-poppins;
 }
