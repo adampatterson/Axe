@@ -145,19 +145,28 @@ See [loop-post.php](https://github.com/adampatterson/Axe/blob/master/templates/l
 
 Axe uses composer to load the majority of the core helper functions, learn more [here](https://github.com/adampatterson/Axe-Helpers).
 
+The Axe Helpers will load a couple packages
+
+* nesbot/carbon
+* tightenco/collect
+* laravel/helpers"
+
+---
+
 `mix()` - Allows you to use Laravel Mix with
 WordPress [read more here](https://www.adampatterson.ca/2018/axe-handle-updated-to-include-webpack-mix/).
 
 `mix($filepath, $useParent = true)` - In some cases the core theme might be used with a network site and will require
 the ability to load assets from both the Child and Parent theme. Omitting useParent will keep the same functionality.
 
-`get_template_part_acf()` - Works exactly like `get_template_part()` except that it uses an include making it more
-suitable to use with ACF. You can include your custom content once which is already done for you. Have a
-look [here](https://github.com/adampatterson/Axe/blob/master/index.php#L2).
+---
 
-`is_sub_page()` - Used to determine if you are on a sub page.
+`get_template_part_acf()` - Works exactly like `get_template_part()` except that it uses an include. This makes it more suitable to use with ACF. 
+You can include your custom content once which is already done for you. Have a look [here](https://github.com/adampatterson/Axe/blob/master/index.php#L2).
 
-`__t()` - Returns the template directory, It should be noted that this is easily over written in the child theme.
+---
+
+`__t()` - Returns the template directory, It should be noted that this is easily overwritten in the child theme.
 
 `__a()`- Returns the assets relative to the template directory. `/assets/`
 
@@ -175,8 +184,9 @@ look [here](https://github.com/adampatterson/Axe/blob/master/index.php#L2).
 
 `__video()` - Echos the video path. `/assets/video/`
 
-*Functions in the parent theme should be wrapped with `function_exists` extend the child theme and prevent any
-conflicts.*
+---
+
+`is_sub_page()` - Used to determine if you are on a subpage.
 
 `show_template()` -
 
@@ -184,9 +194,26 @@ conflicts.*
 
 `if_custom_logo()` -
 
-`_get()`
+---
 
-`_has()`
+`_get()` - alias for `Arr::get($haystack, $needle, $default = false)`
+
+    <?= _get($block, 'title', 'Default Title') ?>
+
+    <?php foreach (_get($block, 'block.items', []) as $item): ?>
+        ...
+    <?php endforeach; ?>
+
+`_has()` - alias for `_Arr::has($haystack, $needle)`
+
+    <?php if (_has($block, 'contact.phone', false)): ?>
+        ...
+    <?php endif; ?>
+
+*Functions in the parent theme should be wrapped with `function_exists` extend the child theme and prevent any
+conflicts.*
+
+---
 
 ```php
  $loop = new Axe\Core\TheLoop;
@@ -213,7 +240,7 @@ conflicts.*
 With the addition of PurgeCSS to the build script you can safely include the entire Bootstrap library. Once a production
 build has been done, any unused CSS classes will be removed.
 
-`base-variables` houses any site specific variables that you might need.
+`base-variables` holds any site specific variables that you might need including any Bootstrap [customizations](https://getbootstrap.com/docs/5.1/customize/sass/) 
 
 [PurgeCss](https://github.com/FullHuman/purgecss) supports white listing of css class names, some defaults have been
 included in the `webpack.mix.js` file [here](https://github.com/adampatterson/Handle/blob/68bdd609a582baa4df0cadec67bf0d437bb60029/webpack.mix.js#L21).
@@ -227,8 +254,8 @@ Sridhar Katakam has provided an article outlining how to add [dummy content for 
 # Child theme
 https://github.com/adampatterson/Handle
 
-Opening `Helpers.php` and uncommenting the function
-on [line 6](https://github.com/adampatterson/Handle/blob/master/lib/Helpers.php#L6) would allows the child theme to
+Opening `/lib/Helpers.php` and uncommenting the function
+on [line 6](https://github.com/adampatterson/Handle/blob/master/lib/Helpers.php#L6) would allow the child theme to
 serve all of your themes assets.
 
 ## Recommended Plugins
@@ -254,7 +281,7 @@ serve all of your themes assets.
 ### Credits
 
 Template tags are heavily modified versions of [_S](http://underscores.me/), Class registration was inspired
-from by [Alecaddd](https://github.com/Alecaddd/awps)
+ by [Alecaddd](https://github.com/Alecaddd/awps)
 
 ### Contributors:
 
