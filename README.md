@@ -25,6 +25,8 @@ to the admin pages.
 </script>
 ```
 
+The theme includes a file called `/templates/partials/admin-helper.php` that can be used to output more detail, such as Options, Post, WooCommerce, and extra ACF data.
+
 ## Supports
 
 * Favicon
