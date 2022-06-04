@@ -2,12 +2,16 @@
 Based off of Bootstrap 5.1.^
 This file allows you to customize what Bootstrap includes
  */
-@import "components/base-variables";
-@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
 
-@import "components/mixens";
-//@import "components/structure-clean";  // Not needed with BS 5 but allows finer adjustments
-@import "components/fonts";
+@import "global/variables";
+
+//@import "~bootstrap/scss/bootstrap";
+@import "global/bootstrap";
+
+@import "global/mixens";
+
 @import "components/wp-gutenberg";
 @import "components/wp-classic";
 //@import "components/wp-widget";
