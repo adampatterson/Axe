@@ -256,6 +256,8 @@ look [here](https://github.com/adampatterson/Axe/blob/master/index.php#L2).
 
 ---
 
+### Array Helper Functions
+
 `_get()` - alias for `Arr::get($haystack, $needle, $default = false)`
 
     <?= _get($block, 'title', 'Default Title') ?>
