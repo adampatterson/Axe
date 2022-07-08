@@ -261,16 +261,21 @@ look [here](https://github.com/adampatterson/Axe/blob/master/index.php#L2).
 `_get()` - alias for `Arr::get($haystack, $needle, $default = false)`
 
     <?= _get($block, 'title', 'Default Title') ?>
-
-    <?php foreach (_get($block, 'block.items', []) as $item): ?>
-        ...
-    <?php endforeach; ?>
+    
+```php
+foreach (_get($block, 'block.items', []) as $item):
+    ...
+endforeach;
+```
 
 `_has()` - alias for `_Arr::has($haystack, $needle)`
 
-    <?php if (_has($block, 'contact.phone', false)): ?>
-        ...
-    <?php endif; ?>
+```php
+if (_has($block, 'contact.phone', false)): ?>
+    ...
+endif;
+```
+
 
 *Functions in the parent theme should be wrapped with `function_exists` extend the child theme and prevent any
 conflicts.*
