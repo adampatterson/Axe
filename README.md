@@ -365,3 +365,8 @@ Adam Patterson ( [@adampatterson](http://twitter.com/adampatterson)
 
 This theme reflects my workflow and process, with that said, If you have anything to add please email me at
 hello@adampatterson.ca
+
+#### Local Development
+
+    ln -s ~/Sites/personal/Blade ~/Sites/personal/wordpress.test/wp-content/themes
+    ln -s ~/Sites/personal/Axe-Helpers ~/Sites/personal/wordpress.test/wp-content/themes/Axe/vendor/adampatterson
