@@ -124,7 +124,7 @@ mix.purgeCss(
            ],
            extensions: ['html', 'js', 'php'],
 
-           // Other options are passed through to Purgecss
+           // Other options are passed through to Purge css
            whitelist: purgecssWordpress.whitelist,
            whitelistPatterns: purgecssWordpress.whitelistPatterns,
        }
