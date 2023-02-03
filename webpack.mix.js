@@ -108,7 +108,8 @@ mix.setResourceRoot('../../')
 
    .purgeCss(
        {
-           enabled: mix.inProduction(),
+//           enabled: mix.inProduction(),
+           enabled: false,
            paths: () => [
                path.join(__dirname, '*.php'),
                path.join(__dirname, 'templates/**/*.php'),
@@ -117,7 +118,7 @@ mix.setResourceRoot('../../')
            ],
            extensions: ['html', 'js', 'php'],
 
-           // Other options are passed through to Purgecss
+           // Other options are passed through to Purge css
            whitelist: purgecssWordpress.whitelist,
            whitelistPatterns: purgecssWordpress.whitelistPatterns,
        }
