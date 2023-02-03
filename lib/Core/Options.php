@@ -16,10 +16,11 @@ class Options
     {
         $options = [
 //            'contact'  => get_field('contact', 'option'),
-//            'branding' => get_field('branding', 'option'),
+//            'theme'    => get_field('theme', 'option'),
+//            '404_page'      => get_field('404', 'option'),
         ];
 
-        if (array_key_exists($key, $options)) {
+        if (_has($options, $key)) {
             return $options[$key];
         }
 
