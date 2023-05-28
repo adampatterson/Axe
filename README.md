@@ -267,7 +267,7 @@ foreach (_get($block, 'block.items', []) as $item):
 endforeach;
 ```
 
-`_has()` - alias for `_Arr::has($haystack, $needle)`
+`_has()` - alias for `Arr::has($haystack, $needle)`
 
 ```php
 if (_has($block, 'contact.phone', false)): ?>

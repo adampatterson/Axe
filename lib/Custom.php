@@ -11,6 +11,8 @@ class Custom
         add_action('admin_menu', [$this, 'add_custom_link_into_appearance_menu']);
 
         add_filter('gform_submit_button', [$this, 'form_submit_button'], 10, 2);
+
+        //        add_filter('acf/settings/save_json', [$this, 'acf_save']);
     }
 
     public function add_custom_link_into_appearance_menu()
@@ -25,4 +27,8 @@ class Custom
         return "<button class='btn btn-primary' id='gform_submit_button_{$form['id']}'><span>{$form['button']['text']}</span></button>";
     }
 
+    public function acf_save()
+    {
+        return get_template_directory() . '/acf-json';
+    }
 }
