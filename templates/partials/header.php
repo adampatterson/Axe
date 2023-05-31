@@ -11,19 +11,19 @@
     </script>
 
     <?php wp_head(); ?>
-    <link rel="stylesheet" href="<?= mix('/assets/css/base.css') ?>"/>
+    <link rel="stylesheet" href="<?= mix('/assets/css/base.css', true) ?>"/>
 </head>
 <?php
 $post = ( ! isset($post)) ? null : $post;
 if (is_null($post)) {
-    $post            = (object)$post;
+    $post            = (object) $post;
     $post->post_name = '';
 }
 ?>
 <body <?php body_class($post->post_name); ?>>
 <div id="wrapper">
-    <?php get_template_part('templates/partials/navigation'); ?>
+    <?php include(get_template_part_acf('templates/partials/navigation')); ?>
 
-    <?php get_template_part('templates/partials/custom-header'); ?>
+    <?php include(get_template_part_acf('templates/partials/custom-header')); ?>
 
 

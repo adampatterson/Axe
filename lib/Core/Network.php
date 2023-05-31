@@ -20,7 +20,7 @@ class Network
 
     public function get()
     {
-        $cacheKey = $this->makeCacheKey('all');
+        $cacheKey = self::makeCacheKey('all');
 
         // Get fresh data.
         if ($this->isExpired($cacheKey)) {
@@ -34,7 +34,7 @@ class Network
 
     public function getMainSite()
     {
-        $cacheKey = $this->makeCacheKey('main_site');
+        $cacheKey = self::makeCacheKey('main_site');
         // Get fresh data.
         if ($this->isExpired($cacheKey)) {
             $this->setMainSiteData($cacheKey);
@@ -42,12 +42,12 @@ class Network
             $this->networkOptions = get_site_transient($cacheKey);
         }
 
-        $this->networkOptions[1];
+        return $this->networkOptions[1];
     }
 
     static function getMainSiteLogo($class = '')
     {
-        switch_to_blog(37);
+        switch_to_blog(1);
 
         $logo = get_the_logo(true, 'site-logo', $class);
 

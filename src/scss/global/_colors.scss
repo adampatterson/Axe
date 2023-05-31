@@ -1,0 +1,19 @@
+// Global Colors
+$font-color: #212121;
+
+// Merge the maps
+$colors: map-merge($colors, (
+    "font-color": $font-color,
+));
+
+//$colors: map-remove($colors, "pink", "green", "orange", "blue");
+
+$theme-colors: map-merge($theme-colors, (
+    //"primary": #0d6efd,
+));
+
+//$theme-colors: map-remove($theme-colors, "primary", "info", "light", "dark");
+
+// Body
+$body-bg: #ffffff;
+$body-color: #111827 !default;

@@ -5,7 +5,7 @@ require('laravel-mix-purgecss')
 let scssOptions = {
     processCssUrls: true,
     fileLoaderDirs: {
-        images: '/assets/images',
+        images: '/assets/img',
         fonts: '/assets/fonts'
     }
 }
@@ -18,7 +18,9 @@ let bundles = {
 
 let extractLibs = [
     'jquery',
+    'popper.js',
     'bootstrap',
+    'slick-carousel'
 ]
 
 const purgecssWordpress = {
@@ -101,12 +103,16 @@ mix.autoload({
 mix.setResourceRoot('../../')
    .setPublicPath('./')
    .sass('src/scss/base.scss', 'assets/css')
+   .sass('src/scss/style.scss', '')
    .options(scssOptions)
-    // Extract libraries requires ECMAScript 6 imports in your code.
-   .js(bundles.all, 'assets/js/app.js')
+
+// Extract libraries requires ECMAScript 6 imports in your code.
+mix.js(bundles.all, 'assets/js/app.js')
    .extract(extractLibs)
 
-   .purgeCss(
+mix.version()
+
+mix.purgeCss(
        {
 //           enabled: mix.inProduction(),
            enabled: false,
@@ -124,11 +130,6 @@ mix.setResourceRoot('../../')
        }
    )
 
-   .autoload({
-       'jquery': ['$', 'window.jQuery', 'jQuery']
-   })
-
-   .version()
 
 // Production
 if (mix.inProduction()) {

@@ -1,0 +1,59 @@
+.text-white {
+    color: $white;
+}
+
+.text-red {
+    color: $red;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.bg-white {
+    background-color: $white;
+}
+
+.bg-red {
+    background-color: $red;
+}
+
+.bg-gray-200 {
+    background-color: $gray-200;
+}
+
+.bg-gray-400 {
+    background-color: $gray-400;
+}
+
+.bg-gray-600 {
+    background-color: $gray-600;
+}
+
+.bg-cover {
+    background-size: cover; // Full height background
+}
+
+.bg-center {
+    background-position: center;
+}
+
+.bg-fixed {
+    background-attachment: fixed;
+}
+
+.bg-trans {
+    background-color: rgba($black, 0.20);
+}
+
+.font-open-sans {
+    font-family: $font-open-sans;
+}
+
+.font-roboto {
+    font-family: $font-roboto;
+}
+
+.font-garamond {
+    font-family: $font-garamond;
+}

@@ -10,4 +10,20 @@ if (class_exists('Axe\Init')) :
     Axe\Init::register_services();
 endif;
 
+// Loads the date from the core or child theme.
 setBaseDataPath();
+
+add_action('admin_bar_menu', 'add_toolbar_items', 200);
+function add_toolbar_items($admin_bar)
+{
+    $admin_bar->add_menu([
+        'id'     => 'options',
+        'parent' => 'site-name',
+        'title'  => 'Options',
+        'href'   => admin_url().'admin.php?page=acf-options-general-settings',
+        'meta'   => [
+            'title' => __('Options'),
+            'class' => 'my_menu_item_class'
+        ],
+    ]);
+}

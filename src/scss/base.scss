@@ -1,16 +1,21 @@
 /*
-Based off of Bootstrap 4.1.3
+Based off of Bootstrap 5.2.^
 This file allows you to customize what Bootstrap includes
  */
-@import "components/base-variables";
-@import "~bootstrap/scss/bootstrap";
 
-@import "components/mixens";
-@import "components/structure-clean";
-@import "components/fonts";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+@import "global/variables";
+
+//@import "~bootstrap/scss/bootstrap";
+@import "global/bootstrap";
+
+@import "global/mixens";
+
 @import "components/wp-gutenberg";
 @import "components/wp-classic";
-@import "components/wp-widget";
+//@import "components/wp-widget";
 
 .navbar-brand img {
     max-height: 100px;
@@ -30,7 +35,4 @@ This file allows you to customize what Bootstrap includes
     }
 }
 
-
 // External Components
-// @import "components/materialize";
-

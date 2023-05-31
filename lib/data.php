@@ -1,3 +1,6 @@
 <?php
-$data = get_fields();
-$post = get_post();
+
+$data        = Axe\Core\Content::getFields();
+$post        = Axe\Core\Content::getPosts();
+$options     = Axe\Core\Content::getOptions();
+$mainOptions = (new \Axe\Core\Network)->getMainSite()['options'];

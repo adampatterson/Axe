@@ -1,5 +1,4 @@
-Axe
-==
+# Axe
 
 Axe is a simple bare-bones WordPress starter theme and structure. It is a theme meant to get you set up and running as
 fast as possible.
@@ -16,7 +15,7 @@ to the admin pages.
 
 ```php
 /*
- * Load this in your footer, and 
+ * Load this in your footer, and
  * check to see if the user is logged in.
  * /
 <? $data = get_fields();?>
@@ -29,9 +28,9 @@ The theme includes a file called `/templates/partials/admin-helper.php` that can
 
 ## Supports
 
-* Favicon
-* [Header Image](https://codex.wordpress.org/Custom_Headers)
-* [Background Image](https://codex.wordpress.org/Custom_Backgrounds)
+-   Favicon
+-   [Header Image](https://codex.wordpress.org/Custom_Headers)
+-   [Background Image](https://codex.wordpress.org/Custom_Backgrounds)
 
 ## Theme Structure
 
@@ -55,7 +54,7 @@ The theme includes a file called `/templates/partials/admin-helper.php` that can
     │   └── js
     │   └── scss
     ├── templates/
-    │   └── ...    
+    │   └── ...
     │   └── partials/
     │   └── partials/loop-{type}.php
     │   └── partials/blocs/
@@ -63,7 +62,7 @@ The theme includes a file called `/templates/partials/admin-helper.php` that can
     │   └── single-{slug}.php
     │   └── sub-{parent_slug}.php
     ├── vendor/
-    │   └── ...    
+    │   └── ...
     ├── woocommerce/
     │   └── ...
     ├── composer.json
@@ -79,17 +78,17 @@ The theme includes a file called `/templates/partials/admin-helper.php` that can
 A `package.json` file with Bootstrap and jQuery is included.
 
 The [src folder](https://github.com/adampatterson/Axe/tree/master/src) stores your SASS and JS that will be compiled
-into `/assets` using  [Laravel Mix](https://laravel.com/docs/5.8/mix).
+into `/assets` using [Laravel Mix](https://laravel.com/docs/5.8/mix).
 
 If you are looking for a more advanced Mix configuration, then have a look at the official docs.
 
 **Mix Installation & Setup**
 https://laravel.com/docs/master/mix#installation
 
-* The `webpack.mix.js` file is located in the theme root directory
-* `npm run watch` to start browserSync with LiveReload and proxy to your custom URL
-* `npm run dev` to quickly compile and bundle all the assets without watching
-* `npm run prod` to compile the assets for production
+-   The `webpack.mix.js` file is located in the theme root directory
+-   `npm run watch` to start browserSync with LiveReload and proxy to your custom URL
+-   `npm run dev` to quickly compile and bundle all the assets without watching
+-   `npm run prod` to compile the assets for production
 
 # General Concepts
 
@@ -135,7 +134,7 @@ class Model extends \Axe\Core\Model
         ]);
     }
 }
-````
+```
 
 _Related, `/lib/data.php` contains the data that will be loaded in each page and passed through to each included template if using the `get_template_part_acf()` method._
 
@@ -206,9 +205,9 @@ more [here](https://github.com/adampatterson/Axe-Helpers).
 
 The Axe Helpers will load a couple packages
 
-* nesbot/carbon
-* tightenco/collect
-* laravel/helpers"
+-   nesbot/carbon
+-   tightenco/collect
+-   laravel/helpers"
 
 ---
 
@@ -261,14 +260,14 @@ look [here](https://github.com/adampatterson/Axe/blob/master/index.php#L2).
 `_get()` - alias for `Arr::get($haystack, $needle, $default = false)`
 
     <?= _get($block, 'title', 'Default Title') ?>
-    
+
 ```php
 foreach (_get($block, 'block.items', []) as $item):
     ...
 endforeach;
 ```
 
-`_has()` - alias for `_Arr::has($haystack, $needle)`
+`_has()` - alias for `Arr::has($haystack, $needle)`
 
 ```php
 if (_has($block, 'contact.phone', false)): ?>
@@ -276,9 +275,8 @@ if (_has($block, 'contact.phone', false)): ?>
 endif;
 ```
 
-
-*Functions in the parent theme should be wrapped with `function_exists` extend the child theme and prevent any
-conflicts.*
+_Functions in the parent theme should be wrapped with `function_exists` extend the child theme and prevent any
+conflicts._
 
 ---
 
@@ -335,25 +333,25 @@ all of your themes assets.
 
 **Axe will require a couple of plugins to run:**
 
-* Advanced Custom Fields **Required**
-* Custom Post Type UI
-* WooCommerce
-* JetPack
+-   Advanced Custom Fields **Required**
+-   Custom Post Type UI
+-   WooCommerce
+-   JetPack
 
 ## To-Do's
 
-* Create a model for ACF and other data sources
-* Document a lot of the inner code such as helpers
-* Document included packages
-* Document the build process
-* Document Child theme process using ( Handle )
-* Build out a demo theme ( Blade )
-* Update to Bootstrap 5
-* Fix WebPack PurgeCSS
+-   Create a model for ACF and other data sources
+-   Document a lot of the inner code such as helpers
+-   Document included packages
+-   Document the build process
+-   Document Child theme process using ( Handle )
+-   Build out a demo theme ( Blade )
+-   Update to Bootstrap 5
+-   Fix WebPack PurgeCSS
 
 ### Credits
 
-Template tags are heavily modified versions of [_S](http://underscores.me/), Class registration was inspired
+Template tags are heavily modified versions of [\_S](http://underscores.me/), Class registration was inspired
 by [Alecaddd](https://github.com/Alecaddd/awps)
 
 ### Contributors:
@@ -365,3 +363,9 @@ Adam Patterson ( [@adampatterson](http://twitter.com/adampatterson)
 
 This theme reflects my workflow and process, with that said, If you have anything to add please email me at
 hello@adampatterson.ca
+
+#### Local Development
+
+    ln -s ~/Sites/cms/wordpress/wp-content/themes/Blade ./
+    ln -s ~/Sites/cms/wordpress/wp-content/themes/Axe ./
+    ln -s ~/Sites/cms/wordpress/wp-content/themes/AxeAxe-Helpers ./Axe/vendor/adampatterson
