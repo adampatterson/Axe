@@ -16,7 +16,7 @@ class Menu
             'footer-links' => __('Footer Links', 'axe')
         ));
 
-        add_filter('nav_menu_css_class', [$this, 'add_classes_on_li'], 1, 3);
+//         add_filter('nav_menu_css_class', [$this, 'add_classes_on_li'], 1, 3);
         add_filter('wp_nav_menu', [$this, 'add_classes_on_link']);
     }
 
