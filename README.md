@@ -368,4 +368,4 @@ hello@adampatterson.ca
 
     ln -s ~/Sites/cms/wordpress/wp-content/themes/Blade ./
     ln -s ~/Sites/cms/wordpress/wp-content/themes/Axe ./
-    ln -s ~/Sites/cms/wordpress/wp-content/themes/AxeAxe-Helpers ./Axe/vendor/adampatterson
+    ln -s ~/Sites/cms/wordpress/wp-content/themes/Axe-Helpers ./Axe/vendor/adampatterson
