@@ -63,9 +63,9 @@ class Theme
         add_filter('previous_posts_link_attributes', [$this, 'posts_link_attributes'], 10, 1);
 
         if ( ! is_admin()) {
-            add_filter('the_title', [$this, 'markdown_title']);
-            add_filter('widget_title', [$this, 'markdown_title']);
-            add_filter('single_post_title', [$this, 'markdown_title'], 8);
+            // add_filter('the_title', [$this, 'markdown_title']);
+            // add_filter('widget_title', [$this, 'markdown_title']);
+            // add_filter('single_post_title', [$this, 'markdown_title'], 8);
         }
 
         // Don't load jQuery from WordPress
