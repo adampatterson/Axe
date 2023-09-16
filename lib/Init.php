@@ -13,9 +13,10 @@ class Init
     {
         return [
             Core\Media::class,
-            Core\Options::class,
+            Models\Options::class,
+            Models\Content::class,
             Core\Walker::class,
-//            Core\Widgets::class,
+            Core\Widgets::class,
             Core\TheLoop::class,
             Setup\Acf::class,
             Setup\Admin::class,
@@ -44,7 +45,7 @@ class Init
     /**
      * Initialize the class
      *
-     * @param  class  $class  class from the services array
+     * @param class $class class from the services array
      *
      * @return class instance        new instance of the class
      */

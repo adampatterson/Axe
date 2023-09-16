@@ -5,8 +5,8 @@ if ( ! function_exists('get_fields')) {
     die;
 }
 
-$data        = Axe\Core\Content::getFields();
-$post        = Axe\Core\Content::getPosts();
+$data        = \Axe\Models\Content::getACF();
+$post        = \Axe\Models\Content::getPost();
 
 /*
 Add a field group in ACF Options to keep the data nice and clean,

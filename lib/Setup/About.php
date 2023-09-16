@@ -18,7 +18,6 @@ class About
     public function axe_about_page_output()
     {
         $theme_data = wp_get_theme();
-
         ?>
         <div class="wrap">
             <div class="welcome-text">
