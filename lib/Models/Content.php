@@ -1,23 +1,27 @@
 <?php
 
-namespace Axe\Core;
+namespace Axe\Models;
 
 class Content
 {
-
     public function __construct()
     {
-        //
+
     }
 
-    public static function getFields()
+    public static function getACF()
     {
         return get_fields();
     }
 
-    public static function getPosts()
+    public static function getPost()
     {
         return get_post();
+    }
+
+    static function getTerm()
+    {
+        return get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
     }
 
     public static function getOptions()

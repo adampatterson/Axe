@@ -1,6 +1,6 @@
 <?php
 
-namespace Axe\Core;
+namespace Axe\Models;
 
 class Options
 {
@@ -15,8 +15,8 @@ class Options
     static function get($key = null)
     {
         $options = [
-//            'contact'  => get_field('contact', 'option'),
-//            'theme'    => get_field('theme', 'option'),
+//            'contact'       => get_field('contact', 'option'),
+//            'theme'         => get_field('theme', 'option'),
 //            '404_page'      => get_field('404', 'option'),
         ];
 
