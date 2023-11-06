@@ -17,6 +17,6 @@ https://github.com/adampatterson/Handle/blob/staging/lib/Custom/Options.php
 */
 
 // $options    = get_field('key', 'option');
-$options    = Axe\Core\Options::get();
+$options    = Axe\Models\Options::get();
 
-// $mainOptions = (new \Axe\Core\Network)->getMainSite()['options']; // Uncomment if you're using a WordPress Multi Site
+ $mainOptions = (new \Axe\Core\Network)->getMainSite()['options']; // Uncomment if you're using a WordPress Multi Site
