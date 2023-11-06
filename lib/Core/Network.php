@@ -2,6 +2,8 @@
 
 namespace Axe\Core;
 
+use Axe\Models\Options;
+
 class Network
 {
 
