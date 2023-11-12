@@ -31,10 +31,10 @@ class Template
         ?>
         <nav class="navigation post-navigation" role="navigation">
             <ul class="pagination justify-content-center">
-                <li class="next <?= ( ! get_next_posts_link()) ? 'disabled' : '' ?> nav-previous page-item mr-auto">
+                <li class="next <?= (!get_next_posts_link()) ? 'disabled' : '' ?> nav-previous page-item mr-auto">
                     <?php next_posts_link(__('<span class="meta-nav" aria-hidden="true">&larr;</span> Older posts', 'axe')); ?>
                 </li>
-                <li class="previous <?= ( ! get_previous_posts_link()) ? 'disabled' : '' ?> nav-next page-item ml-auto">
+                <li class="previous <?= (!get_previous_posts_link()) ? 'disabled' : '' ?> nav-next page-item ml-auto">
                     <?php previous_posts_link(__('Newer posts <span class="meta-nav" aria-hidden="true">&rarr;</span>', 'axe')); ?>
                 </li>
             </ul>
@@ -49,18 +49,18 @@ class Template
     {
         // Don't print empty markup if there's nowhere to navigate.
         $previous = (is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false, '', true);
-        $next     = get_adjacent_post(false, '', false);
+        $next = get_adjacent_post(false, '', false);
 
-        if ( ! $next && ! $previous) {
+        if (!$next && !$previous) {
             return;
         }
         ?>
         <nav class="navigation post-navigation" role="navigation">
             <ul class="pagination justify-content-center">
-                <li class="next <?= ( ! get_next_post_link()) ? 'disabled' : '' ?> nav-previous page-item mr-auto">
+                <li class="next <?= (!get_next_post_link()) ? 'disabled' : '' ?> nav-previous page-item mr-auto">
                     <?php next_post_link('%link', __('<span class="meta-nav" aria-hidden="true">&larr;</span> %title', 'Next post link', 'axe')); ?>
                 </li>
-                <li class="previous <?= ( ! get_previous_post_link()) ? 'disabled' : '' ?> nav-next page-item ml-auto">
+                <li class="previous <?= (!get_previous_post_link()) ? 'disabled' : '' ?> nav-next page-item ml-auto">
                     <?php previous_post_link('%link', __('%title <span class="meta-nav" aria-hidden="true">&rarr;</span>', 'Previous post link', 'axe')); ?>
                 </li>
             </ul>
@@ -79,16 +79,21 @@ class Template
             esc_attr(get_the_modified_date('c')), esc_html(get_the_modified_date()));
 
         $posted_on = sprintf(esc_html_x('Posted on %s', 'post date'),
-            '<a href="'.esc_url(get_permalink()).'" rel="bookmark">'.$time_string.'</a>');
+            '<a href="' . esc_url(get_permalink()) . '" rel="bookmark">' . $time_string . '</a>');
 
         if ($show_author) {
             $byline = sprintf(esc_html_x('by %s', 'post author'),
-                '<span class="author vcard"><a class="url fn n" href="'.esc_url(get_author_posts_url(get_the_author_meta('ID'))).'">'.esc_html(get_the_author()).'</a></span>');
+                '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html(get_the_author()) . '</a></span>');
 
-            echo '<span class="posted-on">'.$posted_on.'</span><span class="byline"> '.$byline.'</span>'; // WPCS: XSS OK.
+            echo "<span class=\"posted-on\">{$posted_on}</span><span class=\"byline\"> {$byline}</span>"; // WPCS: XSS OK.
         } else {
-            echo '<span class="posted-on">'.$posted_on.'</span>';
+            echo "<span class='posted-on'>{$posted_on}</span>";
         }
+    }
+
+    public static function post_author()
+    {
+
     }
 
     /**
@@ -111,7 +116,7 @@ class Template
             }
         }
 
-        if ( ! is_single() && ! post_password_required() && (comments_open() || get_comments_number())) {
+        if (!is_single() && !post_password_required() && (comments_open() || get_comments_number())) {
             echo '<span class="comments-link">';
             comments_popup_link(__('Leave a comment', 'axe'), __('1 Comment', 'axe'), __('% Comments', 'axe'));
             echo '</span>';
@@ -120,10 +125,10 @@ class Template
         edit_post_link('Edit', '<br/><span class="edit-link">', '</span>');
     }
 
-    public static function post_categories($single = false)
+    public static function post_categories($single = false, $css = '')
     {
         if ('post' == get_post_type()) {
-            if ( ! $single) {
+            if (!$single) {
                 $categories_list = get_the_category_list(', ');
                 if ($categories_list && self::categorized_blog()) {
                     printf('<span class="category-links">' . '<strong>Categories:</strong> %1$s' . '</span>', $categories_list);
@@ -131,7 +136,8 @@ class Template
             } else {
                 $category = current(get_the_category());
                 ?>
-                <a href="<?= esc_url(get_category_link($category)); ?>" class="category"><?= esc_html($category->name); ?></a>
+                <a href="<?= esc_url(get_category_link($category)); ?>"
+                   class="category <?= $css ?>"><?= esc_html($category->name); ?></a>
                 <?php
             }
         }
@@ -142,9 +148,9 @@ class Template
         self::posted_on($show_author);
     }
 
-    public static function meta_category()
+    public static function meta_category($css = '')
     {
-        return self::post_categories(true);
+        self::post_categories(true, $css);
     }
 
     public static function post_tags()
@@ -225,7 +231,7 @@ class Template
          */
         $title = apply_filters('get_the_archive_title', $title);
 
-        if ( ! empty($title)) {
+        if (!empty($title)) {
             echo $before . $title . $after;
         }
     }
@@ -245,7 +251,7 @@ class Template
     {
         $description = apply_filters('get_the_archive_description', term_description());
 
-        if ( ! empty($description)) {
+        if (!empty($description)) {
             /**
              * Filter the archive description.
              *
