@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Axe\Core;
 
 class Model
@@ -10,6 +11,10 @@ class Model
      * @param $showAll
      *
      * @return WP_Error|WP_Term[]
+     *
+     * static function getCustomTaxonomy($showAll = false) {
+     *     return self::getCustomTaxonomyData(['custom-taxonomy'], $showAll);
+     * }
      */
     static function getCustomTaxonomyData($taxonomy, $showAll)
     {
@@ -34,4 +39,20 @@ class Model
     {
         return get_post();
     }
+
+
+//    static function getPostTypeByTaxonomy($term)
+//    {
+//        return new \WP_Query([
+//            'post_type' => 'post-type',
+//            'tax_query' => [
+//                [
+//                    'taxonomy' => 'taxonomy',
+//                    'terms'    => [$term],
+//                    'field'    => 'slug',
+//                ]
+//            ]
+//        ]);
+//    }
+
 }
