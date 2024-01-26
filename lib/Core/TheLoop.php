@@ -45,7 +45,7 @@ class TheLoop
      *
      * @return bool
      */
-    public function have_posts()
+    public function have_posts(): bool
     {
         $this->iterate();
 
@@ -55,7 +55,7 @@ class TheLoop
     /**
      * Sets and increments the current index.
      */
-    private function iterate()
+    private function iterate(): void
     {
         $this->index = $this->index + 1;
     }
@@ -65,7 +65,7 @@ class TheLoop
      *
      * @return int
      */
-    public function index()
+    public function index(): int
     {
         return $this->index - 1;
     }
@@ -75,7 +75,7 @@ class TheLoop
      *
      * @return int
      */
-    public function iteration()
+    public function iteration(): int
     {
         return $this->index;
     }
@@ -85,7 +85,7 @@ class TheLoop
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->wp_query->posts);
     }
@@ -93,7 +93,7 @@ class TheLoop
     /**
      * @return bool
      */
-    public function first()
+    public function first(): bool
     {
         return ($this->index == 1) ? true : false;
     }
@@ -101,7 +101,7 @@ class TheLoop
     /**
      * @return bool
      */
-    public function last()
+    public function last(): bool
     {
         return ($this->index == count($this->wp_query->posts)) ? true : false;
     }
@@ -109,7 +109,7 @@ class TheLoop
     /**
      * @return bool
      */
-    public function even()
+    public function even(): bool
     {
         return $this->index % 2 == 0;
     }
@@ -117,8 +117,18 @@ class TheLoop
     /**
      * @return bool
      */
-    public function odd()
+    public function odd(): bool
     {
         return $this->index % 2 !== 0;
     }
+
+    /**
+     * @param $count
+     * @return bool
+     */
+    public function is($count): bool
+    {
+        return $this->iteration() === $count;
+    }
+
 }

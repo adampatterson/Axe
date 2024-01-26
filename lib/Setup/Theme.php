@@ -56,11 +56,14 @@ class Theme
             'flex-width' => true,
         ];
 
-        $this->default_logo_class      = 'img-fluid ';
+        $this->default_logo_class = 'img-fluid ';
         $this->default_logo_link_class = '';
 
         add_filter('next_posts_link_attributes', [$this, 'posts_link_attributes'], 10, 1);
         add_filter('previous_posts_link_attributes', [$this, 'posts_link_attributes'], 10, 1);
+
+        add_filter('next_post_link', [$this, 'post_link_attributes'], 10, 1);
+        add_filter('previous_post_link', [$this, 'post_link_attributes'], 10, 1);
 
         if ( ! is_admin()) {
             // add_filter('the_title', [$this, 'markdown_title']);
@@ -150,6 +153,12 @@ class Theme
         return 'class="page-link"';
     }
 
+    function post_link_attributes($html)
+    {
+        $html = str_replace('<a ', '<a class="page-link" ', $html);
+        return $html;
+    }
+
     /**
      * Converts markdown in post titles.
      *
@@ -159,7 +168,7 @@ class Theme
      */
     function markdown_title($post_title)
     {
-        $formatted_title = preg_replace(array('/(\*\*|__)(.*?)\1/', '/(\*|_)(.*?)\1/'), array('<strong>\2</strong>', '<em>\2</em>'), $post_title);
+        $formatted_title = preg_replace(['/(\*\*|__)(.*?)\1/', '/(\*|_)(.*?)\1/'], ['<strong>\2</strong>', '<em>\2</em>'], $post_title);
 
         return $formatted_title;
     }

@@ -8,7 +8,7 @@ class Admin
     public function __construct()
     {
         // Add Editor Style
-        add_editor_style('editor-style.css');
+        add_theme_support( 'editor-styles' );
 
         // Relocate the editor-style.css
         add_editor_style('assets/css/editor-style.css');

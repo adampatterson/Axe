@@ -4,15 +4,15 @@
  */
 include(__THEME_DATA__.'/lib/data.php');
 
-include(get_template_part_acf('templates/partials/header'));
+ get_acf_part('templates/partials/header');
 
 echo '<!-- master/search -->';
 if (have_posts()):
     echo '<!-- template: search/search -->';
-    include(get_template_part_acf('templates/content', 'search'));
+     get_acf_part('templates/content', 'search');
 else:
     echo '<!-- template: search/no_posts -->';
-    include(get_template_part_acf('templates/none'));
+     get_acf_part('templates/none');
 endif;
 
-include(get_template_part_acf('templates/partials/footer'));
+ get_acf_part('templates/partials/footer');

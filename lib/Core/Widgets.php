@@ -18,17 +18,21 @@ class Widgets
     {
         $this->path = get_template_directory();
 
+        // #49 One day, maybe never
         $this->widgets = [
-            'Posts'       => 'Axe\Widgets\Posts',
-            'Instagram'   => 'Axe\Widgets\Instagram',
-            'Twitter'     => 'Axe\Widgets\Twitter',
-            'About'       => 'Axe\Widgets\About',
-            'MailingList' => 'Axe\Widgets\MailingList',
+//            'Posts'       => 'Axe\Widgets\Posts',
+//            'Instagram'   => 'Axe\Widgets\Instagram',
+//            'Twitter'     => 'Axe\Widgets\Twitter',
+//            'About'       => 'Axe\Widgets\About',
+//            'MailingList' => 'Axe\Widgets\MailingList',
         ];
 
+        // Disable the Widget block editor
+        add_filter('use_widgets_block_editor', '__return_false');
+
         add_action('widgets_init', [$this, 'register_sidebars']);
-        add_action('widgets_init', [$this, 'register_widgets']);
-        add_action('widgets_init', [$this, 'unregister_default_widgets'], 11);
+//        add_action('widgets_init', [$this, 'register_widgets']);
+//        add_action('widgets_init', [$this, 'unregister_default_widgets'], 11);
     }
 
     public function register_widgets()
@@ -38,7 +42,7 @@ class Widgets
             $file = $this->path . '/lib/Widgets/' . $fileName . '.php';
 
             // Skip if the file is missing.
-            if ( ! file_exists($file)) {
+            if (!file_exists($file)) {
                 continue;
             }
 
@@ -46,7 +50,7 @@ class Widgets
             require_once $file;
 
             // Make sure the Class exists
-            if ( ! class_exists($widget)) {
+            if (!class_exists($widget)) {
                 continue;
             }
 

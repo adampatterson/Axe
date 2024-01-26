@@ -118,7 +118,7 @@ called `vehicles` and they are tagged with a `style`.
 
 namespace Handle\Custom;
 
-class Model extends \Axe\Core\Model
+class Model extends \Axe\Models\Content
 {
     static function getVehicleByStyle($styleSlug)
     {

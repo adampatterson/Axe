@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <div class="container pt-5">
 
-        <?php include(get_template_part_acf('templates/partials/author', 'header')); ?>
+        <?php get_acf_part('templates/partials/author', 'header'); ?>
 
         <?php /*
 
@@ -10,7 +10,7 @@
 
                 <section id="post-blog">
                     <?php if (have_posts()):
-                        include(get_template_part_acf('templates/loop', 'post')); ?>
+                        get_acf_part'templates/loop', 'post'); ?>
 
                         <div class="row">
                             <div class="col-md-12">
@@ -19,7 +19,7 @@
                         </div>
 
                     <?php else:
-                        include(get_template_part_acf('templates/content', 'none'));
+                         get_acf_part('templates/content', 'none');
                     endif; ?>
                 </section>
 
