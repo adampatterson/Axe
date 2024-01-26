@@ -1,6 +1,11 @@
 {
+    "description": "Axe parent theme",
+    "keywords": [
+        "WordPress",
+        "theme"
+    ],
     "require": {
-        "adampatterson/axe-helpers": "^1.0"
+        "adampatterson/axe-helpers": "^1.1.0"
     },
     "autoload": {
         "psr-4": {

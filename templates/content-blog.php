@@ -3,7 +3,7 @@
         <div class="row">
             <div class="<?= (is_active_sidebar('blog')) ? 'col-md-8' : 'col-md-12' ?>">
                 <section id="blog">
-                    <?php include(get_template_part_acf('templates/loop', 'post')); ?>
+                    <?php get_acf_part('templates/loop', 'post'); ?>
                 </section>
 
                 <div class="row">

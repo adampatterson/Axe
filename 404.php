@@ -1,4 +1,4 @@
-<?php include(get_template_part_acf('templates/partials/header')); ?>
+<?php get_acf_part('templates/partials/header'); ?>
 
     <div class="wrapper">
         <div class="container">
@@ -8,7 +8,8 @@
                     <section id="post-404" <?php post_class(); ?>>
                         <article>
                             <h1>404 Not Found</h1>
-                            <p class="lead">It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.</p>
+                            <p class="lead">It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps
+                                searching can help.</p>
                             <?php get_search_form(); ?>
                         </article>
                     </section>
@@ -18,5 +19,4 @@
         </div>
     </div>
 
-<?php include(get_template_part_acf('templates/partials/footer'));
-
+<?php get_acf_part('templates/partials/footer');

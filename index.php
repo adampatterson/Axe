@@ -2,21 +2,21 @@
 /*
  * All globally available ACF data is loaded here.
  */
-include(__THEME_DATA__.'/lib/data.php');
+include(__THEME_DATA__ . '/lib/data.php');
 
-include(get_template_part_acf('templates/partials/header'));
+get_acf_part('templates/partials/header');
 
 echo '<!-- master/index -->';
 
 if (have_posts()):
     # Sort this out, Blog is not loading
-    if (is_front_page() or is_home()):
+    if (is_front_page() || is_home()):
         echo '<!-- template: index/blog -->';
-        include(get_template_part_acf('templates/content', 'blog'));
+        get_acf_part('templates/content', 'blog');
     endif;
 else:
     echo '<!-- template: index/no_posts -->';
-    include(get_template_part_acf('templates/none'));
+    get_acf_part('templates/none');
 endif;
 
-include(get_template_part_acf('templates/partials/footer'));
+get_acf_part('templates/partials/footer');
