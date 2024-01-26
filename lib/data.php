@@ -1,12 +1,14 @@
 <?php
 
+use Axe\Models\Content;
+
 if ( ! function_exists('get_fields')) {
     echo 'Please install and enable ACF.';
     die;
 }
 
-$data        = \Axe\Models\Content::getACF();
-$post        = \Axe\Models\Content::getPost();
+$data        = Content::getACF();
+$post        = Content::getPost();
 
 /*
 Add a field group in ACF Options to keep the data nice and clean,

@@ -24,13 +24,14 @@ to the admin pages.
 </script>
 ```
 
-The theme includes a file called `/templates/partials/admin-helper.php` that can be used to output more detail, such as Options, Post, WooCommerce, and extra ACF data.
+The theme includes a file called `/templates/partials/admin-helper.php` that can be used to output more detail, such as
+Options, Post, WooCommerce, and extra ACF data.
 
 ## Supports
 
--   Favicon
--   [Header Image](https://codex.wordpress.org/Custom_Headers)
--   [Background Image](https://codex.wordpress.org/Custom_Backgrounds)
+- Favicon
+- [Header Image](https://codex.wordpress.org/Custom_Headers)
+- [Background Image](https://codex.wordpress.org/Custom_Backgrounds)
 
 ## Theme Structure
 
@@ -85,10 +86,10 @@ If you are looking for a more advanced Mix configuration, then have a look at th
 **Mix Installation & Setup**
 https://laravel.com/docs/master/mix#installation
 
--   The `webpack.mix.js` file is located in the theme root directory
--   `npm run watch` to start browserSync with LiveReload and proxy to your custom URL
--   `npm run dev` to quickly compile and bundle all the assets without watching
--   `npm run prod` to compile the assets for production
+- The `webpack.mix.js` file is located in the theme root directory
+- `npm run watch` to start browserSync with LiveReload and proxy to your custom URL
+- `npm run dev` to quickly compile and bundle all the assets without watching
+- `npm run prod` to compile the assets for production
 
 # General Concepts
 
@@ -136,7 +137,8 @@ class Model extends \Axe\Models\Content
 }
 ```
 
-_Related, `/lib/data.php` contains the data that will be loaded in each page and passed through to each included template if using the `get_template_part_acf()` method._
+_Related, `/lib/data.php` contains the data that will be loaded in each page and passed through to each included
+template if using the `get_acf_part()` method._
 
 ### Extending Classes
 
@@ -166,17 +168,17 @@ class Network extends \Axe\Core\Network
 
 ## Home page
 
-Placing a file under `templates/content-home.php` will resolve the home page and would be used by `/`
+Placing a file under `templates/content-home.php` will resolve the home page and would be accessed by `/`
 
 ## Page templates
 
 Placing a file under `templates/content-{slug}.php` will resolve the home page. Using `content-contact.php` would be
-used by `/contact`
+accessed by `/contact`
 
 ## Sub Page templates
 
 Placing a file under `templates/sub-{parent_slug}.php` will resolve the home page. Using `sub-services.php` would be
-used by all pages under service like `/services/design`
+accessed by all pages under service like `/services/design`
 
 ## Post format templates
 
@@ -205,9 +207,12 @@ more [here](https://github.com/adampatterson/Axe-Helpers).
 
 The Axe Helpers will load a couple packages
 
--   nesbot/carbon
--   tightenco/collect
--   laravel/helpers"
+- nesbot/carbon
+- tightenco/collect
+- laravel/helpers
+- vlucas/phpdotenv
+
+_Functions in the parent theme should be wrapped with `function_exists` any conflicts in the child theme._
 
 ---
 
@@ -219,11 +224,25 @@ the ability to load assets from both the Child and Parent theme. Omitting usePar
 
 ---
 
-`get_template_part_acf()` - Works exactly like `get_template_part()` except that it uses an include. This makes it more
-suitable to use with ACF. You can include your custom content once which is already done for you. Have a
-look [here](https://github.com/adampatterson/Axe/blob/master/index.php#L2).
+`get_template_part_acf()` - Works like `get_template_part()` except that it returns a path for you to `include`. This
+makes it more suitable to use with ACF. You can include your custom content once which is already done for you.
+
+```php
+include(get_template_part_acf('templates/content', 'blog'));
+```
+
+**Alternatively**
+
+`get_acf_part()` internally calls `get_template_part_acf()` but does the include for you, this helps keep your code nice
+and clean.
+
+```php
+get_acf_part('templates/content', 'blog');
+```
 
 ---
+
+### Path helpers
 
 `__t()` - Returns the template directory, It should be noted that this is easily overwritten in the child theme.
 
@@ -247,15 +266,15 @@ look [here](https://github.com/adampatterson/Axe/blob/master/index.php#L2).
 
 `is_sub_page()` - Used to determine if you are on a subpage.
 
-`show_template()` -
+`show_template()` - Returns the local WordPress template path.
 
-`get_the_logo()` -
+`get_the_logo()` - Returns an HTML link including the logo, Or just the path to the logo image.
 
-`if_custom_logo()` -
+`if_custom_logo()` - Simple function to adjust the template if there is a custom logo or not.
 
 ---
 
-### Array Helper Functions
+### Array Helper Functions / ACF Data helpers
 
 `_get()` - alias for `Arr::get($haystack, $needle, $default = false)`
 
@@ -275,10 +294,9 @@ if (_has($block, 'contact.phone', false)): ?>
 endif;
 ```
 
-_Functions in the parent theme should be wrapped with `function_exists` extend the child theme and prevent any
-conflicts._
-
 ---
+
+### Loop Methods
 
 ```php
  $loop = new Axe\Core\TheLoop;
@@ -293,8 +311,6 @@ conflicts._
  endwhile;
 ```
 
-@todo: Widgets
-
 ## Style
 
 ```
@@ -308,19 +324,6 @@ build has been done, any unused CSS classes will be removed.
 `base-variables` holds any site specific variables that you might need including any
 Bootstrap [customizations](https://getbootstrap.com/docs/5.1/customize/sass/)
 
-[PurgeCss](https://github.com/FullHuman/purgecss) supports white listing of css class names, some defaults have been
-included in the `webpack.mix.js`
-file [here](https://github.com/adampatterson/Handle/blob/68bdd609a582baa4df0cadec67bf0d437bb60029/webpack.mix.js#L21).
-
-It's also possible
-to [whitelist](https://github.com/FullHuman/purgecss-docs/blob/master/whitelisting.md#in-the-css-directly) specific
-classes or chunks of css.
-
-## Dummy Content for Gutenberg
-
-Sridhar Katakam has provided an article outlining how to
-add [dummy content for Gutenberg](https://sridharkatakam.com/dummy-content-for-gutenberg/).
-
 # Child theme
 
 https://github.com/adampatterson/Handle
@@ -333,21 +336,26 @@ all of your themes assets.
 
 **Axe will require a couple of plugins to run:**
 
--   Advanced Custom Fields **Required**
--   Custom Post Type UI
--   WooCommerce
--   JetPack
+- Advanced Custom Fields **Required**
+- Custom Post Type UI
+- WooCommerce
+- JetPack
 
 ## To-Do's
 
--   Create a model for ACF and other data sources
--   Document a lot of the inner code such as helpers
--   Document included packages
--   Document the build process
--   Document Child theme process using ( Handle )
--   Build out a demo theme ( Blade )
--   Update to Bootstrap 5
--   Fix WebPack PurgeCSS
+- Create a model for ACF and other data sources
+- Document a lot of the inner code such as helpers
+- Document included packages
+- Document the build process
+- Document Child theme process using ( Handle )
+- Build out a demo theme ( Blade )
+- Update to Bootstrap 5
+- Fix WebPack PurgeCSS
+
+## Dummy Content for Gutenberg
+
+Sridhar Katakam has provided an article outlining how to
+add [dummy content for Gutenberg](https://sridharkatakam.com/dummy-content-for-gutenberg/).
 
 ### Credits
 
@@ -356,13 +364,13 @@ by [Alecaddd](https://github.com/Alecaddd/awps)
 
 ### Contributors:
 
-Adam Patterson ( [@adampatterson](http://twitter.com/adampatterson)
-/ [adampatterson.ca](https://www.adampatterson.ca/) )
+Adam
+Patterson ( [@adampatterson](http://twitter.com/adampatterson) / [adampatterson.ca](https://www.adampatterson.ca/) )
 
 ### Disclaimer
 
-This theme reflects my workflow and process, with that said, If you have anything to add please email me at
-hello@adampatterson.ca
+This theme reflects my own workflows and process, I have built over 100 sites using these setup and it has evolved over
+time. With that said, If you have anything to add please email me at hello@adampatterson.ca
 
 #### Local Development
 

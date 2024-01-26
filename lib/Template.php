@@ -273,13 +273,13 @@ class Template
     {
         if (false === ($all_the_cool_cats = get_transient('axe_categories'))) {
             // Create an array of all the categories that are attached to posts.
-            $all_the_cool_cats = get_categories(array(
+            $all_the_cool_cats = get_categories([
                 'fields'     => 'ids',
                 'hide_empty' => 1,
 
                 // We only need to know if there is more than one category.
                 'number'     => 2,
-            ));
+            ]);
 
             // Count the number of categories that are attached to the posts.
             $all_the_cool_cats = count($all_the_cool_cats);
@@ -307,6 +307,4 @@ class Template
         // Like, beat it. Dig?
         delete_transient('axe_categories');
     }
-
-
 }
