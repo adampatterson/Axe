@@ -7,23 +7,24 @@
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
     <script type='application/ld+json'>{"@context":"http:\/\/schema.org","@type":"WebSite","url":"<?= home_url('/'); ?>
-        ","name":"<?= bloginfo('name') ?>","potentialAction":{"@type":"SearchAction","target":"<?= home_url('/'); ?>?s={search_term}","query-input":"required name=search_term"}}
+        ","name":"<?= bloginfo('name') ?>","potentialAction":{"@type":"SearchAction","target":"<?= home_url('/'); ?>
+        ?s={search_term}","query-input":"required name=search_term"}}
     </script>
 
     <?php wp_head(); ?>
     <link rel="stylesheet" href="<?= mix('/assets/css/base.css', true) ?>"/>
 </head>
 <?php
-$post = ( ! isset($post)) ? null : $post;
+$post = (!isset($post)) ? null : $post;
 if (is_null($post)) {
-    $post            = (object) $post;
+    $post = (object)$post;
     $post->post_name = '';
 }
 ?>
 <body <?php body_class($post->post_name); ?>>
 <div id="wrapper">
-    <?php include(get_template_part_acf('templates/partials/navigation')); ?>
+    <?php get_acf_part('templates/partials/navigation'); ?>
 
-    <?php include(get_template_part_acf('templates/partials/custom-header')); ?>
+    <?php get_acf_part('templates/partials/custom-header'); ?>
 
 
