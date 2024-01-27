@@ -51,7 +51,7 @@ Another tip that I can provide is using `console.log` to output my ACF structure
     │   └── ...    
     │   └── partials/
     │   └── partials/loop-{type}.php
-    │   └── partials/blocs/
+    │   └── partials/blocks/
     │   └── content-{slug}.php
     │   └── single-{slug}.php
     │   └── sub-{parent_slug}.php
