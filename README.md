@@ -58,7 +58,7 @@ Options, Post, WooCommerce, and extra ACF data.
     │   └── ...
     │   └── partials/
     │   └── partials/loop-{type}.php
-    │   └── partials/blocs/
+    │   └── partials/blocks/
     │   └── content-{slug}.php
     │   └── single-{slug}.php
     │   └── sub-{parent_slug}.php
