@@ -110,7 +110,7 @@ class Network
 
     public function isExpired($cacheKey)
     {
-        // @todo for DEV don't cache
+        // Don't cache for DEV
         if (WP_DEBUG) {
             return true;
         }

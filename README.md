@@ -27,12 +27,6 @@ to the admin pages.
 The theme includes a file called `/templates/partials/admin-helper.php` that can be used to output more detail, such as
 Options, Post, WooCommerce, and extra ACF data.
 
-## Supports
-
-- Favicon
-- [Header Image](https://codex.wordpress.org/Custom_Headers)
-- [Background Image](https://codex.wordpress.org/Custom_Backgrounds)
-
 ## Theme Structure
 
     Axe/
@@ -45,7 +39,6 @@ Options, Post, WooCommerce, and extra ACF data.
     │   └── ico
     │   └── img
     │   └── js
-    │   └── vendor
     ├── lib/
     │   └── ...
     ├── node_modules/
@@ -56,9 +49,9 @@ Options, Post, WooCommerce, and extra ACF data.
     │   └── scss
     ├── templates/
     │   └── ...
+    │   └── blocks/
     │   └── partials/
     │   └── partials/loop-{type}.php
-    │   └── partials/blocks/
     │   └── content-{slug}.php
     │   └── single-{slug}.php
     │   └── sub-{parent_slug}.php
@@ -72,16 +65,19 @@ Options, Post, WooCommerce, and extra ACF data.
 
 ## Getting Set up
 
-`npm i && php composer i && npm run prod`
+```shell
+npm i && php composer i && npm run prod
+```
 
-## Build
+## Building Assets
 
 A `package.json` file with Bootstrap and jQuery is included.
 
-The [src folder](https://github.com/adampatterson/Axe/tree/master/src) stores your SASS and JS that will be compiled
-into `/assets` using [Laravel Mix](https://laravel.com/docs/5.8/mix).
+The [src folder](https://github.com/adampatterson/Axe/tree/master/src) stores your SCSS and JS that will be compiled
+into `/assets` using Laravel Mix.
 
-If you are looking for a more advanced Mix configuration, then have a look at the official docs.
+If you are looking for a more advanced Mix configuration, then have a look at
+the [official docs](https://laravel-mix.com/docs/6.0/installation).
 
 **Mix Installation & Setup**
 https://laravel.com/docs/master/mix#installation
@@ -90,6 +86,12 @@ https://laravel.com/docs/master/mix#installation
 - `npm run watch` to start browserSync with LiveReload and proxy to your custom URL
 - `npm run dev` to quickly compile and bundle all the assets without watching
 - `npm run prod` to compile the assets for production
+
+`mix()` - Allows you to use Laravel Mix with
+WordPress [read more here](https://www.adampatterson.ca/2018/axe-handle-updated-to-include-webpack-mix/).
+
+`mix($filepath, $useParent = true)` - In some cases the core theme might be used with a network site and will require
+the ability to load assets from both the Child and Parent theme. Omitting useParent will keep the same functionality.
 
 # General Concepts
 
@@ -105,6 +107,13 @@ https://laravel.com/docs/master/mix#installation
 
 @todo child theme
 
+---
+
+### Data
+
+`/lib/data.php` contains the data that will be loaded in each page and passed through to each included
+template if using the `get_acf_part()` method.
+
 ### Models
 
 Models should be added to the child theme as they would be site specific.
@@ -112,7 +121,7 @@ Models should be added to the child theme as they would be site specific.
 By adding your custom WordPress queries to a model, you can keep your code nice and organized.
 
 Let's pretend that we are working with an automotive website, and we have a number of posts under a custom post type
-called `vehicles` and they are tagged with a `style`.
+called `vehicles` and they are tagged with a `make`.
 
 ```php
 <?php
@@ -121,14 +130,14 @@ namespace Handle\Custom;
 
 class Model extends \Axe\Models\Content
 {
-    static function getVehicleByStyle($styleSlug)
+    static function getVehicleByMake($makeSlug)
     {
         return new \WP_Query([
             'post_type' => 'vehicles',
             'tax_query' => [
                 [
-                    'taxonomy' => 'style',
-                    'terms'    => [$styleSlug],
+                    'taxonomy' => 'make',
+                    'terms'    => [$makeSlug],
                     'field'    => 'slug',
                 ]
             ]
@@ -136,9 +145,6 @@ class Model extends \Axe\Models\Content
     }
 }
 ```
-
-_Related, `/lib/data.php` contains the data that will be loaded in each page and passed through to each included
-template if using the `get_acf_part()` method._
 
 ### Extending Classes
 
@@ -159,44 +165,48 @@ class Network extends \Axe\Core\Network
     }
 
     public function SomethingNew(){
-        ...
+        // Some new code here
     }
 }
 ```
 
-### Composer
+---
 
-## Home page
+## Templating
 
-Placing a file under `templates/content-home.php` will resolve the home page and would be accessed by `/`
+### Home page
 
-## Page templates
+Accessing `/` will resolve the home page and look for the file `templates/content-home.php`
 
-Placing a file under `templates/content-{slug}.php` will resolve the home page. Using `content-contact.php` would be
-accessed by `/contact`
+### Page templates
 
-## Sub Page templates
+- Accessing `/contact` will load the file `content-contact.php`.
+- Accessing `/{slug}` will load the file `templates/content-{slug}.php`
 
-Placing a file under `templates/sub-{parent_slug}.php` will resolve the home page. Using `sub-services.php` would be
-accessed by all pages under service like `/services/design`
+### Sub Page templates
 
-## Post format templates
+- Accessing `/services/design` will load the file `templates/sub-{parent_slug}.php`
 
-Placing a file under `templates/format-video.php` will resolve all video formats.
+### Post format templates
 
-## Custom Post Type templates
+- A post format of `standard` will load `templates/format-standard.php`
+- A post format of `{format}` will load `templates/format-{format}.php`
 
-Placing a file under `templates/single-books.php` will resolve all custom post type single posts.
+### Custom Post Type templates
 
-## Custom Taxonomies
+- The custom post type single `books` will load `templates/single-books.php`
+- The custom post type single `{type}` will load `templates/single-{type}.php`
 
-Placing a file under `templates/archive-books.php` will resolve a custom taxonomy for Books `/books/sci-fi/` also using
-a custom loop. The default archive would be `archive-default.php` using the default post loop.
+### Custom Taxonomy Archives
 
-## Custom Loops
+- The custom post type archive `{type}` will load `templates/archive-{type}.php`
+- The default archive would be `archive-default.php` using the default post loop.
+- Accessing `/books/sci-fi/` will load a custom loop `get_acf_part('templates/loop', 'books');`
+
+### Custom Loops
 
 If you have a custom post type called Books, creating `content-books.php` and loading a custom loop
-like `loop-books.php` with all the necessary "Loop" code would give you your custom book loop.
+like `loop-books.php` with all the necessary "Loop" code would give you a custom book loop.
 
 See [loop-post.php](https://github.com/adampatterson/Axe/blob/master/templates/loop-post.php) for an example.
 
@@ -216,14 +226,6 @@ _Functions in the parent theme should be wrapped with `function_exists` any conf
 
 ---
 
-`mix()` - Allows you to use Laravel Mix with
-WordPress [read more here](https://www.adampatterson.ca/2018/axe-handle-updated-to-include-webpack-mix/).
-
-`mix($filepath, $useParent = true)` - In some cases the core theme might be used with a network site and will require
-the ability to load assets from both the Child and Parent theme. Omitting useParent will keep the same functionality.
-
----
-
 `get_template_part_acf()` - Works like `get_template_part()` except that it returns a path for you to `include`. This
 makes it more suitable to use with ACF. You can include your custom content once which is already done for you.
 
@@ -237,8 +239,22 @@ include(get_template_part_acf('templates/content', 'blog'));
 and clean.
 
 ```php
-get_acf_part('templates/content', 'blog');
+// Standard usage, external data is not available inside 
+get_acf_part('templates/content', 'blog');  
 ```
+
+See [data](#data) for more information on `$data` and `$blocks`.
+
+```php
+// Templates can have access to $data or $blocks
+get_acf_part('templates/content', 'blog', data: $data);
+get_acf_part('templates/blocks', 'heading', block: $block);
+get_acf_part('templates/partials', 'something', block: $block);
+```
+
+---
+
+### Blocks
 
 ---
 

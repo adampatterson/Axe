@@ -14,6 +14,11 @@ class Content
         return get_fields();
     }
 
+    public static function getACFCollection()
+    {
+        return collect(self::getACF());
+    }
+
     public static function getPost()
     {
         return get_post();
@@ -27,5 +32,10 @@ class Content
     public static function getOptions()
     {
         return Options::get();
+    }
+
+    public static function getOptionsCollection()
+    {
+        return collect(self::getOptions());
     }
 }
