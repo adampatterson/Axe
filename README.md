@@ -397,7 +397,7 @@ endif;
 
 ## Style
 
-```
+```scss
 @import "components/base-variables";
 @import "~bootstrap/scss/bootstrap";
 ```
