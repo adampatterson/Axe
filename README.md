@@ -86,9 +86,8 @@ https://laravel.com/docs/master/mix#installation
 - `npm run watch` to start browserSync with LiveReload and proxy to your custom URL
 - `npm run dev` to quickly compile and bundle all the assets without watching
 - `npm run prod` to compile the assets for production
-
-`mix()` - Allows you to use Laravel Mix with
-WordPress [read more here](https://www.adampatterson.ca/2018/axe-handle-updated-to-include-webpack-mix/).
+- `mix()` - Allows you to use Laravel Mix with
+  WordPress [read more here](https://www.adampatterson.ca/2018/axe-handle-updated-to-include-webpack-mix/).
 
 `mix($filepath, $useParent = true)` - In some cases the core theme might be used with a network site and will require
 the ability to load assets from both the Child and Parent theme. Omitting useParent will keep the same functionality.
@@ -252,9 +251,78 @@ get_acf_part('templates/blocks', 'heading', block: $block);
 get_acf_part('templates/partials', 'something', block: $block);
 ```
 
+**It's important to note that whatever property you choose to use is what will be available to your template part.**
+
+For example, if you choose to use `$data` as your property, then your template part will have access
+to `$data['title']`.
+
+But you could also choose to use `$blocks` as your property, then your template part will have access
+to `$blocks['heading']`.
+
+And if you wanted your blocks to have access to both, then you could pass
+both `get_acf_part('templates/blocks', 'heading', data: $data, block: $block);`
+
 ---
 
 ### Blocks
+
+Blocks work a little different from `get_acf_part`. A block is meant to be an ACF Field Group that uses Flexible content
+with cloned Layouts.
+
+Where a flexible content layout using groups would give you
+
+```php
+$data["builder"] = [
+    [
+        "acf_fc_layout" => "heading",
+        "title" => ""
+    ]
+];
+```
+
+Cloned content results in the content being inside another array.
+
+For this reason, when using `get_acf_block` the fields you clone will need to use a type of **group** with the field
+name of **data**.
+
+```php
+$data["builder"] = [
+    [
+        "acf_fc_layout" => "heading",
+        "data"          => [
+            "title" => ""
+        ]
+    ]
+];
+```
+
+To save us the extra steps of loading our data from an array every time `get_acf_block` will do this for is
+
+```php
+$layout = $block['acf_fc_layout'] ?? '';
+$block = $block['data'] ?? $block ?? [];
+```
+
+If cloned content isn't your thing, then feel free to use a standard block layout.
+
+```php
+$data["builder"]
+  "acf_fc_layout" => "one_off"
+  "title" => "One off title"
+]
+```
+
+**Sample usage:**
+
+```php
+if (_has($data, 'builder', false)): // Do we have any blocks?
+    foreach (_get($data, 'builder', []) as $block):
+        get_acf_block($block); // Works with both standard and cloned layouts 
+    endforeach;
+endif;
+```
+
+And if you're not a fan of this then use `get_acf_part` as normal.
 
 ---
 
