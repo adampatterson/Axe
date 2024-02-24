@@ -324,6 +324,8 @@ endif;
 
 And if you're not a fan of this then use `get_acf_part` as normal.
 
+Have a look at some of the ACF fields, blocks, and a template [here](example).
+
 ---
 
 ### Path helpers
@@ -362,7 +364,9 @@ And if you're not a fan of this then use `get_acf_part` as normal.
 
 `_get()` - alias for `Arr::get($haystack, $needle, $default = false)`
 
-    <?= _get($block, 'title', 'Default Title') ?>
+```php
+<?= _get($block, 'title', 'Default Title') ?>
+```
 
 ```php
 foreach (_get($block, 'block.items', []) as $item):
@@ -440,6 +444,9 @@ all of your themes assets.
 
 Sridhar Katakam has provided an article outlining how to
 add [dummy content for Gutenberg](https://sridharkatakam.com/dummy-content-for-gutenberg/).
+
+
+### Example ACF fields, blocks, and a template [here](example).
 
 ### Credits
 
