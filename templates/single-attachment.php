@@ -16,11 +16,10 @@
                             </header>
 
                             <div class="content col-md-12">
+                                <?= wp_get_attachment_image(get_the_ID(), 'large'); ?>
                                 <?php the_content(); ?>
                             </div>
-
                         </div>
-
                     </article>
                 </div>
             </section>
