@@ -5,25 +5,16 @@
 include(__THEME_DATA__.'/lib/data.php');
 
 get_acf_part('templates/partials/header');
-echo '<!-- master/single -->';
+echo '<!-- main/single -->';
 if (have_posts()):
     while (have_posts()):
         the_post();
 
 //      Post Format
-        if (check_path('/templates/format-' . get_post_format() . '.php')):
-            echo '<!-- template: templates/format-' . get_post_format() . ' -->';
+//      https://developer.wordpress.org/advanced-administration/wordpress/post-formats/#supported-formats
+        if (check_path('/templates/format-'.get_post_format().'.php')):
+            echo '<!-- template: templates/format-'.get_post_format().' -->';
             get_acf_part('templates/format', get_post_format());
-
-//      Fallback for missing Post Formats
-        elseif (get_post_type() == 'post' && ! get_post_format()):
-            echo '<!-- template: templates/format-standard -->';
-            get_acf_part('templates/format', 'standard');
-
-//      Attachment
-        elseif (is_attachment()):
-            echo '<!-- template: templates/single-attachment.php -->';
-            get_acf_part('templates/single', 'attachment');
 
 //      Custom Post Type
         elseif (check_path('/templates/single-'.get_post_type().'.php')):
@@ -35,9 +26,14 @@ if (have_posts()):
             echo '<!-- template: woo/single -->';
             get_acf_part('templates/woo', 'single');
 
-//      If everything fails use content-single.php
+//      Fallback for missing Post Formats
+        elseif (get_post_type() == 'post' && !get_post_format()):
+            echo '<!-- template: templates/format-standard -->';
+            get_acf_part('templates/format', 'standard');
+
+//      If everything fails use format-standard.php
         else:
-            echo '<!-- template: templates/content-single -->';
+            echo '<!-- template: templates/format-standard -->';
             get_acf_part('templates/format', 'standard');
 
         endif;

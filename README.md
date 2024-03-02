@@ -104,7 +104,11 @@ the ability to load assets from both the Child and Parent theme. Omitting usePar
 
 ### Child Themes
 
-@todo child theme
+https://github.com/adampatterson/Handle
+
+If you will be using ACF with your child theme uncomment
+the [following](https://github.com/adampatterson/Handle/blob/master/lib/Custom.php#L12) so that ACF will store
+the `.json` files in your working Child theme.
 
 ---
 
@@ -173,23 +177,45 @@ class Network extends \Axe\Core\Network
 
 ## Templating
 
+[The Template File Hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/#the-template-file-hierarchy)
+
+- **archive.php**
+    - Archive - `archive-default.php`
+- **single.php**
+    - Single CPT - `single-{slug}.php`
+    - [Post Format](https://developer.wordpress.org/advanced-administration/wordpress/post-formats/#supported-formats) - `format-{format}.php`
+    - Attachment - `single-attachment.php`
+- **page.php**
+    - Home - `content-home.php`
+    - Sub Page - `sub-{slug}.php`
+    - Single Page - `content-{slug}.php`
+    - Page - `content-page.php`
+- **404.php**
+    - 404 - `content-404.php`
+- **search.php**
+    - Search - `content-search.php`
+- **index.php**
+    - Home - `content-home.php`
+
 ### Home page
 
 Accessing `/` will resolve the home page and look for the file `templates/content-home.php`
 
 ### Page templates
 
-- Accessing `/contact` will load the file `content-contact.php`.
+- Accessing `/contact` will load the file `templates/content-contact.php`.
 - Accessing `/{slug}` will load the file `templates/content-{slug}.php`
+- Accessing `/no-custom-file` will load the default `templates/content-page.php`
 
 ### Sub Page templates
 
 - Accessing `/services/design` will load the file `templates/sub-{parent_slug}.php`
+- Accessing `/services/no-custom-file` will load the default `templates/content-page.php`
 
 ### Post format templates
 
 - A post format of `standard` will load `templates/format-standard.php`
-- A post format of `{format}` will load `templates/format-{format}.php`
+- A post format of `{format video, gallery, audio, ...}` will load `templates/format-{format}.php`
 
 ### Custom Post Type templates
 
@@ -200,7 +226,7 @@ Accessing `/` will resolve the home page and look for the file `templates/conten
 
 - The custom post type archive `{type}` will load `templates/archive-{type}.php`
 - The default archive would be `archive-default.php` using the default post loop.
-- Accessing `/books/sci-fi/` will load a custom loop `get_acf_part('templates/loop', 'books');`
+- Accessing `/books/sci-fi/` can user a custom loop `get_acf_part('templates/loop', 'books');`
 
 ### Custom Loops
 
@@ -444,7 +470,6 @@ all of your themes assets.
 
 Sridhar Katakam has provided an article outlining how to
 add [dummy content for Gutenberg](https://sridharkatakam.com/dummy-content-for-gutenberg/).
-
 
 ### Example ACF fields, blocks, and a template [here](example).
 

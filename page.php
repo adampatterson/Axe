@@ -7,7 +7,7 @@ include(__THEME_DATA__.'/lib/data.php');
 
 get_acf_part('templates/partials/header');
 
-echo '<!-- master/page -->';
+echo '<!-- main/page -->';
 while (have_posts()) : the_post();
     if (is_front_page()):
         echo '<!-- template: templates/content-home -->';
@@ -25,7 +25,6 @@ while (have_posts()) : the_post();
                 echo '<!-- template: templates/content-page.php -->';
                 get_acf_part('templates/content', 'page');
             endif;
-
 //      Single Page
         elseif (check_path('/templates/content-'.$post->post_name.'.php')):
             echo '<!-- template: templates/content-'.$post->post_name.' -->';

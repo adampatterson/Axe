@@ -3,11 +3,11 @@
  * All globally available ACF data is loaded here.
  */
 
-include(__THEME_DATA__ . '/lib/data.php');
+include(__THEME_DATA__.'/lib/data.php');
 
 get_acf_part('templates/partials/header');
 
-echo '<!-- master/index -->';
+echo '<!-- main/index -->';
 
 if (have_posts()):
     # Sort this out, Blog is not loading

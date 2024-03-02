@@ -4,7 +4,6 @@
 
         <div class="row">
             <section class="col-md-12">
-
                 <?php
                 $style = '';
                 if (has_post_thumbnail()):

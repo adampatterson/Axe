@@ -6,7 +6,7 @@ include(__THEME_DATA__.'/lib/data.php');
 
  get_acf_part('templates/partials/header');
 
-echo '<!-- master/search -->';
+echo '<!-- main/search -->';
 if (have_posts()):
     echo '<!-- template: search/search -->';
      get_acf_part('templates/content', 'search');
