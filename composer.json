@@ -6,7 +6,7 @@
     ],
     "require": {
         "php": "^8.1, ^8.2",
-        "adampatterson/axe-helpers": "^dev-main"
+        "adampatterson/axe-helpers": "dev-main"
     },
     "autoload": {
         "psr-4": {
