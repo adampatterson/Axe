@@ -17,7 +17,7 @@ to the admin pages.
 /*
  * Load this in your footer, and
  * check to see if the user is logged in.
- * /
+ */
 <? $data = get_fields();?>
 <script>
     console.log(<?= json_encode($data) ?>)
@@ -480,8 +480,7 @@ by [Alecaddd](https://github.com/Alecaddd/awps)
 
 ### Contributors:
 
-Adam
-Patterson ( [@adampatterson](http://twitter.com/adampatterson) / [adampatterson.ca](https://www.adampatterson.ca/) )
+Adam Patterson ( [@adampatterson](http://twitter.com/adampatterson) / [adampatterson.ca](https://www.adampatterson.ca/) )
 
 ### Disclaimer
 
