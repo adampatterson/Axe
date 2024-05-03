@@ -226,7 +226,7 @@ Accessing `/` will resolve the home page and look for the file `templates/conten
 
 - The custom post type archive `{type}` will load `templates/archive-{type}.php`
 - The default archive would be `archive-default.php` using the default post loop.
-- Accessing `/books/sci-fi/` can user a custom loop `get_acf_part('templates/loop', 'books');`
+- Accessing `/books/sci-fi/` can use a custom loop `get_acf_part('templates/loop', 'books');`
 
 ### Custom Loops
 
