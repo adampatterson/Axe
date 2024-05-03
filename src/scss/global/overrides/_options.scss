@@ -1,11 +1,7 @@
-
-
-
-
 // Structure
 $spacer: 1rem;
 
-$spacers: map-merge($spacers, (
+$spacers: (
     0: 0,
     1: $spacer / 4,
     2: $spacer / 2,
@@ -13,7 +9,7 @@ $spacers: map-merge($spacers, (
     4: $spacer * 1.5,
     5: $spacer * 3,
     6: $spacer * 5,
-));
+);
 
 $position-values: (
     0: 0,
@@ -21,7 +17,7 @@ $position-values: (
     50: 50%,
     75: 75%,
     100: 100%
-) !default;
+);
 
 $theme-border-radius-lg: 1rem;
 

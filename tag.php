@@ -9,7 +9,7 @@ $post     = get_post();
 
 $term_slug = (is_array($terms)) ? $terms[0]->slug : '';
 
-echo '<!-- master/tag -->';
+echo '<!-- main/tag -->';
 if (check_path('/templates/archive-' . $term_slug . '.php')):
     echo '<!-- template: archive/' . $term_slug . ' -->';
     include(get_template_part_acf('templates/archive', $term_slug));

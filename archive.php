@@ -6,7 +6,7 @@ include(__THEME_DATA__ . '/lib/data.php');
 
 get_acf_part('templates/partials/header');
 
-echo '<!-- master/archive -->';
+echo '<!-- main/archive -->';
 
 if (have_posts()):
     if (is_archive()):

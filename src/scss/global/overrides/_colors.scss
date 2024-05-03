@@ -1,0 +1,25 @@
+// Global Colors
+$font-color: #000000;
+
+// Body
+$body-bg: #ffffff;
+$body-color: #111827 !default;
+
+$brand-blues: (
+    "950": #02344A,
+    "900": #0E4F6B,
+    "800": #0B607F,
+    "700": #007398,
+    "600": #0096CC,
+    "500": #00B7FF,
+    "400": #33C2FF,
+    "300": #66CFFF,
+    "200": #99DDFF,
+    "100": #CCEDFF,
+    "50": #E5F6FF,
+);
+
+$brand-blue: map-get($brand-blues, "600");
+
+$primary: $brand-blue;
+$secondary: tint-color(map-get($brand-blues, "900"), 10%);

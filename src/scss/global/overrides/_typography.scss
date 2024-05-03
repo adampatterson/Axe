@@ -1,0 +1,35 @@
+@import "../fonts/font.roboto";
+
+$font-roboto: 'Roboto', sans-serif;
+
+// Typography
+$font-family-base: $font-verdana;
+$font-size-base: 1rem;
+$line-height-base: 1.6;
+$link-color: darken($font-color, 10%);
+$link-hover-color: darken($font-color, 20%);
+
+$size-title: 72px;
+$size-h1: 48px;
+$size-h2: 42px;
+$size-h3: 36px;
+$size-h4: 32px;
+$size-h5: 24px;
+$size-h6: 16px;
+$size-p-lg: 20px;
+$size-p: 16px;
+$size-p-sm: 14px;
+
+$display-font-sizes: (
+    1: $size-h1,
+    2: $size-h2,
+    3: $size-h3,
+    4: $size-h4,
+    5: $size-h5,
+    6: $size-h6
+);
+
+$bold: 700;
+$semi-bold: 600;
+$medium: 500;
+$regular: 400;

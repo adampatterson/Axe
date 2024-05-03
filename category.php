@@ -6,7 +6,7 @@ $category = get_category($cat);
 $category_slug = $category->slug;
 $post = get_post();
 
-echo '<!-- master/category -->';
+echo '<!-- main/category -->';
 if (check_path('/templates/archive-' . $category_slug . '.php')):
     echo '<!-- template: archive/' . $category_slug . ' -->';
     get_acf_part('templates/archive', $category_slug);

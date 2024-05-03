@@ -53,7 +53,8 @@ class Theme
         $this->default_logo = [
             'width'      => 250,
             'height'     => 250,
-            'flex-width' => true,
+            'flex-height' => true,
+            'flex-width'  => true,
         ];
 
         $this->default_logo_class = 'img-fluid ';
