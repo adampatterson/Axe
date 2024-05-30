@@ -2,8 +2,12 @@
 
 namespace Axe\Core;
 
+use InvalidArgumentException;
+
 class Media
 {
+    const ASPECT_RATIO_WIDTH = 0;
+    const ASPECT_RATIO_HEIGHT = 1;
 
     public function __construct()
     {
@@ -23,6 +27,11 @@ class Media
                 'add_image_sizes_editor'
             ]);
         }
+
+        add_filter('upload_mimes', [
+            $this,
+            'allow_svg_upload'
+        ]);
     }
 
     public function add_image_sizes_editor($sizes)
@@ -37,5 +46,52 @@ class Media
             'logo-md'  => __('Logo Medium', 'axe'),
             'logo-lg'  => __('Logo Large', 'axe'),
         ]);
+    }
+
+    public function allow_svg_upload($mimes)
+    {
+        $mimes['svg'] = 'image/svg+xml';
+        return $mimes;
+    }
+
+    /**
+     * @param  int  $width
+     * @param  string  $aspect
+     * @return array
+     *
+     */
+    public function aspect(int $width, string $aspect): array
+    {
+        $aspectParts = $this->validateAspect($aspect);
+
+        // Aspect Ratio for 3:2 or W:H
+        // Height = ( Width × H ) / W
+        $height = (int) floor(($width * $aspectParts[self::ASPECT_RATIO_HEIGHT]) / $aspectParts[self::ASPECT_RATIO_WIDTH]);
+
+        return [$width, $height, true];
+    }
+
+    public function validateAspect($aspect)
+    {
+        // does the aspect contain a colon?
+        if (!str_contains($aspect, ':')) {
+            throw new InvalidArgumentException('Aspect ratio must contain a colon.');
+        }
+
+        $aspectParts = explode(':', $aspect);
+        if (count($aspectParts) !== 2) {
+            throw new InvalidArgumentException('The Ratio contains too many parts');
+        }
+
+        if (
+            !is_numeric($aspectParts[self::ASPECT_RATIO_WIDTH]) ||
+            !is_numeric($aspectParts[self::ASPECT_RATIO_HEIGHT]) ||
+            $aspectParts[self::ASPECT_RATIO_WIDTH] === 0 ||
+            $aspectParts[self::ASPECT_RATIO_HEIGHT] === 0
+        ) {
+            throw new InvalidArgumentException('Invalid aspect ratio components.');
+        }
+
+        return $aspectParts;
     }
 }
