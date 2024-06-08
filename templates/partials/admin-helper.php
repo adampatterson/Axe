@@ -1,7 +1,6 @@
 <?php
-if (is_user_logged_in()):
+if (is_user_logged_in() && WP_DEBUG):
     include(__THEME_DATA__.'/lib/data.php');
-
     $wooDebug = (!function_exists('is_shop')) ? [] : [
         'is_shop'             => is_shop(),
         'is_product_category' => is_product_category(),
