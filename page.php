@@ -18,9 +18,6 @@ while (have_posts()) : the_post();
             if (check_path('/templates/sub-'.$post->post_name.'.php')):
                 echo '<!-- template: templates/sub-'.$post->post_name.' -->';
                 include get_template_part_acf('templates/sub', $post->post_name);
-            elseif (check_path('/templates/content-'.$patent->post_name.'.php')):
-                echo '<!-- template: templates/content-'.$patent->post_name.' -->';
-                include get_template_part_acf('templates/content', $patent->post_name);
             else:
                 echo '<!-- template: templates/content-page.php -->';
                 include get_template_part_acf('templates/content', 'page');
