@@ -252,21 +252,48 @@ _Functions in the parent theme should be wrapped with `function_exists` any conf
 ---
 
 `get_template_part_acf()` - Works like `get_template_part()` except that it returns a path for you to `include`. This
-makes it more suitable to use with ACF. You can include your custom content once which is already done for you.
+makes it more suitable to use with ACF. You can include your custom content once which is already done for you
+thought `include(__THEME_DATA__.'/lib/data.php');`.
 
 ```php
-include(get_template_part_acf('templates/content', 'blog'));
+$yourData = [];
+include(get_template_part_acf('templates/partials/header'));
 ```
+
+Inside **header.php** you can now access `$yourData`.
 
 **Alternatively**
 
-`get_acf_part()` internally calls `get_template_part_acf()` but does the include for you, this helps keep your code nice
+YOu can use `get_acf_part()` which internally calls `get_template_part_acf()` but does the include for you, this helps
+keep your code nice
 and clean.
+
+If you wish to pass data through to your template part, you can pass it through the `data` property where it will now be
+accessible through `$data`.
 
 ```php
 // Standard usage, external data is not available inside 
 get_acf_part('templates/content', 'blog');  
 ```
+
+```php
+// Passing data to  get_acf_part
+$yourData = [];
+get_acf_part('templates/content', 'home', data: $yourData);
+```
+
+Inside **content-home.php** you can now access `$data`.
+
+**When to use `get_acf_part` and `get_template_part_acf`**
+
+I like to use `get_template_part_acf` inside of the root WordPress template files like index, page, single, and archive.
+
+Theis lets me declare my ACF or any other data once at a high level allowing it to take advantage of
+PHPs [variable scope](https://www.php.net/manual/en/language.variables.scope.php).
+
+`get_acf_part` is then used when I want more control over what's being passed to the partial. `get_acf_part` is closer
+to the core functionality and implementation of `get_template_part` but does not require you to pass through data in an
+`args` array.
 
 See [data](#data) for more information on `$data` and `$blocks`.
 
@@ -480,7 +507,8 @@ by [Alecaddd](https://github.com/Alecaddd/awps)
 
 ### Contributors:
 
-Adam Patterson ( [@adampatterson](http://twitter.com/adampatterson) / [adampatterson.ca](https://www.adampatterson.ca/) )
+Adam
+Patterson ( [@adampatterson](http://twitter.com/adampatterson) / [adampatterson.ca](https://www.adampatterson.ca/) )
 
 ### Disclaimer
 
@@ -492,3 +520,36 @@ time. With that said, If you have anything to add please email me at hello@adamp
     ln -s ~/Sites/cms/wordpress/wp-content/themes/Blade ./
     ln -s ~/Sites/cms/wordpress/wp-content/themes/Axe ./
     ln -s ~/Sites/cms/wordpress/wp-content/themes/Axe-Helpers ./Axe/vendor/adampatterson
+
+### Project Setup
+
+```shell
+mkdir project-name.test
+cd project-name.test
+git checkout git@github.com:adampatterson/project-name.git .
+wp core download
+ wp core config --dbname=database_name --dbuser=root --dbpass=secret --dbhost=localhost --dbprefix=wp_ 
+ wp core install --url=project-name.test --title="Your Site" --admin_user=username --admin_password=top-secret-password --admin_email=email@domain.com
+```
+
+_Note the space at the start of the commands. This will prevent the command from logging in your `history`._
+
+In the site root run `cp .env.example .env` and then add the proper config values.
+
+If there are `wp-config.php` constants that you need to set but are not included,
+then add them to the `.env` and modify your `wp-config.php` file.
+
+your `wp-config.php` **SHOULD** be in version control.
+
+**From the site root:**
+
+```shell
+composer i
+```
+
+**From the theme root:**
+
+```shell
+cd wp-content/themes/name
+npm i && php composer i && npm run prod
+```

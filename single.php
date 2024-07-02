@@ -4,7 +4,7 @@
  */
 include(__THEME_DATA__.'/lib/data.php');
 
-get_acf_part('templates/partials/header');
+ include get_template_part_acf('templates/partials/header');
 echo '<!-- main/single -->';
 if (have_posts()):
     while (have_posts()):
@@ -14,30 +14,30 @@ if (have_posts()):
 //      https://developer.wordpress.org/advanced-administration/wordpress/post-formats/#supported-formats
         if (check_path('/templates/format-'.get_post_format().'.php')):
             echo '<!-- template: templates/format-'.get_post_format().' -->';
-            get_acf_part('templates/format', get_post_format());
+             include get_template_part_acf('templates/format', get_post_format());
 
 //      Custom Post Type
         elseif (check_path('/templates/single-'.get_post_type().'.php')):
             echo '<!-- template: templates/single-'.get_post_type().'.php -->';
-            get_acf_part('templates/single', get_post_type());
+             include get_template_part_acf('templates/single', get_post_type());
 
 //      WooCommerce Single Product
         elseif (function_exists('is_product') and is_product()):
             echo '<!-- template: woo/single -->';
-            get_acf_part('templates/woo', 'single');
+             include get_template_part_acf('templates/woo', 'single');
 
 //      Fallback for missing Post Formats
         elseif (get_post_type() == 'post' && !get_post_format()):
             echo '<!-- template: templates/format-standard -->';
-            get_acf_part('templates/format', 'standard');
+             include get_template_part_acf('templates/format', 'standard');
 
 //      If everything fails use format-standard.php
         else:
             echo '<!-- template: templates/format-standard -->';
-            get_acf_part('templates/format', 'standard');
+             include get_template_part_acf('templates/format', 'standard');
 
         endif;
     endwhile;
 endif;
 
-get_acf_part('templates/partials/footer');
+ include get_template_part_acf('templates/partials/footer');
