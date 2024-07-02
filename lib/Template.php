@@ -32,10 +32,12 @@ class Template
         <nav class="navigation post-navigation" role="navigation">
             <ul class="pagination justify-content-center">
                 <li class="next <?= (!get_next_posts_link()) ? 'disabled' : '' ?> nav-previous page-item mr-auto">
-                    <?php next_posts_link(__('<span class="meta-nav" aria-hidden="true">&larr;</span> Older posts', 'axe')); ?>
+                    <?php next_posts_link(__('<span class="meta-nav" aria-hidden="true">&larr;</span> Older posts',
+                        'axe')); ?>
                 </li>
                 <li class="previous <?= (!get_previous_posts_link()) ? 'disabled' : '' ?> nav-next page-item ml-auto">
-                    <?php previous_posts_link(__('Newer posts <span class="meta-nav" aria-hidden="true">&rarr;</span>', 'axe')); ?>
+                    <?php previous_posts_link(__('Newer posts <span class="meta-nav" aria-hidden="true">&rarr;</span>',
+                        'axe')); ?>
                 </li>
             </ul>
         </nav>
@@ -58,10 +60,14 @@ class Template
         <nav class="navigation post-navigation" role="navigation">
             <ul class="pagination justify-content-center">
                 <li class="next <?= (!get_next_post_link()) ? 'disabled' : '' ?> nav-previous page-item mr-auto">
-                    <?php next_post_link('%link', __('<span class="meta-nav" aria-hidden="true">&larr;</span> %title', 'Next post link', 'axe')); ?>
+                    <?php next_post_link('%link',
+                        __('<span class="meta-nav" aria-hidden="true">&larr;</span> %title', 'Next post link',
+                            'axe')); ?>
                 </li>
                 <li class="previous <?= (!get_previous_post_link()) ? 'disabled' : '' ?> nav-next page-item ml-auto">
-                    <?php previous_post_link('%link', __('%title <span class="meta-nav" aria-hidden="true">&rarr;</span>', 'Previous post link', 'axe')); ?>
+                    <?php previous_post_link('%link',
+                        __('%title <span class="meta-nav" aria-hidden="true">&rarr;</span>', 'Previous post link',
+                            'axe')); ?>
                 </li>
             </ul>
         </nav>
@@ -79,11 +85,11 @@ class Template
             esc_attr(get_the_modified_date('c')), esc_html(get_the_modified_date()));
 
         $posted_on = sprintf(esc_html_x('Posted on %s', 'post date'),
-            '<a href="' . esc_url(get_permalink()) . '" rel="bookmark">' . $time_string . '</a>');
+            '<a href="'.esc_url(get_permalink()).'" rel="bookmark">'.$time_string.'</a>');
 
         if ($show_author) {
             $byline = sprintf(esc_html_x('by %s', 'post author'),
-                '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html(get_the_author()) . '</a></span>');
+                '<span class="author vcard"><a class="url fn n" href="'.esc_url(get_author_posts_url(get_the_author_meta('ID'))).'">'.esc_html(get_the_author()).'</a></span>');
 
             echo "<span class=\"posted-on\">{$posted_on}</span><span class=\"byline\"> {$byline}</span>"; // WPCS: XSS OK.
         } else {
@@ -106,13 +112,13 @@ class Template
             /* translators: used between list items, there is a space after the comma */
             $categories_list = get_the_category_list(__(', ', 'axe'));
             if ($categories_list && self::categorized_blog()) {
-                printf('<span class="cat-links">' . __('Posted in %1$s', 'axe') . '</span>', $categories_list);
+                printf('<span class="cat-links">'.__('Posted in %1$s', 'axe').'</span>', $categories_list);
             }
 
             /* translators: used between list items, there is a space after the comma */
             $tags_list = get_the_tag_list('', __(', ', 'axe'));
             if ($tags_list) {
-                printf('<span class="tags-links">' . __('Tagged %1$s', 'axe') . '</span>', $tags_list);
+                printf('<span class="tags-links">'.__('Tagged %1$s', 'axe').'</span>', $tags_list);
             }
         }
 
@@ -125,22 +131,31 @@ class Template
         edit_post_link('Edit', '<br/><span class="edit-link">', '</span>');
     }
 
-    public static function post_categories($single = false, $css = '')
+    public static function meta_terms($taxonomies, $css = '')
     {
-        if ('post' == get_post_type()) {
-            if (!$single) {
-                $categories_list = get_the_category_list(', ');
-                if ($categories_list && self::categorized_blog()) {
-                    printf('<span class="category-links">' . '<strong>Categories:</strong> %1$s' . '</span>', $categories_list);
+        if (!is_array($taxonomies)) {
+            $taxonomies = array($taxonomies);
+        }
+
+        $output = '';
+
+        foreach ($taxonomies as $taxonomy) {
+            $terms = get_the_terms(get_the_ID(), $taxonomy);
+
+            if ($terms && !is_wp_error($terms)) {
+                foreach ($terms as $term) {
+                    $link = get_term_link($term);
+
+                    if (!is_wp_error($link)) {
+                        $output .= '<span class="'.esc_attr($css).'">';
+                        $output .= '<a href="'.esc_url($link).'">'.esc_html($term->name).'</a>';
+                        $output .= '</span>';
+                    }
                 }
-            } else {
-                $category = current(get_the_category());
-                ?>
-                <a href="<?= esc_url(get_category_link($category)); ?>"
-                   class="category <?= $css ?>"><?= esc_html($category->name); ?></a>
-                <?php
             }
         }
+
+        return $output;
     }
 
     public static function meta_date($show_author = false)
@@ -148,17 +163,13 @@ class Template
         self::posted_on($show_author);
     }
 
-    public static function meta_category($css = '')
-    {
-        self::post_categories(true, $css);
-    }
 
     public static function post_tags()
     {
         if ('post' == get_post_type()) {
             $tags_list = get_the_tag_list('', ', ');
             if ($tags_list) {
-                printf('<span class="tags-links">' . __('<strong>Tags:</strong> %1$s', 'axe') . '</span>', $tags_list);
+                printf('<span class="tags-links">'.__('<strong>Tags:</strong> %1$s', 'axe').'</span>', $tags_list);
             }
         }
     }
@@ -176,8 +187,8 @@ class Template
      *
      * Display the archive title based on the queried object.
      *
-     * @param string $before Optional. Content to prepend to the title. Default empty.
-     * @param string $after Optional. Content to append to the title. Default empty.
+     * @param  string  $before  Optional. Content to prepend to the title. Default empty.
+     * @param  string  $after  Optional. Content to append to the title. Default empty.
      *
      * @todo Remove this function when WordPress 4.3 is released.
      *
@@ -189,7 +200,7 @@ class Template
         } elseif (is_tag()) {
             $title = sprintf(__('Tag: %s', 'axe'), single_tag_title('', false));
         } elseif (is_author()) {
-            $title = sprintf(__('Author: %s', 'axe'), '<span class="vcard">' . get_the_author() . '</span>');
+            $title = sprintf(__('Author: %s', 'axe'), '<span class="vcard">'.get_the_author().'</span>');
         } elseif (is_year()) {
             $title = sprintf(__('Year: %s', 'axe'), get_the_date(_x('Y', 'yearly archives date format', 'axe')));
         } elseif (is_month()) {
@@ -227,12 +238,12 @@ class Template
         /**
          * Filter the archive title.
          *
-         * @param string $title Archive title to be displayed.
+         * @param  string  $title  Archive title to be displayed.
          */
         $title = apply_filters('get_the_archive_title', $title);
 
         if (!empty($title)) {
-            echo $before . $title . $after;
+            echo $before.$title.$after;
         }
     }
 
@@ -241,8 +252,8 @@ class Template
      *
      * Display category, tag, or term description.
      *
-     * @param string $before Optional. Content to prepend to the description. Default empty.
-     * @param string $after Optional. Content to append to the description. Default empty.
+     * @param  string  $before  Optional. Content to prepend to the description. Default empty.
+     * @param  string  $after  Optional. Content to append to the description. Default empty.
      *
      * @todo Remove this function when WordPress 4.3 is released.
      *
@@ -255,12 +266,12 @@ class Template
             /**
              * Filter the archive description.
              *
-             * @param string $description Archive description to be displayed.
+             * @param  string  $description  Archive description to be displayed.
              *
              * @see term_description()
              *
              */
-            echo $before . $description . $after;
+            echo $before.$description.$after;
         }
     }
 
@@ -307,4 +318,48 @@ class Template
         // Like, beat it. Dig?
         delete_transient('axe_categories');
     }
+
+
+    /**
+     * @param $single
+     * @param $css
+     * @return void
+     *
+     * @depecated use meta_terms() instead.
+     */
+    public static function post_categories($single = false, $css = '')
+    {
+        trigger_error('post_categories() is deprecated and will be removed in the future. Use meta_terms() instead.',
+            E_USER_DEPRECATED);
+
+        if ('post' == get_post_type()) {
+            if (!$single) {
+                $categories_list = get_the_category_list(', ');
+                if ($categories_list && self::categorized_blog()) {
+                    printf('<span class="category-links">'.'<strong>Categories:</strong> %1$s'.'</span>',
+                        $categories_list);
+                }
+            } else {
+                $category = current(get_the_category());
+                ?>
+                <a href="<?= esc_url(get_category_link($category)); ?>"
+                   class="category <?= $css ?>"><?= esc_html($category->name); ?></a>
+                <?php
+            }
+        }
+    }
+
+    /**
+     * @param $css
+     * @return void
+     * @depecated use meta_terms() instead.
+     */
+    public static function meta_category($css = '')
+    {
+        trigger_error('post_categories() is deprecated and will be removed in the future. Use meta_terms() instead.',
+            E_USER_DEPRECATED);
+
+        self::post_categories(true, $css);
+    }
+
 }
