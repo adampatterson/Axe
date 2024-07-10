@@ -59,6 +59,8 @@ class Media
      * @param  string  $aspect
      * @return array
      *
+     * add_image_size('image-name', ...$this->aspect(width: 400, aspect: '3:2'));
+     *
      */
     public function aspect(int $width, string $aspect): array
     {
