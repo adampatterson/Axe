@@ -418,7 +418,19 @@ Have a look at some of the ACF fields, blocks, and a template [here](example).
 `_get()` - alias for `Arr::get($haystack, $needle, $default = false)`
 
 ```php
+$block = [
+    // the title key is not set
+];
+
 <?= _get($block, 'title', 'Default Title') ?>
+```
+
+```php
+$block = [
+    'title' => ''
+];
+
+<?= _get($block, 'title', 'Default Title', defaultIfEmpty: true) ?>
 ```
 
 ```php
@@ -430,7 +442,13 @@ endforeach;
 `_has()` - alias for `Arr::has($haystack, $needle)`
 
 ```php
-if (_has($block, 'contact.phone', false)): ?>
+$block = [
+    'contact' => [
+        'phone' => ''
+        // or the array key is missing
+    ]
+];
+if (_has($block, 'contact.phone', default: false)): ?>
     ...
 endif;
 ```
