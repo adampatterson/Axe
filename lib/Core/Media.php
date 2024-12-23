@@ -59,6 +59,8 @@ class Media
      * @param  string  $aspect
      * @return array
      *
+     * add_image_size('image-name', ...$this->aspect(width: 400, aspect: '3:2'));
+     *
      */
     public function aspect(int $width, string $aspect): array
     {
@@ -93,5 +95,60 @@ class Media
         }
 
         return $aspectParts;
+    }
+
+    /**
+     * Generates srcset HTML
+     *
+     * makeSrcSet($cta['image']['sizes']['large'], [
+     *  '480w'  => 185,
+     *  '768w'  => 350,
+     *  '922w'  => 175,
+     *  '1200w' => 215,
+     *  '1600w' => 265
+     *  ])
+     *
+     * @param  string  $path
+     * @param  array  $srcSet
+     * @return string
+     */
+    static function makeSrcSet(string $path, array $srcSet): string
+    {
+        $srcSetString = '';
+
+        if (!$path) {
+            return '';
+        }
+
+        foreach ($srcSet as $width => $size) {
+            $srcSetString .= self::makeWordPressCdnImage($path, ['w' => $size])." {$width},";
+        }
+
+        return $srcSetString;
+    }
+
+    public static function makeWordPressCdnImage($path, $arguments = [])
+    {
+        $defaultArguments = ['quality' => '100'];
+
+        $queryString = http_build_query(array_merge($defaultArguments, $arguments));
+
+        $wp = 'https://i1.wp.com/';
+
+        if (Str::startsWith($path, ['http://', 'https://'])) {
+            $path = str_replace(['http://', 'https://'], "", $path);
+
+            return new HtmlString(Str::after($wp, '').$path.'?'.$queryString);
+        }
+
+        if (!Str::startsWith($path, ['/'])) {
+            return new HtmlString(Str::after($wp, '').$path.'?'.$queryString);
+        }
+
+        if (Str::startsWith($path, ['/'])) {
+            $path = ltrim($path, '/');
+
+            return new HtmlString(Str::after($wp, '').$path.'?'.$queryString);
+        }
     }
 }
