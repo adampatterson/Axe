@@ -1,4 +1,5 @@
 {
+    "name": "adampatterson/axe",
     "description": "Axe parent theme",
     "type": "wordpress-theme",
     "authors": [
