@@ -2,6 +2,7 @@
     "name": "adampatterson/axe",
     "description": "Axe parent theme",
     "type": "wordpress-theme",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Adam Patterson",
