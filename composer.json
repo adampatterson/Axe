@@ -3,6 +3,7 @@
     "description": "Axe parent theme",
     "type": "wordpress-theme",
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "authors": [
         {
             "name": "Adam Patterson",
