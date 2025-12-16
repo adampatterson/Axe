@@ -1,0 +1,17 @@
+{
+    "require": {
+        "adampatterson/axe-helpers": "*",
+        "spatie/ray": "*",
+        "jenssegers/blade": "^2.0",
+        "illuminate/view": "11.7.0"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/Users/adam/Sites/personal/_wordpress/Axe-Helpers"
+        }
+    ],
+    "require-dev": {
+        "rector/rector": "^2.0"
+    }
+}
