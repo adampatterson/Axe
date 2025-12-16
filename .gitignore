@@ -8,8 +8,6 @@ node_modules
 /src/vendor
 /node_modules
 /assets/vendor
-/yarn.lock
-/package-lock.json
 /mix-manifest.json
 /assets/js/manifest.js
 *.map
