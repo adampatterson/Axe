@@ -16,11 +16,11 @@
             <p><?php Axe\Template::posted_on() ?></p>
 
             <div class="entry-footer terms">
-                <p class="post-categories"><?php Axe\Template::meta_terms('category'); ?></p>
+                <p class="post-categories gap-2"><?= Axe\Template::meta_terms('category') ?></p>
                 <p class="post-tags"><?php Axe\Template::post_tags(); ?></p>
             </div>
 
-            <p><?= get_the_excerpt(); ?></p>
+            <p><?= get_the_excerpt() ?></p>
 
             <p>
                 <a href="<?php the_permalink(); ?>" title="Keep Reading" class="btn btn-outline-primary">
