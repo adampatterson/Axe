@@ -1,4 +1,5 @@
 <?php
+
 require_once('lib/Helpers.php');
 
 // For composer dependencies
@@ -17,6 +18,7 @@ else:
     die;
 endif;
 
+
 if (class_exists('Axe\Init')) :
     Axe\Init::register_services();
 endif;
@@ -34,7 +36,7 @@ function add_toolbar_items($admin_bar)
         'href'   => admin_url().'admin.php?page=acf-options-general-settings',
         'meta'   => [
             'title' => __('Options'),
-            'class' => 'my_menu_item_class'
+            'class' => 'my_menu_item_class',
         ],
     ]);
 }

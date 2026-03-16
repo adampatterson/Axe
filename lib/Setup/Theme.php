@@ -14,29 +14,6 @@ class Theme
 
     public function __construct()
     {
-        $this->default_header = [
-            'default-image'          => esc_url(__t() . 'assets/img/header-default.jpg'),
-            'width'                  => 1920,
-            'height'                 => 1280,
-            'flex-height'            => false,
-            'flex-width'             => false,
-            'uploads'                => true,
-            'random-default'         => false,
-            'header-text'            => true,
-            'default-text-color'     => '000000',
-            'wp-head-callback'       => '',
-            'admin-head-callback'    => '',
-            'admin-preview-callback' => '',
-        ];
-
-        $this->default_header_image = [
-            'default-image' => [
-                'url'           => '%s/assets/img/header-default.jpg',
-                'thumbnail_url' => '%s/assets/img/header-default.jpg',
-                'description'   => __('Default Header Image', 'axe'),
-            ]
-        ];
-
         $this->default_background = [
             'default-color'          => 'ffffff',
             'default-image'          => '',
@@ -141,6 +118,29 @@ class Theme
 
     function custom_header()
     {
+        $this->default_header = [
+            'default-image'          => esc_url(__t() . 'assets/img/header-default.jpg'),
+            'width'                  => 1920,
+            'height'                 => 1280,
+            'flex-height'            => false,
+            'flex-width'             => false,
+            'uploads'                => true,
+            'random-default'         => false,
+            'header-text'            => true,
+            'default-text-color'     => '000000',
+            'wp-head-callback'       => '',
+            'admin-head-callback'    => '',
+            'admin-preview-callback' => '',
+        ];
+
+        $this->default_header_image = [
+            'default-image' => [
+                'url'           => '%s/assets/img/header-default.jpg',
+                'thumbnail_url' => '%s/assets/img/header-default.jpg',
+                'description'   => __('Default Header Image', 'axe'),
+            ]
+        ];
+
         // Enable Custom Headers
         add_theme_support('custom-header', $this->default_header);
         register_default_headers($this->default_header_image);
