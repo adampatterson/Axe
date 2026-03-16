@@ -17,3 +17,6 @@ node_modules
 /Axe-Helpers
 /acf-json
 .env
+.design
+.src
+wp-cli.yml
