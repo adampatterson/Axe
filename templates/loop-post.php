@@ -16,7 +16,7 @@
             <p><?php Axe\Template::posted_on() ?></p>
 
             <div class="entry-footer terms">
-                <p class="post-categories"><?php Axe\Template::post_categories(); ?></p>
+                <p class="post-categories"><?php Axe\Template::meta_terms('category'); ?></p>
                 <p class="post-tags"><?php Axe\Template::post_tags(); ?></p>
             </div>
 

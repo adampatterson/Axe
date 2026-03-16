@@ -3,6 +3,8 @@
 
 namespace Axe;
 
+use WP_Term;
+
 /**
  * Custom template tags for this theme.
  *
@@ -31,13 +33,23 @@ class Template
         ?>
         <nav class="navigation post-navigation" role="navigation">
             <ul class="pagination justify-content-center">
-                <li class="next <?= (!get_next_posts_link()) ? 'disabled' : '' ?> nav-previous page-item mr-auto">
-                    <?php next_posts_link(__('<span class="meta-nav" aria-hidden="true">&larr;</span> Older posts',
-                        'axe')); ?>
+                <li class="next <?= (! get_next_posts_link()) ? 'disabled' : '' ?> nav-previous page-item mr-auto">
+                    <?php
+                    next_posts_link(
+                            __(
+                                    '<span class="meta-nav" aria-hidden="true">&larr;</span> Older posts',
+                                    'axe'
+                            )
+                    ); ?>
                 </li>
-                <li class="previous <?= (!get_previous_posts_link()) ? 'disabled' : '' ?> nav-next page-item ml-auto">
-                    <?php previous_posts_link(__('Newer posts <span class="meta-nav" aria-hidden="true">&rarr;</span>',
-                        'axe')); ?>
+                <li class="previous <?= (! get_previous_posts_link()) ? 'disabled' : '' ?> nav-next page-item ml-auto">
+                    <?php
+                    previous_posts_link(
+                            __(
+                                    'Newer posts <span class="meta-nav" aria-hidden="true">&rarr;</span>',
+                                    'axe'
+                            )
+                    ); ?>
                 </li>
             </ul>
         </nav>
@@ -53,21 +65,33 @@ class Template
         $previous = (is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false, '', true);
         $next = get_adjacent_post(false, '', false);
 
-        if (!$next && !$previous) {
+        if (! $next && ! $previous) {
             return;
         }
         ?>
         <nav class="navigation post-navigation" role="navigation">
             <ul class="pagination justify-content-center">
-                <li class="next <?= (!get_next_post_link()) ? 'disabled' : '' ?> nav-previous page-item mr-auto">
-                    <?php next_post_link('%link',
-                        __('<span class="meta-nav" aria-hidden="true">&larr;</span> %title', 'Next post link',
-                            'axe')); ?>
+                <li class="next <?= (! get_next_post_link()) ? 'disabled' : '' ?> nav-previous page-item mr-auto">
+                    <?php
+                    next_post_link(
+                            '%link',
+                            __(
+                                    '<span class="meta-nav" aria-hidden="true">&larr;</span> %title',
+                                    'Next post link',
+                                    'axe'
+                            )
+                    ); ?>
                 </li>
-                <li class="previous <?= (!get_previous_post_link()) ? 'disabled' : '' ?> nav-next page-item ml-auto">
-                    <?php previous_post_link('%link',
-                        __('%title <span class="meta-nav" aria-hidden="true">&rarr;</span>', 'Previous post link',
-                            'axe')); ?>
+                <li class="previous <?= (! get_previous_post_link()) ? 'disabled' : '' ?> nav-next page-item ml-auto">
+                    <?php
+                    previous_post_link(
+                            '%link',
+                            __(
+                                    '%title <span class="meta-nav" aria-hidden="true">&rarr;</span>',
+                                    'Previous post link',
+                                    'axe'
+                            )
+                    ); ?>
                 </li>
             </ul>
         </nav>
@@ -81,15 +105,24 @@ class Template
     {
         $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 
-        $time_string = sprintf($time_string, esc_attr(get_the_date('c')), esc_html(get_the_date()),
-            esc_attr(get_the_modified_date('c')), esc_html(get_the_modified_date()));
+        $time_string = sprintf(
+                $time_string,
+                esc_attr(get_the_date('c')),
+                esc_html(get_the_date()),
+                esc_attr(get_the_modified_date('c')),
+                esc_html(get_the_modified_date())
+        );
 
-        $posted_on = sprintf(esc_html_x('Posted on %s', 'post date'),
-            '<a href="'.esc_url(get_permalink()).'" rel="bookmark">'.$time_string.'</a>');
+        $posted_on = sprintf(
+                esc_html_x('Posted on %s', 'post date'),
+                '<a href="'.esc_url(get_permalink()).'" rel="bookmark">'.$time_string.'</a>'
+        );
 
         if ($show_author) {
-            $byline = sprintf(esc_html_x('by %s', 'post author'),
-                '<span class="author vcard"><a class="url fn n" href="'.esc_url(get_author_posts_url(get_the_author_meta('ID'))).'">'.esc_html(get_the_author()).'</a></span>');
+            $byline = sprintf(
+                    esc_html_x('by %s', 'post author'),
+                    '<span class="author vcard"><a class="url fn n" href="'.esc_url(get_author_posts_url(get_the_author_meta('ID'))).'">'.esc_html(get_the_author()).'</a></span>'
+            );
 
             echo "<span class=\"posted-on\">{$posted_on}</span><span class=\"byline\"> {$byline}</span>"; // WPCS: XSS OK.
         } else {
@@ -99,7 +132,6 @@ class Template
 
     public static function post_author()
     {
-
     }
 
     /**
@@ -122,7 +154,7 @@ class Template
             }
         }
 
-        if (!is_single() && !post_password_required() && (comments_open() || get_comments_number())) {
+        if (! is_single() && ! post_password_required() && (comments_open() || get_comments_number())) {
             echo '<span class="comments-link">';
             comments_popup_link(__('Leave a comment', 'axe'), __('1 Comment', 'axe'), __('% Comments', 'axe'));
             echo '</span>';
@@ -131,30 +163,57 @@ class Template
         edit_post_link('Edit', '<br/><span class="edit-link">', '</span>');
     }
 
-    public static function meta_terms($taxonomies, $css = '')
+    /**
+     * Generates and returns HTML with meta information for the specified taxonomies.
+     *
+     * @link  https://codex.wordpress.org/WordPress_Taxonomy
+     * @param  array|string  $taxonomies  An array of taxonomy slugs or a single taxonomy slug.
+     * @param  string  $css  Optional. A CSS class to be applied to the span elements. Default is an empty string.
+     * @param  bool  $hasLink  Link to the taxonomy term archive page. Default is true.
+     * @param  string  $separator  Optional. A string to separate taxonomy terms. Default is null.
+     * @return string The generated HTML with links to taxonomy terms.
+     */
+    public static function meta_terms(array|string $taxonomies, string $css = '', bool $hasLink = true, string|null $separator = null): string
     {
-        if (!is_array($taxonomies)) {
-            $taxonomies = array($taxonomies);
+        if (! is_array($taxonomies)) {
+            $taxonomies = [$taxonomies];
         }
 
         $output = '';
+        $all_terms = [];
 
         foreach ($taxonomies as $taxonomy) {
             $terms = get_the_terms(get_the_ID(), $taxonomy);
 
-            if ($terms && !is_wp_error($terms)) {
+            if ($terms && ! is_wp_error($terms)) {
+                $count = count($all_terms);
+                $i = 0;
                 foreach ($terms as $term) {
-                    $link = get_term_link($term);
-
-                    if (!is_wp_error($link)) {
-                        $output .= '<span class="'.esc_attr($css).'">';
-                        $output .= '<a href="'.esc_url($link).'">'.esc_html($term->name).'</a>';
-                        $output .= '</span>';
+                    $i++;
+                    $output .= self::make_meta_item($term, css: $css, hasLink: $hasLink);
+                    if ($separator && $i < $count) {
+                        $output .= $separator;
                     }
                 }
             }
         }
+        return $output;
+    }
 
+    public static function make_meta_item(WP_Term $term, string $css, bool $hasLink = true)
+    {
+        $link = get_term_link($term);
+        $output = '';
+
+        if (! is_wp_error($link)) {
+            $output .= '<span class="'.esc_attr($css).'">';
+            if ($hasLink) {
+                $output .= '<a href="'.esc_url($link).'">'.esc_html($term->name).'</a>';
+            } else {
+                $output .= esc_html($term->name);
+            }
+            $output .= '</span>';
+        }
         return $output;
     }
 
@@ -242,7 +301,7 @@ class Template
          */
         $title = apply_filters('get_the_archive_title', $title);
 
-        if (!empty($title)) {
+        if (! empty($title)) {
             echo $before.$title.$after;
         }
     }
@@ -262,7 +321,7 @@ class Template
     {
         $description = apply_filters('get_the_archive_description', term_description());
 
-        if (!empty($description)) {
+        if (! empty($description)) {
             /**
              * Filter the archive description.
              *
@@ -285,11 +344,11 @@ class Template
         if (false === ($all_the_cool_cats = get_transient('axe_categories'))) {
             // Create an array of all the categories that are attached to posts.
             $all_the_cool_cats = get_categories([
-                'fields'     => 'ids',
-                'hide_empty' => 1,
+                    'fields'     => 'ids',
+                    'hide_empty' => 1,
 
                 // We only need to know if there is more than one category.
-                'number'     => 2,
+                    'number'     => 2,
             ]);
 
             // Count the number of categories that are attached to the posts.
@@ -329,15 +388,19 @@ class Template
      */
     public static function post_categories($single = false, $css = '')
     {
-        trigger_error('post_categories() is deprecated and will be removed in the future. Use meta_terms() instead.',
-            E_USER_DEPRECATED);
+        trigger_error(
+                'post_categories() is deprecated and will be removed in the future. Use meta_terms() instead.',
+                E_USER_DEPRECATED
+        );
 
         if ('post' == get_post_type()) {
-            if (!$single) {
+            if (! $single) {
                 $categories_list = get_the_category_list(', ');
                 if ($categories_list && self::categorized_blog()) {
-                    printf('<span class="category-links">'.'<strong>Categories:</strong> %1$s'.'</span>',
-                        $categories_list);
+                    printf(
+                            '<span class="category-links">'.'<strong>Categories:</strong> %1$s'.'</span>',
+                            $categories_list
+                    );
                 }
             } else {
                 $category = current(get_the_category());
@@ -356,8 +419,10 @@ class Template
      */
     public static function meta_category($css = '')
     {
-        trigger_error('post_categories() is deprecated and will be removed in the future. Use meta_terms() instead.',
-            E_USER_DEPRECATED);
+        trigger_error(
+                "post_categories() is deprecated and will be removed in the future. Use meta_terms(['category']) instead.",
+                E_USER_DEPRECATED
+        );
 
         self::post_categories(true, $css);
     }
