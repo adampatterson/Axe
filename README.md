@@ -473,23 +473,21 @@ endif;
 ## Style
 
 ```scss
-@import "components/base-variables";
+@import "global/overrides";
 @import "~bootstrap/scss/bootstrap";
 ```
 
 With the addition of PurgeCSS to the build script you can safely include the entire Bootstrap library. Once a production
 build has been done, any unused CSS classes will be removed.
 
-`base-variables` holds any site specific variables that you might need including any
-Bootstrap [customizations](https://getbootstrap.com/docs/5.1/customize/sass/)
+`global/overrides/index.scss` holds any **site-specific** variables that you might need to modify including any
+Bootstrap [customizations](https://getbootstrap.com/docs/5.3/customize/sass/)
 
 # Child theme
 
 https://github.com/adampatterson/Handle
 
-Opening `/lib/Helpers.php` and uncommenting the function
-on [line 6](https://github.com/adampatterson/Handle/blob/master/lib/Helpers.php#L6) would allow the child theme to serve
-all of your themes assets.
+Opening `/lib/Helpers.php` and uncommenting the function `__t()` will serve all of your theme assets from the child theme.
 
 ## Recommended Plugins
 
@@ -502,14 +500,16 @@ all of your themes assets.
 
 ## To-Do's
 
-- Create a model for ACF and other data sources
-- Document a lot of the inner code such as helpers
-- Document included packages
-- Document the build process
-- Document Child theme process using ( Handle )
-- Build out a demo theme ( Blade )
-- Update to Bootstrap 5
-- Fix WebPack PurgeCSS
+- [ ] Create a model for ACF and other data sources
+- [ ] Document a lot of the inner code such as helpers
+- [ ] Document included packages
+- [ ] Document the build process
+    - [ ] Theme configuration
+- [ ] Document Child theme process using ([Handle](https://github.com/adampatterson/handle))
+- [ ] Modernized Tailwind + Vite theme ([Edge](https://github.com/adampatterson/edge))
+- [ ] Build out a demo theme ([Blade](https://github.com/adampatterson/blade))
+- [ ] Fix WebPack PurgeCSS
+- [x] Update to Bootstrap 5.3
 
 ## Dummy Content for Gutenberg
 
@@ -525,19 +525,11 @@ by [Alecaddd](https://github.com/Alecaddd/awps)
 
 ### Contributors:
 
-Adam
-Patterson ( [@adampatterson](http://twitter.com/adampatterson) / [adampatterson.ca](https://www.adampatterson.ca/) )
+Adam Patterson -[@adampatterson](http://twitter.com/adampatterson) / [adampatterson.ca](https://www.adampatterson.ca/)
 
 ### Disclaimer
 
-This theme reflects my own workflows and process, I have built over 100 sites using these setup and it has evolved over
-time. With that said, If you have anything to add please email me at hello@adampatterson.ca
-
-#### Local Development
-
-    ln -s ~/Sites/cms/wordpress/wp-content/themes/Blade ./
-    ln -s ~/Sites/cms/wordpress/wp-content/themes/Axe ./
-    ln -s ~/Sites/cms/wordpress/wp-content/themes/Axe-Helpers ./Axe/vendor/adampatterson
+This theme evolves over time as my own workflows and process change, I have built over 100 sites using this setup. With that said, If you have anything to add please email me at hello@adampatterson.ca
 
 ### Project Setup
 
@@ -570,4 +562,19 @@ composer i
 ```shell
 cd wp-content/themes/name
 npm i && php composer i && npm run prod
+```
+
+#### Local Development
+
+```shell
+ln -s ~Sites/personal/_wordpress/Blade ./
+ln -s ~Sites/personal/_wordpress/Handle ./
+ln -s ~Sites/personal/_wordpress/Edge ./
+ln -s ~/Sites/personal/_wordpress/Axe ./
+```
+
+Run `composer install` from within the `Axe` theme.
+
+```shell
+ln -s ~/Sites/personal/_packages/Axe-Helpers ./Axe/vendor/adampatterson
 ```
