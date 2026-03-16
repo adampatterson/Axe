@@ -1,5 +1,7 @@
 // Global Colors
 $font-color: #000000;
+$link-color: darken($font-color, 10%);
+$link-hover-color: darken($font-color, 20%);
 
 // Body
 $body-bg: #ffffff;

@@ -3,11 +3,9 @@
 $font-roboto: 'Roboto', sans-serif;
 
 // Typography
-$font-family-base: $font-verdana;
+$font-family-base: $font-roboto;
 $font-size-base: 1rem;
 $line-height-base: 1.6;
-$link-color: darken($font-color, 10%);
-$link-hover-color: darken($font-color, 20%);
 
 $size-title: 72px;
 $size-h1: 48px;
