@@ -20,3 +20,4 @@ node_modules
 .design
 .src
 wp-cli.yml
+auth.json
