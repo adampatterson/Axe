@@ -8,7 +8,7 @@ class Admin
     public function __construct()
     {
         // Add Editor Style
-        add_theme_support( 'editor-styles' );
+        add_theme_support('editor-styles');
 
         // Relocate the editor-style.css
         add_editor_style('assets/css/editor-style.css');
@@ -79,11 +79,11 @@ class Admin
      */
     public function custom_menu_order($menu_ord)
     {
-        if ( ! $menu_ord) {
+        if (! $menu_ord) {
             return true;
         }
 
-        return array(
+        return [
             'index.php', // Dashboard
             'separator1', // First separator
             'edit.php?post_type=page', // Pages
@@ -99,7 +99,7 @@ class Admin
             'tools.php', // Tools
             'options-general.php', // Settings
             'separator-last', // Last separator
-        );
+        ];
     }
 
     /**
@@ -163,18 +163,18 @@ class Admin
 
     public function custom_login_logo()
     {
-//        var_dump('axe.adminlogo');
-//        echo '<style type="text/css">
-//        h1 a { background-image: url(' . __t() . '/assets/img/adminlogo.png) !important; height: auto;}
-//        body.login{ background: #fff; }
-//        </style>';
+        //        var_dump('axe.adminlogo');
+        //        echo '<style type="text/css">
+        //        h1 a { background-image: url(' . __t() . '/assets/img/adminlogo.png) !important; height: auto;}
+        //        body.login{ background: #fff; }
+        //        </style>';
     }
 
     /**
      * Don't Update Theme
      *
-     * @param array $r , request arguments
-     * @param string $url , request url
+     * @param  array  $r  , request arguments
+     * @param  string  $url  , request url
      *
      * @return array request arguments
      * @since 1.0.0
@@ -202,7 +202,7 @@ class Admin
     /**
      * Customize Contact Methods
      *
-     * @param array $contactmethods
+     * @param  array  $contactmethods
      *
      * @return array
      * @link http://sillybean.net/2010/01/creating-a-user-directory-part-1-changing-user-contact-fields/
@@ -229,7 +229,7 @@ class Admin
             'href'   => admin_url().'admin.php?page=acf-options-general-settings',
             'meta'   => [
                 'title' => __('Options'),
-                'class' => 'axe_acf_options'
+                'class' => 'axe_acf_options',
             ],
         ]);
     }

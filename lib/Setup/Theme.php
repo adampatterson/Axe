@@ -28,8 +28,8 @@ class Theme
         ];
 
         $this->default_logo = [
-            'width'      => 250,
-            'height'     => 250,
+            'width'       => 250,
+            'height'      => 250,
             'flex-height' => true,
             'flex-width'  => true,
         ];
@@ -43,19 +43,19 @@ class Theme
         add_filter('next_post_link', [$this, 'post_link_attributes'], 10, 1);
         add_filter('previous_post_link', [$this, 'post_link_attributes'], 10, 1);
 
-        if ( ! is_admin()) {
+        if (! is_admin()) {
             // add_filter('the_title', [$this, 'markdown_title']);
             // add_filter('widget_title', [$this, 'markdown_title']);
             // add_filter('single_post_title', [$this, 'markdown_title'], 8);
         }
 
         // Don't load jQuery from WordPress
-//        add_action('wp_enqueue_scripts', function () {
-//            if (is_admin()) {
-//                return;
-//            }
-//            wp_deregister_script('jquery');
-//        });
+        //        add_action('wp_enqueue_scripts', function () {
+        //            if (is_admin()) {
+        //                return;
+        //            }
+        //            wp_deregister_script('jquery');
+        //        });
 
         // Prevent File Modifications
         define('DISALLOW_FILE_EDIT', true);
@@ -80,7 +80,7 @@ class Theme
         remove_action('wp_head', 'wp_shortlink_wp_head');
 
         // Enable support for HTML5 markup.
-        add_theme_support('html5', array('comment-list', 'search-form', 'comment-form', 'gallery', 'caption'));
+        add_theme_support('html5', ['comment-list', 'search-form', 'comment-form', 'gallery', 'caption']);
 
         // Execute shortcodes in widgets
         // add_filter('widget_text', 'do_shortcode');
@@ -89,7 +89,7 @@ class Theme
         add_theme_support('automatic-feed-links');
 
         // Add Editor Style
-//        add_editor_style('editor-style.css');
+        //        add_editor_style('editor-style.css');
 
         // Enable Post Thumbnails
         add_theme_support('post-thumbnails');
@@ -107,19 +107,18 @@ class Theme
         add_theme_support('custom-background', $this->default_background);
 
         // Add Post Formats Theme Support
-        add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video'));
+        add_theme_support('post-formats', ['aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video']);
 
         // Remove Query Strings From Static Resources
-//        add_filter('script_loader_src', [$this, 'remove_script_version'], 15, 1);
+        //        add_filter('script_loader_src', [$this, 'remove_script_version'], 15, 1);
         add_filter('style_loader_src', [$this, 'remove_script_version'], 15, 1);
-
-//        load_theme_textdomain( 'axe', get_template_directory() . '/languages' );
+        //        load_theme_textdomain( 'axe', get_template_directory() . '/languages' );
     }
 
     function custom_header()
     {
         $this->default_header = [
-            'default-image'          => esc_url(__t() . 'assets/img/header-default.jpg'),
+            'default-image'          => esc_url(__t().'assets/img/header-default.jpg'),
             'width'                  => 1920,
             'height'                 => 1280,
             'flex-height'            => false,
@@ -138,7 +137,7 @@ class Theme
                 'url'           => '%s/assets/img/header-default.jpg',
                 'thumbnail_url' => '%s/assets/img/header-default.jpg',
                 'description'   => __('Default Header Image', 'axe'),
-            ]
+            ],
         ];
 
         // Enable Custom Headers
@@ -186,7 +185,7 @@ class Theme
 
     public function change_logo_class($html)
     {
-//        $html = str_replace('custom-logo', $this->default_logo_class, $html);
+        //        $html = str_replace('custom-logo', $this->default_logo_class, $html);
         $html = str_replace('custom-logo-link', $this->default_logo_link_class, $html);
 
         return $html;

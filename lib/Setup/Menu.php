@@ -9,7 +9,7 @@ class Menu
     {
         add_action('after_setup_theme', [$this, 'setup_menus']);
 
-//         add_filter('nav_menu_css_class', [$this, 'add_classes_on_li'], 1, 3);
+        //         add_filter('nav_menu_css_class', [$this, 'add_classes_on_li'], 1, 3);
         add_filter('wp_nav_menu', [$this, 'add_classes_on_link']);
     }
 
@@ -19,12 +19,11 @@ class Menu
         add_theme_support('menus');
 
         // Register menus
-        register_nav_menus(array(
+        register_nav_menus([
             'main-menu'    => __('Main Menu', 'axe'),
-            'footer-links' => __('Footer Links', 'axe')
-        ));
+            'footer-links' => __('Footer Links', 'axe'),
+        ]);
     }
-
 
 
     public function add_classes_on_li($classes, $item, $args)
