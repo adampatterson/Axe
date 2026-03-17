@@ -20,7 +20,7 @@
     },
     "require": {
         "php": "^8.1, ^8.2",
-        "adampatterson/axe-helpers": "dev-main",
+        "adampatterson/axe-helpers": "dev-dev-dev",
         "composer/installers": "^2.0"
     },
     "autoload": {
