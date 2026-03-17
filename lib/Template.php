@@ -167,10 +167,10 @@ class Template
      * Generates and returns HTML with meta information for the specified taxonomies.
      *
      * @link  https://codex.wordpress.org/WordPress_Taxonomy
-     * @param  array|string  $taxonomies  An array of taxonomy slugs or a single taxonomy slug.
+     * @param  list<'category'|'post_tag'>|'category'|'post_tag'  $taxonomies  An array of taxonomy slugs or a single taxonomy slug.
      * @param  string  $css  Optional. A CSS class to be applied to the span elements. Default is an empty string.
      * @param  bool  $hasLink  Link to the taxonomy term archive page. Default is true.
-     * @param  string  $separator  Optional. A string to separate taxonomy terms. Default is null.
+     * @param  string|null  $separator  Optional. A string to separate taxonomy terms. Default is null.
      * @return string The generated HTML with links to taxonomy terms.
      */
     public static function meta_terms(array|string $taxonomies, string $css = '', bool $hasLink = true, string|null $separator = null): string
@@ -180,39 +180,37 @@ class Template
         }
 
         $output = '';
-        $all_terms = [];
-
         foreach ($taxonomies as $taxonomy) {
             $terms = get_the_terms(get_the_ID(), $taxonomy);
 
             if ($terms && ! is_wp_error($terms)) {
-                $count = count($all_terms);
+                $count = count($terms);
                 $i = 0;
                 foreach ($terms as $term) {
                     $i++;
-                    $output .= self::make_meta_item($term, css: $css, hasLink: $hasLink);
+                    $output .= '<span class="'.esc_attr($css).'">';
+                    $output .= self::make_meta_item($term, hasLink: $hasLink);
                     if ($separator && $i < $count) {
                         $output .= $separator;
                     }
+                    $output .= '</span>';
                 }
             }
         }
         return $output;
     }
 
-    public static function make_meta_item(WP_Term $term, string $css, bool $hasLink = true)
+    public static function make_meta_item(WP_Term $term, bool $hasLink = true)
     {
         $link = get_term_link($term);
         $output = '';
 
         if (! is_wp_error($link)) {
-            $output .= '<span class="'.esc_attr($css).'">';
             if ($hasLink) {
                 $output .= '<a href="'.esc_url($link).'">'.esc_html($term->name).'</a>';
             } else {
                 $output .= esc_html($term->name);
             }
-            $output .= '</span>';
         }
         return $output;
     }
