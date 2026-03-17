@@ -22,3 +22,4 @@ node_modules
 wp-cli.yml
 auth.json
 /docs
+/rector.php
