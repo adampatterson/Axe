@@ -4,8 +4,7 @@ Axe is a simple bare-bones WordPress starter theme and structure. It is a theme 
 fast as possible.
 
 My build workflow might not be very orthodox, but I typically review the design, Set up my Custom post types
-using [Custom Post Type UI](https://en-ca.wordpress.org/plugins/custom-post-type-ui/) and setup any page data structures
-using [ACF](http://www.advancedcustomfields.com/).
+using [Custom Post Type UI](https://en-ca.wordpress.org/plugins/custom-post-type-ui/) and setup any page data structures using [ACF](http://www.advancedcustomfields.com/).
 
 Simply being able to plow ahead creating my site structures and loading in real or fake content lets me have something
 tangible to work with.
@@ -73,11 +72,9 @@ npm i && php composer i && npm run prod
 
 A `package.json` file with Bootstrap and jQuery is included.
 
-The [src folder](https://github.com/adampatterson/Axe/tree/master/src) stores your SCSS and JS that will be compiled
-into `/assets` using Laravel Mix.
+The [src folder](https://github.com/adampatterson/Axe/tree/master/src) stores your SCSS and JS that will be compiled into `/assets` using Laravel Mix.
 
-If you are looking for a more advanced Mix configuration, then have a look at
-the [official docs](https://laravel-mix.com/docs/6.0/installation).
+If you are looking for a more advanced Mix configuration, then have a look at the [official docs](https://laravel-mix.com/docs/6.0/installation).
 
 **Mix Installation & Setup**
 https://laravel.com/docs/master/mix#installation
@@ -104,11 +101,15 @@ the ability to load assets from both the Child and Parent theme. Omitting usePar
 
 ### Child Themes
 
-https://github.com/adampatterson/Handle
+- Parent
+    - Axe
+        - Child
+            - [Handle](https://github.com/adampatterson/handle) | Bootstrap + Webpack
+            - [Edge](https://github.com/adampatterson/edge) | Tailwind + Vite
+            - [Blade](https://github.com/adampatterson/blade) | Work In Progress - Bootstrap / Demo
 
-If you will be using ACF with your child theme uncomment
-the [following](https://github.com/adampatterson/Handle/blob/master/lib/Custom.php#L12) so that ACF will store
-the `.json` files in your working Child theme.
+If you are using ACF with your child theme uncomment the [following](https://github.com/adampatterson/handle/blob/main/lib/Custom.php#L12) so that ACF will store the
+`.json` files in your working Child theme.
 
 ---
 
@@ -233,7 +234,7 @@ Accessing `/` will resolve the home page and look for the file `templates/conten
 If you have a custom post type called Books, creating `content-books.php` and loading a custom loop
 like `loop-books.php` with all the necessary "Loop" code would give you a custom book loop.
 
-See [loop-post.php](https://github.com/adampatterson/Axe/blob/master/templates/loop-post.php) for an example.
+See [loop-post.php](https://github.com/adampatterson/axe/blob/main/templates/loop-post.php) for an example.
 
 ## Helper Functions
 
