@@ -18,3 +18,4 @@ jobs:
       # You can override versions here or just omit these lines to use the defaults
       php-versions: '["8.2", "8.4"]'
       node-versions: '["22", "24"]'
+      build-command: 'npm run build'
