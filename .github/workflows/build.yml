@@ -1,0 +1,55 @@
+# .github/workflows/build.yml
+
+name: Build Theme Assets
+
+on:
+  push:
+    branches: [ main, master, staging, dev ]
+  pull_request:
+    branches: [ main, master, staging, dev ]
+
+jobs:
+  build:
+    name: WordPress Theme (PHP ${{ matrix.php-versions }} with Node ${{ matrix.node-versions }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-versions: [ "8.2", "8.4" ]
+        node-versions: [ "22", "24" ]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # ── PHP / Composer ────────────────────────────────────────────────────
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          tools: composer:v2
+          coverage: none
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+          restore-keys: composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      # ── Node / npm ────────────────────────────────────────────────────────
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-versions }}
+          cache: 'npm'
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run prod
