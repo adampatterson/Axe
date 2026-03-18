@@ -3,25 +3,21 @@
 require_once('lib/Helpers.php');
 
 // For composer dependencies
-if (file_exists(__DIR__.'/vendor/autoload.php')) :
-    require_once __DIR__.'/vendor/autoload.php';
-else:
-    echo "Run composer install";
-    die;
+if (! file_exists($composer = __DIR__.'/vendor/autoload.php')) :
+    wp_die("Run <code>composer install</code>");
 endif;
+
+require_once $composer;
 
 if (class_exists('Axe\Init')) :
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 else:
-    echo "Create a .env file in the root of the theme directory";
-    die;
+    wp_die("Create a .env file in the root of the theme directory");
 endif;
 
 
-if (class_exists('Axe\Init')) :
-    Axe\Init::register_services();
-endif;
+Axe\Init::register_services();
 
 // Loads the date from the core or child theme.
 setBaseDataPath();
