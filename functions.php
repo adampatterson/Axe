@@ -4,7 +4,7 @@ require_once('lib/Helpers.php');
 
 // For composer dependencies
 if (! file_exists($composer = __DIR__.'/vendor/autoload.php')) :
-    wp_die("Run <code>composer install</code>");
+    wp_die("Run <code>composer install</code> from".__DIR__);
 endif;
 
 require_once $composer;

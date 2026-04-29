@@ -19,7 +19,7 @@
     "source": "https://github.com/adampatterson/Axe"
   },
   "require": {
-    "php": "^8.2 || ^8.4",
+    "php": ">=8.2",
     "adampatterson/axe-helpers": "dev-dev",
     "composer/installers": "^2.0"
   },
