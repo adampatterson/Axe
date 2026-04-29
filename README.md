@@ -4,8 +4,7 @@ Axe is a simple bare-bones WordPress starter theme and structure. It is a theme 
 fast as possible.
 
 My build workflow might not be very orthodox, but I typically review the design, Set up my Custom post types
-using [Custom Post Type UI](https://en-ca.wordpress.org/plugins/custom-post-type-ui/) and setup any page data structures
-using [ACF](http://www.advancedcustomfields.com/).
+using [Custom Post Type UI](https://en-ca.wordpress.org/plugins/custom-post-type-ui/) and setup any page data structures using [ACF](http://www.advancedcustomfields.com/).
 
 Simply being able to plow ahead creating my site structures and loading in real or fake content lets me have something
 tangible to work with.
@@ -17,7 +16,7 @@ to the admin pages.
 /*
  * Load this in your footer, and
  * check to see if the user is logged in.
- * /
+ */
 <? $data = get_fields();?>
 <script>
     console.log(<?= json_encode($data) ?>)
@@ -73,11 +72,9 @@ npm i && php composer i && npm run prod
 
 A `package.json` file with Bootstrap and jQuery is included.
 
-The [src folder](https://github.com/adampatterson/Axe/tree/master/src) stores your SCSS and JS that will be compiled
-into `/assets` using Laravel Mix.
+The [src folder](https://github.com/adampatterson/Axe/tree/master/src) stores your SCSS and JS that will be compiled into `/assets` using Laravel Mix.
 
-If you are looking for a more advanced Mix configuration, then have a look at
-the [official docs](https://laravel-mix.com/docs/6.0/installation).
+If you are looking for a more advanced Mix configuration, then have a look at the [official docs](https://laravel-mix.com/docs/6.0/installation).
 
 **Mix Installation & Setup**
 https://laravel.com/docs/master/mix#installation
@@ -104,11 +101,15 @@ the ability to load assets from both the Child and Parent theme. Omitting usePar
 
 ### Child Themes
 
-https://github.com/adampatterson/Handle
+- Parent
+    - Axe
+        - Child
+            - [Handle](https://github.com/adampatterson/handle) | Bootstrap + Webpack
+            - [Edge](https://github.com/adampatterson/edge) | Tailwind + Vite
+            - [Blade](https://github.com/adampatterson/blade) | Work In Progress - Bootstrap / Demo
 
-If you will be using ACF with your child theme uncomment
-the [following](https://github.com/adampatterson/Handle/blob/master/lib/Custom.php#L12) so that ACF will store
-the `.json` files in your working Child theme.
+If you are using ACF with your child theme uncomment the [following](https://github.com/adampatterson/handle/blob/main/lib/Custom.php#L12) so that ACF will store the
+`.json` files in your working Child theme.
 
 ---
 
@@ -226,14 +227,14 @@ Accessing `/` will resolve the home page and look for the file `templates/conten
 
 - The custom post type archive `{type}` will load `templates/archive-{type}.php`
 - The default archive would be `archive-default.php` using the default post loop.
-- Accessing `/books/sci-fi/` can user a custom loop `get_acf_part('templates/loop', 'books');`
+- Accessing `/books/sci-fi/` can use a custom loop `get_acf_part('templates/loop', 'books');`
 
 ### Custom Loops
 
 If you have a custom post type called Books, creating `content-books.php` and loading a custom loop
 like `loop-books.php` with all the necessary "Loop" code would give you a custom book loop.
 
-See [loop-post.php](https://github.com/adampatterson/Axe/blob/master/templates/loop-post.php) for an example.
+See [loop-post.php](https://github.com/adampatterson/axe/blob/main/templates/loop-post.php) for an example.
 
 ## Helper Functions
 
@@ -252,21 +253,48 @@ _Functions in the parent theme should be wrapped with `function_exists` any conf
 ---
 
 `get_template_part_acf()` - Works like `get_template_part()` except that it returns a path for you to `include`. This
-makes it more suitable to use with ACF. You can include your custom content once which is already done for you.
+makes it more suitable to use with ACF. You can include your custom content once which is already done for you
+thought `include(__THEME_DATA__.'/lib/data.php');`.
 
 ```php
-include(get_template_part_acf('templates/content', 'blog'));
+$yourData = [];
+include(get_template_part_acf('templates/partials/header'));
 ```
+
+Inside **header.php** you can now access `$yourData`.
 
 **Alternatively**
 
-`get_acf_part()` internally calls `get_template_part_acf()` but does the include for you, this helps keep your code nice
+YOu can use `get_acf_part()` which internally calls `get_template_part_acf()` but does the include for you, this helps
+keep your code nice
 and clean.
+
+If you wish to pass data through to your template part, you can pass it through the `data` property where it will now be
+accessible through `$data`.
 
 ```php
 // Standard usage, external data is not available inside 
 get_acf_part('templates/content', 'blog');  
 ```
+
+```php
+// Passing data to  get_acf_part
+$yourData = [];
+get_acf_part('templates/content', 'home', data: $yourData);
+```
+
+Inside **content-home.php** you can now access `$data`.
+
+**When to use `get_acf_part` and `get_template_part_acf`**
+
+I like to use `get_template_part_acf` inside of the root WordPress template files like index, page, single, and archive.
+
+Theis lets me declare my ACF or any other data once at a high level allowing it to take advantage of
+PHPs [variable scope](https://www.php.net/manual/en/language.variables.scope.php).
+
+`get_acf_part` is then used when I want more control over what's being passed to the partial. `get_acf_part` is closer
+to the core functionality and implementation of `get_template_part` but does not require you to pass through data in an
+`args` array.
 
 See [data](#data) for more information on `$data` and `$blocks`.
 
@@ -391,7 +419,19 @@ Have a look at some of the ACF fields, blocks, and a template [here](example).
 `_get()` - alias for `Arr::get($haystack, $needle, $default = false)`
 
 ```php
+$block = [
+    // the title key is not set
+];
+
 <?= _get($block, 'title', 'Default Title') ?>
+```
+
+```php
+$block = [
+    'title' => ''
+];
+
+<?= _get($block, 'title', 'Default Title', defaultIfEmpty: true) ?>
 ```
 
 ```php
@@ -403,7 +443,13 @@ endforeach;
 `_has()` - alias for `Arr::has($haystack, $needle)`
 
 ```php
-if (_has($block, 'contact.phone', false)): ?>
+$block = [
+    'contact' => [
+        'phone' => ''
+        // or the array key is missing
+    ]
+];
+if (_has($block, 'contact.phone', default: false)): ?>
     ...
 endif;
 ```
@@ -428,23 +474,21 @@ endif;
 ## Style
 
 ```scss
-@import "components/base-variables";
+@import "global/overrides";
 @import "~bootstrap/scss/bootstrap";
 ```
 
 With the addition of PurgeCSS to the build script you can safely include the entire Bootstrap library. Once a production
 build has been done, any unused CSS classes will be removed.
 
-`base-variables` holds any site specific variables that you might need including any
-Bootstrap [customizations](https://getbootstrap.com/docs/5.1/customize/sass/)
+`global/overrides/index.scss` holds any **site-specific** variables that you might need to modify including any
+Bootstrap [customizations](https://getbootstrap.com/docs/5.3/customize/sass/)
 
 # Child theme
 
 https://github.com/adampatterson/Handle
 
-Opening `/lib/Helpers.php` and uncommenting the function
-on [line 6](https://github.com/adampatterson/Handle/blob/master/lib/Helpers.php#L6) would allow the child theme to serve
-all of your themes assets.
+Opening `/lib/Helpers.php` and uncommenting the function `__t()` will serve all of your theme assets from the child theme.
 
 ## Recommended Plugins
 
@@ -457,14 +501,16 @@ all of your themes assets.
 
 ## To-Do's
 
-- Create a model for ACF and other data sources
-- Document a lot of the inner code such as helpers
-- Document included packages
-- Document the build process
-- Document Child theme process using ( Handle )
-- Build out a demo theme ( Blade )
-- Update to Bootstrap 5
-- Fix WebPack PurgeCSS
+- [ ] Create a model for ACF and other data sources
+- [ ] Document a lot of the inner code such as helpers
+- [ ] Document included packages
+- [ ] Document the build process
+    - [ ] Theme configuration
+- [ ] Document Child theme process using ([Handle](https://github.com/adampatterson/handle))
+- [ ] Modernized Tailwind + Vite theme ([Edge](https://github.com/adampatterson/edge))
+- [ ] Build out a demo theme ([Blade](https://github.com/adampatterson/blade))
+- [ ] Fix WebPack PurgeCSS
+- [x] Update to Bootstrap 5.3
 
 ## Dummy Content for Gutenberg
 
@@ -480,16 +526,56 @@ by [Alecaddd](https://github.com/Alecaddd/awps)
 
 ### Contributors:
 
-Adam
-Patterson ( [@adampatterson](http://twitter.com/adampatterson) / [adampatterson.ca](https://www.adampatterson.ca/) )
+Adam Patterson -[@adampatterson](http://twitter.com/adampatterson) / [adampatterson.ca](https://www.adampatterson.ca/)
 
 ### Disclaimer
 
-This theme reflects my own workflows and process, I have built over 100 sites using these setup and it has evolved over
-time. With that said, If you have anything to add please email me at hello@adampatterson.ca
+This theme evolves over time as my own workflows and process change, I have built over 100 sites using this setup. With that said, If you have anything to add please email me at hello@adampatterson.ca
+
+### Project Setup
+
+```shell
+mkdir project-name.test
+cd project-name.test
+git checkout git@github.com:adampatterson/project-name.git .
+wp core download
+ wp core config --dbname=database_name --dbuser=root --dbpass=secret --dbhost=localhost --dbprefix=wp_ 
+ wp core install --url=project-name.test --title="Your Site" --admin_user=username --admin_password=top-secret-password --admin_email=email@domain.com
+```
+
+_Note the space at the start of the commands. This will prevent the command from logging in your `history`._
+
+In the site root run `cp .env.example .env` and then add the proper config values.
+
+If there are `wp-config.php` constants that you need to set but are not included,
+then add them to the `.env` and modify your `wp-config.php` file.
+
+your `wp-config.php` **SHOULD** be in version control.
+
+**From the site root:**
+
+```shell
+composer i
+```
+
+**From the theme root:**
+
+```shell
+cd wp-content/themes/name
+npm i && php composer i && npm run prod
+```
 
 #### Local Development
 
-    ln -s ~/Sites/cms/wordpress/wp-content/themes/Blade ./
-    ln -s ~/Sites/cms/wordpress/wp-content/themes/Axe ./
-    ln -s ~/Sites/cms/wordpress/wp-content/themes/Axe-Helpers ./Axe/vendor/adampatterson
+```shell
+ln -s ~Sites/personal/_wordpress/Blade ./
+ln -s ~Sites/personal/_wordpress/Handle ./
+ln -s ~Sites/personal/_wordpress/Edge ./
+ln -s ~/Sites/personal/_wordpress/Axe ./
+```
+
+Run `composer install` from within the `Axe` theme.
+
+```shell
+ln -s ~/Sites/personal/_packages/Axe-Helpers ./Axe/vendor/adampatterson
+```

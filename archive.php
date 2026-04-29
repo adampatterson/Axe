@@ -2,9 +2,9 @@
 /*
  * All globally availbile ACF data is loaded here.
  */
-include(__THEME_DATA__ . '/lib/data.php');
+include(__THEME_DATA__.'/lib/data.php');
 
-get_acf_part('templates/partials/header');
+include get_template_part_acf('templates/partials/header');
 
 echo '<!-- main/archive -->';
 
@@ -17,21 +17,21 @@ if (have_posts()):
             $post_type_slug = ($post_type !== 'post') ? $post_type_data->rewrite['slug'] : '';
         }
 
-        if (check_path('/templates/archive-' . $post_type_slug . '.php')):
-            echo '<!-- template: index/archive-' . $post_type_slug . ' -->';
-            get_acf_part('templates/archive', $post_type_slug);
+        if (check_path('/templates/archive-'.$post_type_slug.'.php')):
+            echo '<!-- template: index/archive-'.$post_type_slug.' -->';
+            include get_template_part_acf('templates/archive', $post_type_slug);
         elseif (is_author()):
             echo '<!-- template: templates/archive-author -->';
-            get_acf_part('templates/archive', 'author');
+            include get_template_part_acf('templates/archive', 'author');
         else:
             echo '<!-- template: index/archive -->';
-            get_acf_part('templates/archive', 'default');
+            include get_template_part_acf('templates/archive', 'default');
         endif;
     endif;
 
 else:
     echo '<!-- template: index/no_posts -->';
-    get_acf_part('templates/archive', 'default');
+    include get_template_part_acf('templates/archive', 'default');
 endif;
 
-get_acf_part('templates/partials/footer');
+include get_template_part_acf('templates/partials/footer');

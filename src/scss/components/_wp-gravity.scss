@@ -14,7 +14,7 @@
 }
 
 .gform_wrapper li {
-    @extend .form-group;
+    @extend .form-group !optional;
 }
 
 .gform_wrapper .gfield_required {

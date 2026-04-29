@@ -5,19 +5,17 @@
 
 include(__THEME_DATA__.'/lib/data.php');
 
-get_acf_part('templates/partials/header');
+include get_template_part_acf('templates/partials/header');
 
 echo '<!-- main/index -->';
-
 if (have_posts()):
-    # Sort this out, Blog is not loading
     if (is_front_page() || is_home()):
         echo '<!-- template: index/blog -->';
-        get_acf_part('templates/content', 'blog');
+        include get_template_part_acf('templates/content', 'blog');
     endif;
 else:
     echo '<!-- template: index/no_posts -->';
-    get_acf_part('templates/none');
+    include get_template_part_acf('templates/404');
 endif;
 
-get_acf_part('templates/partials/footer');
+include get_template_part_acf('templates/partials/footer');

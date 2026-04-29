@@ -1,0 +1,21 @@
+# .github/workflows/build.yml
+name: Build Theme Assets
+
+on:
+  push:
+    branches: [ main, staging, dev ]
+  pull_request:
+    branches: [ main, staging ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run-shared-build:
+    uses: adampatterson/.github/.github/workflows/wordpress-theme-build.yml@main
+    with:
+      # You can override versions here or just omit these lines to use the defaults
+      php-versions: '["8.2", "8.4"]'
+      node-versions: '["22", "24"]'
+      build-command: 'npm run prod'

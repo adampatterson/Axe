@@ -1,11 +1,13 @@
-<?php while (have_posts()) : the_post(); ?>
+<?php
+
+while (have_posts()) : the_post(); ?>
     <article <?php post_class('pb-5'); ?> itemscope="" itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
         <?php if (has_post_thumbnail()) { ?>
             <div class="post-image pb-3">
                 <a href="<?php the_permalink(); ?>" title="Read Full Post">
-                    <?php the_post_thumbnail('featured', array(
-                        'class' => "img-fluid",
-                    )); ?>
+                    <?php the_post_thumbnail('featured', [
+                            'class' => "img-fluid",
+                    ]); ?>
                 </a>
             </div>
         <?php } ?>
@@ -16,11 +18,11 @@
             <p><?php Axe\Template::posted_on() ?></p>
 
             <div class="entry-footer terms">
-                <p class="post-categories"><?php Axe\Template::post_categories(); ?></p>
-                <p class="post-tags"><?php Axe\Template::post_tags(); ?></p>
+                <p class="post-categories d-flex gap-2"><strong>Categories:</strong> <?= Axe\Template::meta_terms(taxonomies: ['category'], separator: ', ') ?></p>
+                <p class="post-tags d-flex gap-2"><strong>Tags:</strong> <?= Axe\Template::meta_terms(taxonomies: ['post_tag'], separator: ', ') ?></p>
             </div>
 
-            <p><?= get_the_excerpt(); ?></p>
+            <p><?= get_the_excerpt() ?></p>
 
             <p>
                 <a href="<?php the_permalink(); ?>" title="Keep Reading" class="btn btn-outline-primary">

@@ -5,25 +5,27 @@ namespace Axe\Core;
 /**
  * Class TheLoop
  * @package Axe\Core
- *
- * $loop = new Axe\Core\TheLoop;
- * while ($loop->have_posts()) : the_post();
- *      $loop->first()
- *      $loop->index()
- *      $loop->iteration()
- *      $loop->count()
- *      $loop->even()
- *      $loop->odd()
- *      $loop->last()
- * endwhile;
  */
 class TheLoop
 {
 
     /**
-     * @var int
+     * Example usage:
+     *  ```
+     *  $loop = new Axe\Core\TheLoop;
+     *  while ($loop->have_posts()) : the_post();
+     *       $loop->first()
+     *       $loop->index()
+     *       $loop->iteration()
+     *       $loop->count()
+     *       $loop->even()
+     *       $loop->odd()
+     *       $loop->last()
+     *  endwhile;
+     *  ```
      */
-    public $index = 0;
+
+    public int $index = 0;
 
     /**
      * @var string|void|\WP_Query
@@ -57,7 +59,7 @@ class TheLoop
      */
     private function iterate(): void
     {
-        $this->index = $this->index + 1;
+        ++$this->index;
     }
 
     /**
@@ -90,43 +92,27 @@ class TheLoop
         return count($this->wp_query->posts);
     }
 
-    /**
-     * @return bool
-     */
     public function first(): bool
     {
-        return ($this->index == 1) ? true : false;
+        return $this->index === 1;
     }
 
-    /**
-     * @return bool
-     */
     public function last(): bool
     {
-        return ($this->index == count($this->wp_query->posts)) ? true : false;
+        return $this->index === count($this->wp_query->posts);
     }
 
-    /**
-     * @return bool
-     */
     public function even(): bool
     {
-        return $this->index % 2 == 0;
+        return $this->index % 2 === 0;
     }
 
-    /**
-     * @return bool
-     */
     public function odd(): bool
     {
         return $this->index % 2 !== 0;
     }
 
-    /**
-     * @param $count
-     * @return bool
-     */
-    public function is($count): bool
+    public function is(int $count): bool
     {
         return $this->iteration() === $count;
     }

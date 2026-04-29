@@ -12,7 +12,7 @@ get_acf_part('templates/partials/header');
             <div class="row">
                 <?php while (have_posts()) :
                     the_post();
-                    echo '<!-- template/gift-card -->'; ?>
+                    echo '<!-- template/template-flex -->'; ?>
                     <div <?php post_class('content-wrapper'); ?>>
                         <?php if (_has($data, 'builder', false)):
                             foreach (_get($data, 'builder', []) as $block):

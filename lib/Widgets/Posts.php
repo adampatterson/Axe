@@ -19,36 +19,36 @@ class Posts extends WP_Widget
     }
 
     /**
-     * @param array $args
-     * @param array $instance
+     * @param  array  $args
+     * @param  array  $instance
      */
     public function widget($args, $instance)
     {
         $basePath = '';
 
         // Defaults, On preview none of the variables will be set.
-        $title         = (array_key_exists('title', $instance) ? $instance['title'] : __('Recent Posts', 'axe'));
-        $number        = (array_key_exists('number', $instance) ? $instance['number'] : 5);
-        $style         = (array_key_exists('style', $instance) ? $instance['style'] : 'full');
-        $show_excerpt  = (array_key_exists('show_excerpt', $instance) ? $instance['show_excerpt'] : true);
-        $show_date     = (array_key_exists('show_date', $instance) ? $instance['show_date'] : true);
-        $show_thumb    = (array_key_exists('show_thumb', $instance) ? $instance['show_thumb'] : true);
+        $title = (array_key_exists('title', $instance) ? $instance['title'] : __('Recent Posts', 'axe'));
+        $number = (array_key_exists('number', $instance) ? $instance['number'] : 5);
+        $style = (array_key_exists('style', $instance) ? $instance['style'] : 'full');
+        $show_excerpt = (array_key_exists('show_excerpt', $instance) ? $instance['show_excerpt'] : true);
+        $show_date = (array_key_exists('show_date', $instance) ? $instance['show_date'] : true);
+        $show_thumb = (array_key_exists('show_thumb', $instance) ? $instance['show_thumb'] : true);
         $show_category = (array_key_exists('show_category', $instance) ? $instance['show_category'] : true);
-        $show_author   = (array_key_exists('show_author', $instance) ? $instance['show_author'] : false);
+        $show_author = (array_key_exists('show_author', $instance) ? $instance['show_author'] : false);
 
-        $query_args = array('posts_per_page' => $number, 'ignore_sticky_posts' => 1);
+        $query_args = ['posts_per_page' => $number, 'ignore_sticky_posts' => 1];
 
         // Show by tag
-        if ( ! empty($instance['by_tag'])) {
-            $query_args = array_merge($query_args, array('tag' => $instance['by_tag']));
+        if (! empty($instance['by_tag'])) {
+            $query_args = array_merge($query_args, ['tag' => $instance['by_tag']]);
         }
 
         $query = new WP_Query($query_args);
 
         // Before and after widget arguments are defined by themes
         echo $args['before_widget'];
-        if ( ! empty($title)) {
-            echo $args['before_title'] . $title . $args['after_title'];
+        if (! empty($title)) {
+            echo $args['before_title'].$title.$args['after_title'];
         }
         ?>
         <div class="axe-widget-posts container">
@@ -67,8 +67,8 @@ class Posts extends WP_Widget
     /**
      * Updating widget replacing old instances with new
      *
-     * @param array $new
-     * @param array $old
+     * @param  array  $new
+     * @param  array  $old
      *
      * @return array
      */
@@ -78,11 +78,11 @@ class Posts extends WP_Widget
             $new[$key] = wp_kses_post($val);
         }
 
-        $new['show_excerpt']  = ! empty($new['show_excerpt']) ? 1 : 0;
-        $new['show_date']     = ! empty($new['show_date']) ? 1 : 0;
-        $new['show_thumb']    = ! empty($new['show_thumb']) ? 1 : 0;
+        $new['show_excerpt'] = ! empty($new['show_excerpt']) ? 1 : 0;
+        $new['show_date'] = ! empty($new['show_date']) ? 1 : 0;
+        $new['show_thumb'] = ! empty($new['show_thumb']) ? 1 : 0;
         $new['show_category'] = ! empty($new['show_category']) ? 1 : 0;
-        $new['show_author']   = ! empty($new['show_author']) ? 1 : 0;
+        $new['show_author'] = ! empty($new['show_author']) ? 1 : 0;
 
         return $new;
     }
@@ -90,23 +90,23 @@ class Posts extends WP_Widget
     /**
      * Widget Backend
      *
-     * @param array $instance
+     * @param  array  $instance
      *
      * @return string|void
      */
     public function form($instance)
     {
-        $defaults = array(
-            'title'         => __('Recent Posts', 'axe'),
-            'by_tag'        => '',
-            'style'         => 'full',
-            'number'        => 5,
-            'show_thumb'    => 1,
-            'show_category' => 1,
-            'show_date'     => 1,
-            'show_excerpt'  => 0,
-            'show_author'   => 0,
-        );
+        $defaults = [
+                'title'         => __('Recent Posts', 'axe'),
+                'by_tag'        => '',
+                'style'         => 'full',
+                'number'        => 5,
+                'show_thumb'    => 1,
+                'show_category' => 1,
+                'show_date'     => 1,
+                'show_excerpt'  => 0,
+                'show_author'   => 0,
+        ];
 
         $instance = array_merge($defaults, (array)$instance);
         extract($instance);
@@ -122,9 +122,9 @@ class Posts extends WP_Widget
         echo $this->check($show_author, 'show_author', __('Show Author', 'axe'));
 
         echo $this->select($style, 'style', __('Style:', 'axe'), [
-            'meta-above' => __('Medium - Meta Above', 'axe'),
-            'meta-below' => __('Medium - Meta Below', 'axe'),
-            'full'       => __('Full - Meta Below Full Width Image & Large Title', 'axe')
+                'meta-above' => __('Medium - Meta Above', 'axe'),
+                'meta-below' => __('Medium - Meta Below', 'axe'),
+                'full'       => __('Full - Meta Below Full Width Image & Large Title', 'axe'),
         ]);
     }
 

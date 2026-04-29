@@ -1,0 +1,10 @@
+// Merge the maps
+$colors: map-merge($colors, (
+        "brand-blue": $brand-blue,
+));
+
+$colors: map-remove($colors, "blue", "indigo", "purple", "pink", "red", "orange", "yellow", "green", "teal", "cyan");
+
+$theme-colors: map-merge($theme-colors, (
+        "brand-blue": #007398,
+));

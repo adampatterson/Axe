@@ -29,15 +29,15 @@ class Acf
 
     public function acf_save()
     {
-        return get_template_directory() . '/acf-json';
+        return get_template_directory().'/acf-json';
     }
 
     public function acf_load()
     {
-        $paths = [get_template_directory() . '/acf-json'];
+        $paths = [get_template_directory().'/acf-json'];
 
         if (is_child_theme()) {
-            $paths[] = get_stylesheet_directory() . '/acf-json';
+            $paths[] = get_stylesheet_directory().'/acf-json';
         }
 
         return $paths;

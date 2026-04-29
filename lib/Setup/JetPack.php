@@ -12,11 +12,11 @@ class JetPack
 
     public function __construct()
     {
-        if ( ! class_exists('Jetpack')) {
+        if (! class_exists('Jetpack')) {
             return;
         }
 
-        add_filter('jetpack_photon_pre_args', array($this, 'photon_compression'));
+        add_filter('jetpack_photon_pre_args', [$this, 'photon_compression']);
 
         add_action('after_setup_theme', [$this, 'handle_jetpack_setup']);
     }
@@ -27,12 +27,11 @@ class JetPack
      */
     public function handle_jetpack_setup()
     {
-        add_theme_support('infinite-scroll', array(
+        add_theme_support('infinite-scroll', [
             'container' => 'main',
-            'render'    => array($this, 'infinite_scroll_render'),
+            'render'    => [$this, 'infinite_scroll_render'],
             'footer'    => 'page',
-        ));
-
+        ]);
     }
 
     public function infinite_scroll_render()
@@ -41,11 +40,11 @@ class JetPack
             the_post();
             if (is_search()) :
                 var_dump('infinate search');
-//                get_template_part('views/content', 'search');
+            //                get_template_part('views/content', 'search');
             else :
                 var_dump('infinate posts');
 
-//                get_template_part('views/content', get_post_format());
+                //                get_template_part('views/content', get_post_format());
             endif;
         }
     }
@@ -53,7 +52,7 @@ class JetPack
     public function photon_compression($args)
     {
         $args['quality'] = 100;
-        $args['strip']   = 'all';
+        $args['strip'] = 'all';
 
         return $args;
     }

@@ -8,8 +8,6 @@ node_modules
 /src/vendor
 /node_modules
 /assets/vendor
-/yarn.lock
-/package-lock.json
 /mix-manifest.json
 /assets/js/manifest.js
 *.map
@@ -19,3 +17,9 @@ node_modules
 /Axe-Helpers
 /acf-json
 .env
+.design
+.src
+wp-cli.yml
+auth.json
+/docs
+/rector.php
